@@ -178,6 +178,42 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
   border-left:2px solid var(--hairline);padding-left:14px}
 .dark .note{color:#93a2b6;border-color:rgba(255,255,255,.16)}
 
+
+/* — diagramas — */
+.dg{margin-top:26px;display:flex;justify-content:center}
+.dg svg{width:100%;height:auto;max-height:46vh}
+.dg text{font-family:var(--font);font-weight:300}
+.dg .lbl{font-size:13px;fill:var(--ink-2)}
+.dark .dg .lbl{fill:#c9d4e2}
+.dg .cap{font-size:11px;fill:var(--ink-mute);letter-spacing:.06em;text-transform:uppercase}
+.dark .dg .cap{fill:#8ea0b6}
+.dg .box{fill:var(--canvas-soft);stroke:var(--hairline)}
+.dark .dg .box{fill:rgba(255,255,255,.05);stroke:rgba(255,255,255,.14)}
+.dg .box-hi{fill:#f0eeff;stroke:var(--primary)}
+.dark .dg .box-hi{fill:rgba(83,58,253,.18);stroke:var(--primary-soft)}
+.dg .ln{stroke:var(--ink-mute);stroke-width:1.3;fill:none}
+.dark .dg .ln{stroke:#7f8ea3}
+.dg .ln-hi{stroke:var(--primary);stroke-width:1.8;fill:none}
+.dark .dg .ln-hi{stroke:var(--primary-soft)}
+.dg .no{stroke:var(--ruby);stroke-width:1.6;fill:none;stroke-dasharray:5 4}
+.dg .ttl{font-size:14px;font-weight:400;fill:var(--ink)}
+.dark .dg .ttl{fill:#fff}
+
+/* — precios — */
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.pcard{border:1px solid var(--hairline);border-radius:11px;padding:20px 20px 22px;background:var(--canvas-soft)}
+.dark .pcard{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13)}
+.pcard.hi{border-color:var(--primary);background:#f0eeff}
+.dark .pcard.hi{background:rgba(83,58,253,.16);border-color:var(--primary-soft)}
+.pcard .k{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px}
+.dark .pcard .k{color:#8ea0b6}
+.pcard .v{font-size:clamp(24px,2.8vw,34px);font-weight:300;letter-spacing:-.7px;
+  font-variant-numeric:tabular-nums;color:var(--ink)}
+.dark .pcard .v{color:#fff}
+.pcard.hi .v{color:var(--primary-deep)} .dark .pcard.hi .v{color:var(--primary-soft)}
+.pcard .u{font-size:12.5px;color:var(--ink-mute);margin-top:7px}
+.dark .pcard .u{color:#8ea0b6}
+
 @media print{.slide{display:flex;position:relative;page-break-after:always;height:100vh}}
 </style>
 </head>
@@ -193,7 +229,27 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
 <section class="slide "><p class="eyebrow">Cómo se organiza la clase</p><h2>Cuatro bloques de 45 minutos</h2><div class="map"><div class="ph now"><p class="s">Bloque 1</p><p class="t">La plataforma</p><p class="d">Arquitectura, workspace, compute y el modelo lakehouse.</p></div><div class="ph"><p class="s">Bloque 2</p><p class="t">Unity Catalog</p><p class="d">Cómo se organiza y se gobierna todo lo que creas.</p></div><div class="ph"><p class="s">Bloque 3</p><p class="t">Delta Lake</p><p class="d">El formato que hace confiable al lakehouse.</p></div><div class="ph"><p class="s">Bloque 4</p><p class="t">Práctica</p><p class="d">Construís tu propio catálogo con datos reales.</p></div></div><p class="note">Al terminar vas a tener los datos de Neptuno cargados en un lakehouse gobernado tuyo — el cimiento sobre el que se apoyan las otras siete sesiones.</p></section>
 <section class="slide dark mesh sep"><p class="bignum">01</p><h2>La plataforma y el modelo lakehouse</h2><p class="time">45 minutos · bloque 1 de 4</p><ol><li>Qué es Databricks y cómo está construido por dentro</li><li>El workspace: dónde vas a trabajar</li><li>Los tres tipos de compute y cuándo usar cada uno</li><li>Del data warehouse al lakehouse</li><li>Arquitectura medallón</li></ol></section>
 <section class="slide "><p class="eyebrow">Qué es Databricks</p><h2>Una sola plataforma para datos, analítica e IA</h2><div class="two"><div><h3>Lo que reemplaza</h3><ul><li>Un data warehouse para reportes</li><li>Un data lake para archivos crudos</li><li>Un cluster aparte para machine learning</li><li>Otra herramienta para orquestar</li></ul></div><div><h3>Lo que aporta</h3><ul><li>Un solo lugar de almacenamiento</li><li>Un solo modelo de permisos</li><li>Un solo linaje, de punta a punta</li><li>SQL, Python, Scala y R sobre los mismos datos</li></ul></div></div><p class="note">La palabra que vas a escuchar todo el curso es <strong>lakehouse</strong>: la idea de que no hace falta elegir entre lago y almacén.</p></section>
-<section class="slide "><p class="eyebrow">Arquitectura</p><h2>Databricks se parte en dos: uno es suyo, el otro es tuyo</h2><div class="planes"><div class="plane ctrl"><p class="k">Plano de control · de Databricks</p><ul><li>La interfaz web que usas</li><li>Los metadatos de los notebooks y jobs</li><li>El planificador de trabajos</li><li>La configuración de los clusters</li></ul></div><div class="plane data"><p class="k">Plano de datos · en tu nube</p><ul><li>Las máquinas que hacen el cómputo</li><li><strong>Tus datos</strong>, en tu almacenamiento</li><li>Tu red y tus reglas de acceso</li></ul></div></div><p class="note">Por eso el workspace del curso vive en <strong>AWS, región us-west-2</strong>. Los datos no se van a un servidor de Databricks: se quedan donde tú los pusiste.</p></section>
+<section class="slide "><p class="eyebrow">Arquitectura</p><h2>Databricks se parte en dos: uno es suyo, el otro es tuyo</h2><div class="dg"><svg viewBox="0 0 900 300" role="img"
+  aria-label="El plano de control de Databricks envía instrucciones al plano de datos en tu nube; los datos nunca viajan de vuelta">
+  <rect class="box-hi" x="20" y="46" width="360" height="200" rx="10"/>
+  <text class="cap" x="40" y="76">Plano de control · de Databricks</text>
+  <text class="lbl" x="40" y="108">Interfaz web</text>
+  <text class="lbl" x="40" y="136">Metadatos de notebooks y jobs</text>
+  <text class="lbl" x="40" y="164">Planificador</text>
+  <text class="lbl" x="40" y="192">Configuración de clusters</text>
+  <rect class="box" x="520" y="46" width="360" height="200" rx="10"/>
+  <text class="cap" x="540" y="76">Plano de datos · en tu nube</text>
+  <text class="lbl" x="540" y="108">Máquinas que ejecutan</text>
+  <text class="ttl" x="540" y="136">Tus datos</text>
+  <text class="lbl" x="540" y="164">Tu red y tus permisos</text>
+  <text class="lbl" x="540" y="192">Región: AWS us-west-2</text>
+  <path class="ln-hi" d="M380 120 L512 120"/>
+  <path class="ln-hi" d="M504 114 l10 6 -10 6 z" fill="currentColor" stroke="none"
+        style="fill:var(--primary)"/>
+  <text class="cap" x="404" y="106">instrucciones</text>
+  <path class="no" d="M512 190 L388 190"/>
+  <text class="cap" x="400" y="214" style="fill:var(--ruby)">los datos no vuelven</text>
+</svg></div><p class="note">Por eso el workspace del curso vive en <strong>AWS, región us-west-2</strong>. Los datos no se van a un servidor de Databricks: se quedan donde tú los pusiste.</p></section>
 <section class="slide "><p class="eyebrow">El workspace</p><h2>Tu espacio de trabajo, y qué hay dentro</h2><div class="two"><div><h3>Dónde escribes</h3><ul><li><strong>Notebooks</strong> — código en celdas, con resultados</li><li><strong>Editor SQL</strong> — consultas sueltas y dashboards</li><li><strong>Carpetas de Git</strong> — el repo del curso, clonado adentro</li></ul></div><div><h3>Dónde miras</h3><ul><li><strong>Catalog Explorer</strong> — todo lo que existe y quién puede verlo</li><li><strong>Compute</strong> — qué está encendido y cuánto cuesta</li><li><strong>Workflows</strong> — qué corre solo y cuándo</li></ul></div></div></section>
 <section class="slide "><p class="eyebrow">Notebooks</p><h2>Una celda puede hablar un idioma distinto a la anterior</h2><pre>%sql
 <span class="kw">SELECT</span> NombreCategoria, COUNT(*) <span class="kw">FROM</span> neptuno.ventas.categorias
@@ -207,10 +263,59 @@ df = spark.table("neptuno.ventas.categorias")
 <section class="slide "><p class="eyebrow">Tipo 1 · SQL Warehouse</p><h2>Para consultar: SQL, dashboards y Genie</h2><div class="two"><div><h3>Cómo se crea</h3><ul><li>Compute → SQL Warehouses → Create</li><li>Tamaño (2X-Small alcanza para el curso)</li><li>Serverless: arranca en segundos</li><li>Auto-stop: 10 minutos</li></ul></div><div><h3>Cuándo NO</h3><ul><li>Si necesitas librerías de Python</li><li>Si vas a entrenar un modelo</li><li>Si el trabajo no es SQL</li></ul></div></div><p class="note">Es el que va a atender las consultas del Genie en la sesión 3 y las del agente en la sesión 5.</p></section>
 <section class="slide "><p class="eyebrow">Tipo 2 · All-purpose cluster</p><h2>Para desarrollar: notebooks interactivos</h2><div class="two"><div><h3>Cómo se crea</h3><ul><li>Compute → Create compute</li><li>Eliges versión de runtime</li><li>Puedes instalar librerías</li><li><strong>Terminate after…</strong> ← esto siempre</li></ul></div><div><h3>Cuándo NO</h3><ul><li>En producción: queda encendido y se paga igual</li><li>Para un job programado, hay algo mejor</li></ul></div></div><p class="note">Es el que vas a usar hoy para el notebook, y el que hay que acordarse de apagar al terminar.</p></section>
 <section class="slide "><p class="eyebrow">Tipo 3 · Job cluster</p><h2>Para producción: nace, trabaja y muere</h2><div class="two"><div><h3>Cómo se crea</h3><ul><li>No se crea a mano</li><li>Se define dentro del job</li><li>Arranca al empezar la corrida</li><li>Se apaga solo al terminar</li></ul></div><div><h3>Cuándo NO</h3><ul><li>Para desarrollar: esperarías el arranque en cada prueba</li></ul></div></div><p class="note">En la sesión 2 vas a agendar un pipeline, y va a correr sobre uno de éstos sin que tengas que encender nada.</p></section>
-<section class="slide dark"><p class="eyebrow">Los tres, uno al lado del otro</p><h2>Elegir el compute es elegir cuánto pagás</h2><table><tr><th>Tipo</th><th>Para qué</th><th>Cómo se paga</th><th>Se apaga</th></tr><tr><td><strong>SQL Warehouse</strong></td><td>SQL, BI, Genie</td><td>Mientras responde</td><td>Auto-stop</td></tr><tr><td><strong>All-purpose</strong></td><td>Notebooks</td><td>Mientras está encendido</td><td>Solo si lo configurás</td></tr><tr><td><strong>Job cluster</strong></td><td>Producción</td><td>Por corrida</td><td>Solo, siempre</td></tr></table><p class="note">Un all-purpose olvidado encendido un fin de semana consume más que todo el resto del curso junto.</p></section>
+<section class="slide dark"><p class="eyebrow">Los tres, uno al lado del otro</p>
+<h2>Elegir el compute es elegir cuánto pagas</h2>
+<div class="price">
+  <div class="pcard"><p class="k">All-purpose serverless</p><p class="v">0,75</p>
+    <p class="u">USD por DBU · notebooks</p></div>
+  <div class="pcard"><p class="k">SQL serverless</p><p class="v">0,70</p>
+    <p class="u">USD por DBU · consultas y Genie</p></div>
+  <div class="pcard hi"><p class="k">Jobs serverless</p><p class="v">0,35</p>
+    <p class="u">USD por DBU · producción</p></div>
+</div>
+<p class="lead" style="margin-top:26px">El mismo trabajo cuesta <strong>menos de la mitad</strong>
+si corre como job programado en lugar de sobre un cluster interactivo. No es una recomendación
+de estilo: es el precio de lista de la región donde está este workspace.</p>
+<p class="note">Precios reales de <code>system.billing.list_prices</code> para AWS us-west-2,
+consultados el 26 de agosto de 2026. Los vas a poder verificar tú mismo en la sesión 8.</p>
+</section>
+<section class="slide "><p class="eyebrow">Un dato que casi nadie mide</p>
+<h2>Este workspace consumió 18 dólares en doce días</h2>
+<table>
+  <tr><th>Concepto</th><th>DBU</th><th>USD</th></tr>
+  <tr><td>SQL serverless</td><td>25,35</td><td>17,75</td></tr>
+  <tr><td>Jobs serverless</td><td>0,62</td><td>0,22</td></tr>
+  <tr><td>Almacenamiento</td><td>1,19</td><td>0,03</td></tr>
+  <tr><td><strong>Genie</strong></td><td>28,21</td><td><strong>sin costo</strong></td></tr>
+</table>
+<p class="note">Incluye el webinar completo del 14 de agosto, que fue el día de mayor consumo.
+Lo interesante es la última fila: <strong>Genie se factura como uso gratuito</strong>. Lo que más
+vamos a demostrar en este curso no consume DBU.</p>
+</section>
 <section class="slide "><p class="eyebrow">Antes del lakehouse</p><h2>Había que elegir entre gobierno y flexibilidad</h2><div class="two"><div><h3>Data warehouse</h3><ul><li>Rápido y ordenado</li><li>Permisos y transacciones</li><li>Pero: solo datos tabulares</li><li>Y: caro de escalar</li><li>Un PDF no entra. Un audio tampoco.</li></ul></div><div><h3>Data lake</h3><ul><li>Barato, guarda cualquier cosa</li><li>Escala sin límite</li><li>Pero: sin transacciones</li><li>Y: sin esquema garantizado</li><li>Termina siendo un pantano</li></ul></div></div><p class="note">Las empresas terminaban montando los dos, y copiando datos de uno al otro todas las noches.</p></section>
 <section class="slide "><p class="eyebrow">El lakehouse</p><h2>El almacenamiento del lago con las garantías del almacén</h2><p class="lead">Archivos baratos en el almacenamiento de tu nube, más una capa de metadatos que les da transacciones, esquema, versionado y permisos. Esa capa es <strong>Delta Lake</strong>, y la vemos en el bloque 3.</p><p class="lead" style="margin-top:24px;color:var(--primary-deep)">Para lo que hacemos en este curso importa por una razón concreta: un agente de IA necesita <strong>las dos cosas</strong> — tablas confiables para calcular, y documentos sueltos para responder.</p></section>
-<section class="slide "><p class="eyebrow">Arquitectura medallón</p><h2>Los datos no se limpian de una vez: pasan por tres capas</h2><div class="layers"><div class="layer b"><p class="k">Bronze</p><p>Tal como llegó. Se le agrega de dónde vino y cuándo. No se corrige nunca.</p></div><div class="layer s"><p class="k">Silver</p><p>Tipado, limpio, sin duplicados y con las reglas de negocio ya aplicadas.</p></div><div class="layer g"><p class="k">Gold</p><p>Agregado y modelado para que lo consuman personas, dashboards o una IA.</p></div></div><p class="note"><strong>Bronze no se corrige: se re-procesa.</strong> Si arreglás el dato malo en bronze, perdés la evidencia de qué te mandaron realmente — y con ella, la posibilidad de demostrar que el error no era tuyo.</p></section>
+<section class="slide "><p class="eyebrow">Arquitectura medallón</p><h2>Los datos no se limpian de una vez: pasan por tres capas</h2><div class="dg"><svg viewBox="0 0 900 250" role="img"
+  aria-label="Los datos pasan de bronze a silver y de silver a gold; bronze se conserva intacto">
+  <rect class="box" x="10" y="60" width="250" height="120" rx="10"/>
+  <text class="ttl" x="34" y="94">Bronze</text>
+  <text class="lbl" x="34" y="122">Tal como llegó</text>
+  <text class="lbl" x="34" y="148">Origen y fecha de ingesta</text>
+  <text class="cap" x="34" y="172">no se corrige nunca</text>
+  <rect class="box" x="325" y="60" width="250" height="120" rx="10"/>
+  <text class="ttl" x="349" y="94">Silver</text>
+  <text class="lbl" x="349" y="122">Tipado y sin duplicados</text>
+  <text class="lbl" x="349" y="148">Reglas de negocio aplicadas</text>
+  <rect class="box-hi" x="640" y="60" width="250" height="120" rx="10"/>
+  <text class="ttl" x="664" y="94">Gold</text>
+  <text class="lbl" x="664" y="122">Agregado y modelado</text>
+  <text class="lbl" x="664" y="148">Lo que consume la IA</text>
+  <path class="ln" d="M262 120 L320 120"/><path d="M313 114 l9 6 -9 6 z" style="fill:var(--ink-mute)"/>
+  <path class="ln" d="M577 120 L635 120"/><path d="M628 114 l9 6 -9 6 z" style="fill:var(--ink-mute)"/>
+  <text class="cap" x="266" y="106">limpiar</text>
+  <text class="cap" x="581" y="106">agregar</text>
+  <path class="ln-hi" d="M135 190 Q135 226 400 226 Q660 226 660 194" stroke-dasharray="4 4"/>
+  <text class="cap" x="368" y="246">si algo sale mal, se re-procesa desde bronze</text>
+</svg></div><p class="note"><strong>Bronze no se corrige: se re-procesa.</strong> Si arreglás el dato malo en bronze, perdés la evidencia de qué te mandaron realmente — y con ella, la posibilidad de demostrar que el error no era tuyo.</p></section>
 <section class="slide dark"><p class="eyebrow">Cierre del bloque 1</p><h2>Tres ideas para llevarse</h2><div class="recap"><div><span class="i">01</span><p>Tus datos viven en <strong>tu</strong> nube; Databricks pone la interfaz y la orquestación.</p></div><div><span class="i">02</span><p>El compute se elige por el trabajo que vas a hacer, y determina la factura.</p></div><div><span class="i">03</span><p>El lakehouse guarda tablas y archivos en un mismo lugar gobernado, en tres capas.</p></div></div></section>
 <section class="slide dark mesh sep"><p class="bignum">02</p><h2>Unity Catalog</h2><p class="time">45 minutos · bloque 2 de 4</p><ol><li>Qué problema resuelve el gobierno centralizado</li><li>La jerarquía: metastore, catálogo, esquema, objetos</li><li>Cómo se crea cada pieza</li><li>Volumes: gobernar archivos, no solo tablas</li><li>Permisos, herencia y linaje</li></ol></section>
 <section class="slide "><p class="eyebrow">El problema</p><h2>Sin gobierno central, cada workspace es una isla</h2><div class="two"><div><h3>Cómo era antes</h3><ul><li>Permisos definidos por workspace</li><li>La misma tabla, cinco copias, cinco dueños</li><li>Nadie sabía de dónde salía un número</li><li>Los archivos no tenían permisos: o veías todo el bucket, o nada</li></ul></div><div><h3>Qué cambia</h3><ul><li>Un catálogo por encima de todos los workspaces</li><li>Un solo lugar donde se dan permisos</li><li>Linaje automático de punta a punta</li><li>Tablas, archivos, modelos y funciones bajo las mismas reglas</li></ul></div></div></section>
@@ -247,7 +352,24 @@ df = spark.table("neptuno.ventas.categorias")
   _delta_log/
     00000000000000000000.json        <span class="cm">-- se creó la tabla, se agregaron 2 archivos</span>
     00000000000000000001.json        <span class="cm">-- se borraron 12 filas</span>
-    00000000000000000002.json        <span class="cm">-- se restauró a la versión 0</span></pre><p class="note">Ese <code>_delta_log</code> es todo el secreto. Cada operación agrega una entrada nueva; nunca se reescribe la anterior. De ahí salen las transacciones y el historial.</p></section>
+    00000000000000000002.json        <span class="cm">-- se restauró a la versión 0</span></pre><div class="dg"><svg viewBox="0 0 900 220" role="img"
+  aria-label="Una tabla Delta son archivos Parquet más un registro de transacciones que crece con cada operación">
+  <rect class="box" x="10" y="30" width="290" height="150" rx="10"/>
+  <text class="cap" x="32" y="60">Los datos</text>
+  <text class="lbl" x="32" y="92">part-00000….parquet</text>
+  <text class="lbl" x="32" y="120">part-00001….parquet</text>
+  <text class="cap" x="32" y="156">formato columnar, comprimido</text>
+  <rect class="box-hi" x="350" y="30" width="540" height="150" rx="10"/>
+  <text class="cap" x="374" y="60">_delta_log · el diario</text>
+  <circle cx="392" cy="92" r="5" style="fill:var(--primary)"/>
+  <text class="lbl" x="410" y="97">v0 · se creó la tabla · 77 filas</text>
+  <circle cx="392" cy="124" r="5" style="fill:var(--primary)"/>
+  <text class="lbl" x="410" y="129">v1 · se borraron 12 filas</text>
+  <circle cx="392" cy="156" r="5" style="fill:var(--primary)"/>
+  <text class="lbl" x="410" y="161">v2 · se restauró a v0 · 77 filas</text>
+  <path class="ln-hi" d="M392 97 L392 151"/>
+</svg></div>
+<p class="note">Ese <code>_delta_log</code> es todo el secreto. Cada operación agrega una entrada nueva; nunca se reescribe la anterior. De ahí salen las transacciones y el historial.</p></section>
 <section class="slide "><p class="eyebrow">ACID</p><h2>Qué significa cada garantía cuando el almacén es un bucket</h2><div class="two"><div><h3>Atomicidad</h3><p>La escritura entra entera o no entra. Nadie ve media carga.</p><h3 style="margin-top:22px">Consistencia</h3><p>El esquema se respeta: no entra una columna de texto donde va un número.</p></div><div><h3>Aislamiento</h3><p>Alguien puede leer mientras tú escribes, y ve la versión anterior completa.</p><h3 style="margin-top:22px">Durabilidad</h3><p>Confirmado es confirmado, aunque se caiga el cluster.</p></div></div><p class="note">Sobre un data lake común, un job que fallaba a la mitad dejaba archivos sueltos que alguien iba a leer como si fueran datos buenos.</p></section>
 <section class="slide "><p class="eyebrow">Crear una tabla</p><h2>Casi siempre, a partir de una consulta</h2><pre><span class="kw">CREATE</span> <span class="kw">TABLE</span> neptuno_manuel.bronze.productos
 <span class="kw">AS</span> <span class="kw">SELECT</span> * <span class="kw">FROM</span> ...;
