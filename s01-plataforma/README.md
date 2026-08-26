@@ -17,21 +17,21 @@ Moverte con soltura en Databricks y entender el modelo Lakehouse. Al terminar va
 3. **Una tabla documentada** con `COMMENT ON TABLE`
 4. Un cambio provocado y revertido con `RESTORE`
 
-Subilo a `entregas/tu-nombre/`.
+Súbelo a `entregas/tu-nombre/`.
 
 ## Cómo empezar
-1. Importá `notebook.py` a tu workspace de Databricks.
-2. Escribí tu nombre en el widget de arriba del notebook.
-3. Seguí las celdas en orden.
+1. Importa `notebook.py` a tu workspace de Databricks.
+2. Escribe tu nombre en el widget de arriba del notebook.
+3. Sigue las celdas en orden.
 
 ## La pregunta con la que cerramos
 En la última parte vas a calcular un porcentaje de error sobre las ventas.
-**Anotá ese número.** En la sesión 2 lo hacemos desaparecer para siempre.
+**Anota ese número.** En la sesión 2 lo hacemos desaparecer para siempre.
 
 ---
 
 ### Si te trabás
-- **«No tengo permisos para crear el catálogo»** → avisá en el chat; puede ser configuración de tu cuenta.
-- **«El notebook no encuentra los CSV»** → revisá que estén en tu Volume `bronze/landing`,
+- **«No tengo permisos para crear el catálogo»** → avisa en el chat; puede ser configuración de tu cuenta.
+- **«El notebook no encuentra los CSV»** → revisa que estén en tu Volume `bronze/landing`,
   y que el nombre del archivo sea exactamente el esperado.
-- **«Mi cluster no arranca»** → usá el SQL Warehouse para las celdas de SQL y avisá.
+- **«Mi cluster no arranca»** → usa el SQL Warehouse para las celdas de SQL y avisa.

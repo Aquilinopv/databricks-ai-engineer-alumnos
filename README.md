@@ -21,7 +21,7 @@ recursos/            datasets y material común a varias sesiones
 
 ## Cómo entregar
 
-Cada sesión tiene su carpeta `entregas/`. Subí tu trabajo en una subcarpeta con tu nombre:
+Cada sesión tiene su carpeta `entregas/`. Sube tu trabajo en una subcarpeta con tu nombre:
 
 ```
 s01-plataforma/entregas/tu-nombre/notebook.py
@@ -29,7 +29,7 @@ s01-plataforma/entregas/tu-nombre/notebook.py
 
 Este repositorio es **público**, así que hay dos caminos según tu acceso:
 
-**Si sos colaborador del repositorio** (te agregamos en la primera clase):
+**Si eres colaborador del repositorio** (te agregamos en la primera clase):
 
 ```bash
 git clone https://github.com/manuelarguelles/databricks-ai-engineer-alumnos.git
@@ -41,14 +41,14 @@ git commit -m "Entrega S01 - tu nombre"
 git push origin entrega-s01-tu-nombre
 ```
 
-**Si todavía no sos colaborador**, hacés un *fork* (botón «Fork» arriba a la derecha), trabajás
+**Si todavía no eres colaborador**, haces un *fork* (botón «Fork» arriba a la derecha), trabajas
 sobre tu copia y después abrís el Pull Request desde ahí. Funciona igual.
 
-En los dos casos terminás abriendo un **Pull Request** contra `main`.
+En los dos casos terminas abriendo un **Pull Request** contra `main`.
 Si nunca usaste Git, no te preocupes: la primera vez lo hacemos juntos en clase.
 
-> **Trabajá solo dentro de tu carpeta.** No modifiques los notebooks de la clase ni las entregas
-> de otros: si querés experimentar sobre un notebook, hacete una copia dentro de tu carpeta.
+> **Trabaja solo dentro de tu carpeta.** No modifiques los notebooks de la clase ni las entregas
+> de otros: si quieres experimentar sobre un notebook, hacete una copia dentro de tu carpeta.
 
 ## Antes de la primera clase
 
@@ -65,4 +65,4 @@ Si nunca usaste Git, no te preocupes: la primera vez lo hacemos juntos en clase.
 | Confianza | 6–7 | Evaluación con métricas y guardrails de seguridad |
 | Producción | 8 | El copiloto desplegado, con interfaz y monitoreo |
 
-Al final tenés un artefacto real de portafolio — no un ejercicio de juguete.
+Al final tienes un artefacto real de portafolio — no un ejercicio de juguete.

@@ -19,7 +19,7 @@
 
 dbutils.widgets.text("alumno", "", "Tu nombre (sin espacios ni tildes)")
 ALUMNO = dbutils.widgets.get("alumno").strip().lower()
-assert ALUMNO, "Poné tu nombre en el widget de arriba antes de seguir."
+assert ALUMNO, "Pon tu nombre en el widget de arriba antes de seguir."
 
 CATALOGO = f"neptuno_{ALUMNO}"
 print(f"Tu catálogo: {CATALOGO}")
@@ -47,7 +47,7 @@ display(spark.sql(f"SHOW SCHEMAS IN {CATALOGO}"))
 
 # MAGIC %md ## 2 · Subir los CSV al Volume
 # MAGIC Subilos por **Catalog Explorer → tu catálogo → bronze → landing → Upload**,
-# MAGIC o copialos desde el volume compartido del curso. Después verificá:
+# MAGIC o cópialos desde el volume compartido del curso. Después verifica:
 
 # COMMAND ----------
 
@@ -199,8 +199,8 @@ FROM {CATALOGO}.bronze.detalles_pedidos
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ### 6.3 · Documentá una tabla
-# MAGIC Escribí lo que un colega nuevo necesitaría saber para **no** equivocarse con ella.
+# MAGIC ### 6.3 · Documenta una tabla
+# MAGIC Escribe lo que un colega nuevo necesitaría saber para **no** equivocarse con ella.
 # MAGIC En la sesión 3 vas a descubrir que esto es exactamente lo que le falta al Genie del Demo 0.
 
 # COMMAND ----------
@@ -217,7 +217,7 @@ FROM {CATALOGO}.bronze.detalles_pedidos
 # MAGIC %md
 # MAGIC ---
 # MAGIC ## Antes de irte
-# MAGIC **Apagá el compute.** Un cluster olvidado encendido es la forma más cara de no aprender nada.
+# MAGIC **Apaga el compute.** Un cluster olvidado encendido es la forma más cara de no aprender nada.
 # MAGIC
 # MAGIC **La semana que viene:** hoy cargamos todo de una vez. En la vida real los datos llegan de a
 # MAGIC poco, todos los días. En la sesión 2 el pipeline se entera solo de lo que llegó nuevo.

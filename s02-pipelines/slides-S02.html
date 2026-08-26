@@ -120,163 +120,158 @@ ul.clean li::before{content:"";position:absolute;left:0;top:.62em;width:9px;heig
 #hint{position:fixed;left:50%;transform:translateX(-50%);bottom:13px;font-size:11.5px;
   color:var(--ink-mute);z-index:99;opacity:.6;transition:opacity .5s}
 #hint.gone{opacity:0}
+
+/* — separador de bloque — */
+.sep{justify-content:center}
+.sep .bignum{font-size:clamp(80px,12vw,150px);font-weight:300;letter-spacing:-5px;line-height:.9;
+  color:var(--primary-soft);opacity:.9}
+.sep h2{margin-top:14px}
+.sep .time{font-size:14px;color:#93a2b6;margin-top:22px;letter-spacing:.04em}
+.sep ol{margin-top:26px;padding-left:20px;display:flex;flex-direction:column;gap:9px;
+  font-size:15px;font-weight:300;color:#c9d4e2;max-width:56ch}
+
+/* — código — */
+pre{background:#0b1b2d;border:1px solid rgba(255,255,255,.10);border-radius:9px;
+  padding:18px 20px;margin-top:22px;overflow-x:auto;font-size:clamp(12.5px,1.25vw,15.5px);
+  line-height:1.6;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#dbe7f3}
+.slide:not(.dark) pre{background:var(--canvas-soft);border-color:var(--hairline);color:var(--ink-2)}
+pre .kw{color:#a99bff;font-weight:500} .slide:not(.dark) pre .kw{color:var(--primary-deep)}
+pre .st{color:#7fd6b0} .slide:not(.dark) pre .st{color:#0a7d55}
+pre .cm{color:#6d8199;font-style:italic} .slide:not(.dark) pre .cm{color:var(--ink-mute)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
+  background:var(--canvas-soft);padding:2px 6px;border-radius:4px;color:var(--primary-deep)}
+.dark code{background:rgba(255,255,255,.09);color:#b7abff}
+
+/* — dos columnas — */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:30px;align-items:start}
+.two h3{font-size:15px;font-weight:400;color:var(--primary-deep);margin-bottom:12px;
+  letter-spacing:.02em}
+.dark .two h3{color:var(--primary-soft)}
+.two p,.two li{font-size:14.5px;font-weight:300;color:var(--ink-2);line-height:1.5}
+.dark .two p,.dark .two li{color:#c9d4e2}
+.two ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.two ul li{padding-left:16px;position:relative}
+.two ul li::before{content:"·";position:absolute;left:2px;color:var(--primary)}
+
+/* — planos (control / datos) — */
+.planes{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+.plane{border-radius:11px;padding:22px 22px 24px}
+.plane.ctrl{background:#f0eeff;border:1px solid #cfc7ff}
+.plane.data{background:var(--canvas-soft);border:1px solid var(--hairline)}
+.dark .plane.ctrl{background:rgba(83,58,253,.15);border-color:rgba(140,120,255,.35)}
+.dark .plane.data{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13)}
+.plane .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--primary-deep);
+  margin-bottom:12px}
+.dark .plane .k{color:var(--primary-soft)}
+.plane ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:300}
+.plane ul li{color:var(--ink-2)} .dark .plane ul li{color:#c9d4e2}
+
+/* — recap — */
+.recap{display:flex;flex-direction:column;gap:16px;margin-top:30px}
+.recap div{display:flex;gap:16px;align-items:baseline}
+.recap .i{font-size:13px;color:var(--primary);font-variant-numeric:tabular-nums;min-width:22px}
+.recap p{font-size:clamp(15px,1.5vw,18.5px);font-weight:300;color:var(--ink-2);max-width:60ch}
+.dark .recap p{color:#c9d4e2}
+
+/* — nota al pie del contenido — */
+.note{font-size:13.5px;font-weight:300;color:var(--ink-mute);margin-top:20px;max-width:66ch;
+  border-left:2px solid var(--hairline);padding-left:14px}
+.dark .note{color:#93a2b6;border-color:rgba(255,255,255,.16)}
+
 @media print{.slide{display:flex;position:relative;page-break-after:always;height:100vh}}
 </style>
 </head>
 <body>
 
-
 <section class="slide dark mesh on">
   <p class="eyebrow">Sesión 2 de 8 · lunes 31 de agosto</p>
   <h1>Pipelines de datos que alimentan la IA</h1>
-  <p class="lead">La semana pasada encontramos un error del 6,55% que nadie audita.
-  Hoy lo arreglamos una vez, en un solo lugar, y no vuelve nunca más.</p>
+  <p class="lead">Cómo se construye un proceso que corre solo, procesa únicamente lo que llegó
+  nuevo y lleva las reglas de negocio escritas adentro.</p>
   <div class="foot"><span>Manuel Argüelles · AI Engineer</span><span>Caso: Neptuno</span></div>
 </section>
+<section class="slide "><p class="eyebrow">Cómo se organiza la clase</p><h2>Cuatro bloques de 45 minutos</h2><div class="map"><div class="ph now"><p class="s">Bloque 1</p><p class="t">Transformar</p><p class="d">De bronze a silver: tipos, reglas de negocio y las dos APIs.</p></div><div class="ph"><p class="s">Bloque 2</p><p class="t">Ingerir</p><p class="d">Auto Loader, checkpoints y evolución de esquema.</p></div><div class="ph"><p class="s">Bloque 3</p><p class="t">Confiar</p><p class="d">Expectativas de calidad, Change Data Feed y orquestación.</p></div><div class="ph"><p class="s">Bloque 4</p><p class="t">Publicar</p><p class="d">Las tablas gold que consumirá la IA.</p></div></div><p class="note">Al terminar tienes un pipeline que se ejecuta solo, se entera de lo que llegó nuevo y deja los datos listos para la capa de inteligencia.</p></section>
+<section class="slide "><p class="eyebrow">De dónde venimos</p><h2>El notebook de la sesión 1 no era un pipeline</h2><p class="lead">Era un <strong>script</strong>: alguien lo ejecutó a mano, una vez, y sobrescribió todo. Funciona para empezar, pero no sirve para sostener un sistema.</p><table><tr><th>Propiedad</th><th>Qué significa</th><th>Qué falla sin ella</th></tr><tr><td><strong>Idempotencia</strong></td><td>Ejecutarlo dos veces da el mismo resultado</td><td>Datos duplicados</td></tr><tr><td><strong>Incrementalidad</strong></td><td>Procesa solo lo que llegó nuevo</td><td>Costo que crece sin techo</td></tr><tr><td><strong>Observabilidad</strong></td><td>Queda registro de qué corrió y con qué resultado</td><td>Nadie sabe por qué cambió un número</td></tr><tr><td><strong>Calidad declarada</strong></td><td>Las reglas viven en el código</td><td>Errores silenciosos</td></tr></table></section>
+<section class="slide dark mesh sep"><p class="bignum">01</p><h2>Transformar: de bronze a silver</h2><p class="time">45 minutos · bloque 1 de 4</p><ol><li>Las dos formas de transformar: SQL y DataFrames</li><li>Evaluación perezosa: por qué el conteo es lo que tarda</li><li>Tipos de dato y por qué importan</li><li>La regla de negocio se escribe una sola vez</li><li>Joins y funciones de ventana sobre Neptuno</li></ol></section>
+<section class="slide "><p class="eyebrow">Dos APIs, el mismo motor</p><h2>SQL y DataFrames hacen exactamente lo mismo</h2><pre><span class="cm">-- SQL</span>
+<span class="kw">SELECT</span> IdPedido, <span class="kw">SUM</span>(PrecioUnidad * Cantidad) <span class="kw">AS</span> total
+<span class="kw">FROM</span> neptuno.bronze.detalles_pedidos <span class="kw">GROUP</span> <span class="kw">BY</span> IdPedido
 
-<section class="slide">
-  <p class="eyebrow">Lo que hicimos la semana pasada</p>
-  <h2>Eso no era un pipeline: era un script que corrió una vez</h2>
-  <table>
-    <tr><th>Propiedad</th><th>Qué significa</th><th>Qué se rompe sin ella</th></tr>
-    <tr><td><strong>Idempotente</strong></td><td>Correrlo dos veces da lo mismo que una</td><td>Datos duplicados</td></tr>
-    <tr><td><strong>Incremental</strong></td><td>Procesa solo lo que llegó nuevo</td><td>Costo que crece sin techo</td></tr>
-    <tr><td><strong>Observable</strong></td><td>Se sabe qué corrió y con qué resultado</td><td>«El dashboard está raro» y nadie sabe por qué</td></tr>
-    <tr><td><strong>Con calidad declarada</strong></td><td>Las reglas viven en el código</td><td>El error del 6,55%</td></tr>
-  </table>
-</section>
+<span class="cm"># DataFrames (PySpark)</span>
+(spark.table(<span class="st">"neptuno.bronze.detalles_pedidos"</span>)
+      .groupBy(<span class="st">"IdPedido"</span>)
+      .agg(F.sum(F.col(<span class="st">"PrecioUnidad"</span>) * F.col(<span class="st">"Cantidad"</span>)).alias(<span class="st">"total"</span>)))</pre><p class="note">Se elige por legibilidad y por quién va a mantener el código. Spark traduce las dos al mismo plan de ejecución: no hay una más rápida que la otra.</p></section>
+<section class="slide "><p class="eyebrow">Evaluación perezosa</p><h2>Spark no hace nada hasta que le pides un resultado</h2><div class="two"><div><h3>Transformaciones · perezosas</h3><ul><li><code>select</code>, <code>filter</code>, <code>join</code>, <code>groupBy</code></li><li>Solo arman el plan</li><li>Devuelven al instante</li></ul></div><div><h3>Acciones · disparan el trabajo</h3><ul><li><code>count</code>, <code>show</code>, <code>write</code>, <code>collect</code></li><li>Ejecutan el plan completo</li><li>Acá se va el tiempo</li></ul></div></div><p class="note">Por eso una celda con diez transformaciones termina en un segundo y el <code>count()</code> siguiente tarda un minuto. No es que el conteo sea lento: es el primero que obliga a trabajar.</p></section>
+<section class="slide "><p class="eyebrow">Tipos de dato</p><h2>Bronze acepta cualquier cosa; silver define el contrato</h2><pre><span class="kw">CAST</span>(PrecioUnidad <span class="kw">AS</span> <span class="kw">DECIMAL</span>(12,2))   <span class="cm">-- dinero: nunca float</span>
+<span class="kw">CAST</span>(Cantidad      <span class="kw">AS</span> <span class="kw">INT</span>)
+<span class="kw">CAST</span>(Descuento     <span class="kw">AS</span> <span class="kw">DOUBLE</span>)</pre><p class="note">El dinero va en <code>DECIMAL</code>, no en <code>FLOAT</code>: los decimales binarios arrastran errores de redondeo que aparecen recién al sumar miles de filas. Es el tipo de defecto que nadie encuentra revisando el código.</p></section>
+<section class="slide dark"><p class="eyebrow">La decisión central de la sesión</p><h2>La regla de negocio se escribe una vez, no en cada consulta</h2><pre><span class="kw">CREATE</span> <span class="kw">OR</span> <span class="kw">REPLACE</span> <span class="kw">TABLE</span> neptuno.silver.detalles_pedidos <span class="kw">AS</span>
+<span class="kw">SELECT</span> IdPedido, IdProducto,
+       <span class="kw">CAST</span>(PrecioUnidad <span class="kw">AS</span> <span class="kw">DECIMAL</span>(12,2)) <span class="kw">AS</span> PrecioUnidad,
+       <span class="kw">CAST</span>(Cantidad <span class="kw">AS</span> <span class="kw">INT</span>)               <span class="kw">AS</span> Cantidad,
+       <span class="kw">CAST</span>(Descuento <span class="kw">AS</span> <span class="kw">DOUBLE</span>)           <span class="kw">AS</span> Descuento,
+       <span class="kw">ROUND</span>(PrecioUnidad * Cantidad * (1 - Descuento), 2) <span class="kw">AS</span> ingreso_linea
+<span class="kw">FROM</span> neptuno.bronze.detalles_pedidos;</pre><p class="lead">A partir de acá, nadie más tiene que acordarse de restar el descuento. Si la regla vive en cada consulta, alguna consulta se la va a olvidar.</p></section>
+<section class="slide "><p class="eyebrow">Documentar la columna</p><h2>El comentario es parte del contrato, no un adorno</h2><pre>COMMENT <span class="kw">ON</span> <span class="kw">TABLE</span> neptuno.silver.detalles_pedidos IS
+<span class="st">'Líneas de pedido tipadas. ingreso_linea YA tiene el descuento aplicado:
+ para calcular ventas se suma ingreso_linea, nunca PrecioUnidad*Cantidad.'</span>;</pre><p class="note">Este texto lo lee una persona nueva en el equipo — y en la sesión 3 lo va a leer también un modelo de lenguaje. Escribirlo bien ahora rinde dos veces.</p></section>
+<section class="slide "><p class="eyebrow">Joins y ventanas</p><h2>Las dos operaciones que arman silver y gold</h2><pre><span class="cm">-- join: traer la cabecera a la línea</span>
+<span class="kw">SELECT</span> d.*, p.FechaPedido, p.IdCliente
+<span class="kw">FROM</span> neptuno.silver.detalles_pedidos d
+<span class="kw">JOIN</span> neptuno.bronze.pedidos p <span class="kw">ON</span> d.IdPedido = p.IdPedido
 
-<section class="slide">
-  <p class="eyebrow">Bloque 1 · Silver</p>
-  <h2>La regla de negocio se escribe una vez, no en cada consulta</h2>
-  <ul class="clean">
-    <li><code>ingreso_linea = PrecioUnidad × Cantidad × (1 − Descuento)</code>, calculado
-        <strong>una sola vez</strong> al construir silver.</li>
-    <li>Desde ese momento, nadie más tiene que acordarse de restar el descuento.</li>
-    <li>Si la regla vive en la consulta, alguna consulta se la va a olvidar — y va a ser
-        justo la que vea el directorio.</li>
-  </ul>
-</section>
+<span class="cm">-- ventana: comparar cada mes con el anterior</span>
+<span class="kw">SELECT</span> mes, ingreso,
+       LAG(ingreso) OVER (<span class="kw">ORDER</span> <span class="kw">BY</span> mes) <span class="kw">AS</span> mes_anterior
+<span class="kw">FROM</span> neptuno.gold.ventas_por_mes</pre><p class="note">La función de ventana calcula sin colapsar filas: cada fila conserva su detalle y además ve a sus vecinas.</p></section>
+<section class="slide dark"><p class="eyebrow">Cierre del bloque 1</p><h2>Tres ideas para llevarse</h2><div class="recap"><div><span class="i">01</span><p>SQL y DataFrames son intercambiables: se elige por quién mantiene el código.</p></div><div><span class="i">02</span><p>Spark no trabaja hasta que hay una acción; ahí aparece el tiempo real.</p></div><div><span class="i">03</span><p>La regla de negocio se escribe <strong>una sola vez</strong>, en silver, y se documenta.</p></div></div></section>
+<section class="slide dark mesh sep"><p class="bignum">02</p><h2>Ingerir: datos que llegan de a poco</h2><p class="time">45 minutos · bloque 2 de 4</p><ol><li>Por qué re-procesar todo no escala</li><li>Auto Loader y el checkpoint</li><li>Evolución de esquema</li><li>COPY INTO como alternativa en SQL</li><li>La prueba: ejecutarlo dos veces</li></ol></section>
+<section class="slide "><p class="eyebrow">El problema</p><h2>Neptuno no llegó de una vez: llegó a lo largo de 23 meses</h2><div class="compare"><div><span class="lbl">Julio 2024</span><span class="val">22 pedidos</span></div><div><span class="lbl">Abril 2026</span><span class="val">74 pedidos</span></div><div><span class="lbl">Total</span><span class="val">830</span></div></div><p class="lead">Si cada noche se re-procesan los 23 meses para incorporar el último día, se paga cómputo de 23 meses para leer un día. Con Neptuno no se nota. <strong>Con la tabla de una empresa real, sí.</strong></p></section>
+<section class="slide "><p class="eyebrow">Auto Loader</p><h2>Descubre archivos nuevos sin listar todo el directorio</h2><pre>(spark.readStream
+   .format(<span class="st">"cloudFiles"</span>)
+   .option(<span class="st">"cloudFiles.format"</span>, <span class="st">"csv"</span>)
+   .option(<span class="st">"cloudFiles.schemaLocation"</span>, f<span class="st">"{CHECKPOINT}/pedidos_schema"</span>)
+   .option(<span class="st">"header"</span>, <span class="kw">True</span>)
+   .load(f<span class="st">"{LANDING}/pedidos/"</span>)
+ .writeStream
+   .option(<span class="st">"checkpointLocation"</span>, f<span class="st">"{CHECKPOINT}/pedidos"</span>)
+   .trigger(availableNow=<span class="kw">True</span>)
+   .toTable(<span class="st">"neptuno.bronze.pedidos_incremental"</span>))</pre><p class="note"><code>availableNow</code> significa: procesa lo que haya y termina. Es streaming, pero no queda un proceso encendido esperando.</p></section>
+<section class="slide dark"><p class="eyebrow">El checkpoint</p><h2>Es el archivo donde el pipeline recuerda qué ya procesó</h2><p class="lead">Sin checkpoint, cada ejecución vuelve a leer todos los archivos y duplica todo. Con checkpoint, la segunda ejecución no encuentra nada nuevo y no escribe nada.</p><p class="lead" style="margin-top:24px">Es un directorio más en el almacenamiento. Si se borra, el pipeline pierde la memoria y vuelve a empezar de cero — y duplica.</p><p class="note">Regla práctica: el checkpoint pertenece a la tabla destino. Una tabla, un checkpoint, y nunca se comparten.</p></section>
+<section class="slide "><p class="eyebrow">Evolución de esquema</p><h2>Qué pasa cuando el archivo de mañana trae una columna más</h2><pre>.option(<span class="st">"cloudFiles.schemaEvolutionMode"</span>, <span class="st">"addNewColumns"</span>)</pre><div class="two" style="margin-top:26px"><div><h3>Opciones</h3><ul><li><code>addNewColumns</code> — agrega y reinicia</li><li><code>rescue</code> — guarda lo inesperado en una columna aparte</li><li><code>failOnNewColumns</code> — corta</li><li><code>none</code> — ignora lo nuevo</li></ul></div><div><h3>Cuál elegir</h3><ul><li>Datos propios y controlados: <code>addNewColumns</code></li><li>Datos de un tercero: <code>rescue</code>, para no perder nada</li><li>Contrato estricto: <code>failOnNewColumns</code></li></ul></div></div></section>
+<section class="slide "><p class="eyebrow">Alternativa en SQL puro</p><h2>COPY INTO hace lo mismo sin escribir Python</h2><pre><span class="kw">COPY</span> <span class="kw">INTO</span> neptuno.bronze.pedidos_incremental
+<span class="kw">FROM</span> <span class="st">'/Volumes/neptuno/bronze/landing/pedidos'</span>
+<span class="kw">FILEFORMAT</span> = CSV
+<span class="kw">FORMAT_OPTIONS</span>(<span class="st">'header'</span> = <span class="st">'true'</span>)
+<span class="kw">COPY_OPTIONS</span>(<span class="st">'mergeSchema'</span> = <span class="st">'true'</span>);</pre><p class="note">Lleva su propio registro de archivos ya procesados, que cumple el papel del checkpoint. Es más simple; Auto Loader escala mejor cuando hay millones de archivos.</p></section>
+<section class="slide dark"><p class="eyebrow">La prueba</p><h2>El mismo comando, tres veces, con resultados distintos</h2><table><tr><th>Ejecución</th><th>En el landing</th><th>Total en la tabla</th><th>Entraron</th></tr><tr><td>Primera</td><td>3 meses</td><td><strong>70</strong></td><td>70</td></tr><tr><td>Segunda, sin tocar nada</td><td>3 meses</td><td><strong>70</strong></td><td><strong>0</strong></td></tr><tr><td>Tercera, tras copiar octubre</td><td>4 meses</td><td><strong>96</strong></td><td><strong>26</strong></td></tr></table><p class="lead">Las filas antiguas conservan su marca de tiempo de ingesta original. <strong>No se reescribió nada.</strong></p><div class="foot"><span>Medido contra el workspace del curso</span></div></section>
+<section class="slide dark"><p class="eyebrow">Cierre del bloque 2</p><h2>Tres ideas para llevarse</h2><div class="recap"><div><span class="i">01</span><p>Re-procesar todo para incorporar un día no escala.</p></div><div><span class="i">02</span><p>El <strong>checkpoint</strong> es lo que hace idempotente al pipeline.</p></div><div><span class="i">03</span><p>La evolución de esquema es una decisión de diseño, no un detalle técnico.</p></div></div></section>
+<section class="slide dark mesh sep"><p class="bignum">03</p><h2>Confiar: calidad, cambios y orquestación</h2><p class="time">45 minutos · bloque 3 de 4</p><ol><li>Expectativas: declarar las reglas en vez de confiar</li><li>Qué hacer con la fila que las viola</li><li>Change Data Feed y por qué importa en la sesión 4</li><li>Pipelines declarativos</li><li>Jobs: que corra solo</li></ol></section>
+<section class="slide "><p class="eyebrow">Expectativas de calidad</p><h2>Reglas de negocio, no de tipos de dato</h2><pre><span class="kw">CONSTRAINT</span> descuento_valido   <span class="kw">EXPECT</span> (Descuento <span class="kw">BETWEEN</span> 0 <span class="kw">AND</span> 1)
+<span class="kw">CONSTRAINT</span> cantidad_positiva  <span class="kw">EXPECT</span> (Cantidad &gt; 0)
+<span class="kw">CONSTRAINT</span> entrega_coherente  <span class="kw">EXPECT</span> (FechaEntrega &gt;= FechaPedido)</pre><p class="note">El tipo de dato ya garantiza que <code>Descuento</code> es un número. Lo que no garantiza es que esté entre 0 y 1 — y un descuento de 15 en vez de 0,15 pasa el control de tipos sin problema.</p></section>
+<section class="slide "><p class="eyebrow">La decisión que importa</p><h2>Qué se hace con la fila que viola la regla</h2><div class="two"><div><h3>Tres respuestas posibles</h3><ul><li><strong>Avisar</strong> — entra igual, queda registrada</li><li><strong>Descartar</strong> — no entra, el pipeline sigue</li><li><strong>Cortar</strong> — el pipeline falla entero</li></ul></div><div><h3>Cómo elegir</h3><ul><li>¿Un dato malo aquí genera una decisión equivocada?</li><li>¿Se puede corregir en el origen?</li><li>¿Es preferible un reporte incompleto o uno incorrecto?</li></ul></div></div><p class="note">🔑 Una expectativa que falla en silencio hoy es una respuesta inventada del agente dentro de tres sesiones.</p></section>
+<section class="slide "><p class="eyebrow">Change Data Feed</p><h2>Delta puede decir qué filas cambiaron, no solo cómo quedó la tabla</h2><pre><span class="kw">ALTER</span> <span class="kw">TABLE</span> neptuno.silver.detalles_pedidos
+  <span class="kw">SET</span> <span class="kw">TBLPROPERTIES</span> (delta.enableChangeDataFeed = true);
 
-<section class="slide dark">
-  <p class="eyebrow">Bloque 2 · El problema, con los datos en la mano</p>
-  <h2>Neptuno no llegó de una vez: llegó a lo largo de 23 meses</h2>
-  <div class="compare">
-    <div><span class="lbl">Julio 2024</span><span class="val">22 pedidos</span></div>
-    <div><span class="lbl">Abril 2026</span><span class="val">74 pedidos</span></div>
-    <div><span class="lbl">Total</span><span class="val">830</span></div>
-  </div>
-  <p class="lead">Si cada noche re-procesás los 23 meses para incorporar el último día, estás
-  pagando 23 meses de cómputo para leer un día. Con Neptuno no se nota.
-  <strong>Con la tabla de tu empresa, sí.</strong></p>
-</section>
-
-<section class="slide">
-  <p class="eyebrow">Auto Loader</p>
-  <h2>El checkpoint es lo que hace que correrlo dos veces no duplique nada</h2>
-  <ul class="clean">
-    <li>Descubre archivos nuevos <strong>sin listar todo el directorio</strong>.</li>
-    <li>El <strong>checkpoint</strong> recuerda qué se procesó: ahí vive la idempotencia.</li>
-    <li><strong>Evolución de esquema</strong>: qué pasa cuando el archivo de mañana trae una columna más.</li>
-  </ul>
-</section>
-
-<section class="slide dark">
-  <p class="eyebrow">En vivo</p>
-  <h2>Corrés el pipeline dos veces y la segunda no entra nada</h2>
-  <table>
-    <tr><th>Paso</th><th>En el landing</th><th>Total en la tabla</th><th>Entraron</th></tr>
-    <tr><td>1ª corrida</td><td>3 meses</td><td><strong>70</strong></td><td>70</td></tr>
-    <tr><td>2ª corrida, sin tocar nada</td><td>3 meses</td><td><strong>70</strong></td><td><strong>0</strong></td></tr>
-    <tr><td>Cae octubre</td><td>4 meses</td><td><strong>96</strong></td><td><strong>26</strong></td></tr>
-  </table>
-  <p class="lead">Las filas viejas conservan su marca de tiempo original.
-  <strong>Nada se re-escribió.</strong></p>
-</section>
-
-<section class="slide">
-  <p class="eyebrow">Bloque 3 · Calidad</p>
-  <h2>Una expectativa que falla en silencio hoy es una alucinación dentro de tres sesiones</h2>
-  <ul class="clean">
-    <li>El descuento está entre 0 y 1. La cantidad es positiva.</li>
-    <li>Toda línea de detalle tiene su pedido cabecera.</li>
-    <li>La fecha de entrega no es anterior a la del pedido.</li>
-    <li>Y la decisión que importa: ¿la fila que viola la regla se <strong>descarta</strong>,
-        <strong>avisa</strong> o <strong>corta el pipeline</strong>?</li>
-  </ul>
-  <p class="pill">Son reglas de negocio, no de tipos de dato</p>
-</section>
-
-<section class="slide">
-  <p class="eyebrow">Change Data Feed</p>
-  <h2>Esto que parece plomería es el prerrequisito de la sesión 4</h2>
-  <p class="lead">Delta puede decirte <strong>qué filas cambiaron entre dos versiones</strong>,
-  no solo el estado final. Se habilita con una propiedad de tabla y devuelve la imagen previa
-  y la posterior de cada cambio.</p>
-  <p class="lead" style="color:var(--primary-deep);margin-top:26px">El Vector Search de la
-  sesión 4 <strong>exige</strong> Change Data Feed para mantener el índice sincronizado.</p>
-</section>
-
-<section class="slide dark mesh">
-  <p class="eyebrow">Bloque 4 · Gold</p>
-  <h2>Cada tabla gold mata una trampa concreta</h2>
-  <table>
-    <tr><th>Tabla</th><th>Qué resuelve</th><th>Trampa que elimina</th></tr>
-    <tr><td><strong>ventas_por_categoria_mes</strong></td><td>Ingreso neto por fecha de pedido</td>
-        <td>El 6,55% y la fecha equivocada</td></tr>
-    <tr><td><strong>inventario_disponible</strong></td><td>Existencias más unidades en pedido</td>
-        <td>La columna olvidada</td></tr>
-    <tr><td><strong>ventas_mes_completo</strong></td><td>Marca los meses parciales</td>
-        <td>La comparación injusta</td></tr>
-  </table>
-</section>
-
-<section class="slide">
-  <p class="eyebrow">El último mes de Neptuno</p>
-  <h2>Esa caída del 81% no es del negocio: es un mes que no terminó</h2>
-  <div class="compare">
-    <div><span class="lbl">Abril 2026</span><span class="val">74 pedidos</span></div>
-    <div><span class="lbl">Mayo 2026</span><span class="val">14 pedidos</span></div>
-  </div>
-  <p class="lead">Cualquier comparación que trate mayo como un mes completo miente.
-  Por eso gold <strong>lo declara con una columna</strong>, en vez de esperar que el analista
-  se dé cuenta.</p>
-</section>
-
-<section class="slide">
-  <p class="eyebrow">Lo que le falta al Genie que viste fallar</p>
-  <h2>La tabla buena declara también lo que no puede responder</h2>
-  <p class="lead">El comentario de <code>ventas_por_categoria_mes</code> termina diciendo:
-  <em>«NO existe información de costos: esta tabla no permite calcular margen ni rentabilidad.»</em></p>
-  <p class="lead" style="margin-top:26px">Un modelo que lee eso contesta <strong>«no puedo»</strong>.
-  Uno que no lo lee improvisa un número distinto cada vez. Es exactamente el Demo 0 de la semana pasada.</p>
-</section>
-
-<section class="slide">
-  <p class="eyebrow">Cápsula · el componente y sus equivalentes</p>
-  <h2>Todo esto existe en las tres nubes, con otros nombres</h2>
-  <table>
-    <tr><th>Componente</th><th>Databricks</th><th>GCP</th><th>Azure</th><th>AWS</th></tr>
-    <tr><td>Ingesta incremental</td><td><strong>Auto Loader</strong></td><td>Dataflow</td><td>Data Factory</td><td>Glue</td></tr>
-    <tr><td>Pipeline declarativo</td><td><strong>Lakeflow</strong></td><td>Dataform</td><td>Mapping Flows</td><td>Glue Studio</td></tr>
-    <tr><td>Orquestación</td><td><strong>Jobs</strong></td><td>Composer</td><td>Synapse Pipelines</td><td>Step Functions</td></tr>
-    <tr><td>Captura de cambios</td><td><strong>Change Data Feed</strong></td><td>Datastream</td><td>CDC de ADF</td><td>DMS</td></tr>
-  </table>
-</section>
-
-<section class="slide dark mesh">
-  <p class="eyebrow">Cierre</p>
-  <h2>Ya tenés datos en los que se puede confiar. El miércoles entra el primer LLM</h2>
-  <ul class="clean">
-    <li>Pipeline incremental con los <strong>23 meses</strong>, cargados en tandas.</li>
-    <li>Una expectativa propia, y una fila que la viole a propósito.</li>
-    <li>Una tabla gold más, con su regla explicada en el comentario.</li>
-    <li>El job agendado para que corra solo.</li>
-  </ul>
-  <p class="lead" style="margin-top:30px">Y le volvemos a hacer al Genie la pregunta del margen
-  — pero apuntando a <strong>tu gold</strong>.</p>
-  <div class="foot"><span>Apagá el compute antes de irte</span><span>Sesión 3 · miércoles 2 de septiembre</span></div>
-</section>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> table_changes(<span class="st">'neptuno.silver.detalles_pedidos'</span>, 2);
+<span class="cm">-- _change_type: insert | update_preimage | update_postimage | delete</span></pre><p class="note">Devuelve la imagen previa y la posterior de cada fila modificada. Sirve para propagar cambios a otra tabla sin recalcularla entera.</p></section>
+<section class="slide dark"><p class="eyebrow">Por qué importa acá y no en otro curso</p><h2>El Vector Search de la sesión 4 exige Change Data Feed</h2><p class="lead">Cuando se construye un índice vectorial sobre una tabla, el índice tiene que mantenerse sincronizado. Databricks lo hace leyendo el feed de cambios: sin él, no hay forma de saber qué documentos se modificaron.</p><p class="lead" style="margin-top:26px;color:var(--primary-soft)">Es decir: esto que parece plomería de datos es un <strong>prerrequisito duro</strong> de la parte de IA.</p></section>
+<section class="slide "><p class="eyebrow">Pipelines declarativos</p><h2>Se declara qué tabla debe existir, no los pasos para construirla</h2><div class="two"><div><h3>Imperativo</h3><ul><li>Se escriben los pasos, en orden</li><li>Las dependencias las maneja quien programa</li><li>Reintentos y linaje, a mano</li></ul></div><div><h3>Declarativo</h3><ul><li>Se declara cada tabla y de qué depende</li><li>La herramienta calcula el orden</li><li>Calidad y linaje vienen incluidos</li></ul></div></div><p class="note">Es el mismo cambio de mentalidad que el bundle de la sesión 8: describir el resultado deseado en vez de la secuencia de pasos.</p></section>
+<section class="slide "><p class="eyebrow">Jobs</p><h2>Que corra solo, con reintentos y aviso si falla</h2><div class="two"><div><h3>Qué se define</h3><ul><li>Las tareas y su orden</li><li>El cluster de cada tarea</li><li>El horario</li><li>Reintentos ante fallo</li><li>A quién se le avisa</li></ul></div><div><h3>Qué queda registrado</h3><ul><li>Cada ejecución y su duración</li><li>Qué tarea falló y por qué</li><li>Cuántas filas procesó</li></ul></div></div><p class="note">Aquí aparece el <strong>job cluster</strong> del bloque 1 de la sesión anterior: nace con la ejecución y muere al terminar.</p></section>
+<section class="slide dark"><p class="eyebrow">Cierre del bloque 3</p><h2>Tres ideas para llevarse</h2><div class="recap"><div><span class="i">01</span><p>La calidad se <strong>declara</strong>; la decisión difícil es qué hacer con la fila mala.</p></div><div><span class="i">02</span><p>Change Data Feed no es opcional: la sesión 4 lo necesita.</p></div><div><span class="i">03</span><p>Un pipeline agendado con reintentos y avisos es lo que separa un experimento de un sistema.</p></div></div></section>
+<section class="slide dark mesh sep"><p class="bignum">04</p><h2>Publicar: las tablas que consumirá la IA</h2><p class="time">45 minutos · bloque 4 de 4</p><ol><li>Qué distingue a una tabla gold</li><li>Tres tablas, tres trampas eliminadas</li><li>Declarar lo que la tabla NO puede responder</li><li>Ejercicio y cierre</li></ol></section>
+<section class="slide "><p class="eyebrow">Qué hace distinta a una tabla gold</p><h2>Está pensada para quien la consume, no para quien la produce</h2><ul class="clean"><li>Nombres que entiende alguien de negocio, no la abreviatura del sistema origen.</li><li>Métricas ya calculadas, con la regla aplicada.</li><li>Granularidad explícita: una fila es exactamente una cosa, y el nombre lo dice.</li><li>Documentada: qué contiene, cómo se calcula y <strong>qué no permite responder</strong>.</li></ul></section>
+<section class="slide dark"><p class="eyebrow">Tres tablas gold</p><h2>Cada una elimina una trampa concreta de Neptuno</h2><table><tr><th>Tabla</th><th>Qué resuelve</th><th>Trampa que elimina</th></tr><tr><td><strong>ventas_por_categoria_mes</strong></td><td>Ingreso neto por fecha de pedido</td><td>El descuento sin aplicar y la fecha equivocada</td></tr><tr><td><strong>inventario_disponible</strong></td><td>Existencias más unidades en pedido</td><td>La columna olvidada</td></tr><tr><td><strong>ventas_mes_completo</strong></td><td>Marca los meses parciales</td><td>La comparación injusta</td></tr></table><p class="note">Ninguna de las tres es una agregación más: cada una nace de un error real que se cometió sobre estos datos.</p></section>
+<section class="slide "><p class="eyebrow">El último mes de Neptuno</p><h2>Esa caída no es del negocio: es un mes que no terminó</h2><div class="compare"><div><span class="lbl">Abril 2026</span><span class="val">74 pedidos</span></div><div><span class="lbl">Mayo 2026</span><span class="val">14 pedidos</span></div></div><pre><span class="kw">SELECT</span> mes, pedidos, mes &lt; (<span class="kw">SELECT</span> <span class="kw">MAX</span>(mes) <span class="kw">FROM</span> por_mes) <span class="kw">AS</span> mes_completo
+<span class="kw">FROM</span> por_mes</pre><p class="note">La tabla gold lo declara con una columna, en lugar de esperar que el analista se dé cuenta. Cualquier comparación debe filtrar por <code>mes_completo</code>.</p></section>
+<section class="slide dark"><p class="eyebrow">La línea más importante del curso hasta acá</p><h2>Una buena tabla declara también lo que no puede responder</h2><pre>COMMENT <span class="kw">ON</span> <span class="kw">TABLE</span> neptuno.gold.ventas_por_categoria_mes IS
+<span class="st">'Ventas netas por categoría y mes. ingreso_neto YA tiene el descuento
+ aplicado y usa FechaPedido, no FechaEnvio. NO existe información de
+ costos: esta tabla no permite calcular margen ni rentabilidad.'</span>;</pre><p class="lead">Un modelo que lee esa última frase responde <strong>«no puedo»</strong>. Uno que no la lee improvisa un número distinto cada vez.</p><p class="lead" style="margin-top:18px;color:var(--primary-soft)">Es exactamente el fallo que vimos al cierre de la clase anterior.</p></section>
+<section class="slide "><p class="eyebrow">El ejercicio</p><h2>Cuatro pasos, sobre tu propio catálogo</h2><div class="recap"><div><span class="i">01</span><p>Pipeline corriendo con los <strong>23 meses</strong>, cargados en tandas.</p></div><div><span class="i">02</span><p>Una <strong>expectativa propia</strong>, y una fila que la viole a propósito.</p></div><div><span class="i">03</span><p>Una <strong>tabla gold más</strong>, con su regla explicada en el comentario.</p></div><div><span class="i">04</span><p>El <strong>job agendado</strong> para que corra solo.</p></div></div></section>
+<section class="slide "><p class="eyebrow">Cápsula · el componente y sus equivalentes</p><h2>Todo esto existe en las tres nubes, con otros nombres</h2><table><tr><th>Componente</th><th>Databricks</th><th>GCP</th><th>Azure</th><th>AWS</th></tr><tr><td>Ingesta incremental</td><td><strong>Auto Loader</strong></td><td>Dataflow</td><td>Data Factory</td><td>Glue</td></tr><tr><td>Pipeline declarativo</td><td><strong>Lakeflow</strong></td><td>Dataform</td><td>Mapping Flows</td><td>Glue Studio</td></tr><tr><td>Orquestación</td><td><strong>Jobs</strong></td><td>Composer</td><td>Synapse Pipelines</td><td>Step Functions</td></tr><tr><td>Captura de cambios</td><td><strong>Change Data Feed</strong></td><td>Datastream</td><td>CDC de ADF</td><td>DMS</td></tr></table></section>
+<section class="slide dark mesh"><p class="eyebrow">Cierre</p><h2>Los datos ya son confiables. El miércoles entra el primer modelo</h2><ul class="clean"><li>Un pipeline incremental, con calidad declarada y agendado.</li><li>Tres tablas gold que eliminan tres errores reales.</li><li>Y el hábito de documentar también los límites de cada tabla.</li></ul><p class="lead" style="margin-top:30px">En la sesión 3 se le hace al Genie la misma pregunta del margen — pero apuntando a <strong>estas</strong> tablas.</p><div class="foot"><span>Recuerda apagar el compute</span><span>Sesión 3 · miércoles 2 de septiembre</span></div></section>
 <div id="bar"></div><div id="num"></div>
 <div id="hint">← → navegar · F pantalla completa</div>
 

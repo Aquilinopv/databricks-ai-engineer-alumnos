@@ -18,11 +18,11 @@ adentro en vez de en la memoria de alguien.
 3. **Una tabla gold más**, con su regla de negocio explicada en el `COMMENT`
 4. El job **agendado** para que corra solo
 
-Subilo a `entregas/tu-nombre/`.
+Súbelo a `entregas/tu-nombre/`.
 
 ## Lo que resolvemos hoy
 El error que encontraste al final de la sesión 1. Hoy se arregla **una vez, en un solo lugar**,
 y no vuelve nunca más. Eso es un pipeline.
 
 ## Prerrequisito
-Necesitás tu `bronze` de la sesión 1. Si no llegaste a terminarlo, avisá **antes** de la clase.
+Necesitas tu `bronze` de la sesión 1. Si no llegaste a terminarlo, avisa **antes** de la clase.

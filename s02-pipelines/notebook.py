@@ -13,7 +13,7 @@
 
 dbutils.widgets.text("alumno", "", "Tu nombre")
 ALUMNO = dbutils.widgets.get("alumno").strip().lower()
-assert ALUMNO, "Poné tu nombre en el widget."
+assert ALUMNO, "Pon tu nombre en el widget."
 
 CATALOGO   = f"neptuno_{ALUMNO}"
 LANDING    = f"/Volumes/{CATALOGO}/bronze/landing"
@@ -131,8 +131,8 @@ print("✅ Corrió de nuevo y no entró nada. El pipeline es idempotente.")
 # COMMAND ----------
 
 # MAGIC %md ### Paso 3 — cae un mes más
-# MAGIC 👉 **Copiá 3 archivos más** de `pedidos/` al landing (o pedíselo al instructor)
-# MAGIC y corré la celda de abajo.
+# MAGIC 👉 **Copia 3 archivos más** de `pedidos/` al landing (o pedíselo al instructor)
+# MAGIC y corre la celda de abajo.
 
 # COMMAND ----------
 
@@ -218,7 +218,7 @@ FROM table_changes('{CATALOGO}.silver.detalles_pedidos', {v_antes + 1})
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC > ⚠️ Fijate que `ingreso_linea` **no** se recalculó: el `UPDATE` tocó `Descuento` a mano,
+# MAGIC > ⚠️ Fíjate que `ingreso_linea` **no** se recalculó: el `UPDATE` tocó `Descuento` a mano,
 # MAGIC > por fuera del pipeline. Ésa es exactamente la razón por la que las reglas de negocio
 # MAGIC > tienen que vivir en el pipeline y no en updates sueltos.
 
@@ -258,7 +258,7 @@ display(spark.table(f"{CATALOGO}.gold.ventas_por_categoria_mes").orderBy("mes").
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC > 🔑 Leé el último renglón del `COMMENT`: **declara lo que la tabla NO puede responder.**
+# MAGIC > 🔑 Lee el último renglón del `COMMENT`: **declara lo que la tabla NO puede responder.**
 # MAGIC > Eso es lo que le faltaba al Genie del Demo 0. Un modelo que lee «no existe información de
 # MAGIC > costos» contesta *«no puedo»*. Uno que no lo lee, **improvisa un número distinto cada vez**.
 
@@ -327,7 +327,7 @@ display(spark.table(f"{CATALOGO}.gold.ventas_mes_completo").orderBy(F.col("mes")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC > 🎯 Mirá el último mes contra el anterior. Esa caída **no es del negocio: es un mes que no
+# MAGIC > 🎯 Mira el último mes contra el anterior. Esa caída **no es del negocio: es un mes que no
 # MAGIC > terminó.** Gold lo declara con una columna en vez de esperar que el analista se dé cuenta.
 
 # COMMAND ----------
@@ -342,7 +342,7 @@ display(spark.table(f"{CATALOGO}.gold.ventas_mes_completo").orderBy(F.col("mes")
 # MAGIC **La semana que viene:** ya tenemos datos confiables. Entra el primer LLM — y le volvemos
 # MAGIC a hacer al Genie la pregunta del margen, pero apuntando a **nuestro gold**.
 # MAGIC
-# MAGIC **Apagá el compute.**
+# MAGIC **Apaga el compute.**
 
 # COMMAND ----------
 
