@@ -10,7 +10,7 @@
   --brand-dark:#1c1e54; --ink:#0d253d; --ink-2:#273951; --ink-mute:#64748d;
   --canvas:#ffffff; --canvas-soft:#f6f9fc; --hairline:#e3e8ee;
   --ruby:#ea2261; --magenta:#f96bee;
-  --font:"sohne-var","SF Pro Display",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --dark-bg:#0d253d; --font:"sohne-var","SF Pro Display",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -22,7 +22,7 @@ body{background:var(--brand-dark);font-family:var(--font);color:var(--ink);overf
   background:var(--canvas); overflow:hidden;
 }
 .slide.on{display:flex}
-.slide.dark{background:var(--ink);color:#fff}
+.slide.dark{background:var(--dark-bg);color:#fff}
 .slide.mesh::before{
   content:""; position:absolute; top:-30%; left:-10%; right:-10%; height:70%;
   background:radial-gradient(60% 80% at 25% 40%,rgba(83,58,253,.28),transparent 60%),
@@ -180,8 +180,8 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
 
 
 /* — diagramas — */
-.dg{margin-top:26px;display:flex;justify-content:center}
-.dg svg{width:100%;height:auto;max-height:46vh}
+.dg{margin-top:20px;display:flex;justify-content:center}
+.dg svg{width:100%;height:auto;max-height:33vh}
 .dg text{font-family:var(--font);font-weight:300}
 .dg .lbl{font-size:13px;fill:var(--ink-2)}
 .dark .dg .lbl{fill:#c9d4e2}
@@ -215,30 +215,37 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
 .dark .pcard .u{color:#8ea0b6}
 
 
-/* — modo oscuro forzado (tecla T): para proyector con poca luz — */
-body.todo-oscuro .slide{background:var(--ink);color:#fff}
-body.todo-oscuro .slide h1,body.todo-oscuro .slide h2{color:#fff}
-body.todo-oscuro .slide .lead,body.todo-oscuro .slide .ses-goal{color:#c9d4e2}
-body.todo-oscuro .eyebrow{color:var(--primary-soft)}
-body.todo-oscuro .note{color:#93a2b6;border-color:rgba(255,255,255,.16)}
-body.todo-oscuro th{color:#8ea0b6;background:transparent}
-body.todo-oscuro td{color:#dbe3ec}
-body.todo-oscuro th,body.todo-oscuro td{border-color:rgba(255,255,255,.12)}
-body.todo-oscuro .slide:not(.dark) pre,body.todo-oscuro pre{background:#0b1b2d;border-color:rgba(255,255,255,.10);color:#dbe7f3}
-body.todo-oscuro .slide:not(.dark) pre .kw,body.todo-oscuro pre .kw{color:#a99bff} body.todo-oscuro .slide:not(.dark) pre .st,body.todo-oscuro pre .st{color:#7fd6b0}
-body.todo-oscuro .slide:not(.dark) pre .cm,body.todo-oscuro pre .cm{color:#6d8199}
-body.todo-oscuro code{background:rgba(255,255,255,.09);color:#b7abff}
-body.todo-oscuro .layer,body.todo-oscuro .node,body.todo-oscuro .pcard,
-body.todo-oscuro .plane.data{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13)}
-body.todo-oscuro .layer p,body.todo-oscuro .two p,body.todo-oscuro .two li,
-body.todo-oscuro ul.clean li,body.todo-oscuro .recap p{color:#c9d4e2}
-body.todo-oscuro .dg .lbl{fill:#c9d4e2} body.todo-oscuro .dg .cap{fill:#8ea0b6}
-body.todo-oscuro .dg .ttl{fill:#fff}
-body.todo-oscuro .dg .box{fill:rgba(255,255,255,.05);stroke:rgba(255,255,255,.14)}
-body.todo-oscuro .dg .box-hi{fill:rgba(83,58,253,.18);stroke:var(--primary-soft)}
-body.todo-oscuro .dg .ln{stroke:#7f8ea3} body.todo-oscuro .dg .ln-hi{stroke:var(--primary-soft)}
-body.todo-oscuro .compare .lbl,body.todo-oscuro .pcard .k,body.todo-oscuro .pcard .u{color:#8ea0b6}
-body.todo-oscuro .compare .val,body.todo-oscuro .pcard .v{color:#fff}
+/* ─── TEMA ALTERNATIVO: fuego (rojo / negro) — tecla T ─── */
+body.tema-fuego{
+  --primary:#ff3b21; --primary-deep:#ff6a52; --primary-soft:#ff6a52;
+  --ink:#f2eeec; --ink-2:#c9c0bc; --ink-mute:#8b807b;
+  --canvas:#131010; --canvas-soft:#1d1817; --hairline:#332b29;
+  --dark-bg:#0a0808; --ruby:#ff2d55; --magenta:#ff7847;
+  --brand-dark:#0a0808;
+  background:#0a0808;
+}
+body.tema-fuego .slide.mesh::before{background:
+  radial-gradient(60% 80% at 25% 40%,rgba(255,59,33,.30),transparent 60%),
+  radial-gradient(50% 70% at 70% 20%,rgba(255,120,71,.22),transparent 62%),
+  radial-gradient(45% 60% at 85% 60%,rgba(217,41,16,.26),transparent 60%)}
+/* en fuego, lo que estaba en azul frío pasa a la gama cálida */
+body.tema-fuego .slide.dark .lead,body.tema-fuego .slide.dark .two p,
+body.tema-fuego .slide.dark .two li,body.tema-fuego .slide.dark ul.clean li,
+body.tema-fuego .slide.dark .recap p,body.tema-fuego .slide.dark td{color:#c9c0bc}
+body.tema-fuego .slide.dark th,body.tema-fuego .slide.dark .foot,
+body.tema-fuego .slide.dark .run .q,body.tema-fuego .sep .time{color:#8b807b}
+body.tema-fuego .sep ol{color:#c9c0bc}
+body.tema-fuego .slide:not(.dark) pre,body.tema-fuego pre{background:#000;border-color:#332b29;color:#e8e0dd}
+body.tema-fuego .slide:not(.dark) pre .kw,body.tema-fuego pre .kw{color:#ff9b87}
+body.tema-fuego .slide:not(.dark) pre .st,body.tema-fuego pre .st{color:#5fe39b}
+body.tema-fuego .slide:not(.dark) pre .cm,body.tema-fuego pre .cm{color:#8b807b}
+body.tema-fuego code{background:#241d1b;color:#ff9b87}
+body.tema-fuego .dg .lbl{fill:var(--ink-2)} body.tema-fuego .dg .cap{fill:var(--ink-mute)}
+body.tema-fuego .dg .ttl{fill:var(--ink)}
+body.tema-fuego .dg .box{fill:#1d1817;stroke:#332b29}
+body.tema-fuego .dg .box-hi{fill:#2a1512;stroke:var(--primary)}
+body.tema-fuego .dg .ln{stroke:#8b807b} body.tema-fuego .dg .ln-hi{stroke:var(--primary)}
+body.tema-fuego .run{background:rgba(255,255,255,.04);border-color:#332b29}
 
 /* — controles del presentador — */
 #ctl{position:fixed;right:16px;top:14px;z-index:120;display:flex;gap:6px;opacity:.28;
@@ -249,7 +256,7 @@ body.todo-oscuro .compare .val,body.todo-oscuro .pcard .v{color:#fff}
   border:1px solid var(--hairline);background:var(--canvas);color:var(--ink-mute)}
 #ctl button:hover{border-color:var(--primary);color:var(--primary)}
 #ctl button:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
-.dark #ctl button,body.todo-oscuro #ctl button{background:rgba(255,255,255,.07);
+.dark #ctl button,body.tema-fuego #ctl button{background:rgba(255,255,255,.07);
   border-color:rgba(255,255,255,.18);color:#c9d4e2}
 
 /* — marcadores del presentador: ★ notebook · ⏳ medición en vivo — */
@@ -341,10 +348,8 @@ Hay tres, y sirven para cosas distintas.</p></section>
 </svg></div>
 <p class="lead" style="margin-top:6px">El mismo trabajo cuesta <strong>2,1 veces más</strong>
 si corre sobre un cluster interactivo en lugar de un job programado.</p>
-<p class="lead" style="margin-top:26px">El mismo trabajo cuesta <strong>menos de la mitad</strong>
-si corre como job programado en lugar de sobre un cluster interactivo. No es una recomendación
-de estilo: es el precio de lista de la región donde está este workspace.</p>
-<p class="note">Precios reales de <code>system.billing.list_prices</code> para AWS us-west-2,
+<p class="note">No es una recomendación de estilo: es el precio de lista de la región donde
+está este workspace. Precios reales de <code>system.billing.list_prices</code> para AWS us-west-2,
 consultados el 26 de agosto de 2026. Los vas a poder verificar tú mismo en la sesión 8.</p>
 </section>
 <section class="slide "><span class="mk" title="Se puede medir en vivo">⏳</span><p class="eyebrow">Un dato que casi nadie mide</p>
@@ -366,21 +371,20 @@ consultados el 26 de agosto de 2026. Los vas a poder verificar tú mismo en la s
 demostrar en este curso no cuesta.</p>
 </section>
 <section class="slide "><p class="eyebrow">Antes del lakehouse</p><h2>Había que elegir entre gobierno y flexibilidad</h2><div class="two"><div><h3>Data warehouse</h3><ul><li>Rápido y ordenado</li><li>Permisos y transacciones</li><li>Pero: solo datos tabulares</li><li>Y: caro de escalar</li><li>Un PDF no entra. Un audio tampoco.</li></ul></div><div><h3>Data lake</h3><ul><li>Barato, guarda cualquier cosa</li><li>Escala sin límite</li><li>Pero: sin transacciones</li><li>Y: sin esquema garantizado</li><li>Termina siendo un pantano</li></ul></div></div><p class="note">Las empresas terminaban montando los dos, y copiando datos de uno al otro todas las noches.</p></section>
-<section class="slide "><p class="eyebrow">El lakehouse</p><h2>El almacenamiento del lago con las garantías del almacén</h2><div class="dg"><svg viewBox="0 0 900 210" role="img"
+<section class="slide "><p class="eyebrow">El lakehouse</p><h2>El almacenamiento del lago con las garantías del almacén</h2><div class="dg"><svg viewBox="0 0 900 175" role="img"
   aria-label="Sobre el almacenamiento barato se apoya la capa Delta, y encima consumen tanto el análisis como la IA">
-  <rect class="box" x="150" y="146" width="600" height="46" rx="7"/>
-  <text class="lbl" x="300" y="175">Almacenamiento de objetos · barato, ilimitado</text>
-  <rect class="box-hi" x="150" y="88" width="600" height="46" rx="7"/>
-  <text class="ttl" x="286" y="117">Delta Lake · transacciones, esquema, versiones</text>
-  <rect class="box" x="150" y="24" width="285" height="46" rx="7"/>
-  <text class="lbl" x="212" y="53">tablas para calcular</text>
-  <rect class="box" x="465" y="24" width="285" height="46" rx="7"/>
-  <text class="lbl" x="516" y="53">documentos para responder</text>
-  <path class="ln" d="M292 84 L292 74"/><path class="ln" d="M608 84 L608 74"/>
+  <rect class="box" x="150" y="122" width="600" height="42" rx="7"/>
+  <text class="lbl" x="300" y="149">Almacenamiento de objetos · barato, ilimitado</text>
+  <rect class="box-hi" x="150" y="70" width="600" height="42" rx="7"/>
+  <text class="ttl" x="286" y="97">Delta Lake · transacciones, esquema, versiones</text>
+  <rect class="box" x="150" y="14" width="285" height="42" rx="7"/>
+  <text class="lbl" x="212" y="41">tablas para calcular</text>
+  <rect class="box" x="465" y="14" width="285" height="42" rx="7"/>
+  <text class="lbl" x="516" y="41">documentos para responder</text>
+  <path class="ln" d="M292 68 L292 58"/><path class="ln" d="M608 68 L608 58"/>
 </svg></div>
-<p class="lead">Un agente de IA necesita <strong>las dos cosas de arriba</strong>: tablas
-confiables para calcular y documentos sueltos para responder. El lakehouse las pone sobre
-el mismo almacenamiento y el mismo gobierno.</p><p class="lead" style="margin-top:24px;color:var(--primary-deep)">Para lo que hacemos en este curso importa por una razón concreta: un agente de IA necesita <strong>las dos cosas</strong> — tablas confiables para calcular, y documentos sueltos para responder.</p></section>
+<p class="lead">Un agente necesita <strong>las dos cosas de arriba</strong>: tablas para calcular
+y documentos para responder. El lakehouse las pone sobre el mismo almacenamiento y el mismo gobierno.</p><p class="lead" style="margin-top:24px;color:var(--primary-deep)">Para lo que hacemos en este curso importa por una razón concreta: un agente de IA necesita <strong>las dos cosas</strong> — tablas confiables para calcular, y documentos sueltos para responder.</p></section>
 <section class="slide "><p class="eyebrow">Arquitectura medallón</p><h2>Los datos no se limpian de una vez: pasan por tres capas</h2><div class="dg"><svg viewBox="0 0 900 250" role="img"
   aria-label="Los datos pasan de bronze a silver y de silver a gold; bronze se conserva intacto">
   <rect class="box" x="10" y="60" width="250" height="120" rx="10"/>
@@ -467,18 +471,16 @@ metastore</strong>. Documentar una tabla la documenta para todos los workspaces.
 del agente hasta el CSV del que salió.</p></section>
 <section class="slide dark"><p class="eyebrow">Cierre del bloque 2</p><h2>Tres ideas para llevarse</h2><div class="recap"><div><span class="i">01</span><p>Todo objeto se nombra <strong>catálogo.esquema.objeto</strong>.</p></div><div><span class="i">02</span><p>Los <strong>volúmenes</strong> traen los archivos al mismo régimen de gobierno que las tablas.</p></div><div><span class="i">03</span><p>Los permisos se heredan hacia abajo, y hacen falta en cada nivel del camino.</p></div></div></section>
 <section class="slide dark mesh sep"><p class="bignum">03</p><h2>Delta Lake</h2><p class="time">45 minutos · bloque 3 de 4</p><ol><li>Qué formato usa realmente el lakehouse</li><li>La anatomía de una tabla Delta</li><li>Transacciones ACID sobre almacenamiento barato</li><li>Cómo se crea y se puebla una tabla</li><li>Viaje en el tiempo y mantenimiento</li><li>Y para cerrar: por qué esto le importa a una IA</li></ol></section>
-<section class="slide "><span class="mk" title="Se puede medir en vivo">⏳</span><p class="eyebrow">Tres formatos</p><h2>Por qué no alcanza con guardar un CSV</h2><table><tr><th></th><th>CSV</th><th>Parquet</th><th>Delta</th></tr><tr><td>Tipos de dato</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Compresión</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Lee solo las columnas que pides</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Transacciones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr><tr><td>Historial de versiones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr></table><div class="compare" style="margin-top:22px">
+<section class="slide "><span class="mk" title="Se puede medir en vivo">⏳</span><p class="eyebrow">Tres formatos</p><h2>Por qué no alcanza con guardar un CSV</h2><table><tr><th></th><th>CSV</th><th>Parquet</th><th>Delta</th></tr><tr><td>Tipos de dato</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Lee solo las columnas que pides</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Transacciones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr><tr><td>Historial de versiones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr></table><div class="compare" style="margin-top:22px">
   <div><span class="lbl">detalles_pedidos en CSV</span><span class="val">41,8 KB</span></div>
   <div><span class="lbl">la misma tabla en Delta</span><span class="val">12,5 KB</span></div>
   <div><span class="lbl">diferencia</span>
        <span class="val" style="color:var(--primary-deep)">3,4×</span></div>
 </div>
-<p class="note">Medido sobre los datos de este curso. <strong>Delta no es un formato nuevo: es
-Parquet más un registro de transacciones.</strong> La compresión viene de Parquet; las
-transacciones y el historial, del registro.<br>
-⚠️ Un aviso honesto: con 2 155 filas, consultar el Delta <em>no</em> es más rápido que leer el
-CSV. La ventaja en velocidad aparece con volumen — lo que sí se nota ya es que la segunda
-consulta baja de 3,37 s a 1,47 s por caché.</p></section>
+<p class="note">Medido sobre los datos de este curso. <strong>Delta es Parquet más un
+registro de transacciones:</strong> la compresión viene de Parquet; el historial, del registro.<br>
+⚠️ Con 2 155 filas el Delta <em>no</em> es más rápido que el CSV — la ventaja en velocidad aparece
+con volumen. Lo que sí se nota ya: la segunda consulta baja de 3,37 s a 1,47 s por caché.</p></section>
 <section class="slide "><p class="eyebrow">Anatomía</p><h2>Una tabla Delta es una carpeta con archivos y un diario</h2><pre>productos/
   part-00000-....snappy.parquet      <span class="cm">-- los datos, en Parquet</span>
   part-00001-....snappy.parquet
@@ -583,7 +585,7 @@ Dos dicen que Bebidas pierde dinero; una, que gana un cuarto de millón.</p><div
 <section class="slide "><p class="eyebrow">Cápsula · el componente y sus equivalentes</p><h2>Aprendes el componente, no la marca</h2><table><tr><th>Componente</th><th>Databricks</th><th>GCP</th><th>Azure</th><th>AWS</th></tr><tr><td>Almacenamiento</td><td><strong>Delta</strong></td><td>GCS</td><td>ADLS Gen2</td><td>S3</td></tr><tr><td>Motor analítico</td><td><strong>SQL Warehouse</strong></td><td>BigQuery</td><td>Synapse</td><td>Redshift</td></tr><tr><td>Gobierno</td><td><strong>Unity Catalog</strong></td><td>Dataplex</td><td>Purview</td><td>Lake Formation</td></tr><tr><td>Formato de tabla</td><td><strong>Delta Lake</strong></td><td>Iceberg</td><td>Delta / Iceberg</td><td>Iceberg</td></tr></table><p class="note">Elegir cuál de cada proveedor entra en una solución real — por capacidad, integración y <strong>costo</strong> — es el trabajo del arquitecto de soluciones. Es el rol al que apunta este curso.</p></section>
 <section class="slide dark mesh"><p class="eyebrow">Cierre</p><h2>Lo que te llevas hoy, y lo que viene el lunes</h2><ul class="clean"><li>Un catálogo propio con las 8 tablas de Neptuno en bronze.</li><li>Tres consultas, una tabla documentada y un restore.</li><li>Y el hábito que va a valer los dos meses: <strong>apagar el compute</strong>.</li></ul><p class="lead" style="margin-top:32px">El lunes: hoy cargamos todo de una vez. En la vida real los datos llegan de a poco, todos los días. Vamos a construir un pipeline que <strong>se entera solo de lo que llegó nuevo</strong>.</p><div class="foot"><span>Repositorio del curso · github.com/manuelarguelles/databricks-ai-engineer-alumnos</span><span>Sesión 2 · lunes 31 de agosto</span></div></section>
 <div id="ctl">
-  <button id="bTema" title="Tema oscuro para proyector (T)" aria-label="Alternar tema">◐</button>
+  <button id="bTema" title="Tema fuego (T)" aria-label="Alternar tema">◐</button>
   <button id="bMenos" title="Reducir tamaño (−)" aria-label="Reducir tamaño de letra">A−</button>
   <button id="bMas" title="Aumentar tamaño (+)" aria-label="Aumentar tamaño de letra">A+</button>
   <button id="bMarcas" title="Mostrar marcadores ★ y ⏳ (M)" aria-label="Mostrar marcadores">★</button>
@@ -616,13 +618,16 @@ setTimeout(()=>document.getElementById('hint').classList.add('gone'),6000);
 (function(){
   var B=document.body, R=document.documentElement;
   var esc = parseFloat(localStorage.getItem('deckEscala')||'1');
-  function aplicaEscala(){ R.style.fontSize=(15*esc)+'px';
+  function aplicaEscala(){
+    // el deck dimensiona con clamp() en px y vw: el font-size raíz no lo mueve.
+    // 'zoom' escala el renderizado completo, diagramas incluidos.
+    B.style.zoom = esc;
     try{localStorage.setItem('deckEscala',esc)}catch(e){} }
   function zoom(d){ esc=Math.min(1.6,Math.max(.7,+(esc+d).toFixed(2))); aplicaEscala(); }
-  function tema(){ B.classList.toggle('todo-oscuro');
-    try{localStorage.setItem('deckTema',B.classList.contains('todo-oscuro')?'oscuro':'auto')}catch(e){} }
+  function tema(){ B.classList.toggle('tema-fuego');
+    try{localStorage.setItem('deckTema',B.classList.contains('tema-fuego')?'fuego':'indigo')}catch(e){} }
   function marcas(){ B.classList.toggle('marcas'); }
-  try{ if(localStorage.getItem('deckTema')==='oscuro') B.classList.add('todo-oscuro'); }catch(e){}
+  try{ if(localStorage.getItem('deckTema')==='fuego') B.classList.add('tema-fuego'); }catch(e){}
   aplicaEscala();
   document.getElementById('bTema').onclick=function(e){e.stopPropagation();tema()};
   document.getElementById('bMas').onclick=function(e){e.stopPropagation();zoom(.1)};

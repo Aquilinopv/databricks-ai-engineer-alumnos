@@ -10,7 +10,7 @@
   --brand-dark:#1c1e54; --ink:#0d253d; --ink-2:#273951; --ink-mute:#64748d;
   --canvas:#ffffff; --canvas-soft:#f6f9fc; --hairline:#e3e8ee;
   --ruby:#ea2261; --magenta:#f96bee;
-  --font:"sohne-var","SF Pro Display",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --dark-bg:#0d253d; --font:"sohne-var","SF Pro Display",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -22,7 +22,7 @@ body{background:var(--brand-dark);font-family:var(--font);color:var(--ink);overf
   background:var(--canvas); overflow:hidden;
 }
 .slide.on{display:flex}
-.slide.dark{background:var(--ink);color:#fff}
+.slide.dark{background:var(--dark-bg);color:#fff}
 .slide.mesh::before{
   content:""; position:absolute; top:-30%; left:-10%; right:-10%; height:70%;
   background:radial-gradient(60% 80% at 25% 40%,rgba(83,58,253,.28),transparent 60%),
@@ -179,30 +179,37 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
 .dark .note{color:#93a2b6;border-color:rgba(255,255,255,.16)}
 
 
-/* — modo oscuro forzado (tecla T): para proyector con poca luz — */
-body.todo-oscuro .slide{background:var(--ink);color:#fff}
-body.todo-oscuro .slide h1,body.todo-oscuro .slide h2{color:#fff}
-body.todo-oscuro .slide .lead,body.todo-oscuro .slide .ses-goal{color:#c9d4e2}
-body.todo-oscuro .eyebrow{color:var(--primary-soft)}
-body.todo-oscuro .note{color:#93a2b6;border-color:rgba(255,255,255,.16)}
-body.todo-oscuro th{color:#8ea0b6;background:transparent}
-body.todo-oscuro td{color:#dbe3ec}
-body.todo-oscuro th,body.todo-oscuro td{border-color:rgba(255,255,255,.12)}
-body.todo-oscuro .slide:not(.dark) pre,body.todo-oscuro pre{background:#0b1b2d;border-color:rgba(255,255,255,.10);color:#dbe7f3}
-body.todo-oscuro .slide:not(.dark) pre .kw,body.todo-oscuro pre .kw{color:#a99bff} body.todo-oscuro .slide:not(.dark) pre .st,body.todo-oscuro pre .st{color:#7fd6b0}
-body.todo-oscuro .slide:not(.dark) pre .cm,body.todo-oscuro pre .cm{color:#6d8199}
-body.todo-oscuro code{background:rgba(255,255,255,.09);color:#b7abff}
-body.todo-oscuro .layer,body.todo-oscuro .node,body.todo-oscuro .pcard,
-body.todo-oscuro .plane.data{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13)}
-body.todo-oscuro .layer p,body.todo-oscuro .two p,body.todo-oscuro .two li,
-body.todo-oscuro ul.clean li,body.todo-oscuro .recap p{color:#c9d4e2}
-body.todo-oscuro .dg .lbl{fill:#c9d4e2} body.todo-oscuro .dg .cap{fill:#8ea0b6}
-body.todo-oscuro .dg .ttl{fill:#fff}
-body.todo-oscuro .dg .box{fill:rgba(255,255,255,.05);stroke:rgba(255,255,255,.14)}
-body.todo-oscuro .dg .box-hi{fill:rgba(83,58,253,.18);stroke:var(--primary-soft)}
-body.todo-oscuro .dg .ln{stroke:#7f8ea3} body.todo-oscuro .dg .ln-hi{stroke:var(--primary-soft)}
-body.todo-oscuro .compare .lbl,body.todo-oscuro .pcard .k,body.todo-oscuro .pcard .u{color:#8ea0b6}
-body.todo-oscuro .compare .val,body.todo-oscuro .pcard .v{color:#fff}
+/* ─── TEMA ALTERNATIVO: fuego (rojo / negro) — tecla T ─── */
+body.tema-fuego{
+  --primary:#ff3b21; --primary-deep:#ff6a52; --primary-soft:#ff6a52;
+  --ink:#f2eeec; --ink-2:#c9c0bc; --ink-mute:#8b807b;
+  --canvas:#131010; --canvas-soft:#1d1817; --hairline:#332b29;
+  --dark-bg:#0a0808; --ruby:#ff2d55; --magenta:#ff7847;
+  --brand-dark:#0a0808;
+  background:#0a0808;
+}
+body.tema-fuego .slide.mesh::before{background:
+  radial-gradient(60% 80% at 25% 40%,rgba(255,59,33,.30),transparent 60%),
+  radial-gradient(50% 70% at 70% 20%,rgba(255,120,71,.22),transparent 62%),
+  radial-gradient(45% 60% at 85% 60%,rgba(217,41,16,.26),transparent 60%)}
+/* en fuego, lo que estaba en azul frío pasa a la gama cálida */
+body.tema-fuego .slide.dark .lead,body.tema-fuego .slide.dark .two p,
+body.tema-fuego .slide.dark .two li,body.tema-fuego .slide.dark ul.clean li,
+body.tema-fuego .slide.dark .recap p,body.tema-fuego .slide.dark td{color:#c9c0bc}
+body.tema-fuego .slide.dark th,body.tema-fuego .slide.dark .foot,
+body.tema-fuego .slide.dark .run .q,body.tema-fuego .sep .time{color:#8b807b}
+body.tema-fuego .sep ol{color:#c9c0bc}
+body.tema-fuego .slide:not(.dark) pre,body.tema-fuego pre{background:#000;border-color:#332b29;color:#e8e0dd}
+body.tema-fuego .slide:not(.dark) pre .kw,body.tema-fuego pre .kw{color:#ff9b87}
+body.tema-fuego .slide:not(.dark) pre .st,body.tema-fuego pre .st{color:#5fe39b}
+body.tema-fuego .slide:not(.dark) pre .cm,body.tema-fuego pre .cm{color:#8b807b}
+body.tema-fuego code{background:#241d1b;color:#ff9b87}
+body.tema-fuego .dg .lbl{fill:var(--ink-2)} body.tema-fuego .dg .cap{fill:var(--ink-mute)}
+body.tema-fuego .dg .ttl{fill:var(--ink)}
+body.tema-fuego .dg .box{fill:#1d1817;stroke:#332b29}
+body.tema-fuego .dg .box-hi{fill:#2a1512;stroke:var(--primary)}
+body.tema-fuego .dg .ln{stroke:#8b807b} body.tema-fuego .dg .ln-hi{stroke:var(--primary)}
+body.tema-fuego .run{background:rgba(255,255,255,.04);border-color:#332b29}
 
 /* — controles del presentador — */
 #ctl{position:fixed;right:16px;top:14px;z-index:120;display:flex;gap:6px;opacity:.28;
@@ -213,7 +220,7 @@ body.todo-oscuro .compare .val,body.todo-oscuro .pcard .v{color:#fff}
   border:1px solid var(--hairline);background:var(--canvas);color:var(--ink-mute)}
 #ctl button:hover{border-color:var(--primary);color:var(--primary)}
 #ctl button:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
-.dark #ctl button,body.todo-oscuro #ctl button{background:rgba(255,255,255,.07);
+.dark #ctl button,body.tema-fuego #ctl button{background:rgba(255,255,255,.07);
   border-color:rgba(255,255,255,.18);color:#c9d4e2}
 
 /* — marcadores del presentador: ★ notebook · ⏳ medición en vivo — */
@@ -317,7 +324,7 @@ body.marcas .mk{opacity:.95}
 <section class="slide "><p class="eyebrow">Cápsula · el componente y sus equivalentes</p><h2>Todo esto existe en las tres nubes, con otros nombres</h2><table><tr><th>Componente</th><th>Databricks</th><th>GCP</th><th>Azure</th><th>AWS</th></tr><tr><td>Ingesta incremental</td><td><strong>Auto Loader</strong></td><td>Dataflow</td><td>Data Factory</td><td>Glue</td></tr><tr><td>Pipeline declarativo</td><td><strong>Lakeflow</strong></td><td>Dataform</td><td>Mapping Flows</td><td>Glue Studio</td></tr><tr><td>Orquestación</td><td><strong>Jobs</strong></td><td>Composer</td><td>Synapse Pipelines</td><td>Step Functions</td></tr><tr><td>Captura de cambios</td><td><strong>Change Data Feed</strong></td><td>Datastream</td><td>CDC de ADF</td><td>DMS</td></tr></table></section>
 <section class="slide dark mesh"><p class="eyebrow">Cierre</p><h2>Los datos ya son confiables. El miércoles entra el primer modelo</h2><ul class="clean"><li>Un pipeline incremental, con calidad declarada y agendado.</li><li>Tres tablas gold que eliminan tres errores reales.</li><li>Y el hábito de documentar también los límites de cada tabla.</li></ul><p class="lead" style="margin-top:30px">En la sesión 3 se le hace al Genie la misma pregunta del margen — pero apuntando a <strong>estas</strong> tablas.</p><div class="foot"><span>Recuerda apagar el compute</span><span>Sesión 3 · miércoles 2 de septiembre</span></div></section>
 <div id="ctl">
-  <button id="bTema" title="Tema oscuro para proyector (T)" aria-label="Alternar tema">◐</button>
+  <button id="bTema" title="Tema fuego (T)" aria-label="Alternar tema">◐</button>
   <button id="bMenos" title="Reducir tamaño (−)" aria-label="Reducir tamaño de letra">A−</button>
   <button id="bMas" title="Aumentar tamaño (+)" aria-label="Aumentar tamaño de letra">A+</button>
   <button id="bMarcas" title="Mostrar marcadores ★ y ⏳ (M)" aria-label="Mostrar marcadores">★</button>
@@ -350,13 +357,16 @@ setTimeout(()=>document.getElementById('hint').classList.add('gone'),6000);
 (function(){
   var B=document.body, R=document.documentElement;
   var esc = parseFloat(localStorage.getItem('deckEscala')||'1');
-  function aplicaEscala(){ R.style.fontSize=(15*esc)+'px';
+  function aplicaEscala(){
+    // el deck dimensiona con clamp() en px y vw: el font-size raíz no lo mueve.
+    // 'zoom' escala el renderizado completo, diagramas incluidos.
+    B.style.zoom = esc;
     try{localStorage.setItem('deckEscala',esc)}catch(e){} }
   function zoom(d){ esc=Math.min(1.6,Math.max(.7,+(esc+d).toFixed(2))); aplicaEscala(); }
-  function tema(){ B.classList.toggle('todo-oscuro');
-    try{localStorage.setItem('deckTema',B.classList.contains('todo-oscuro')?'oscuro':'auto')}catch(e){} }
+  function tema(){ B.classList.toggle('tema-fuego');
+    try{localStorage.setItem('deckTema',B.classList.contains('tema-fuego')?'fuego':'indigo')}catch(e){} }
   function marcas(){ B.classList.toggle('marcas'); }
-  try{ if(localStorage.getItem('deckTema')==='oscuro') B.classList.add('todo-oscuro'); }catch(e){}
+  try{ if(localStorage.getItem('deckTema')==='fuego') B.classList.add('tema-fuego'); }catch(e){}
   aplicaEscala();
   document.getElementById('bTema').onclick=function(e){e.stopPropagation();tema()};
   document.getElementById('bMas').onclick=function(e){e.stopPropagation();zoom(.1)};
