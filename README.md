@@ -27,20 +27,25 @@ Cada sesión tiene su carpeta `entregas/`. Subí tu trabajo en una subcarpeta co
 s01-plataforma/entregas/tu-nombre/notebook.py
 ```
 
-Tenés permiso de escritura en este repositorio. El flujo recomendado:
+Este repositorio es **público**, así que hay dos caminos según tu acceso:
+
+**Si sos colaborador del repositorio** (te agregamos en la primera clase):
 
 ```bash
-git clone <url-del-repo>
+git clone https://github.com/manuelarguelles/databricks-ai-engineer-alumnos.git
 cd databricks-ai-engineer-alumnos
 git checkout -b entrega-s01-tu-nombre
-# ... copiás tu notebook a s01-plataforma/entregas/tu-nombre/
+# copiás tu notebook a s01-plataforma/entregas/tu-nombre/
 git add s01-plataforma/entregas/tu-nombre
 git commit -m "Entrega S01 - tu nombre"
 git push origin entrega-s01-tu-nombre
 ```
 
-Después abrís un Pull Request. Si nunca usaste Git, no te preocupes: la primera vez lo hacemos
-juntos en clase.
+**Si todavía no sos colaborador**, hacés un *fork* (botón «Fork» arriba a la derecha), trabajás
+sobre tu copia y después abrís el Pull Request desde ahí. Funciona igual.
+
+En los dos casos terminás abriendo un **Pull Request** contra `main`.
+Si nunca usaste Git, no te preocupes: la primera vez lo hacemos juntos en clase.
 
 > **Trabajá solo dentro de tu carpeta.** No modifiques los notebooks de la clase ni las entregas
 > de otros: si querés experimentar sobre un notebook, hacete una copia dentro de tu carpeta.
