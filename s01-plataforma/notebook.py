@@ -169,7 +169,25 @@ print(f"antes: {antes} · después del DELETE: {despues} · se fueron {antes - d
 
 # COMMAND ----------
 
-spark.sql(f"RESTORE TABLE {CATALOGO}.bronze.productos TO VERSION AS OF {version_buena}")
+import time
+
+def restaurar(tabla: str, version: int, intentos: int = 4):
+    """Databricks puede lanzar un OPTIMIZE automático justo entre el borrado y la
+    restauración. Cuando eso pasa, el RESTORE choca con esa transacción y falla con
+    ConcurrentWriteException. No es un error nuestro: se reintenta y entra."""
+    for i in range(1, intentos + 1):
+        try:
+            spark.sql(f"RESTORE TABLE {tabla} TO VERSION AS OF {version}")
+            if i > 1:
+                print(f"   (entró en el intento {i}: había una escritura automática en curso)")
+            return True
+        except Exception as err:
+            if "CONCURRENT" not in str(err).upper() or i == intentos:
+                raise
+            time.sleep(2 * i)
+    return False
+
+restaurar(f"{CATALOGO}.bronze.productos", version_buena)
 recuperado = spark.table(f"{CATALOGO}.bronze.productos").count()
 print(f"después del RESTORE: {recuperado}")
 assert recuperado == antes, "El restore no devolvió todas las filas"
@@ -211,23 +229,78 @@ FROM {CATALOGO}.bronze.detalles_pedidos
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ### 6.2 · Tus tres consultas
-# MAGIC Ideas: ¿qué categoría vende más? · ¿qué cliente pidió más veces? ·
-# MAGIC ¿qué transportista entrega más lento? (ojo con `FechaPedido` vs `FechaEntrega`)
+# MAGIC ### 6.2 · Tres consultas de negocio
+# MAGIC Estas tres están resueltas para que veas el patrón. La cuarta es tuya.
 
 # COMMAND ----------
 
-# TODO alumno — consulta 1
-
-
-# COMMAND ----------
-
-# TODO alumno — consulta 2
-
+# MAGIC %md **1 · ¿Qué categoría vende más?** Fíjate que el ingreso lleva el descuento aplicado.
 
 # COMMAND ----------
 
-# TODO alumno — consulta 3
+spark.sql(f"""
+SELECT c.NombreCategoria                                             AS categoria,
+       ROUND(SUM(d.PrecioUnidad * d.Cantidad * (1 - d.Descuento)), 2) AS ingreso_neto,
+       SUM(d.Cantidad)                                                AS unidades
+FROM {CATALOGO}.bronze.detalles_pedidos d
+JOIN {CATALOGO}.bronze.productos  p ON d.IdProducto  = p.IdProducto
+JOIN {CATALOGO}.bronze.categorias c ON p.IdCategoria = c.IdCategoria
+GROUP BY 1 ORDER BY ingreso_neto DESC
+""").display()
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC > 🔍 **Mira el número de Bebidas.** Es el mismo que el Genie del final de la clase
+# MAGIC > va a llamar «margen». No es un margen: es la venta neta, con otro nombre.
+# MAGIC > El margen necesitaría costos, y en Neptuno no hay tabla de costos.
+
+# COMMAND ----------
+
+# MAGIC %md **2 · ¿Qué cliente hace más pedidos?**
+
+# COMMAND ----------
+
+spark.sql(f"""
+SELECT c.NombreCompania AS cliente, c.Pais, COUNT(*) AS pedidos
+FROM {CATALOGO}.bronze.pedidos   p
+JOIN {CATALOGO}.bronze.clientes  c ON p.IdCliente = c.IdCliente
+GROUP BY 1, 2 ORDER BY pedidos DESC LIMIT 10
+""").display()
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC **3 · ¿Qué transportista despacha más lento?**
+# MAGIC Días entre el pedido y el envío. Ojo con las tres fechas: `FechaPedido` es cuándo se
+# MAGIC vendió, `FechaEnvio` cuándo salió, y `FechaEntrega` es la fecha *comprometida*, no la real.
+
+# COMMAND ----------
+
+spark.sql(f"""
+SELECT t.NombreCompania AS transportista,
+       COUNT(*)                                                                   AS pedidos,
+       ROUND(AVG(DATEDIFF(TO_DATE(p.FechaEnvio), TO_DATE(p.FechaPedido))), 1)     AS dias_promedio,
+       MAX(DATEDIFF(TO_DATE(p.FechaEnvio), TO_DATE(p.FechaPedido)))               AS peor_caso
+FROM {CATALOGO}.bronze.pedidos         p
+JOIN {CATALOGO}.bronze.transportistas  t ON p.IdTransportista = t.IdTransportista
+WHERE p.FechaEnvio IS NOT NULL
+GROUP BY 1 ORDER BY dias_promedio DESC
+""").display()
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC > 😏 Fíjate en los nombres frente a los números. El que más tarda y el que se llama
+# MAGIC > «Expreso Veloz» no coinciden con lo que uno esperaría.
+
+# COMMAND ----------
+
+# MAGIC %md **4 · La tuya.** Escribe una consulta que responda algo que a ti te interese.
+
+# COMMAND ----------
+
+# TODO alumno — tu consulta
 
 
 # COMMAND ----------
