@@ -104,7 +104,9 @@ for tabla in ESPERADOS:
         .option("header", True)
         .option("inferSchema", True)
         .csv(f"{LANDING}/{tabla}.csv")
-        .withColumn("_archivo_origen", F.input_file_name())
+        # _metadata.file_path y no input_file_name(): esta última no está
+        # permitida en Unity Catalog con acceso compartido.
+        .withColumn("_archivo_origen", F.col("_metadata.file_path"))
         .withColumn("_ingesta_ts",    F.current_timestamp())
         .write.mode("overwrite")
         .saveAsTable(f"{CATALOGO}.bronze.{tabla}"))
@@ -151,7 +153,12 @@ spark.sql(f"DESCRIBE HISTORY {CATALOGO}.bronze.productos").display()
 
 # COMMAND ----------
 
+# Guardamos la versión actual: si el notebook ya se corrió antes, la versión 0
+# no es la carga limpia de HOY, y restaurar a 0 traería otro estado.
+version_buena = (spark.sql(f"DESCRIBE HISTORY {CATALOGO}.bronze.productos")
+                      .selectExpr("max(version) AS v").first()["v"])
 antes = spark.table(f"{CATALOGO}.bronze.productos").count()
+print(f"versión buena: {version_buena} · {antes} productos")
 spark.sql(f"DELETE FROM {CATALOGO}.bronze.productos WHERE IdCategoria = 1")
 despues = spark.table(f"{CATALOGO}.bronze.productos").count()
 print(f"antes: {antes} · después del DELETE: {despues} · se fueron {antes - despues}")
@@ -162,7 +169,7 @@ print(f"antes: {antes} · después del DELETE: {despues} · se fueron {antes - d
 
 # COMMAND ----------
 
-spark.sql(f"RESTORE TABLE {CATALOGO}.bronze.productos TO VERSION AS OF 0")
+spark.sql(f"RESTORE TABLE {CATALOGO}.bronze.productos TO VERSION AS OF {version_buena}")
 recuperado = spark.table(f"{CATALOGO}.bronze.productos").count()
 print(f"después del RESTORE: {recuperado}")
 assert recuperado == antes, "El restore no devolvió todas las filas"
@@ -238,6 +245,31 @@ FROM {CATALOGO}.bronze.detalles_pedidos
 # 'Hecho a nivel de línea: una fila = un producto dentro de un pedido. El ingreso NO es
 #  PrecioUnidad*Cantidad: hay que aplicar el Descuento.'
 # """)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### Verificación final
+# MAGIC Si la ejecución se cortó entre el borrado y la restauración, tus datos quedaron
+# MAGIC incompletos. Esta celda lo detecta antes de que te vayas.
+
+# COMMAND ----------
+
+def verificacion_final():
+    problemas = []
+    for tabla, esperado in CONTEOS_ESPERADOS.items():
+        real = spark.table(f"{CATALOGO}.bronze.{tabla}").count()
+        if real != esperado:
+            problemas.append(f"{tabla}: {real} filas, deberían ser {esperado}")
+    if problemas:
+        print("⚠️  Tus datos quedaron incompletos:")
+        for p in problemas: print("   ·", p)
+        print("\n   Vuelve a correr la celda de carga (sección 3) para dejarlos bien.")
+    else:
+        print("✅ Las 8 tablas están completas. Puedes cerrar tranquilo.")
+    return not problemas
+
+verificacion_final()
 
 # COMMAND ----------
 
