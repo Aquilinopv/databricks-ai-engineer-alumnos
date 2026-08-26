@@ -1,0 +1,38 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10651,WANDK,8,2025-09-01,2025-09-29,2025-09-11,2,20.6,Die Wandernde Kuh,Adenauerallee 900,Stuttgart,,70563,Alemania
+10652,GOURL,4,2025-09-01,2025-09-29,2025-09-08,2,7.14,Gourmet Lanchonetes,"Av. Brasil, 442",Campinas,SP,04876-786,Brasil
+10653,FRANK,1,2025-09-02,2025-09-30,2025-09-19,1,93.25,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10654,BERGS,5,2025-09-02,2025-09-30,2025-09-11,1,55.26,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10655,REGGC,1,2025-09-03,2025-10-01,2025-09-11,2,4.41,Reggiani Caseifici,Strada Provinciale 124,Reggio Emilia,,42100,Italia
+10656,GREAL,6,2025-09-04,2025-10-02,2025-09-10,1,57.15,Great Lakes Food Market,2732 Baker Blvd.,Eugene,OR,97403,Estados Unidos
+10657,SAVEA,2,2025-09-04,2025-10-02,2025-09-15,2,352.69,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10658,QUICK,4,2025-09-05,2025-10-03,2025-09-08,1,364.15,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10659,QUEEN,7,2025-09-05,2025-10-03,2025-09-10,2,105.81,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10660,HUNGC,8,2025-09-08,2025-10-06,2025-10-15,1,111.29,Hungry Coyote Import Store,City Center Plaza 516 Main St.,Elgin,OR,97827,Estados Unidos
+10661,HUNGO,7,2025-09-09,2025-10-07,2025-09-15,3,17.55,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10662,LONEP,3,2025-09-09,2025-10-07,2025-09-18,2,1.28,Lonesome Pine Restaurant,89 Chiaroscuro Rd.,Portland,OR,97219,Estados Unidos
+10663,BONAP,2,2025-09-10,2025-09-24,2025-10-03,2,113.15,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10664,FURIB,1,2025-09-10,2025-10-08,2025-09-19,3,1.27,Furia Bacalhau e Frutos do Mar,Jardim das rosas n. 32,Lisboa,,1675,Portugal
+10665,LONEP,1,2025-09-11,2025-10-09,2025-09-17,2,26.31,Lonesome Pine Restaurant,89 Chiaroscuro Rd.,Portland,OR,97219,Estados Unidos
+10666,RICSU,7,2025-09-12,2025-10-10,2025-09-22,2,232.42,Richter Supermarkt,Starenweg 5,Genève,,1204,Suiza
+10667,ERNSH,7,2025-09-12,2025-10-10,2025-09-19,1,78.09,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10668,WANDK,1,2025-09-15,2025-10-13,2025-09-23,2,47.22,Die Wandernde Kuh,Adenauerallee 900,Stuttgart,,70563,Alemania
+10669,SIMOB,2,2025-09-15,2025-10-13,2025-09-22,1,24.39,Simons bistro,Vinbæltet 34,Kobenhavn,,1734,Dinamarca
+10670,FRANK,4,2025-09-16,2025-10-14,2025-09-18,1,203.48,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10671,FRANR,1,2025-09-17,2025-10-15,2025-09-24,1,30.34,France restauration,"54, rue Royale",Nantes,,44000,Francia
+10672,BERGS,9,2025-09-17,2025-10-01,2025-09-26,2,95.75,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10673,WILMK,2,2025-09-18,2025-10-16,2025-09-19,1,22.76,Wilman Kala,Keskuskatu 45,Helsinki,,21240,Finlandia
+10674,ISLAT,4,2025-09-18,2025-10-16,2025-09-30,2,0.9,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10675,FRANK,5,2025-09-19,2025-10-17,2025-09-23,2,31.85,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10676,TORTU,2,2025-09-22,2025-10-20,2025-09-29,2,2.01,Tortuga Restaurante,Avda. Azteca 123,México D.F.,,05033,Mexico
+10677,ANTON,1,2025-09-22,2025-10-20,2025-09-26,3,4.03,Antonio Moreno Taquería,Mataderos  2312,México D.F.,,05023,Mexico
+10678,SAVEA,7,2025-09-23,2025-10-21,2025-10-16,3,388.98,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10679,BLONP,8,2025-09-23,2025-10-21,2025-09-30,3,27.94,Blondel père et fils,"24, place Kléber",Strasbourg,,67000,Francia
+10680,OLDWO,1,2025-09-24,2025-10-22,2025-09-26,1,26.61,Old World Delicatessen,2743 Bering St.,Anchorage,AK,99508,Estados Unidos
+10681,GREAL,3,2025-09-25,2025-10-23,2025-09-30,3,76.13,Great Lakes Food Market,2732 Baker Blvd.,Eugene,OR,97403,Estados Unidos
+10682,ANTON,3,2025-09-25,2025-10-23,2025-10-01,2,36.13,Antonio Moreno Taquería,Mataderos  2312,México D.F.,,05023,Mexico
+10683,DUMON,2,2025-09-26,2025-10-24,2025-10-01,1,4.4,Du monde entier,"67, rue des Cinquante Otages",Nantes,,44000,Francia
+10684,OTTIK,3,2025-09-26,2025-10-24,2025-09-30,1,145.63,Ottilies Käseladen,Mehrheimerstr. 369,Köln,,50739,Alemania
+10685,GOURL,4,2025-09-29,2025-10-13,2025-10-03,2,33.75,Gourmet Lanchonetes,"Av. Brasil, 442",Campinas,SP,04876-786,Brasil
+10686,PICCO,2,2025-09-30,2025-10-28,2025-10-08,1,96.5,Piccolo und mehr,Geislweg 14,Salzburg,,5020,Austria
+10687,HUNGO,9,2025-09-30,2025-10-28,2025-10-30,2,296.43,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda

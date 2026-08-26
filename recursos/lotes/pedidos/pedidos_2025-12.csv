@@ -1,0 +1,49 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10760,MAISD,4,2025-12-01,2025-12-29,2025-12-10,1,155.64,Maison Dewey,Rue Joseph-Bens 532,Bruxelles,,B-1180,Belgica
+10761,RATTC,5,2025-12-02,2025-12-30,2025-12-08,2,18.66,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10762,FOLKO,3,2025-12-02,2025-12-30,2025-12-09,1,328.74,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10763,FOLIG,3,2025-12-03,2025-12-31,2025-12-08,3,37.35,Folies gourmandes,"184, chaussée de Tournai",Lille,,59000,Francia
+10764,ERNSH,6,2025-12-03,2025-12-31,2025-12-08,3,145.45,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10765,QUICK,3,2025-12-04,2026-01-01,2025-12-09,3,42.74,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10766,OTTIK,4,2025-12-05,2026-01-02,2025-12-09,1,157.55,Ottilies Käseladen,Mehrheimerstr. 369,Köln,,50739,Alemania
+10767,SUPRD,4,2025-12-05,2026-01-02,2025-12-15,3,1.59,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10768,AROUT,3,2025-12-08,2026-01-05,2025-12-15,2,146.32,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10769,VAFFE,3,2025-12-08,2026-01-05,2025-12-12,1,65.06,Vaffeljernet,Smagsloget 45,Århus,,8200,Dinamarca
+10770,HANAR,8,2025-12-09,2026-01-06,2025-12-17,3,5.32,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10771,ERNSH,9,2025-12-10,2026-01-07,2026-01-02,2,11.19,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10772,LEHMS,3,2025-12-10,2026-01-07,2025-12-19,2,91.28,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania
+10773,ERNSH,1,2025-12-11,2026-01-08,2025-12-16,3,96.43,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10774,FOLKO,4,2025-12-11,2025-12-25,2025-12-12,1,48.2,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10775,THECR,7,2025-12-12,2026-01-09,2025-12-26,1,20.25,The Cracker Box,55 Grizzly Peak Rd.,Butte,MT,59801,Estados Unidos
+10776,ERNSH,1,2025-12-15,2026-01-12,2025-12-18,3,351.53,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10777,GOURL,7,2025-12-15,2025-12-29,2026-01-21,2,3.01,Gourmet Lanchonetes,"Av. Brasil, 442",Campinas,SP,04876-786,Brasil
+10778,BERGS,3,2025-12-16,2026-01-13,2025-12-24,1,6.79,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10779,MORGK,3,2025-12-16,2026-01-13,2026-01-14,2,58.13,Morgenstern Gesundkost,Heerstr. 22,Leipzig,,04179,Alemania
+10780,LILAS,2,2025-12-16,2025-12-30,2025-12-25,1,42.13,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+10781,WARTH,2,2025-12-17,2026-01-14,2025-12-19,3,73.16,Wartian Herkku,Torikatu 38,Oulu,,90110,Finlandia
+10782,CACTU,9,2025-12-17,2026-01-14,2025-12-22,3,1.1,Cactus Comidas para llevar,Cerrito 333,Buenos Aires,,1010,Argentina
+10783,HANAR,4,2025-12-18,2026-01-15,2025-12-19,2,124.98,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10784,MAGAA,4,2025-12-18,2026-01-15,2025-12-22,3,70.09,Magazzini Alimentari Riuniti,Via Ludovico il Moro 22,Bergamo,,24100,Italia
+10785,GROSR,1,2025-12-18,2026-01-15,2025-12-24,3,1.51,GROSELLA-Restaurante,5ª Ave. Los Palos Grandes,Caracas,DF,1081,Venezuela
+10786,QUEEN,8,2025-12-19,2026-01-16,2025-12-23,1,110.87,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10787,LAMAI,2,2025-12-19,2026-01-02,2025-12-26,1,249.93,La maison d'Asie,1 rue Alsace-Lorraine,Toulouse,,31000,Francia
+10788,QUICK,1,2025-12-22,2026-01-19,2026-01-19,2,42.7,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10789,FOLIG,1,2025-12-22,2026-01-19,2025-12-31,2,100.6,Folies gourmandes,"184, chaussée de Tournai",Lille,,59000,Francia
+10790,GOURL,6,2025-12-22,2026-01-19,2025-12-26,1,28.23,Gourmet Lanchonetes,"Av. Brasil, 442",Campinas,SP,04876-786,Brasil
+10791,FRANK,6,2025-12-23,2026-01-20,2026-01-01,2,16.85,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10792,WOLZA,1,2025-12-23,2026-01-20,2025-12-31,3,23.79,Wolski Zajazd,ul. Filtrowa 68,Warszawa,,01-012,Polonia
+10793,AROUT,3,2025-12-24,2026-01-21,2026-01-08,3,4.52,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10794,QUEDE,6,2025-12-24,2026-01-21,2026-01-02,1,21.49,Que Delícia,"Rua da Panificadora, 12",Rio de Janeiro,RJ,02389-673,Brasil
+10795,ERNSH,8,2025-12-24,2026-01-21,2026-01-20,2,126.66,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10796,HILAA,3,2025-12-25,2026-01-22,2026-01-14,1,26.52,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10797,DRACD,7,2025-12-25,2026-01-22,2026-01-05,2,33.35,Drachenblut Delikatessen,Walserweg 21,Aachen,,52066,Alemania
+10798,ISLAT,2,2025-12-26,2026-01-23,2026-01-05,1,2.33,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10799,KOENE,9,2025-12-26,2026-02-06,2026-01-05,3,30.76,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10800,SEVES,1,2025-12-26,2026-01-23,2026-01-05,3,137.44,Seven Seas Imports,90 Wadhurst Rd.,London,,OX15 4NB,Reino Unido
+10801,BOLID,4,2025-12-29,2026-01-26,2025-12-31,2,97.09,Bólido Comidas preparadas,"C/ Araquil, 67",Madrid,,28023,España
+10802,SIMOB,4,2025-12-29,2026-01-26,2026-01-02,2,257.26,Simons bistro,Vinbæltet 34,Kobenhavn,,1734,Dinamarca
+10803,WELLI,4,2025-12-30,2026-01-27,2026-01-06,1,55.23,Wellington Importadora,"Rua do Mercado, 12",Resende,SP,08737-363,Brasil
+10804,SEVES,6,2025-12-30,2026-01-27,2026-01-07,2,27.33,Seven Seas Imports,90 Wadhurst Rd.,London,,OX15 4NB,Reino Unido
+10805,THEBI,2,2025-12-30,2026-01-27,2026-01-09,3,237.34,The Big Cheese,89 Jefferson Way Suite 2,Portland,OR,97201,Estados Unidos
+10806,VICTE,3,2025-12-31,2026-01-28,2026-01-05,2,22.11,Victuailles en stock,"2, rue du Commerce",Lyon,,69004,Francia
+10807,FRANS,4,2025-12-31,2026-01-28,2026-01-30,1,1.36,Franchi S.p.A.,Via Monte Bianco 34,Torino,,10100,Italia

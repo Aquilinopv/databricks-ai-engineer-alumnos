@@ -1,0 +1,35 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10726,EASTC,4,2025-11-03,2025-11-17,2025-12-05,1,16.56,Eastern Connection,35 King George,London,,WX3 6FW,Reino Unido
+10727,REGGC,2,2025-11-03,2025-12-01,2025-12-05,1,89.9,Reggiani Caseifici,Strada Provinciale 124,Reggio Emilia,,42100,Italia
+10728,QUEEN,4,2025-11-04,2025-12-02,2025-11-11,2,58.33,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10729,LINOD,8,2025-11-04,2025-12-16,2025-11-14,3,141.06,LINO-Delicateses,Ave. 5 de Mayo Porlamar,I. de Margarita,Nueva Esparta,4980,Venezuela
+10730,BONAP,5,2025-11-05,2025-12-03,2025-11-14,1,20.12,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10731,CHOPS,7,2025-11-06,2025-12-04,2025-11-14,1,96.65,Chop-suey Chinese,Hauptstr. 31,Bern,,3012,Suiza
+10732,BONAP,3,2025-11-06,2025-12-04,2025-11-07,1,16.97,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10733,BERGS,1,2025-11-07,2025-12-05,2025-11-10,3,110.11,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10734,GOURL,2,2025-11-07,2025-12-05,2025-11-12,3,1.63,Gourmet Lanchonetes,"Av. Brasil, 442",Campinas,SP,04876-786,Brasil
+10735,LETSS,6,2025-11-10,2025-12-08,2025-11-21,2,45.97,Let's Stop N Shop,87 Polk St. Suite 5,San Francisco,CA,94117,Estados Unidos
+10736,HUNGO,9,2025-11-11,2025-12-09,2025-11-21,2,44.1,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10737,VINET,2,2025-11-11,2025-12-09,2025-11-18,2,7.79,Vins et alcools Chevalier,59 rue de l'Abbaye,Reims,,51100,Francia
+10738,SPECD,2,2025-11-12,2025-12-10,2025-11-18,1,2.91,Spécialités du monde,"25, rue Lauriston",Paris,,75016,Francia
+10739,VINET,3,2025-11-12,2025-12-10,2025-11-17,3,11.08,Vins et alcools Chevalier,59 rue de l'Abbaye,Reims,,51100,Francia
+10740,WHITC,4,2025-11-13,2025-12-11,2025-11-25,2,81.88,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10741,AROUT,4,2025-11-14,2025-11-28,2025-11-18,3,10.96,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10742,BOTTM,3,2025-11-14,2025-12-12,2025-11-18,3,243.73,Bottom-Dollar Markets,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada
+10743,AROUT,1,2025-11-17,2025-12-15,2025-11-21,2,23.72,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10744,VAFFE,6,2025-11-17,2025-12-15,2025-11-24,1,69.19,Vaffeljernet,Smagsloget 45,Århus,,8200,Dinamarca
+10745,QUICK,9,2025-11-18,2025-12-16,2025-11-27,1,3.52,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10746,CHOPS,1,2025-11-19,2025-12-17,2025-11-21,3,31.43,Chop-suey Chinese,Hauptstr. 31,Bern,,3012,Suiza
+10747,PICCO,6,2025-11-19,2025-12-17,2025-11-26,1,117.33,Piccolo und mehr,Geislweg 14,Salzburg,,5020,Austria
+10748,SAVEA,3,2025-11-20,2025-12-18,2025-11-28,1,232.55,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10749,ISLAT,4,2025-11-20,2025-12-18,2025-12-19,2,61.53,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10750,WARTH,9,2025-11-21,2025-12-19,2025-11-24,1,79.3,Wartian Herkku,Torikatu 38,Oulu,,90110,Finlandia
+10751,RICSU,3,2025-11-24,2025-12-22,2025-12-03,3,130.79,Richter Supermarkt,Starenweg 5,Genève,,1204,Suiza
+10752,NORTS,2,2025-11-24,2025-12-22,2025-11-28,3,1.39,North/South,South House 300 Queensbridge,London,,SW7 1RZ,Reino Unido
+10753,FRANS,3,2025-11-25,2025-12-23,2025-11-27,1,7.7,Franchi S.p.A.,Via Monte Bianco 34,Torino,,10100,Italia
+10754,MAGAA,6,2025-11-25,2025-12-23,2025-11-27,3,2.38,Magazzini Alimentari Riuniti,Via Ludovico il Moro 22,Bergamo,,24100,Italia
+10755,BONAP,4,2025-11-26,2025-12-24,2025-11-28,2,16.71,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10756,SPLIR,8,2025-11-27,2025-12-25,2025-12-02,2,73.21,Split Rail Beer & Ale,P.O. Box 555,Lander,WY,82520,Estados Unidos
+10757,SAVEA,6,2025-11-27,2025-12-25,2025-12-15,1,8.19,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10758,RICSU,3,2025-11-28,2025-12-26,2025-12-04,3,138.17,Richter Supermarkt,Starenweg 5,Genève,,1204,Suiza
+10759,ANATR,3,2025-11-28,2025-12-26,2025-12-12,3,11.99,Ana Trujillo Emparedados y helados,Avda. de la Constitución 2222,México D.F.,,05021,Mexico

@@ -1,0 +1,26 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10270,WARTH,1,2024-08-01,2024-08-29,2024-08-02,1,136.54,Wartian Herkku,Torikatu 38,Oulu,,90110,Finlandia
+10271,SPLIR,6,2024-08-01,2024-08-29,2024-08-30,2,4.54,Split Rail Beer & Ale,P.O. Box 555,Lander,WY,82520,Estados Unidos
+10272,RATTC,6,2024-08-02,2024-08-30,2024-08-06,2,98.03,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10273,QUICK,3,2024-08-05,2024-09-02,2024-08-12,3,76.07,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10274,VINET,6,2024-08-06,2024-09-03,2024-08-16,1,6.01,Vins et alcools Chevalier,59 rue de l'Abbaye,Reims,,51100,Francia
+10275,MAGAA,1,2024-08-07,2024-09-04,2024-08-09,1,26.93,Magazzini Alimentari Riuniti,Via Ludovico il Moro 22,Bergamo,,24100,Italia
+10276,TORTU,8,2024-08-08,2024-08-22,2024-08-14,3,13.84,Tortuga Restaurante,Avda. Azteca 123,México D.F.,,05033,Mexico
+10277,MORGK,2,2024-08-09,2024-09-06,2024-08-13,3,125.77,Morgenstern Gesundkost,Heerstr. 22,Leipzig,,04179,Alemania
+10278,BERGS,8,2024-08-12,2024-09-09,2024-08-16,2,92.69,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10279,LEHMS,8,2024-08-13,2024-09-10,2024-08-16,2,25.83,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania
+10280,BERGS,2,2024-08-14,2024-09-11,2024-09-12,1,8.98,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10281,ROMEY,4,2024-08-14,2024-08-28,2024-08-21,1,2.94,Romero y tomillo,"Gran Vía, 1",Madrid,,28001,España
+10282,ROMEY,4,2024-08-15,2024-09-12,2024-08-21,1,12.69,Romero y tomillo,"Gran Vía, 1",Madrid,,28001,España
+10283,LILAS,3,2024-08-16,2024-09-13,2024-08-23,3,84.81,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+10284,LEHMS,4,2024-08-19,2024-09-16,2024-08-27,1,76.56,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania
+10285,QUICK,1,2024-08-20,2024-09-17,2024-08-26,2,76.83,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10286,QUICK,8,2024-08-21,2024-09-18,2024-08-30,3,229.24,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10287,RICAR,8,2024-08-22,2024-09-19,2024-08-28,3,12.76,Ricardo Adocicados,"Av. Copacabana, 267",Rio de Janeiro,RJ,02389-890,Brasil
+10288,REGGC,4,2024-08-23,2024-09-20,2024-09-03,1,7.45,Reggiani Caseifici,Strada Provinciale 124,Reggio Emilia,,42100,Italia
+10289,BSBEV,7,2024-08-26,2024-09-23,2024-08-28,3,22.77,B's Beverages,Fauntleroy Circus,London,,EC2 5NT,Reino Unido
+10290,COMMI,8,2024-08-27,2024-09-24,2024-09-03,1,79.7,Comércio Mineiro,"Av. dos Lusíadas, 23",Sao Paulo,SP,05432-043,Brasil
+10291,QUEDE,6,2024-08-27,2024-09-24,2024-09-04,2,6.4,Que Delícia,"Rua da Panificadora, 12",Rio de Janeiro,RJ,02389-673,Brasil
+10292,TRADH,1,2024-08-28,2024-09-25,2024-09-02,2,1.35,Tradiçao Hipermercados,"Av. Inês de Castro, 414",Sao Paulo,SP,05634-030,Brasil
+10293,TORTU,1,2024-08-29,2024-09-26,2024-09-11,3,21.18,Tortuga Restaurante,Avda. Azteca 123,México D.F.,,05033,Mexico
+10294,RATTC,4,2024-08-30,2024-09-27,2024-09-05,2,147.26,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos

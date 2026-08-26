@@ -1,0 +1,55 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10863,HILAA,4,2026-02-02,2026-03-02,2026-02-17,2,30.26,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10864,AROUT,4,2026-02-02,2026-03-02,2026-02-09,2,3.04,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10865,QUICK,2,2026-02-02,2026-02-16,2026-02-12,1,348.14,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10866,BERGS,5,2026-02-03,2026-03-03,2026-02-12,1,109.11,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10867,LONEP,6,2026-02-03,2026-03-17,2026-02-11,1,1.93,Lonesome Pine Restaurant,89 Chiaroscuro Rd.,Portland,OR,97219,Estados Unidos
+10868,QUEEN,7,2026-02-04,2026-03-04,2026-02-23,2,191.27,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10869,SEVES,5,2026-02-04,2026-03-04,2026-02-09,1,143.28,Seven Seas Imports,90 Wadhurst Rd.,London,,OX15 4NB,Reino Unido
+10870,WOLZA,5,2026-02-04,2026-03-04,2026-02-13,3,12.04,Wolski Zajazd,ul. Filtrowa 68,Warszawa,,01-012,Polonia
+10871,BONAP,9,2026-02-05,2026-03-05,2026-02-10,2,112.27,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10872,GODOS,5,2026-02-05,2026-03-05,2026-02-09,2,175.32,Godos Cocina Típica,"C/ Romero, 33",Sevilla,,41101,España
+10873,WILMK,4,2026-02-06,2026-03-06,2026-02-09,1,0.82,Wilman Kala,Keskuskatu 45,Helsinki,,21240,Finlandia
+10874,GODOS,5,2026-02-06,2026-03-06,2026-02-11,2,19.58,Godos Cocina Típica,"C/ Romero, 33",Sevilla,,41101,España
+10875,BERGS,4,2026-02-06,2026-03-06,2026-03-03,2,32.37,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10876,BONAP,7,2026-02-09,2026-03-09,2026-02-12,3,60.42,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10877,RICAR,1,2026-02-09,2026-03-09,2026-02-19,1,38.06,Ricardo Adocicados,"Av. Copacabana, 267",Rio de Janeiro,RJ,02389-890,Brasil
+10878,QUICK,4,2026-02-10,2026-03-10,2026-02-12,1,46.69,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10879,WILMK,3,2026-02-10,2026-03-10,2026-02-12,3,8.5,Wilman Kala,Keskuskatu 45,Helsinki,,21240,Finlandia
+10880,FOLKO,7,2026-02-10,2026-03-24,2026-02-18,1,88.01,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10881,CACTU,4,2026-02-11,2026-03-11,2026-02-18,1,2.84,Cactus Comidas para llevar,Cerrito 333,Buenos Aires,,1010,Argentina
+10882,SAVEA,4,2026-02-11,2026-03-11,2026-02-20,3,23.1,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10883,LONEP,8,2026-02-12,2026-03-12,2026-02-20,3,0.53,Lonesome Pine Restaurant,89 Chiaroscuro Rd.,Portland,OR,97219,Estados Unidos
+10884,LETSS,4,2026-02-12,2026-03-12,2026-02-13,2,90.97,Let's Stop N Shop,87 Polk St. Suite 5,San Francisco,CA,94117,Estados Unidos
+10885,SUPRD,6,2026-02-12,2026-03-12,2026-02-18,3,5.64,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10886,HANAR,1,2026-02-13,2026-03-13,2026-03-02,1,4.99,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10887,GALED,8,2026-02-13,2026-03-13,2026-02-16,3,1.25,Galería del gastronómo,"Rambla de Cataluña, 23",Barcelona,,8022,España
+10888,GODOS,1,2026-02-16,2026-03-16,2026-02-23,2,51.87,Godos Cocina Típica,"C/ Romero, 33",Sevilla,,41101,España
+10889,RATTC,9,2026-02-16,2026-03-16,2026-02-23,3,280.61,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10890,DUMON,7,2026-02-16,2026-03-16,2026-02-18,1,32.76,Du monde entier,"67, rue des Cinquante Otages",Nantes,,44000,Francia
+10891,LEHMS,7,2026-02-17,2026-03-17,2026-02-19,2,20.37,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania
+10892,MAISD,4,2026-02-17,2026-03-17,2026-02-19,2,120.27,Maison Dewey,Rue Joseph-Bens 532,Bruxelles,,B-1180,Belgica
+10893,KOENE,9,2026-02-18,2026-03-18,2026-02-20,2,77.78,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10894,SAVEA,1,2026-02-18,2026-03-18,2026-02-20,1,116.13,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10895,ERNSH,3,2026-02-18,2026-03-18,2026-02-23,1,162.75,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10896,MAISD,7,2026-02-19,2026-03-19,2026-02-27,3,32.45,Maison Dewey,Rue Joseph-Bens 532,Bruxelles,,B-1180,Belgica
+10897,HUNGO,3,2026-02-19,2026-03-19,2026-02-25,2,603.54,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10898,OCEAN,4,2026-02-20,2026-03-20,2026-03-06,2,1.27,Océano Atlántico Ltda.,Ing. Gustavo Moncada 8585 Piso 20-A,Buenos Aires,,1010,Argentina
+10899,LILAS,5,2026-02-20,2026-03-20,2026-02-26,3,1.21,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+10900,WELLI,1,2026-02-20,2026-03-20,2026-03-04,2,1.66,Wellington Importadora,"Rua do Mercado, 12",Resende,SP,08737-363,Brasil
+10901,HILAA,4,2026-02-23,2026-03-23,2026-02-26,1,62.09,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10902,FOLKO,1,2026-02-23,2026-03-23,2026-03-03,1,44.15,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10903,HANAR,3,2026-02-24,2026-03-24,2026-03-04,3,36.71,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10904,WHITC,3,2026-02-24,2026-03-24,2026-02-27,3,162.95,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10905,WELLI,9,2026-02-24,2026-03-24,2026-03-06,2,13.72,Wellington Importadora,"Rua do Mercado, 12",Resende,SP,08737-363,Brasil
+10906,WOLZA,4,2026-02-25,2026-03-11,2026-03-03,3,26.29,Wolski Zajazd,ul. Filtrowa 68,Warszawa,,01-012,Polonia
+10907,SPECD,6,2026-02-25,2026-03-25,2026-02-27,3,9.19,Spécialités du monde,"25, rue Lauriston",Paris,,75016,Francia
+10908,REGGC,4,2026-02-26,2026-03-26,2026-03-06,2,32.96,Reggiani Caseifici,Strada Provinciale 124,Reggio Emilia,,42100,Italia
+10909,SANTG,1,2026-02-26,2026-03-26,2026-03-10,2,53.05,Santé Gourmet,Erling Skakkes gate 78,Stavern,,4110,Noruega
+10910,WILMK,1,2026-02-26,2026-03-26,2026-03-04,3,38.11,Wilman Kala,Keskuskatu 45,Helsinki,,21240,Finlandia
+10911,GODOS,3,2026-02-26,2026-03-26,2026-03-05,1,38.19,Godos Cocina Típica,"C/ Romero, 33",Sevilla,,41101,España
+10912,HUNGO,2,2026-02-26,2026-03-26,2026-03-18,2,580.91,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10913,QUEEN,4,2026-02-26,2026-03-26,2026-03-04,1,33.05,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10914,QUEEN,6,2026-02-27,2026-03-27,2026-03-02,1,21.19,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10915,TORTU,2,2026-02-27,2026-03-27,2026-03-02,2,3.51,Tortuga Restaurante,Avda. Azteca 123,México D.F.,,05033,Mexico
+10916,RANCH,1,2026-02-27,2026-03-27,2026-03-09,2,63.77,Rancho grande,Av. del Libertador 900,Buenos Aires,,1010,Argentina

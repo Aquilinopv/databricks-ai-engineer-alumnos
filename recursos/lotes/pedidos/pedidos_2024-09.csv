@@ -1,0 +1,24 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10295,VINET,2,2024-09-02,2024-09-30,2024-09-10,2,1.15,Vins et alcools Chevalier,59 rue de l'Abbaye,Reims,,51100,Francia
+10296,LILAS,6,2024-09-03,2024-10-01,2024-09-11,1,0.12,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+10297,BLONP,5,2024-09-04,2024-10-16,2024-09-10,2,5.74,Blondel père et fils,"24, place Kléber",Strasbourg,,67000,Francia
+10298,HUNGO,6,2024-09-05,2024-10-03,2024-09-11,2,168.22,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10299,RICAR,4,2024-09-06,2024-10-04,2024-09-13,2,29.76,Ricardo Adocicados,"Av. Copacabana, 267",Rio de Janeiro,RJ,02389-890,Brasil
+10300,MAGAA,2,2024-09-09,2024-10-07,2024-09-18,2,17.68,Magazzini Alimentari Riuniti,Via Ludovico il Moro 22,Bergamo,,24100,Italia
+10301,WANDK,8,2024-09-09,2024-10-07,2024-09-17,2,45.08,Die Wandernde Kuh,Adenauerallee 900,Stuttgart,,70563,Alemania
+10302,SUPRD,4,2024-09-10,2024-10-08,2024-10-09,2,6.27,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10303,GODOS,7,2024-09-11,2024-10-09,2024-09-18,2,107.83,Godos Cocina Típica,"C/ Romero, 33",Sevilla,,41101,España
+10304,TORTU,1,2024-09-12,2024-10-10,2024-09-17,2,63.79,Tortuga Restaurante,Avda. Azteca 123,México D.F.,,05033,Mexico
+10305,OLDWO,8,2024-09-13,2024-10-11,2024-10-09,3,257.62,Old World Delicatessen,2743 Bering St.,Anchorage,AK,99508,Estados Unidos
+10306,ROMEY,1,2024-09-16,2024-10-14,2024-09-23,3,7.56,Romero y tomillo,"Gran Vía, 1",Madrid,,28001,España
+10307,LONEP,2,2024-09-17,2024-10-15,2024-09-25,2,0.56,Lonesome Pine Restaurant,89 Chiaroscuro Rd.,Portland,OR,97219,Estados Unidos
+10308,ANATR,7,2024-09-18,2024-10-16,2024-09-24,3,1.61,Ana Trujillo Emparedados y helados,Avda. de la Constitución 2222,México D.F.,,05021,Mexico
+10309,HUNGO,3,2024-09-19,2024-10-17,2024-10-23,1,47.3,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10310,THEBI,8,2024-09-20,2024-10-18,2024-09-27,2,17.52,The Big Cheese,89 Jefferson Way Suite 2,Portland,OR,97201,Estados Unidos
+10311,DUMON,1,2024-09-20,2024-10-04,2024-09-26,3,24.69,Du monde entier,"67, rue des Cinquante Otages",Nantes,,44000,Francia
+10312,WANDK,2,2024-09-23,2024-10-21,2024-10-03,2,40.26,Die Wandernde Kuh,Adenauerallee 900,Stuttgart,,70563,Alemania
+10313,QUICK,2,2024-09-24,2024-10-22,2024-10-04,2,1.96,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10314,RATTC,1,2024-09-25,2024-10-23,2024-10-04,2,74.16,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10315,ISLAT,4,2024-09-26,2024-10-24,2024-10-03,2,41.76,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10316,RATTC,1,2024-09-27,2024-10-25,2024-10-08,3,150.15,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10317,LONEP,6,2024-09-30,2024-10-28,2024-10-10,1,12.69,Lonesome Pine Restaurant,89 Chiaroscuro Rd.,Portland,OR,97219,Estados Unidos

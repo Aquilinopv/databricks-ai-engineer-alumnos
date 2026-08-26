@@ -1,0 +1,10 @@
+IdEmpleado,Apellidos,Nombre,Cargo,Tratamiento,FechaNacimiento,FechaContratacion,Direccion,Ciudad,Region,CodPostal,Pais,TelefonoDomicilio,Extension,Notas,JefeId
+1,Davolio,Nancy,Representante de Ventas,Sra.,1976-12-08,2020-05-01,507 - 20th Ave. E.\nApt. 2A,Seattle,WA,98122,Estados Unidos,(206) 555-9857,5467,,2
+2,Fuller,Andrew,Vicepresidente de Ventas,Dr.,1980-02-19,2020-08-14,908 W. Capital Way,Tacoma,WA,98401,Estados Unidos,(206) 555-9482,3457,,
+3,Leverling,Janet,Representante de Ventas,Sra.,1991-08-30,2020-04-01,722 Moss Bay Blvd.,Kirkland,WA,98033,Estados Unidos,(206) 555-3412,3355,,2
+4,Peacock,Margaret,Representante de Ventas,Sra.,1965-09-19,2021-05-03,4110 Old Redmond Rd.,Redmond,WA,98052,Estados Unidos,(206) 555-8122,5176,,2
+5,Buchanan,Steven,Gerente de Ventas,Sr.,1983-03-04,2021-10-17,14 Garrett Hill,London,,SW1 8JR,Reino Unido,(71) 555-4848,3453,,2
+6,Suyama,Michael,Representante de Ventas,Sr.,1991-07-02,2021-10-17,Coventry House\nMiner Rd.,London,,EC2 7JR,Reino Unido,(71) 555-7773,428,,5
+7,King,Robert,Representante de Ventas,Sr.,1988-05-29,2022-01-02,Edgeham Hollow\nWinchester Way,London,,RG1 9SP,Reino Unido,(71) 555-5598,465,,5
+8,Callahan,Laura,Coordinador de Ventas Internas,Sra.,1986-01-09,2022-03-05,4726 - 11th Ave. N.E.,Seattle,WA,98105,Estados Unidos,(206) 555-1189,2344,,2
+9,Dodsworth,Anne,Representante de Ventas,Sra.,1994-01-27,2022-11-15,7 Houndstooth Rd.,London,,WG2 7LT,Reino Unido,(71) 555-4444,452,,5

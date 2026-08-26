@@ -1,0 +1,15 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+11064,SAVEA,1,2026-05-01,2026-05-29,2026-05-04,1,30.09,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+11065,LILAS,8,2026-05-01,2026-05-29,,1,12.91,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+11066,WHITC,7,2026-05-01,2026-05-29,2026-05-04,2,44.72,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+11067,DRACD,1,2026-05-04,2026-05-18,2026-05-06,2,7.98,Drachenblut Delikatessen,Walserweg 21,Aachen,,52066,Alemania
+11068,QUEEN,8,2026-05-04,2026-06-01,,2,81.75,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+11069,TORTU,1,2026-05-04,2026-06-01,2026-05-06,2,15.67,Tortuga Restaurante,Avda. Azteca 123,México D.F.,,05033,Mexico
+11070,LEHMS,2,2026-05-05,2026-06-02,,1,136,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania
+11071,LILAS,1,2026-05-05,2026-06-02,,1,0.93,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+11072,ERNSH,4,2026-05-05,2026-06-02,,2,258.64,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+11073,PERIC,2,2026-05-05,2026-06-02,,2,24.95,Pericles Comidas clásicas,Calle Dr. Jorge Cash 321,México D.F.,,05033,Mexico
+11074,SIMOB,7,2026-05-06,2026-06-03,,2,18.44,Simons bistro,Vinbæltet 34,Kobenhavn,,1734,Dinamarca
+11075,RICSU,8,2026-05-06,2026-06-03,,2,6.19,Richter Supermarkt,Starenweg 5,Genève,,1204,Suiza
+11076,BONAP,4,2026-05-06,2026-06-03,,2,38.28,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+11077,RATTC,1,2026-05-06,2026-06-03,,2,8.53,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos

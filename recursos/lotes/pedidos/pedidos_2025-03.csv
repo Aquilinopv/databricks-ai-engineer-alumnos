@@ -1,0 +1,31 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10462,CONSH,2,2025-03-03,2025-03-31,2025-03-18,1,6.17,Consolidated Holdings,Berkeley Gardens 12  Brewery,London,,WX1 6LT,Reino Unido
+10463,SUPRD,5,2025-03-04,2025-04-01,2025-03-06,3,14.78,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10464,FURIB,4,2025-03-04,2025-04-01,2025-03-14,2,89,Furia Bacalhau e Frutos do Mar,Jardim das rosas n. 32,Lisboa,,1675,Portugal
+10465,VAFFE,1,2025-03-05,2025-04-02,2025-03-14,3,145.04,Vaffeljernet,Smagsloget 45,Århus,,8200,Dinamarca
+10466,COMMI,4,2025-03-06,2025-04-03,2025-03-13,1,11.93,Comércio Mineiro,"Av. dos Lusíadas, 23",Sao Paulo,SP,05432-043,Brasil
+10467,MAGAA,8,2025-03-06,2025-04-03,2025-03-11,2,4.93,Magazzini Alimentari Riuniti,Via Ludovico il Moro 22,Bergamo,,24100,Italia
+10468,KOENE,3,2025-03-07,2025-04-04,2025-03-12,3,44.12,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10469,WHITC,1,2025-03-10,2025-04-07,2025-03-14,1,60.18,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10470,BONAP,4,2025-03-11,2025-04-08,2025-03-14,2,64.56,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10471,BSBEV,2,2025-03-11,2025-04-08,2025-03-18,3,45.59,B's Beverages,Fauntleroy Circus,London,,EC2 5NT,Reino Unido
+10472,SEVES,8,2025-03-12,2025-04-09,2025-03-19,1,4.2,Seven Seas Imports,90 Wadhurst Rd.,London,,OX15 4NB,Reino Unido
+10473,ISLAT,1,2025-03-13,2025-03-27,2025-03-21,3,16.37,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10474,PERIC,5,2025-03-13,2025-04-10,2025-03-21,2,83.49,Pericles Comidas clásicas,Calle Dr. Jorge Cash 321,México D.F.,,05033,Mexico
+10475,SUPRD,9,2025-03-14,2025-04-11,2025-04-04,1,68.52,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10476,HILAA,8,2025-03-17,2025-04-14,2025-03-24,3,4.41,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10477,PRINI,5,2025-03-17,2025-04-14,2025-03-25,2,13.02,Princesa Isabel Vinhos,Estrada da saúde n. 58,Lisboa,,1756,Portugal
+10478,VICTE,2,2025-03-18,2025-04-01,2025-03-26,3,4.81,Victuailles en stock,"2, rue du Commerce",Lyon,,69004,Francia
+10479,RATTC,3,2025-03-19,2025-04-16,2025-03-21,3,708.95,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10480,FOLIG,6,2025-03-20,2025-04-17,2025-03-24,2,1.35,Folies gourmandes,"184, chaussée de Tournai",Lille,,59000,Francia
+10481,RICAR,8,2025-03-20,2025-04-17,2025-03-25,2,64.33,Ricardo Adocicados,"Av. Copacabana, 267",Rio de Janeiro,RJ,02389-890,Brasil
+10482,LAZYK,1,2025-03-21,2025-04-18,2025-04-10,3,7.48,Lazy K Kountry Store,12 Orchestra Terrace,Walla Walla,WA,99362,Estados Unidos
+10483,WHITC,7,2025-03-24,2025-04-21,2025-04-25,2,15.28,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10484,BSBEV,3,2025-03-24,2025-04-21,2025-04-01,3,6.88,B's Beverages,Fauntleroy Circus,London,,EC2 5NT,Reino Unido
+10485,LINOD,4,2025-03-25,2025-04-08,2025-03-31,2,64.45,LINO-Delicateses,Ave. 5 de Mayo Porlamar,I. de Margarita,Nueva Esparta,4980,Venezuela
+10486,HILAA,1,2025-03-26,2025-04-23,2025-04-02,2,30.53,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10487,QUEEN,2,2025-03-26,2025-04-23,2025-03-28,2,71.07,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10488,FRANK,8,2025-03-27,2025-04-24,2025-04-02,2,4.93,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10489,PICCO,6,2025-03-28,2025-04-25,2025-04-09,2,5.29,Piccolo und mehr,Geislweg 14,Salzburg,,5020,Austria
+10490,HILAA,7,2025-03-31,2025-04-28,2025-04-03,2,210.19,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10491,FURIB,8,2025-03-31,2025-04-28,2025-04-08,3,16.96,Furia Bacalhau e Frutos do Mar,Jardim das rosas n. 32,Lisboa,,1675,Portugal

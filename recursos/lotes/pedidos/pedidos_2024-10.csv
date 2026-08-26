@@ -1,0 +1,27 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10318,ISLAT,8,2024-10-01,2024-10-29,2024-10-04,2,4.73,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10319,TORTU,7,2024-10-02,2024-10-30,2024-10-11,3,64.5,Tortuga Restaurante,Avda. Azteca 123,México D.F.,,05033,Mexico
+10320,WARTH,5,2024-10-03,2024-10-17,2024-10-18,3,34.57,Wartian Herkku,Torikatu 38,Oulu,,90110,Finlandia
+10321,ISLAT,3,2024-10-03,2024-10-31,2024-10-11,2,3.43,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10322,PERIC,7,2024-10-04,2024-11-01,2024-10-23,3,0.4,Pericles Comidas clásicas,Calle Dr. Jorge Cash 321,México D.F.,,05033,Mexico
+10323,KOENE,4,2024-10-07,2024-11-04,2024-10-14,1,4.88,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10324,SAVEA,9,2024-10-08,2024-11-05,2024-10-10,1,214.27,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10325,KOENE,1,2024-10-09,2024-10-23,2024-10-14,3,64.86,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10326,BOLID,4,2024-10-10,2024-11-07,2024-10-14,2,77.92,Bólido Comidas preparadas,"C/ Araquil, 67",Madrid,,28023,España
+10327,FOLKO,2,2024-10-11,2024-11-08,2024-10-14,1,63.36,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10328,FURIB,4,2024-10-14,2024-11-11,2024-10-17,3,87.03,Furia Bacalhau e Frutos do Mar,Jardim das rosas n. 32,Lisboa,,1675,Portugal
+10329,SPLIR,4,2024-10-15,2024-11-26,2024-10-23,2,191.67,Split Rail Beer & Ale,P.O. Box 555,Lander,WY,82520,Estados Unidos
+10330,LILAS,3,2024-10-16,2024-11-13,2024-10-28,1,12.75,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+10331,BONAP,9,2024-10-16,2024-11-27,2024-10-21,1,10.19,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10332,MEREP,3,2024-10-17,2024-11-28,2024-10-21,2,52.84,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10333,WARTH,5,2024-10-18,2024-11-15,2024-10-25,3,0.59,Wartian Herkku,Torikatu 38,Oulu,,90110,Finlandia
+10334,VICTE,8,2024-10-21,2024-11-18,2024-10-28,2,8.56,Victuailles en stock,"2, rue du Commerce",Lyon,,69004,Francia
+10335,HUNGO,7,2024-10-22,2024-11-19,2024-10-24,2,42.11,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10336,PRINI,7,2024-10-23,2024-11-20,2024-10-25,2,15.51,Princesa Isabel Vinhos,Estrada da saúde n. 58,Lisboa,,1756,Portugal
+10337,FRANK,4,2024-10-24,2024-11-21,2024-10-29,3,108.26,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10338,OLDWO,4,2024-10-25,2024-11-22,2024-10-29,3,84.21,Old World Delicatessen,2743 Bering St.,Anchorage,AK,99508,Estados Unidos
+10339,MEREP,2,2024-10-28,2024-11-25,2024-11-04,2,15.66,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10340,BONAP,1,2024-10-29,2024-11-26,2024-11-08,3,166.31,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10341,SIMOB,7,2024-10-29,2024-11-26,2024-11-05,3,26.78,Simons bistro,Vinbæltet 34,Kobenhavn,,1734,Dinamarca
+10342,FRANK,4,2024-10-30,2024-11-13,2024-11-04,2,54.83,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10343,LEHMS,4,2024-10-31,2024-11-28,2024-11-06,1,110.37,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania

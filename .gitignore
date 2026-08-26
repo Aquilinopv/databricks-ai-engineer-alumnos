@@ -1,0 +1,19 @@
+# Databricks
+.databricks/
+*.pyc
+__pycache__/
+.ipynb_checkpoints/
+
+# credenciales — NUNCA
+.env
+*.pat
+.databrickscfg
+secrets.json
+terraform.tfvars
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# sistema
+.DS_Store
+

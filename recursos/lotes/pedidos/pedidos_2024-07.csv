@@ -1,0 +1,23 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10248,VINET,5,2024-07-04,2024-08-01,2024-07-16,3,32.38,Vins et alcools Chevalier,59 rue de l'Abbaye,Reims,,51100,Francia
+10249,TOMSP,6,2024-07-05,2024-08-16,2024-07-10,1,11.61,Toms Spezialitäten,Luisenstr. 48,Münster,,44087,Alemania
+10250,HANAR,4,2024-07-08,2024-08-05,2024-07-12,2,65.83,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10251,VICTE,3,2024-07-08,2024-08-05,2024-07-15,1,41.34,Victuailles en stock,"2, rue du Commerce",Lyon,,69004,Francia
+10252,SUPRD,4,2024-07-09,2024-08-06,2024-07-11,2,51.3,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10253,HANAR,3,2024-07-10,2024-07-24,2024-07-16,2,58.17,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10254,CHOPS,5,2024-07-11,2024-08-08,2024-07-23,2,22.98,Chop-suey Chinese,Hauptstr. 31,Bern,,3012,Suiza
+10255,RICSU,9,2024-07-12,2024-08-09,2024-07-15,3,148.33,Richter Supermarkt,Starenweg 5,Genève,,1204,Suiza
+10256,WELLI,3,2024-07-15,2024-08-12,2024-07-17,2,13.97,Wellington Importadora,"Rua do Mercado, 12",Resende,SP,08737-363,Brasil
+10257,HILAA,4,2024-07-16,2024-08-13,2024-07-22,3,81.91,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10258,ERNSH,1,2024-07-17,2024-08-14,2024-07-23,1,140.51,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10259,CENTC,4,2024-07-18,2024-08-15,2024-07-25,3,3.25,Centro comercial Moctezuma,Sierras de Granada 9993,México D.F.,,05022,Mexico
+10260,OTTIK,4,2024-07-19,2024-08-16,2024-07-29,1,55.09,Ottilies Käseladen,Mehrheimerstr. 369,Köln,,50739,Alemania
+10261,QUEDE,4,2024-07-19,2024-08-16,2024-07-30,2,3.05,Que Delícia,"Rua da Panificadora, 12",Rio de Janeiro,RJ,02389-673,Brasil
+10262,RATTC,8,2024-07-22,2024-08-19,2024-07-25,3,48.29,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10263,ERNSH,9,2024-07-23,2024-08-20,2024-07-31,3,146.06,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10264,FOLKO,6,2024-07-24,2024-08-21,2024-08-23,3,3.67,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10265,BLONP,2,2024-07-25,2024-08-22,2024-08-12,1,55.28,Blondel père et fils,"24, place Kléber",Strasbourg,,67000,Francia
+10266,WARTH,3,2024-07-26,2024-09-06,2024-07-31,3,25.73,Wartian Herkku,Torikatu 38,Oulu,,90110,Finlandia
+10267,FRANK,4,2024-07-29,2024-08-26,2024-08-06,1,208.58,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10268,GROSR,8,2024-07-30,2024-08-27,2024-08-02,3,66.29,GROSELLA-Restaurante,5ª Ave. Los Palos Grandes,Caracas,DF,1081,Venezuela
+10269,WHITC,5,2024-07-31,2024-08-14,2024-08-09,1,4.56,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos

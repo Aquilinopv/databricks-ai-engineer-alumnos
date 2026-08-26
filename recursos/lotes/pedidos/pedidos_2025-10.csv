@@ -1,0 +1,39 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10688,VAFFE,4,2025-10-01,2025-10-15,2025-10-07,2,299.09,Vaffeljernet,Smagsloget 45,Århus,,8200,Dinamarca
+10689,BERGS,1,2025-10-01,2025-10-29,2025-10-07,2,13.42,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10690,HANAR,1,2025-10-02,2025-10-30,2025-10-03,1,15.8,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10691,QUICK,2,2025-10-03,2025-11-14,2025-10-22,2,810.05,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10692,ALFKI,4,2025-10-03,2025-10-31,2025-10-13,2,61.02,Alfred's Futterkiste,Obere Str. 57,Berlin,,12209,Alemania
+10693,WHITC,3,2025-10-06,2025-10-20,2025-10-10,3,139.34,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10694,QUICK,8,2025-10-06,2025-11-03,2025-10-09,3,398.36,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10695,WILMK,7,2025-10-07,2025-11-18,2025-10-14,1,16.72,Wilman Kala,Keskuskatu 45,Helsinki,,21240,Finlandia
+10696,WHITC,8,2025-10-08,2025-11-19,2025-10-14,3,102.55,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10697,LINOD,3,2025-10-08,2025-11-05,2025-10-14,1,45.52,LINO-Delicateses,Ave. 5 de Mayo Porlamar,I. de Margarita,Nueva Esparta,4980,Venezuela
+10698,ERNSH,4,2025-10-09,2025-11-06,2025-10-17,1,272.47,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10699,MORGK,3,2025-10-09,2025-11-06,2025-10-13,3,0.58,Morgenstern Gesundkost,Heerstr. 22,Leipzig,,04179,Alemania
+10700,SAVEA,3,2025-10-10,2025-11-07,2025-10-16,1,65.1,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10701,HUNGO,6,2025-10-13,2025-10-27,2025-10-15,3,220.31,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10702,ALFKI,4,2025-10-13,2025-11-24,2025-10-21,1,23.94,Alfred's Futterkiste,Obere Str. 57,Berlin,,12209,Alemania
+10703,FOLKO,6,2025-10-14,2025-11-11,2025-10-20,2,152.3,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10704,QUEEN,6,2025-10-14,2025-11-11,2025-11-07,1,4.78,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10705,HILAA,9,2025-10-15,2025-11-12,2025-11-18,2,3.52,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10706,OLDWO,8,2025-10-16,2025-11-13,2025-10-21,3,135.63,Old World Delicatessen,2743 Bering St.,Anchorage,AK,99508,Estados Unidos
+10707,AROUT,4,2025-10-16,2025-10-30,2025-10-23,3,21.74,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10708,THEBI,6,2025-10-17,2025-11-28,2025-11-05,2,2.96,The Big Cheese,89 Jefferson Way Suite 2,Portland,OR,97201,Estados Unidos
+10709,GOURL,1,2025-10-17,2025-11-14,2025-11-20,3,210.8,Gourmet Lanchonetes,"Av. Brasil, 442",Campinas,SP,04876-786,Brasil
+10710,FRANS,1,2025-10-20,2025-11-17,2025-10-23,1,4.98,Franchi S.p.A.,Via Monte Bianco 34,Torino,,10100,Italia
+10711,SAVEA,5,2025-10-21,2025-12-02,2025-10-29,2,52.41,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10712,HUNGO,3,2025-10-21,2025-11-18,2025-10-31,1,89.93,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10713,SAVEA,1,2025-10-22,2025-11-19,2025-10-24,1,167.05,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10714,SAVEA,5,2025-10-22,2025-11-19,2025-10-27,3,24.49,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10715,BONAP,3,2025-10-23,2025-11-06,2025-10-29,1,63.2,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10716,RANCH,4,2025-10-24,2025-11-21,2025-10-27,2,22.57,Rancho grande,Av. del Libertador 900,Buenos Aires,,1010,Argentina
+10717,FRANK,1,2025-10-24,2025-11-21,2025-10-29,2,59.25,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10718,KOENE,1,2025-10-27,2025-11-24,2025-10-29,3,170.88,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10719,LETSS,8,2025-10-27,2025-11-24,2025-11-05,2,51.44,Let's Stop N Shop,87 Polk St. Suite 5,San Francisco,CA,94117,Estados Unidos
+10720,QUEDE,8,2025-10-28,2025-11-11,2025-11-05,2,9.53,Que Delícia,"Rua da Panificadora, 12",Rio de Janeiro,RJ,02389-673,Brasil
+10721,QUICK,5,2025-10-29,2025-11-26,2025-10-31,3,48.92,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10722,SAVEA,8,2025-10-29,2025-12-10,2025-11-04,1,74.58,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10723,WHITC,3,2025-10-30,2025-11-27,2025-11-25,1,21.72,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10724,MEREP,8,2025-10-30,2025-12-11,2025-11-05,2,57.75,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10725,FAMIA,4,2025-10-31,2025-11-28,2025-11-05,3,10.83,Familia Arquibaldo,"Rua Orós, 92",Sao Paulo,SP,05442-030,Brasil

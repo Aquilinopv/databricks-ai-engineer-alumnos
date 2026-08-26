@@ -1,0 +1,56 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10808,OLDWO,2,2026-01-01,2026-01-29,2026-01-09,3,45.53,Old World Delicatessen,2743 Bering St.,Anchorage,AK,99508,Estados Unidos
+10809,WELLI,7,2026-01-01,2026-01-29,2026-01-07,1,4.87,Wellington Importadora,"Rua do Mercado, 12",Resende,SP,08737-363,Brasil
+10810,LAUGB,2,2026-01-01,2026-01-29,2026-01-07,3,4.33,Laughing Bacchus Wine Cellars,2319 Elm St.,Vancouver,BC,V3F 2K1,Canada
+10811,LINOD,8,2026-01-02,2026-01-30,2026-01-08,1,31.22,LINO-Delicateses,Ave. 5 de Mayo Porlamar,I. de Margarita,Nueva Esparta,4980,Venezuela
+10812,REGGC,5,2026-01-02,2026-01-30,2026-01-12,1,59.78,Reggiani Caseifici,Strada Provinciale 124,Reggio Emilia,,42100,Italia
+10813,RICAR,1,2026-01-05,2026-02-02,2026-01-09,1,47.38,Ricardo Adocicados,"Av. Copacabana, 267",Rio de Janeiro,RJ,02389-890,Brasil
+10814,VICTE,3,2026-01-05,2026-02-02,2026-01-14,3,130.94,Victuailles en stock,"2, rue du Commerce",Lyon,,69004,Francia
+10815,SAVEA,2,2026-01-05,2026-02-02,2026-01-14,3,14.62,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10816,GREAL,4,2026-01-06,2026-02-03,2026-02-04,2,719.78,Great Lakes Food Market,2732 Baker Blvd.,Eugene,OR,97403,Estados Unidos
+10817,KOENE,3,2026-01-06,2026-01-20,2026-01-13,2,306.07,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10818,MAGAA,7,2026-01-07,2026-02-04,2026-01-12,3,65.48,Magazzini Alimentari Riuniti,Via Ludovico il Moro 22,Bergamo,,24100,Italia
+10819,CACTU,2,2026-01-07,2026-02-04,2026-01-16,3,19.76,Cactus Comidas para llevar,Cerrito 333,Buenos Aires,,1010,Argentina
+10820,RATTC,3,2026-01-07,2026-02-04,2026-01-13,2,37.52,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10821,SPLIR,1,2026-01-08,2026-02-05,2026-01-15,1,36.68,Split Rail Beer & Ale,P.O. Box 555,Lander,WY,82520,Estados Unidos
+10822,TRAIH,6,2026-01-08,2026-02-05,2026-01-16,3,7,Trail's Head Gourmet Provisioners,722 DaVinci Blvd.,Kirkland,WA,98034,Estados Unidos
+10823,LILAS,5,2026-01-09,2026-02-06,2026-01-13,2,163.97,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+10824,FOLKO,8,2026-01-09,2026-02-06,2026-01-30,1,1.23,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10825,DRACD,1,2026-01-09,2026-02-06,2026-01-14,1,79.25,Drachenblut Delikatessen,Walserweg 21,Aachen,,52066,Alemania
+10826,BLONP,6,2026-01-12,2026-02-09,2026-02-06,1,7.09,Blondel père et fils,"24, place Kléber",Strasbourg,,67000,Francia
+10827,BONAP,1,2026-01-12,2026-01-26,2026-02-06,2,63.54,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10828,RANCH,9,2026-01-13,2026-01-27,2026-02-04,1,90.85,Rancho grande,Av. del Libertador 900,Buenos Aires,,1010,Argentina
+10829,ISLAT,9,2026-01-13,2026-02-10,2026-01-23,1,154.72,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10830,TRADH,4,2026-01-13,2026-02-24,2026-01-21,2,81.83,Tradiçao Hipermercados,"Av. Inês de Castro, 414",Sao Paulo,SP,05634-030,Brasil
+10831,SANTG,3,2026-01-14,2026-02-11,2026-01-23,2,72.19,Santé Gourmet,Erling Skakkes gate 78,Stavern,,4110,Noruega
+10832,LAMAI,2,2026-01-14,2026-02-11,2026-01-19,2,43.26,La maison d'Asie,1 rue Alsace-Lorraine,Toulouse,,31000,Francia
+10833,OTTIK,6,2026-01-15,2026-02-12,2026-01-23,2,71.49,Ottilies Käseladen,Mehrheimerstr. 369,Köln,,50739,Alemania
+10834,TRADH,1,2026-01-15,2026-02-12,2026-01-19,3,29.78,Tradiçao Hipermercados,"Av. Inês de Castro, 414",Sao Paulo,SP,05634-030,Brasil
+10835,ALFKI,1,2026-01-15,2026-02-12,2026-01-21,3,69.53,Alfred's Futterkiste,Obere Str. 57,Berlin,,12209,Alemania
+10836,ERNSH,7,2026-01-16,2026-02-13,2026-01-21,1,411.88,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10837,BERGS,9,2026-01-16,2026-02-13,2026-01-23,3,13.32,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10838,LINOD,3,2026-01-19,2026-02-16,2026-01-23,3,59.28,LINO-Delicateses,Ave. 5 de Mayo Porlamar,I. de Margarita,Nueva Esparta,4980,Venezuela
+10839,TRADH,3,2026-01-19,2026-02-16,2026-01-22,3,35.43,Tradiçao Hipermercados,"Av. Inês de Castro, 414",Sao Paulo,SP,05634-030,Brasil
+10840,LINOD,4,2026-01-19,2026-03-02,2026-02-16,2,2.71,LINO-Delicateses,Ave. 5 de Mayo Porlamar,I. de Margarita,Nueva Esparta,4980,Venezuela
+10841,SUPRD,5,2026-01-20,2026-02-17,2026-01-29,2,424.3,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10842,TORTU,1,2026-01-20,2026-02-17,2026-01-29,3,54.42,Tortuga Restaurante,Avda. Azteca 123,México D.F.,,05033,Mexico
+10843,VICTE,4,2026-01-21,2026-02-18,2026-01-26,2,9.26,Victuailles en stock,"2, rue du Commerce",Lyon,,69004,Francia
+10844,PICCO,8,2026-01-21,2026-02-18,2026-01-26,2,25.22,Piccolo und mehr,Geislweg 14,Salzburg,,5020,Austria
+10845,QUICK,8,2026-01-21,2026-02-04,2026-01-30,1,212.98,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10846,SUPRD,2,2026-01-22,2026-03-05,2026-01-23,3,56.46,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10847,SAVEA,4,2026-01-22,2026-02-05,2026-02-10,3,487.57,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10848,CONSH,7,2026-01-23,2026-02-20,2026-01-29,2,38.24,Consolidated Holdings,Berkeley Gardens 12  Brewery,London,,WX1 6LT,Reino Unido
+10849,KOENE,9,2026-01-23,2026-02-20,2026-01-30,2,0.56,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10850,VICTE,1,2026-01-23,2026-03-06,2026-01-30,1,49.19,Victuailles en stock,"2, rue du Commerce",Lyon,,69004,Francia
+10851,RICAR,5,2026-01-26,2026-02-23,2026-02-02,1,160.55,Ricardo Adocicados,"Av. Copacabana, 267",Rio de Janeiro,RJ,02389-890,Brasil
+10852,RATTC,8,2026-01-26,2026-02-09,2026-01-30,1,174.05,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10853,BLAUS,9,2026-01-27,2026-02-24,2026-02-03,2,53.83,Blauer See Delikatessen,Forsterstr. 57,Mannheim,,68306,Alemania
+10854,ERNSH,3,2026-01-27,2026-02-24,2026-02-05,2,100.22,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10855,OLDWO,3,2026-01-27,2026-02-24,2026-02-04,1,170.97,Old World Delicatessen,2743 Bering St.,Anchorage,AK,99508,Estados Unidos
+10856,ANTON,3,2026-01-28,2026-02-25,2026-02-10,2,58.43,Antonio Moreno Taquería,Mataderos  2312,México D.F.,,05023,Mexico
+10857,BERGS,8,2026-01-28,2026-02-25,2026-02-06,2,188.85,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10858,LACOR,2,2026-01-29,2026-02-26,2026-02-03,1,52.51,La corne d'abondance,"67, avenue de l'Europe",Versailles,,78000,Francia
+10859,FRANK,1,2026-01-29,2026-02-26,2026-02-02,2,76.1,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10860,FRANR,3,2026-01-29,2026-02-26,2026-02-04,3,19.26,France restauration,"54, rue Royale",Nantes,,44000,Francia
+10861,WHITC,4,2026-01-30,2026-02-27,2026-02-17,2,14.93,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10862,LEHMS,8,2026-01-30,2026-03-13,2026-02-02,2,53.23,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania

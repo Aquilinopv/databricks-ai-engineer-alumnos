@@ -1,0 +1,78 @@
+IdProducto,NombreProducto,IdProveedor,IdCategoria,CantidadPorUnidad,PrecioUnidad,UnidadesEnExistencia,UnidadesEnPedido,NivelNuevoPedido,Suspendido
+1,Chai,8,1,10 cajas x 30 bolsas,18,39,0,10,1
+2,Chang,1,1,24 - 12 oz botellas,19,17,40,25,1
+3,Aniseed Syrup,1,2,12 - 550 ml botellas,10,13,70,25,0
+4,Chef Anton's Cajun Seasoning,2,2,48 - 6 oz frascos,22,53,0,0,0
+5,Chef Anton's Gumbo Mix,2,2,36 cajas,21.35,0,0,0,1
+6,Grandma's Boysenberry Spread,3,2,12 - 8 oz frascos,25,120,0,25,0
+7,Uncle Bob's Organic Dried Pears,3,7,12 - 1 lb paq.,30,15,0,10,0
+8,Northwoods Cranberry Sauce,3,2,12 - 12 oz frascos,40,6,0,0,0
+9,Mishi Kobe Niku,4,6,18 - 500 g paq.,97,29,0,0,1
+10,Ikura,4,8,12 - 200 ml frascos,31,31,0,0,0
+11,Queso Cabrales,5,4,1 kg paq.,21,22,30,30,0
+12,Queso Manchego La Pastora,5,4,10 - 500 g paq.,38,86,0,0,0
+13,Konbu,6,8,2 kg caja,6,24,0,5,0
+14,Tofu,6,7,40 - 100 g paq.,23.25,35,0,0,0
+15,Genen Shouyu,6,2,24 - 250 ml botellas,13,39,0,5,0
+16,Pavlova,7,3,32 - 500 g cajas,17.45,29,0,10,0
+17,Alice Mutton,7,6,20 - 1 kg latas,39,0,0,0,1
+18,Carnarvon Tigers,7,8,16 kg paq.,62.5,42,0,0,0
+19,Teatime Chocolate Biscuits,8,3,10 cajas x 12 piezas,9.2,25,0,5,0
+20,Sir Rodney's Marmalade,8,3,30 gift cajas,81,40,0,0,0
+21,Sir Rodney's Scones,8,3,24 paq. x 4 piezas,10,3,40,5,0
+22,Gustaf's Knäckebröd,9,5,24 - 500 g paq.,21,104,0,25,0
+23,Tunnbröd,9,5,12 - 250 g paq.,9,61,0,25,0
+24,Guaraná Fantástica,10,1,12 - 355 ml latas,4.5,20,0,0,1
+25,NuNuCa Nuß-Nougat-Creme,11,3,20 - 450 g vasos,14,76,0,30,0
+26,Gumbär Gummibärchen,11,3,100 - 250 g bolsas,31.23,15,0,0,0
+27,Schoggi Schokolade,11,3,100 - 100 g piezas,43.9,49,0,30,0
+28,Rössle Sauerkraut,12,7,25 - 825 g latas,45.6,26,0,0,1
+29,Thüringer Rostbratwurst,12,6,50 bolsas x 30 sausgs.,123.79,0,0,0,1
+30,Nord-Ost Matjeshering,13,8,10 - 200 g vasos,25.89,10,0,15,0
+31,Gorgonzola Telino,14,4,12 - 100 g paq.,12.5,0,70,20,0
+32,Mascarpone Fabioli,14,4,24 - 200 g paq.,32,9,40,25,0
+33,Geitost,15,4,500 g,2.5,112,0,20,0
+34,Sasquatch Ale,16,1,24 - 12 oz botellas,14,111,0,15,0
+35,Steeleye Stout,16,1,24 - 12 oz botellas,18,20,0,15,0
+36,Inlagd Sill,17,8,24 - 250 g  frascos,19,112,0,20,0
+37,Gravad lax,17,8,12 - 500 g paq.,26,11,50,25,0
+38,Côte de Blaye,18,1,12 - 75 cl botellas,263.5,17,0,15,0
+39,Chartreuse verte,18,1,750 cc per botella,18,69,0,5,0
+40,Boston Crab Meat,19,8,24 - 4 oz latas,18.4,123,0,30,0
+41,Jack's New England Clam Chowder,19,8,12 - 12 oz latas,9.65,85,0,10,0
+42,Singaporean Hokkien Fried Mee,20,5,32 - 1 kg paq.,14,26,0,0,1
+43,Ipoh Coffee,20,1,16 - 500 g latas,46,17,10,25,0
+44,Gula Malacca,20,2,20 - 2 kg bolsas,19.45,27,0,15,0
+45,Rogede sild,21,8,1k paq.,9.5,5,70,15,0
+46,Spegesild,21,8,4 - 450 g vasos,12,95,0,0,0
+47,Zaanse koeken,22,3,10 - 4 oz cajas,9.5,36,0,0,0
+48,Chocolade,22,3,10 paq.,12.75,15,70,25,0
+49,Maxilaku,23,3,24 - 50 g paq.,20,10,60,15,0
+50,Valkoinen suklaa,23,3,12 - 100 g bars,16.25,65,0,30,0
+51,Manjimup Dried Apples,24,7,50 - 300 g paq.,53,20,0,10,0
+52,Filo Mix,24,5,16 - 2 kg cajas,7,38,0,25,0
+53,Perth Pasties,24,6,48 piezas,32.8,0,0,0,1
+54,Tourtière,25,6,16 pasteles,7.45,21,0,10,0
+55,Pâté chinois,25,6,24 cajas x 2 pasteles,24,115,0,20,0
+56,Gnocchi di nonna Alice,26,5,24 - 250 g paq.,38,21,10,30,0
+57,Ravioli Angelo,26,5,24 - 250 g paq.,19.5,36,0,20,0
+58,Escargots de Bourgogne,27,8,24 piezas,13.25,62,0,20,0
+59,Raclette Courdavault,28,4,5 kg paq.,55,79,0,0,0
+60,Camembert Pierrot,28,4,15 - 300 g rounds,34,19,0,0,0
+61,Sirop d'érable,29,2,24 - 500 ml botellas,28.5,113,0,25,0
+62,Tarte au sucre,29,3,48 pasteles,49.3,17,0,0,0
+63,Vegie-spread,7,2,15 - 625 g frascos,43.9,24,0,5,0
+64,Wimmers gute Semmelknödel,12,5,20 bolsas x 4 piezas,33.25,22,80,30,0
+65,Louisiana Fiery Hot Pepper Sauce,2,2,32 - 8 oz botellas,21.05,76,0,0,0
+66,Louisiana Hot Spiced Okra,2,2,24 - 8 oz frascos,17,4,100,20,0
+67,Laughing Lumberjack Lager,16,1,24 - 12 oz botellas,14,52,0,10,0
+68,Scottish Longbreads,8,3,10 cajas x 8 piezas,12.5,6,10,15,0
+69,Gudbrandsdalsost,15,4,10 kg paq.,36,26,0,15,0
+70,Outback Lager,7,1,24 - 355 ml botellas,15,15,10,30,0
+71,Flotemysost,15,4,10 - 500 g paq.,21.5,26,0,0,0
+72,Mozzarella di Giovanni,14,4,24 - 200 g paq.,34.8,14,0,0,0
+73,Röd Kaviar,17,8,24 - 150 g frascos,15,101,0,5,0
+74,Longlife Tofu,4,7,5 kg paq.,10,4,20,5,0
+75,Rhönbräu Klosterbier,12,1,24 - 0.5 l botellas,7.75,125,0,25,0
+76,Lakkalikööri,23,1,500 ml,18,57,0,20,0
+77,Original Frankfurter grüne Soße,12,2,12 cajas,13,32,0,15,0

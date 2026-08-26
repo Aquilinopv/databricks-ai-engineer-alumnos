@@ -1,0 +1,34 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10585,WELLI,7,2025-07-01,2025-07-29,2025-07-10,1,13.41,Wellington Importadora,"Rua do Mercado, 12",Resende,SP,08737-363,Brasil
+10586,REGGC,9,2025-07-02,2025-07-30,2025-07-09,1,0.48,Reggiani Caseifici,Strada Provinciale 124,Reggio Emilia,,42100,Italia
+10587,QUEDE,1,2025-07-02,2025-07-30,2025-07-09,1,62.52,Que Delícia,"Rua da Panificadora, 12",Rio de Janeiro,RJ,02389-673,Brasil
+10588,QUICK,2,2025-07-03,2025-07-31,2025-07-10,3,194.67,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10589,GREAL,8,2025-07-04,2025-08-01,2025-07-14,2,4.42,Great Lakes Food Market,2732 Baker Blvd.,Eugene,OR,97403,Estados Unidos
+10590,MEREP,4,2025-07-07,2025-08-04,2025-07-14,3,44.77,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10591,VAFFE,1,2025-07-07,2025-07-21,2025-07-16,1,55.92,Vaffeljernet,Smagsloget 45,Århus,,8200,Dinamarca
+10592,LEHMS,3,2025-07-08,2025-08-05,2025-07-16,1,32.1,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania
+10593,LEHMS,7,2025-07-09,2025-08-06,2025-08-13,2,174.2,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania
+10594,OLDWO,3,2025-07-09,2025-08-06,2025-07-16,2,5.24,Old World Delicatessen,2743 Bering St.,Anchorage,AK,99508,Estados Unidos
+10595,ERNSH,2,2025-07-10,2025-08-07,2025-07-14,1,96.78,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10596,WHITC,8,2025-07-11,2025-08-08,2025-08-12,1,16.34,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10597,PICCO,7,2025-07-11,2025-08-08,2025-07-18,3,35.12,Piccolo und mehr,Geislweg 14,Salzburg,,5020,Austria
+10598,RATTC,1,2025-07-14,2025-08-11,2025-07-18,3,44.42,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10599,BSBEV,6,2025-07-15,2025-08-26,2025-07-21,3,29.98,B's Beverages,Fauntleroy Circus,London,,EC2 5NT,Reino Unido
+10600,HUNGC,4,2025-07-16,2025-08-13,2025-07-21,1,45.13,Hungry Coyote Import Store,City Center Plaza 516 Main St.,Elgin,OR,97827,Estados Unidos
+10601,HILAA,7,2025-07-16,2025-08-27,2025-07-22,1,58.3,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10602,VAFFE,8,2025-07-17,2025-08-14,2025-07-22,2,2.92,Vaffeljernet,Smagsloget 45,Århus,,8200,Dinamarca
+10603,SAVEA,8,2025-07-18,2025-08-15,2025-08-08,2,48.77,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10604,FURIB,1,2025-07-18,2025-08-15,2025-07-29,1,7.46,Furia Bacalhau e Frutos do Mar,Jardim das rosas n. 32,Lisboa,,1675,Portugal
+10605,MEREP,1,2025-07-21,2025-08-18,2025-07-29,2,379.13,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10606,TRADH,4,2025-07-22,2025-08-19,2025-07-31,3,79.4,Tradiçao Hipermercados,"Av. Inês de Castro, 414",Sao Paulo,SP,05634-030,Brasil
+10607,SAVEA,5,2025-07-22,2025-08-19,2025-07-25,1,200.24,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10608,TOMSP,4,2025-07-23,2025-08-20,2025-08-01,2,27.79,Toms Spezialitäten,Luisenstr. 48,Münster,,44087,Alemania
+10609,DUMON,7,2025-07-24,2025-08-21,2025-07-30,2,1.85,Du monde entier,"67, rue des Cinquante Otages",Nantes,,44000,Francia
+10610,LAMAI,8,2025-07-25,2025-08-22,2025-08-06,1,26.78,La maison d'Asie,1 rue Alsace-Lorraine,Toulouse,,31000,Francia
+10611,WOLZA,6,2025-07-25,2025-08-22,2025-08-01,2,80.65,Wolski Zajazd,ul. Filtrowa 68,Warszawa,,01-012,Polonia
+10612,SAVEA,1,2025-07-28,2025-08-25,2025-08-01,2,544.08,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10613,HILAA,4,2025-07-29,2025-08-26,2025-08-01,2,8.11,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10614,BLAUS,8,2025-07-29,2025-08-26,2025-08-01,3,1.93,Blauer See Delikatessen,Forsterstr. 57,Mannheim,,68306,Alemania
+10615,WILMK,2,2025-07-30,2025-08-27,2025-08-06,3,0.75,Wilman Kala,Keskuskatu 45,Helsinki,,21240,Finlandia
+10616,GREAL,1,2025-07-31,2025-08-28,2025-08-05,2,116.53,Great Lakes Food Market,2732 Baker Blvd.,Eugene,OR,97403,Estados Unidos
+10617,GREAL,4,2025-07-31,2025-08-28,2025-08-04,2,18.53,Great Lakes Food Market,2732 Baker Blvd.,Eugene,OR,97403,Estados Unidos

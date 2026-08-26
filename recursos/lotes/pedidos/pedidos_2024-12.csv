@@ -1,0 +1,32 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10369,SPLIR,8,2024-12-02,2024-12-30,2024-12-09,2,195.68,Split Rail Beer & Ale,P.O. Box 555,Lander,WY,82520,Estados Unidos
+10370,CHOPS,6,2024-12-03,2024-12-31,2024-12-27,2,1.17,Chop-suey Chinese,Hauptstr. 31,Bern,,3012,Suiza
+10371,LAMAI,1,2024-12-03,2024-12-31,2024-12-24,1,0.45,La maison d'Asie,1 rue Alsace-Lorraine,Toulouse,,31000,Francia
+10372,QUEEN,5,2024-12-04,2025-01-01,2024-12-09,2,890.78,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10373,HUNGO,4,2024-12-05,2025-01-02,2024-12-11,3,124.12,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10374,WOLZA,1,2024-12-05,2025-01-02,2024-12-09,3,3.94,Wolski Zajazd,ul. Filtrowa 68,Warszawa,,01-012,Polonia
+10375,HUNGC,3,2024-12-06,2025-01-03,2024-12-09,2,20.12,Hungry Coyote Import Store,City Center Plaza 516 Main St.,Elgin,OR,97827,Estados Unidos
+10376,MEREP,1,2024-12-09,2025-01-06,2024-12-13,2,20.39,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10377,SEVES,1,2024-12-09,2025-01-06,2024-12-13,3,22.21,Seven Seas Imports,90 Wadhurst Rd.,London,,OX15 4NB,Reino Unido
+10378,FOLKO,5,2024-12-10,2025-01-07,2024-12-19,3,5.44,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10379,QUEDE,2,2024-12-11,2025-01-08,2024-12-13,1,45.03,Que Delícia,"Rua da Panificadora, 12",Rio de Janeiro,RJ,02389-673,Brasil
+10380,HUNGO,8,2024-12-12,2025-01-09,2025-01-16,3,35.03,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10381,LILAS,3,2024-12-12,2025-01-09,2024-12-13,3,7.99,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+10382,ERNSH,4,2024-12-13,2025-01-10,2024-12-16,1,94.77,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10383,AROUT,8,2024-12-16,2025-01-13,2024-12-18,3,34.24,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10384,BERGS,3,2024-12-16,2025-01-13,2024-12-20,3,168.64,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10385,SPLIR,1,2024-12-17,2025-01-14,2024-12-23,2,30.96,Split Rail Beer & Ale,P.O. Box 555,Lander,WY,82520,Estados Unidos
+10386,FAMIA,9,2024-12-18,2025-01-01,2024-12-25,3,13.99,Familia Arquibaldo,"Rua Orós, 92",Sao Paulo,SP,05442-030,Brasil
+10387,SANTG,1,2024-12-18,2025-01-15,2024-12-20,2,93.63,Santé Gourmet,Erling Skakkes gate 78,Stavern,,4110,Noruega
+10388,SEVES,2,2024-12-19,2025-01-16,2024-12-20,1,34.86,Seven Seas Imports,90 Wadhurst Rd.,London,,OX15 4NB,Reino Unido
+10389,BOTTM,4,2024-12-20,2025-01-17,2024-12-24,2,47.42,Bottom-Dollar Markets,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada
+10390,ERNSH,6,2024-12-23,2025-01-20,2024-12-26,1,126.38,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10391,DRACD,3,2024-12-23,2025-01-20,2024-12-31,3,5.45,Drachenblut Delikatessen,Walserweg 21,Aachen,,52066,Alemania
+10392,PICCO,2,2024-12-24,2025-01-21,2025-01-01,3,122.46,Piccolo und mehr,Geislweg 14,Salzburg,,5020,Austria
+10393,SAVEA,1,2024-12-25,2025-01-22,2025-01-03,3,126.56,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10394,HUNGC,1,2024-12-25,2025-01-22,2025-01-03,3,30.34,Hungry Coyote Import Store,City Center Plaza 516 Main St.,Elgin,OR,97827,Estados Unidos
+10395,HILAA,6,2024-12-26,2025-01-23,2025-01-03,1,184.41,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10396,FRANK,1,2024-12-27,2025-01-10,2025-01-06,3,135.35,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10397,PRINI,5,2024-12-27,2025-01-24,2025-01-02,1,60.26,Princesa Isabel Vinhos,Estrada da saúde n. 58,Lisboa,,1756,Portugal
+10398,SAVEA,2,2024-12-30,2025-01-27,2025-01-09,3,89.16,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10399,VAFFE,8,2024-12-31,2025-01-14,2025-01-08,3,27.36,Vaffeljernet,Smagsloget 45,Århus,,8200,Dinamarca

@@ -1,0 +1,34 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10618,MEREP,1,2025-08-01,2025-09-12,2025-08-08,1,154.68,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10619,MEREP,3,2025-08-04,2025-09-01,2025-08-07,3,91.05,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10620,LAUGB,2,2025-08-05,2025-09-02,2025-08-14,3,0.94,Laughing Bacchus Wine Cellars,2319 Elm St.,Vancouver,BC,V3F 2K1,Canada
+10621,ISLAT,4,2025-08-05,2025-09-02,2025-08-11,2,23.73,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10622,RICAR,4,2025-08-06,2025-09-03,2025-08-11,3,50.97,Ricardo Adocicados,"Av. Copacabana, 267",Rio de Janeiro,RJ,02389-890,Brasil
+10623,FRANK,8,2025-08-07,2025-09-04,2025-08-12,2,97.18,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10624,THECR,4,2025-08-07,2025-09-04,2025-08-19,2,94.8,The Cracker Box,55 Grizzly Peak Rd.,Butte,MT,59801,Estados Unidos
+10625,ANATR,3,2025-08-08,2025-09-05,2025-08-14,1,43.9,Ana Trujillo Emparedados y helados,Avda. de la Constitución 2222,México D.F.,,05021,Mexico
+10626,BERGS,1,2025-08-11,2025-09-08,2025-08-20,2,138.69,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10627,SAVEA,8,2025-08-11,2025-09-22,2025-08-21,3,107.46,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10628,BLONP,4,2025-08-12,2025-09-09,2025-08-20,3,30.36,Blondel père et fils,"24, place Kléber",Strasbourg,,67000,Francia
+10629,GODOS,4,2025-08-12,2025-09-09,2025-08-20,3,85.46,Godos Cocina Típica,"C/ Romero, 33",Sevilla,,41101,España
+10630,KOENE,1,2025-08-13,2025-09-10,2025-08-19,2,32.35,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10631,LAMAI,8,2025-08-14,2025-09-11,2025-08-15,1,0.87,La maison d'Asie,1 rue Alsace-Lorraine,Toulouse,,31000,Francia
+10632,WANDK,8,2025-08-14,2025-09-11,2025-08-19,1,41.38,Die Wandernde Kuh,Adenauerallee 900,Stuttgart,,70563,Alemania
+10633,ERNSH,7,2025-08-15,2025-09-12,2025-08-18,3,477.9,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10634,FOLIG,4,2025-08-15,2025-09-12,2025-08-21,3,487.38,Folies gourmandes,"184, chaussée de Tournai",Lille,,59000,Francia
+10635,MAGAA,8,2025-08-18,2025-09-15,2025-08-21,3,47.46,Magazzini Alimentari Riuniti,Via Ludovico il Moro 22,Bergamo,,24100,Italia
+10636,WARTH,4,2025-08-19,2025-09-16,2025-08-26,1,1.15,Wartian Herkku,Torikatu 38,Oulu,,90110,Finlandia
+10637,QUEEN,6,2025-08-19,2025-09-16,2025-08-26,1,201.29,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10638,LINOD,3,2025-08-20,2025-09-17,2025-09-01,1,158.44,LINO-Delicateses,Ave. 5 de Mayo Porlamar,I. de Margarita,Nueva Esparta,4980,Venezuela
+10639,SANTG,7,2025-08-20,2025-09-17,2025-08-27,3,38.64,Santé Gourmet,Erling Skakkes gate 78,Stavern,,4110,Noruega
+10640,WANDK,4,2025-08-21,2025-09-18,2025-08-28,1,23.55,Die Wandernde Kuh,Adenauerallee 900,Stuttgart,,70563,Alemania
+10641,HILAA,4,2025-08-22,2025-09-19,2025-08-26,2,179.61,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10642,SIMOB,7,2025-08-22,2025-09-19,2025-09-05,3,41.89,Simons bistro,Vinbæltet 34,Kobenhavn,,1734,Dinamarca
+10643,ALFKI,6,2025-08-25,2025-09-22,2025-09-02,1,29.46,Alfreds Futterkiste,Obere Str. 57,Berlin,,12209,Alemania
+10644,WELLI,3,2025-08-25,2025-09-22,2025-09-01,2,0.14,Wellington Importadora,"Rua do Mercado, 12",Resende,SP,08737-363,Brasil
+10645,HANAR,4,2025-08-26,2025-09-23,2025-09-02,1,12.41,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10646,HUNGO,9,2025-08-27,2025-10-08,2025-09-03,3,142.33,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10647,QUEDE,4,2025-08-27,2025-09-10,2025-09-03,2,45.54,Que Delícia,"Rua da Panificadora, 12",Rio de Janeiro,RJ,02389-673,Brasil
+10648,RICAR,5,2025-08-28,2025-10-09,2025-09-09,2,14.25,Ricardo Adocicados,"Av. Copacabana, 267",Rio de Janeiro,RJ,02389-890,Brasil
+10649,MAISD,5,2025-08-28,2025-09-25,2025-08-29,3,6.2,Maison Dewey,Rue Joseph-Bens 532,Bruxelles,,B-1180,Belgica
+10650,FAMIA,5,2025-08-29,2025-09-26,2025-09-03,3,176.81,Familia Arquibaldo,"Rua Orós, 92",Sao Paulo,SP,05442-030,Brasil

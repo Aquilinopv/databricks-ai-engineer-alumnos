@@ -1,0 +1,30 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10433,PRINI,3,2025-02-03,2025-03-03,2025-03-04,3,73.83,Princesa Isabel Vinhos,Estrada da saúde n. 58,Lisboa,,1756,Portugal
+10434,FOLKO,3,2025-02-03,2025-03-03,2025-02-13,2,17.92,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10435,CONSH,8,2025-02-04,2025-03-18,2025-02-07,2,9.21,Consolidated Holdings,Berkeley Gardens 12  Brewery,London,,WX1 6LT,Reino Unido
+10436,BLONP,3,2025-02-05,2025-03-05,2025-02-11,2,156.66,Blondel père et fils,"24, place Kléber",Strasbourg,,67000,Francia
+10437,WARTH,8,2025-02-05,2025-03-05,2025-02-12,1,19.97,Wartian Herkku,Torikatu 38,Oulu,,90110,Finlandia
+10438,TOMSP,3,2025-02-06,2025-03-06,2025-02-14,2,8.24,Toms Spezialitäten,Luisenstr. 48,Münster,,44087,Alemania
+10439,MEREP,6,2025-02-07,2025-03-07,2025-02-10,3,4.07,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10440,SAVEA,4,2025-02-10,2025-03-10,2025-02-28,2,86.53,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10441,OLDWO,3,2025-02-10,2025-03-24,2025-03-14,2,73.02,Old World Delicatessen,2743 Bering St.,Anchorage,AK,99508,Estados Unidos
+10442,ERNSH,3,2025-02-11,2025-03-11,2025-02-18,2,47.94,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10443,REGGC,8,2025-02-12,2025-03-12,2025-02-14,1,13.95,Reggiani Caseifici,Strada Provinciale 124,Reggio Emilia,,42100,Italia
+10444,BERGS,3,2025-02-12,2025-03-12,2025-02-21,3,3.5,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10445,BERGS,3,2025-02-13,2025-03-13,2025-02-20,1,9.3,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10446,TOMSP,6,2025-02-14,2025-03-14,2025-02-19,1,14.68,Toms Spezialitäten,Luisenstr. 48,Münster,,44087,Alemania
+10447,RICAR,4,2025-02-14,2025-03-14,2025-03-07,2,68.66,Ricardo Adocicados,"Av. Copacabana, 267",Rio de Janeiro,RJ,02389-890,Brasil
+10448,RANCH,4,2025-02-17,2025-03-17,2025-02-24,2,38.82,Rancho grande,Av. del Libertador 900,Buenos Aires,,1010,Argentina
+10449,BLONP,3,2025-02-18,2025-03-18,2025-02-27,2,53.3,Blondel père et fils,"24, place Kléber",Strasbourg,,67000,Francia
+10450,VICTE,8,2025-02-19,2025-03-19,2025-03-11,2,7.23,Victuailles en stock,"2, rue du Commerce",Lyon,,69004,Francia
+10451,QUICK,4,2025-02-19,2025-03-05,2025-03-12,3,189.09,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10452,SAVEA,8,2025-02-20,2025-03-20,2025-02-26,1,140.26,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10453,AROUT,1,2025-02-21,2025-03-21,2025-02-26,2,25.36,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10454,LAMAI,4,2025-02-21,2025-03-21,2025-02-25,3,2.74,La maison d'Asie,1 rue Alsace-Lorraine,Toulouse,,31000,Francia
+10455,WARTH,8,2025-02-24,2025-04-07,2025-03-03,2,180.45,Wartian Herkku,Torikatu 38,Oulu,,90110,Finlandia
+10456,KOENE,8,2025-02-25,2025-04-08,2025-02-28,2,8.12,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10457,KOENE,2,2025-02-25,2025-03-25,2025-03-03,1,11.57,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10458,SUPRD,7,2025-02-26,2025-03-26,2025-03-04,3,147.06,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10459,VICTE,4,2025-02-27,2025-03-27,2025-02-28,2,25.09,Victuailles en stock,"2, rue du Commerce",Lyon,,69004,Francia
+10460,FOLKO,8,2025-02-28,2025-03-28,2025-03-03,1,16.27,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10461,LILAS,1,2025-02-28,2025-03-28,2025-03-05,3,148.61,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela

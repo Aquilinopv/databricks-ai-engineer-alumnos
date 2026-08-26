@@ -1,0 +1,32 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10492,BOTTM,3,2025-04-01,2025-04-29,2025-04-11,1,62.89,Bottom-Dollar Markets,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada
+10493,LAMAI,4,2025-04-02,2025-04-30,2025-04-10,3,10.64,La maison d'Asie,1 rue Alsace-Lorraine,Toulouse,,31000,Francia
+10494,COMMI,4,2025-04-02,2025-04-30,2025-04-09,2,65.99,Comércio Mineiro,"Av. dos Lusíadas, 23",Sao Paulo,SP,05432-043,Brasil
+10495,LAUGB,3,2025-04-03,2025-05-01,2025-04-11,3,4.65,Laughing Bacchus Wine Cellars,2319 Elm St.,Vancouver,BC,V3F 2K1,Canada
+10496,TRADH,7,2025-04-04,2025-05-02,2025-04-07,2,46.77,Tradiçao Hipermercados,"Av. Inês de Castro, 414",Sao Paulo,SP,05634-030,Brasil
+10497,LEHMS,7,2025-04-04,2025-05-02,2025-04-07,1,36.21,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania
+10498,HILAA,8,2025-04-07,2025-05-05,2025-04-11,2,29.75,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10499,LILAS,4,2025-04-08,2025-05-06,2025-04-16,2,102.02,LILA-Supermercado,Carrera 52 con Ave. Bolívar #65-98 Llano Largo,Barquisimeto,Lara,3508,Venezuela
+10500,LAMAI,6,2025-04-09,2025-05-07,2025-04-17,1,42.68,La maison d'Asie,1 rue Alsace-Lorraine,Toulouse,,31000,Francia
+10501,BLAUS,9,2025-04-09,2025-05-07,2025-04-16,3,8.85,Blauer See Delikatessen,Forsterstr. 57,Mannheim,,68306,Alemania
+10502,PERIC,2,2025-04-10,2025-05-08,2025-04-29,1,69.32,Pericles Comidas clásicas,Calle Dr. Jorge Cash 321,México D.F.,,05033,Mexico
+10503,HUNGO,6,2025-04-11,2025-05-09,2025-04-16,2,16.74,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10504,WHITC,4,2025-04-11,2025-05-09,2025-04-18,3,59.13,White Clover Markets,1029 - 12th Ave. S.,Seattle,WA,98124,Estados Unidos
+10505,MEREP,3,2025-04-14,2025-05-12,2025-04-21,3,7.13,Mère Paillarde,43 rue St. Laurent,Montréal,Québec,H1J 1C3,Canada
+10506,KOENE,9,2025-04-15,2025-05-13,2025-05-02,2,21.19,Königlich Essen,Maubelstr. 90,Brandenburg,,14776,Alemania
+10507,ANTON,7,2025-04-15,2025-05-13,2025-04-22,1,47.45,Antonio Moreno Taquería,Mataderos  2312,México D.F.,,05023,Mexico
+10508,OTTIK,1,2025-04-16,2025-05-14,2025-05-13,2,4.99,Ottilies Käseladen,Mehrheimerstr. 369,Köln,,50739,Alemania
+10509,BLAUS,4,2025-04-17,2025-05-15,2025-04-29,1,0.15,Blauer See Delikatessen,Forsterstr. 57,Mannheim,,68306,Alemania
+10510,SAVEA,6,2025-04-18,2025-05-16,2025-04-28,3,367.63,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10511,BONAP,4,2025-04-18,2025-05-16,2025-04-21,3,350.64,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10512,FAMIA,7,2025-04-21,2025-05-19,2025-04-24,2,3.53,Familia Arquibaldo,"Rua Orós, 92",Sao Paulo,SP,05442-030,Brasil
+10513,WANDK,7,2025-04-22,2025-06-03,2025-04-28,1,105.65,Die Wandernde Kuh,Adenauerallee 900,Stuttgart,,70563,Alemania
+10514,ERNSH,3,2025-04-22,2025-05-20,2025-05-16,2,789.95,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10515,QUICK,2,2025-04-23,2025-05-07,2025-05-23,1,204.47,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10516,HUNGO,2,2025-04-24,2025-05-22,2025-05-01,3,62.78,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10517,NORTS,3,2025-04-24,2025-05-22,2025-04-29,3,32.07,North/South,South House 300 Queensbridge,London,,SW7 1RZ,Reino Unido
+10518,TORTU,4,2025-04-25,2025-05-09,2025-05-05,2,218.15,Tortuga Restaurante,Avda. Azteca 123,México D.F.,,05033,Mexico
+10519,CHOPS,6,2025-04-28,2025-05-26,2025-05-01,3,91.76,Chop-suey Chinese,Hauptstr. 31,Bern,,3012,Suiza
+10520,SANTG,7,2025-04-29,2025-05-27,2025-05-01,1,13.37,Santé Gourmet,Erling Skakkes gate 78,Stavern,,4110,Noruega
+10521,CACTU,8,2025-04-29,2025-05-27,2025-05-02,2,17.22,Cactus Comidas para llevar,Cerrito 333,Buenos Aires,,1010,Argentina
+10522,LEHMS,4,2025-04-30,2025-05-28,2025-05-06,1,45.33,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania

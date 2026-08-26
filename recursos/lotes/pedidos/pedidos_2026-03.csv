@@ -1,0 +1,74 @@
+IdPedido,IdCliente,IdEmpleado,FechaPedido,FechaEntrega,FechaEnvio,IdTransportista,Cargo,NombreDestinatario,DireccionDestinatario,CiudadDestinatario,RegionDestinatario,CodPostalDestinatario,PaisDestinatario
+10917,ROMEY,4,2026-03-02,2026-03-30,2026-03-11,2,8.29,Romero y tomillo,"Gran Vía, 1",Madrid,,28001,España
+10918,BOTTM,3,2026-03-02,2026-03-30,2026-03-11,3,48.83,Bottom-Dollar Markets,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada
+10919,LINOD,2,2026-03-02,2026-03-30,2026-03-04,2,19.8,LINO-Delicateses,Ave. 5 de Mayo Porlamar,I. de Margarita,Nueva Esparta,4980,Venezuela
+10920,AROUT,4,2026-03-03,2026-03-31,2026-03-09,2,29.61,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10921,VAFFE,1,2026-03-03,2026-04-14,2026-03-09,1,176.48,Vaffeljernet,Smagsloget 45,Århus,,8200,Dinamarca
+10922,HANAR,5,2026-03-03,2026-03-31,2026-03-05,3,62.74,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10923,LAMAI,7,2026-03-03,2026-04-14,2026-03-13,3,68.26,La maison d'Asie,1 rue Alsace-Lorraine,Toulouse,,31000,Francia
+10924,BERGS,3,2026-03-04,2026-04-01,2026-04-08,2,151.52,Berglunds snabbköp,Berguvsvägen  8,Luleå,,S-958 22,Suecia
+10925,HANAR,3,2026-03-04,2026-04-01,2026-03-13,1,2.27,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10926,ANATR,4,2026-03-04,2026-04-01,2026-03-11,3,39.92,Ana Trujillo Emparedados y helados,Avda. de la Constitución 2222,México D.F.,,05021,Mexico
+10927,LACOR,4,2026-03-05,2026-04-02,2026-04-08,1,19.79,La corne d'abondance,"67, avenue de l'Europe",Versailles,,78000,Francia
+10928,GALED,1,2026-03-05,2026-04-02,2026-03-18,1,1.36,Galería del gastronómo,"Rambla de Cataluña, 23",Barcelona,,8022,España
+10929,FRANK,6,2026-03-05,2026-04-02,2026-03-12,1,33.93,Frankenversand,Berliner Platz 43,München,,80805,Alemania
+10930,SUPRD,4,2026-03-06,2026-04-17,2026-03-18,3,15.55,Suprêmes délices,"Boulevard Tirou, 255",Charleroi,,B-6000,Belgica
+10931,RICSU,4,2026-03-06,2026-03-20,2026-03-19,2,13.6,Richter Supermarkt,Starenweg 5,Genève,,1204,Suiza
+10932,BONAP,8,2026-03-06,2026-04-03,2026-03-24,1,134.64,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10933,ISLAT,6,2026-03-06,2026-04-03,2026-03-16,3,54.15,Island Trading,Garden House Crowther Way,Cowes,Isle of Wight,PO31 7PJ,Reino Unido
+10934,LEHMS,3,2026-03-09,2026-04-06,2026-03-12,3,32.01,Lehmanns Marktstand,Magazinweg 7,Frankfurt a.M.,,60528,Alemania
+10935,WELLI,4,2026-03-09,2026-04-06,2026-03-18,3,47.59,Wellington Importadora,"Rua do Mercado, 12",Resende,SP,08737-363,Brasil
+10936,GREAL,3,2026-03-09,2026-04-06,2026-03-18,2,33.68,Great Lakes Food Market,2732 Baker Blvd.,Eugene,OR,97403,Estados Unidos
+10937,CACTU,7,2026-03-10,2026-03-24,2026-03-13,3,31.51,Cactus Comidas para llevar,Cerrito 333,Buenos Aires,,1010,Argentina
+10938,QUICK,3,2026-03-10,2026-04-07,2026-03-16,2,31.89,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10939,MAGAA,2,2026-03-10,2026-04-07,2026-03-13,2,76.33,Magazzini Alimentari Riuniti,Via Ludovico il Moro 22,Bergamo,,24100,Italia
+10940,BONAP,8,2026-03-11,2026-04-08,2026-03-23,3,19.77,Bon app',"12, rue des Bouchers",Marseille,,13008,Francia
+10941,SAVEA,7,2026-03-11,2026-04-08,2026-03-20,2,400.81,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10942,REGGC,9,2026-03-11,2026-04-08,2026-03-18,3,17.95,Reggiani Caseifici,Strada Provinciale 124,Reggio Emilia,,42100,Italia
+10943,BSBEV,4,2026-03-11,2026-04-08,2026-03-19,2,2.17,B's Beverages,Fauntleroy Circus,London,,EC2 5NT,Reino Unido
+10944,BOTTM,6,2026-03-12,2026-03-26,2026-03-13,3,52.92,Bottom-Dollar Markets,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada
+10945,MORGK,4,2026-03-12,2026-04-09,2026-03-18,1,10.22,Morgenstern Gesundkost,Heerstr. 22,Leipzig,,04179,Alemania
+10946,VAFFE,1,2026-03-12,2026-04-09,2026-03-19,2,27.2,Vaffeljernet,Smagsloget 45,Århus,,8200,Dinamarca
+10947,BSBEV,3,2026-03-13,2026-04-10,2026-03-16,2,3.26,B's Beverages,Fauntleroy Circus,London,,EC2 5NT,Reino Unido
+10948,GODOS,3,2026-03-13,2026-04-10,2026-03-19,3,23.39,Godos Cocina Típica,"C/ Romero, 33",Sevilla,,41101,España
+10949,BOTTM,2,2026-03-13,2026-04-10,2026-03-17,3,74.44,Bottom-Dollar Markets,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada
+10950,MAGAA,1,2026-03-16,2026-04-13,2026-03-23,2,2.5,Magazzini Alimentari Riuniti,Via Ludovico il Moro 22,Bergamo,,24100,Italia
+10951,RICSU,9,2026-03-16,2026-04-27,2026-04-07,2,30.85,Richter Supermarkt,Starenweg 5,Genève,,1204,Suiza
+10952,ALFKI,1,2026-03-16,2026-04-27,2026-03-24,1,40.42,Alfred's Futterkiste,Obere Str. 57,Berlin,,12209,Alemania
+10953,AROUT,9,2026-03-16,2026-03-30,2026-03-25,2,23.72,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,Reino Unido
+10954,LINOD,5,2026-03-17,2026-04-28,2026-03-20,1,27.91,LINO-Delicateses,Ave. 5 de Mayo Porlamar,I. de Margarita,Nueva Esparta,4980,Venezuela
+10955,FOLKO,8,2026-03-17,2026-04-14,2026-03-20,2,3.26,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10956,BLAUS,6,2026-03-17,2026-04-28,2026-03-20,2,44.65,Blauer See Delikatessen,Forsterstr. 57,Mannheim,,68306,Alemania
+10957,HILAA,8,2026-03-18,2026-04-15,2026-03-27,3,105.36,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10958,OCEAN,7,2026-03-18,2026-04-15,2026-03-27,2,49.56,Océano Atlántico Ltda.,Ing. Gustavo Moncada 8585 Piso 20-A,Buenos Aires,,1010,Argentina
+10959,GOURL,6,2026-03-18,2026-04-29,2026-03-23,2,4.98,Gourmet Lanchonetes,"Av. Brasil, 442",Campinas,SP,04876-786,Brasil
+10960,HILAA,3,2026-03-19,2026-04-02,2026-04-08,1,2.08,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10961,QUEEN,8,2026-03-19,2026-04-16,2026-03-30,1,104.47,Queen Cozinha,"Alameda dos Canàrios, 891",Sao Paulo,SP,05487-020,Brasil
+10962,QUICK,8,2026-03-19,2026-04-16,2026-03-23,2,275.79,QUICK-Stop,Taucherstraße 10,Cunewalde,,01307,Alemania
+10963,FURIB,9,2026-03-19,2026-04-16,2026-03-26,3,2.7,Furia Bacalhau e Frutos do Mar,Jardim das rosas n. 32,Lisboa,,1675,Portugal
+10964,SPECD,3,2026-03-20,2026-04-17,2026-03-24,2,87.38,Spécialités du monde,"25, rue Lauriston",Paris,,75016,Francia
+10965,OLDWO,6,2026-03-20,2026-04-17,2026-03-30,3,144.38,Old World Delicatessen,2743 Bering St.,Anchorage,AK,99508,Estados Unidos
+10966,CHOPS,4,2026-03-20,2026-04-17,2026-04-08,1,27.19,Chop-suey Chinese,Hauptstr. 31,Bern,,3012,Suiza
+10967,TOMSP,2,2026-03-23,2026-04-20,2026-04-02,2,62.22,Toms Spezialitäten,Luisenstr. 48,Münster,,44087,Alemania
+10968,ERNSH,1,2026-03-23,2026-04-20,2026-04-01,3,74.6,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10969,COMMI,1,2026-03-23,2026-04-20,2026-03-30,2,0.21,Comércio Mineiro,"Av. dos Lusíadas, 23",Sao Paulo,SP,05432-043,Brasil
+10970,BOLID,9,2026-03-24,2026-04-07,2026-04-24,1,16.16,Bólido Comidas preparadas,"C/ Araquil, 67",Madrid,,28023,España
+10971,FRANR,2,2026-03-24,2026-04-21,2026-04-02,2,121.82,France restauration,"54, rue Royale",Nantes,,44000,Francia
+10972,LACOR,4,2026-03-24,2026-04-21,2026-03-26,2,0.02,La corne d'abondance,"67, avenue de l'Europe",Versailles,,78000,Francia
+10973,LACOR,6,2026-03-24,2026-04-21,2026-03-27,2,15.17,La corne d'abondance,"67, avenue de l'Europe",Versailles,,78000,Francia
+10974,SPLIR,3,2026-03-25,2026-04-08,2026-04-03,3,12.96,Split Rail Beer & Ale,P.O. Box 555,Lander,WY,82520,Estados Unidos
+10975,BOTTM,1,2026-03-25,2026-04-22,2026-03-27,3,32.27,Bottom-Dollar Markets,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada
+10976,HILAA,1,2026-03-25,2026-05-06,2026-04-03,1,37.97,HILARION-Abastos,Carrera 22 con Ave. Carlos Soublette #8-35,San Cristóbal,Táchira,5022,Venezuela
+10977,FOLKO,8,2026-03-26,2026-04-23,2026-04-10,3,208.5,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10978,MAISD,9,2026-03-26,2026-04-23,2026-04-23,2,32.82,Maison Dewey,Rue Joseph-Bens 532,Bruxelles,,B-1180,Belgica
+10979,ERNSH,8,2026-03-26,2026-04-23,2026-03-31,2,353.07,Ernst Handel,Kirchgasse 6,Graz,,8010,Austria
+10980,FOLKO,4,2026-03-27,2026-05-08,2026-04-17,1,1.26,Folk och fä HB,Åkergatan 24,Bräcke,,S-844 67,Suecia
+10981,HANAR,1,2026-03-27,2026-04-24,2026-04-02,2,193.37,Hanari Carnes,"Rua do Paço, 67",Rio de Janeiro,RJ,05454-876,Brasil
+10982,BOTTM,2,2026-03-27,2026-04-24,2026-04-08,1,14.01,Bottom-Dollar Markets,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada
+10983,SAVEA,2,2026-03-27,2026-04-24,2026-04-06,2,657.54,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10984,SAVEA,1,2026-03-30,2026-04-27,2026-04-03,3,211.22,Save-a-lot Markets,187 Suffolk Ln.,Boise,ID,83720,Estados Unidos
+10985,HUNGO,2,2026-03-30,2026-04-27,2026-04-02,1,91.51,Hungry Owl All-Night Grocers,8 Johnstown Road,Cork,Co. Cork,,Irlanda
+10986,OCEAN,8,2026-03-30,2026-04-27,2026-04-21,2,217.86,Océano Atlántico Ltda.,Ing. Gustavo Moncada 8585 Piso 20-A,Buenos Aires,,1010,Argentina
+10987,EASTC,8,2026-03-31,2026-04-28,2026-04-06,1,185.48,Eastern Connection,35 King George,London,,WX3 6FW,Reino Unido
+10988,RATTC,3,2026-03-31,2026-04-28,2026-04-10,2,61.14,Rattlesnake Canyon Grocery,2817 Milton Dr.,Albuquerque,NM,87110,Estados Unidos
+10989,QUEDE,2,2026-03-31,2026-04-28,2026-04-02,1,34.76,Que Delícia,"Rua da Panificadora, 12",Rio de Janeiro,RJ,02389-673,Brasil
