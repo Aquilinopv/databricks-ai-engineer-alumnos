@@ -13,7 +13,7 @@ Bienvenido. Acá vive **todo el material que vas a usar en clase** y también **
 s01-plataforma/      ← una carpeta por sesión
   README.md            la consigna: qué se hace y qué hay que entregar
   notebook.py          el notebook de la clase (se importa a Databricks)
-  entregas/            👈 acá subís tu trabajo
+  entregas/            👈 acá subes tu trabajo
 s02-pipelines/
 ...
 recursos/            datasets y material común a varias sesiones
@@ -42,7 +42,7 @@ git push origin entrega-s01-tu-nombre
 ```
 
 **Si todavía no eres colaborador**, haces un *fork* (botón «Fork» arriba a la derecha), trabajas
-sobre tu copia y después abrís el Pull Request desde ahí. Funciona igual.
+sobre tu copia y después abres el Pull Request desde ahí. Funciona igual.
 
 En los dos casos terminas abriendo un **Pull Request** contra `main`.
 Si nunca usaste Git, no te preocupes: la primera vez lo hacemos juntos en clase.

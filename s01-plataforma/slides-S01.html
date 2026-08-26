@@ -259,20 +259,43 @@ df = spark.table("neptuno.ventas.categorias")
 
 %md
 ### Esto es documentación, no código</pre><p class="note">El lenguaje por defecto se define al crear el notebook; los <code>%</code> lo cambian solo para esa celda. Vas a usar <code>%sql</code> y <code>%python</code> mezclados todo el curso.</p></section>
-<section class="slide "><p class="eyebrow">Compute</p><h2>Nada corre sin una máquina encendida — y ahí está el costo</h2><p class="lead">Cuando ejecutás una celda, el código viaja a un cluster. Elegir mal el tipo de cluster es el error más caro que se comete en Databricks.</p><p class="lead" style="margin-top:22px">Hay tres tipos, y sirven para cosas distintas.</p></section>
+<section class="slide "><p class="eyebrow">Compute</p><h2>Nada corre sin una máquina encendida — y ahí está el costo</h2><div class="dg"><svg viewBox="0 0 900 190" role="img"
+  aria-label="Al ejecutar una celda el código viaja a un cluster que cobra por tiempo encendido y devuelve el resultado">
+  <rect class="box" x="20" y="56" width="200" height="60" rx="8"/>
+  <text class="lbl" x="56" y="92">celda del notebook</text>
+  <rect class="box-hi" x="350" y="46" width="200" height="80" rx="8"/>
+  <text class="ttl" x="416" y="80">cluster</text>
+  <text class="cap" x="368" y="104">cobra por tiempo encendido</text>
+  <rect class="box" x="680" y="56" width="200" height="60" rx="8"/>
+  <text class="lbl" x="744" y="92">resultado</text>
+  <path class="ln" d="M222 86 L344 86"/><path d="M337 80 l9 6 -9 6 z" style="fill:var(--ink-mute)"/>
+  <path class="ln" d="M552 86 L674 86"/><path d="M667 80 l9 6 -9 6 z" style="fill:var(--ink-mute)"/>
+  <path class="no" d="M450 132 L450 162"/>
+  <text class="cap" x="332" y="182" style="fill:var(--ruby)">sigue cobrando aunque no ejecutes nada</text>
+</svg></div>
+<p class="lead">Elegir mal el tipo de cluster es el error más caro que se comete en Databricks.
+Hay tres, y sirven para cosas distintas.</p></section>
 <section class="slide "><p class="eyebrow">Tipo 1 · SQL Warehouse</p><h2>Para consultar: SQL, dashboards y Genie</h2><div class="two"><div><h3>Cómo se crea</h3><ul><li>Compute → SQL Warehouses → Create</li><li>Tamaño (2X-Small alcanza para el curso)</li><li>Serverless: arranca en segundos</li><li>Auto-stop: 10 minutos</li></ul></div><div><h3>Cuándo NO</h3><ul><li>Si necesitas librerías de Python</li><li>Si vas a entrenar un modelo</li><li>Si el trabajo no es SQL</li></ul></div></div><p class="note">Es el que va a atender las consultas del Genie en la sesión 3 y las del agente en la sesión 5.</p></section>
 <section class="slide "><p class="eyebrow">Tipo 2 · All-purpose cluster</p><h2>Para desarrollar: notebooks interactivos</h2><div class="two"><div><h3>Cómo se crea</h3><ul><li>Compute → Create compute</li><li>Eliges versión de runtime</li><li>Puedes instalar librerías</li><li><strong>Terminate after…</strong> ← esto siempre</li></ul></div><div><h3>Cuándo NO</h3><ul><li>En producción: queda encendido y se paga igual</li><li>Para un job programado, hay algo mejor</li></ul></div></div><p class="note">Es el que vas a usar hoy para el notebook, y el que hay que acordarse de apagar al terminar.</p></section>
 <section class="slide "><p class="eyebrow">Tipo 3 · Job cluster</p><h2>Para producción: nace, trabaja y muere</h2><div class="two"><div><h3>Cómo se crea</h3><ul><li>No se crea a mano</li><li>Se define dentro del job</li><li>Arranca al empezar la corrida</li><li>Se apaga solo al terminar</li></ul></div><div><h3>Cuándo NO</h3><ul><li>Para desarrollar: esperarías el arranque en cada prueba</li></ul></div></div><p class="note">En la sesión 2 vas a agendar un pipeline, y va a correr sobre uno de éstos sin que tengas que encender nada.</p></section>
 <section class="slide dark"><p class="eyebrow">Los tres, uno al lado del otro</p>
 <h2>Elegir el compute es elegir cuánto pagas</h2>
-<div class="price">
-  <div class="pcard"><p class="k">All-purpose serverless</p><p class="v">0,75</p>
-    <p class="u">USD por DBU · notebooks</p></div>
-  <div class="pcard"><p class="k">SQL serverless</p><p class="v">0,70</p>
-    <p class="u">USD por DBU · consultas y Genie</p></div>
-  <div class="pcard hi"><p class="k">Jobs serverless</p><p class="v">0,35</p>
-    <p class="u">USD por DBU · producción</p></div>
-</div>
+<div class="dg"><svg viewBox="0 0 900 250" role="img"
+  aria-label="El compute de jobs cuesta 0,35 dólares por DBU, menos de la mitad que el interactivo, que cuesta 0,75">
+  <line class="ln" x1="230" y1="30" x2="230" y2="215"/>
+  <rect class="box" x="230" y="42" width="470" height="40" rx="5"/>
+  <text class="cap" x="20" y="67">All-purpose</text>
+  <text class="ttl" x="716" y="69">0,75</text>
+  <rect class="box" x="230" y="102" width="438" height="40" rx="5"/>
+  <text class="cap" x="20" y="127">SQL serverless</text>
+  <text class="ttl" x="684" y="129">0,70</text>
+  <rect class="box-hi" x="230" y="162" width="219" height="40" rx="5"/>
+  <text class="cap" x="20" y="187">Jobs</text>
+  <text class="ttl" x="465" y="189" style="fill:var(--primary)">0,35</text>
+  <text class="cap" x="230" y="238">USD por DBU · AWS us-west-2</text>
+</svg></div>
+<p class="lead" style="margin-top:6px">El mismo trabajo cuesta <strong>2,1 veces más</strong>
+si corre sobre un cluster interactivo en lugar de un job programado.</p>
 <p class="lead" style="margin-top:26px">El mismo trabajo cuesta <strong>menos de la mitad</strong>
 si corre como job programado en lugar de sobre un cluster interactivo. No es una recomendación
 de estilo: es el precio de lista de la región donde está este workspace.</p>
@@ -288,12 +311,31 @@ consultados el 26 de agosto de 2026. Los vas a poder verificar tú mismo en la s
   <tr><td>Almacenamiento</td><td>1,19</td><td>0,03</td></tr>
   <tr><td><strong>Genie</strong></td><td>28,21</td><td><strong>sin costo</strong></td></tr>
 </table>
-<p class="note">Incluye el webinar completo del 14 de agosto, que fue el día de mayor consumo.
-Lo interesante es la última fila: <strong>Genie se factura como uso gratuito</strong>. Lo que más
-vamos a demostrar en este curso no consume DBU.</p>
+<div class="compare" style="margin-top:18px">
+  <div><span class="lbl">Genie · DBU consumidos</span><span class="val">28,21</span></div>
+  <div><span class="lbl">Genie · costo</span>
+       <span class="val" style="color:var(--primary-deep)">USD 0,00</span></div>
+</div>
+<p class="note">Incluye el webinar completo del 14 de agosto, el día de mayor consumo.
+<strong>Genie consumió más DBU que el SQL serverless y facturó cero.</strong> Lo que más vamos a
+demostrar en este curso no cuesta.</p>
 </section>
 <section class="slide "><p class="eyebrow">Antes del lakehouse</p><h2>Había que elegir entre gobierno y flexibilidad</h2><div class="two"><div><h3>Data warehouse</h3><ul><li>Rápido y ordenado</li><li>Permisos y transacciones</li><li>Pero: solo datos tabulares</li><li>Y: caro de escalar</li><li>Un PDF no entra. Un audio tampoco.</li></ul></div><div><h3>Data lake</h3><ul><li>Barato, guarda cualquier cosa</li><li>Escala sin límite</li><li>Pero: sin transacciones</li><li>Y: sin esquema garantizado</li><li>Termina siendo un pantano</li></ul></div></div><p class="note">Las empresas terminaban montando los dos, y copiando datos de uno al otro todas las noches.</p></section>
-<section class="slide "><p class="eyebrow">El lakehouse</p><h2>El almacenamiento del lago con las garantías del almacén</h2><p class="lead">Archivos baratos en el almacenamiento de tu nube, más una capa de metadatos que les da transacciones, esquema, versionado y permisos. Esa capa es <strong>Delta Lake</strong>, y la vemos en el bloque 3.</p><p class="lead" style="margin-top:24px;color:var(--primary-deep)">Para lo que hacemos en este curso importa por una razón concreta: un agente de IA necesita <strong>las dos cosas</strong> — tablas confiables para calcular, y documentos sueltos para responder.</p></section>
+<section class="slide "><p class="eyebrow">El lakehouse</p><h2>El almacenamiento del lago con las garantías del almacén</h2><div class="dg"><svg viewBox="0 0 900 210" role="img"
+  aria-label="Sobre el almacenamiento barato se apoya la capa Delta, y encima consumen tanto el análisis como la IA">
+  <rect class="box" x="150" y="146" width="600" height="46" rx="7"/>
+  <text class="lbl" x="300" y="175">Almacenamiento de objetos · barato, ilimitado</text>
+  <rect class="box-hi" x="150" y="88" width="600" height="46" rx="7"/>
+  <text class="ttl" x="286" y="117">Delta Lake · transacciones, esquema, versiones</text>
+  <rect class="box" x="150" y="24" width="285" height="46" rx="7"/>
+  <text class="lbl" x="212" y="53">tablas para calcular</text>
+  <rect class="box" x="465" y="24" width="285" height="46" rx="7"/>
+  <text class="lbl" x="516" y="53">documentos para responder</text>
+  <path class="ln" d="M292 84 L292 74"/><path class="ln" d="M608 84 L608 74"/>
+</svg></div>
+<p class="lead">Un agente de IA necesita <strong>las dos cosas de arriba</strong>: tablas
+confiables para calcular y documentos sueltos para responder. El lakehouse las pone sobre
+el mismo almacenamiento y el mismo gobierno.</p><p class="lead" style="margin-top:24px;color:var(--primary-deep)">Para lo que hacemos en este curso importa por una razón concreta: un agente de IA necesita <strong>las dos cosas</strong> — tablas confiables para calcular, y documentos sueltos para responder.</p></section>
 <section class="slide "><p class="eyebrow">Arquitectura medallón</p><h2>Los datos no se limpian de una vez: pasan por tres capas</h2><div class="dg"><svg viewBox="0 0 900 250" role="img"
   aria-label="Los datos pasan de bronze a silver y de silver a gold; bronze se conserva intacto">
   <rect class="box" x="10" y="60" width="250" height="120" rx="10"/>
@@ -321,7 +363,23 @@ vamos a demostrar en este curso no consume DBU.</p>
 <section class="slide "><p class="eyebrow">El problema</p><h2>Sin gobierno central, cada workspace es una isla</h2><div class="two"><div><h3>Cómo era antes</h3><ul><li>Permisos definidos por workspace</li><li>La misma tabla, cinco copias, cinco dueños</li><li>Nadie sabía de dónde salía un número</li><li>Los archivos no tenían permisos: o veías todo el bucket, o nada</li></ul></div><div><h3>Qué cambia</h3><ul><li>Un catálogo por encima de todos los workspaces</li><li>Un solo lugar donde se dan permisos</li><li>Linaje automático de punta a punta</li><li>Tablas, archivos, modelos y funciones bajo las mismas reglas</li></ul></div></div></section>
 <section class="slide "><p class="eyebrow">La jerarquía</p><h2>Todo lo que crees vive en este árbol</h2><div class="chain"><span class="node">metastore</span><span class="arrow">→</span><span class="node hi">catálogo</span><span class="arrow">→</span><span class="node hi">esquema</span><span class="arrow">→</span><span class="node">tabla</span><span class="node">vista</span><span class="node">volumen</span><span class="node">función</span><span class="node">modelo</span></div><p class="lead" style="margin-top:30px">De ahí sale el <strong>nombre de tres niveles</strong> que vas a escribir todo el curso:</p><pre><span class="kw">SELECT</span> * <span class="kw">FROM</span> neptuno.ventas.productos
 <span class="cm">--            └catálogo└esquema└tabla</span></pre></section>
-<section class="slide "><p class="eyebrow">Metastore</p><h2>La raíz: uno por región, compartido entre workspaces</h2><p class="lead">Es el registro central donde viven los metadatos de todo. No lo creas tú: lo crea quien administra la cuenta, y se asigna a los workspaces de esa región.</p><p class="note">Un dato que va a importar en la sesión 3: <strong>los comentarios de las tablas son globales al metastore.</strong> Si documentás una tabla, queda documentada para todos los workspaces que compartan ese metastore.</p></section>
+<section class="slide "><p class="eyebrow">Metastore</p><h2>La raíz: uno por región, compartido entre workspaces</h2><p class="lead">Es el registro central donde viven los metadatos de todo. No lo creas tú: lo crea quien administra la cuenta, y se asigna a los workspaces de esa región.</p><div class="dg"><svg viewBox="0 0 900 210" role="img"
+  aria-label="Un comentario escrito en una tabla se propaga a todos los workspaces del metastore">
+  <rect class="box-hi" x="300" y="16" width="300" height="56" rx="9"/>
+  <text class="ttl" x="326" y="42">Metastore · una región</text>
+  <text class="cap" x="326" y="62">aquí viven los comentarios</text>
+  <rect class="box" x="40" y="146" width="220" height="50" rx="8"/>
+  <text class="lbl" x="70" y="177">workspace de datos</text>
+  <rect class="box" x="340" y="146" width="220" height="50" rx="8"/>
+  <text class="lbl" x="382" y="177">workspace de IA</text>
+  <rect class="box" x="640" y="146" width="220" height="50" rx="8"/>
+  <text class="lbl" x="684" y="177">workspace de BI</text>
+  <path class="ln-hi" d="M400 74 L162 142"/><path class="ln-hi" d="M450 74 L450 142"/>
+  <path class="ln-hi" d="M500 74 L738 142"/>
+  <text class="cap" x="330" y="116">el mismo comentario llega a los tres</text>
+</svg></div>
+<p class="note">Un dato que se cobra en la sesión 3: <strong>los comentarios son globales al
+metastore</strong>. Documentar una tabla la documenta para todos los workspaces.</p></section>
 <section class="slide "><p class="eyebrow">Catálogo</p><h2>El primer nivel que sí creas tú</h2><pre><span class="kw">CREATE</span> <span class="kw">CATALOG</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel
   <span class="kw">COMMENT</span> <span class="st">'Datos del curso Databricks AI Engineer'</span>;
 
@@ -330,7 +388,7 @@ vamos a demostrar en este curso no consume DBU.</p>
 <section class="slide "><p class="eyebrow">Esquema</p><h2>Adentro del catálogo, la carpeta donde viven las tablas</h2><pre><span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.bronze;
 <span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.silver;
 <span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.gold;</pre><p class="note">Fíjate que las tres capas del medallón se vuelven tres esquemas. No es obligatorio hacerlo así, pero es la convención más común y deja el linaje legible.</p></section>
-<section class="slide "><p class="eyebrow">Tablas</p><h2>Gestionadas o externas: quién es dueño de los archivos</h2><div class="two"><div><h3>Gestionada</h3><ul><li>Unity Catalog decide dónde guardar</li><li>Si borrás la tabla, se borran los datos</li><li>Es el default, y lo que usamos hoy</li></ul></div><div><h3>Externa</h3><ul><li>Tú indicás la ubicación</li><li>Si borrás la tabla, los archivos quedan</li><li>Para datos que comparte otro sistema</li></ul></div></div><pre><span class="kw">CREATE</span> <span class="kw">TABLE</span> neptuno_manuel.bronze.productos ...          <span class="cm">-- gestionada</span>
+<section class="slide "><p class="eyebrow">Tablas</p><h2>Gestionadas o externas: quién es dueño de los archivos</h2><div class="two"><div><h3>Gestionada</h3><ul><li>Unity Catalog decide dónde guardar</li><li>Si borras la tabla, se borran los datos</li><li>Es el default, y lo que usamos hoy</li></ul></div><div><h3>Externa</h3><ul><li>Tú indicás la ubicación</li><li>Si borras la tabla, los archivos quedan</li><li>Para datos que comparte otro sistema</li></ul></div></div><pre><span class="kw">CREATE</span> <span class="kw">TABLE</span> neptuno_manuel.bronze.productos ...          <span class="cm">-- gestionada</span>
 <span class="kw">CREATE</span> <span class="kw">TABLE</span> ... <span class="kw">LOCATION</span> <span class="st">'s3://mi-bucket/productos'</span>     <span class="cm">-- externa</span></pre></section>
 <section class="slide "><p class="eyebrow">Volumes</p><h2>Lo mismo que una tabla, pero para archivos</h2><p class="lead">Un volumen es una carpeta gobernada: PDFs, CSVs, imágenes, modelos. Se le dan permisos igual que a una tabla, y aparece en el linaje.</p><pre><span class="kw">CREATE</span> <span class="kw">VOLUME</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.bronze.landing;
 
@@ -342,7 +400,26 @@ vamos a demostrar en este curso no consume DBU.</p>
 
 <span class="cm">-- o de una vez, para todo lo que haya y lo que venga</span>
 <span class="kw">GRANT</span> <span class="kw">SELECT</span> <span class="kw">ON</span> <span class="kw">SCHEMA</span> neptuno_manuel.gold <span class="kw">TO</span> `analistas`;</pre><p class="note">Para leer una tabla hacen falta <strong>los tres</strong>: entrar al catálogo, entrar al esquema y leer la tabla. Es el error de permisos más frecuente.</p></section>
-<section class="slide "><p class="eyebrow">Linaje</p><h2>Se registra solo, y en la sesión 7 se vuelve el centro</h2><p class="lead">Cada vez que una consulta lee una tabla y escribe otra, Unity Catalog anota la relación. Sin configurar nada, terminas con el mapa de qué alimenta a qué — hasta el nivel de columna.</p><p class="note">Hoy tu linaje va a estar casi vacío. Al final del curso vas a poder trazar una respuesta del agente hasta el CSV del que salió.</p></section>
+<section class="slide "><p class="eyebrow">Linaje</p><h2>Se registra solo, y en la sesión 7 se vuelve el centro</h2><p class="lead">Cada vez que una consulta lee una tabla y escribe otra, Unity Catalog anota la relación. Sin configurar nada, terminas con el mapa de qué alimenta a qué — hasta el nivel de columna.</p><div class="dg"><svg viewBox="0 0 900 150" role="img"
+  aria-label="El linaje conecta el CSV con bronze, silver, gold y la respuesta del agente">
+  <rect class="box" x="10" y="48" width="150" height="46" rx="7"/>
+  <text class="lbl" x="34" y="77">productos.csv</text>
+  <rect class="box" x="206" y="48" width="120" height="46" rx="7"/>
+  <text class="lbl" x="242" y="77">bronze</text>
+  <rect class="box" x="372" y="48" width="120" height="46" rx="7"/>
+  <text class="lbl" x="412" y="77">silver</text>
+  <rect class="box-hi" x="538" y="48" width="120" height="46" rx="7"/>
+  <text class="lbl" x="582" y="77">gold</text>
+  <rect class="box" x="704" y="48" width="186" height="46" rx="7"
+        stroke-dasharray="5 4" style="opacity:.5"/>
+  <text class="lbl" x="724" y="77" style="opacity:.6">respuesta del agente</text>
+  <path class="ln" d="M162 71 L202 71"/><path class="ln" d="M328 71 L368 71"/>
+  <path class="ln" d="M494 71 L534 71"/>
+  <path class="ln" d="M660 71 L700 71" stroke-dasharray="4 4"/>
+  <text class="cap" x="10" y="126">hoy</text><text class="cap" x="770" y="126">sesión 8</text>
+</svg></div>
+<p class="note">Hoy tu linaje está casi vacío. Al final del curso vas a poder trazar una respuesta
+del agente hasta el CSV del que salió.</p></section>
 <section class="slide dark"><p class="eyebrow">Cierre del bloque 2</p><h2>Tres ideas para llevarse</h2><div class="recap"><div><span class="i">01</span><p>Todo objeto se nombra <strong>catálogo.esquema.objeto</strong>.</p></div><div><span class="i">02</span><p>Los <strong>volúmenes</strong> traen los archivos al mismo régimen de gobierno que las tablas.</p></div><div><span class="i">03</span><p>Los permisos se heredan hacia abajo, y hacen falta en cada nivel del camino.</p></div></div></section>
 <section class="slide dark mesh sep"><p class="bignum">03</p><h2>Delta Lake</h2><p class="time">45 minutos · bloque 3 de 4</p><ol><li>Qué formato usa realmente el lakehouse</li><li>La anatomía de una tabla Delta</li><li>Transacciones ACID sobre almacenamiento barato</li><li>Cómo se crea y se puebla una tabla</li><li>Viaje en el tiempo y mantenimiento</li><li>Y para cerrar: por qué esto le importa a una IA</li></ol></section>
 <section class="slide "><p class="eyebrow">Tres formatos</p><h2>Por qué no alcanza con guardar un CSV</h2><table><tr><th></th><th>CSV</th><th>Parquet</th><th>Delta</th></tr><tr><td>Tipos de dato</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Compresión</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Lee solo las columnas que pides</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Transacciones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr><tr><td>Historial de versiones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr></table><p class="note">Delta no es un formato nuevo: <strong>es Parquet más un registro de transacciones al lado.</strong></p></section>
@@ -370,7 +447,16 @@ vamos a demostrar en este curso no consume DBU.</p>
   <path class="ln-hi" d="M392 97 L392 151"/>
 </svg></div>
 <p class="note">Ese <code>_delta_log</code> es todo el secreto. Cada operación agrega una entrada nueva; nunca se reescribe la anterior. De ahí salen las transacciones y el historial.</p></section>
-<section class="slide "><p class="eyebrow">ACID</p><h2>Qué significa cada garantía cuando el almacén es un bucket</h2><div class="two"><div><h3>Atomicidad</h3><p>La escritura entra entera o no entra. Nadie ve media carga.</p><h3 style="margin-top:22px">Consistencia</h3><p>El esquema se respeta: no entra una columna de texto donde va un número.</p></div><div><h3>Aislamiento</h3><p>Alguien puede leer mientras tú escribes, y ve la versión anterior completa.</p><h3 style="margin-top:22px">Durabilidad</h3><p>Confirmado es confirmado, aunque se caiga el cluster.</p></div></div><p class="note">Sobre un data lake común, un job que fallaba a la mitad dejaba archivos sueltos que alguien iba a leer como si fueran datos buenos.</p></section>
+<section class="slide "><p class="eyebrow">ACID</p><h2>Qué significa cada garantía cuando el almacén es un bucket</h2><div class="two"><div><h3>Atomicidad</h3><p>La escritura entra entera o no entra. Nadie ve media carga.</p><h3 style="margin-top:22px">Consistencia</h3><p>El esquema se respeta: no entra una columna de texto donde va un número.</p></div><div><h3>Aislamiento</h3><p>Alguien puede leer mientras tú escribes, y ve la versión anterior completa.</p><h3 style="margin-top:22px">Durabilidad</h3><p>Confirmado es confirmado, aunque se caiga el cluster.</p></div></div><div class="dg"><svg viewBox="0 0 900 150" role="img"
+  aria-label="Sin transacciones un job que falla deja archivos parciales legibles; con Delta la escritura entra entera o no entra">
+  <text class="cap" x="20" y="30">Un job que falla a la mitad</text>
+  <rect class="box" x="20" y="46" width="400" height="70" rx="8" style="stroke:var(--ruby)"/>
+  <text class="lbl" x="44" y="76">sin transacciones</text>
+  <text class="cap" x="44" y="100" style="fill:var(--ruby)">quedan archivos parciales que alguien leerá</text>
+  <rect class="box-hi" x="480" y="46" width="400" height="70" rx="8"/>
+  <text class="lbl" x="504" y="76">con Delta</text>
+  <text class="cap" x="504" y="100">la tabla sigue en su última versión buena</text>
+</svg></div></section>
 <section class="slide "><p class="eyebrow">Crear una tabla</p><h2>Casi siempre, a partir de una consulta</h2><pre><span class="kw">CREATE</span> <span class="kw">TABLE</span> neptuno_manuel.bronze.productos
 <span class="kw">AS</span> <span class="kw">SELECT</span> * <span class="kw">FROM</span> ...;
 
@@ -386,16 +472,57 @@ vamos a demostrar en este curso no consume DBU.</p>
 
 <span class="cm">-- o directamente volver</span>
 <span class="kw">RESTORE</span> <span class="kw">TABLE</span> neptuno_manuel.bronze.productos <span class="kw">TO</span> <span class="kw">VERSION</span> <span class="kw">AS</span> <span class="kw">OF</span> 0;</pre><p class="note">Sirve para recuperar un borrado, pero también para auditar: puedes reproducir exactamente el dato que vio un reporte la semana pasada.</p></section>
-<section class="slide dark"><p class="eyebrow">En vivo</p><h2>Borramos medio catálogo y lo traemos de vuelta, sin backup</h2><table><tr><th>Paso</th><th>Productos</th></tr><tr><td>Estado inicial</td><td><strong>77</strong></td></tr><tr><td><code>DELETE … WHERE IdCategoria = 1</code></td><td><strong>65</strong></td></tr><tr><td><code>RESTORE … TO VERSION AS OF 0</code></td><td><strong>77</strong></td></tr></table><p class="lead">Esta es la red que hace sostenible la regla del bloque 1: <strong>bronze no se corrige, se re-procesa.</strong></p></section>
+<section class="slide dark"><p class="eyebrow">En vivo</p><h2>Borramos medio catálogo y lo traemos de vuelta, sin backup</h2><div class="dg"><svg viewBox="0 0 900 190" role="img"
+  aria-label="La tabla pasa de 77 filas a 65 tras el borrado y vuelve a 77 tras restaurar">
+  <line class="ln" x1="90" y1="100" x2="810" y2="100"/>
+  <circle cx="120" cy="100" r="9" class="box"/>
+  <text class="ttl" x="98" y="76">77</text><text class="cap" x="72" y="136">versión 0</text>
+  <circle cx="450" cy="100" r="9" style="fill:var(--ruby)"/>
+  <text class="ttl" x="428" y="76" style="fill:var(--ruby)">65</text>
+  <text class="cap" x="392" y="136">v1 · DELETE</text>
+  <text class="cap" x="392" y="156">se van 12 bebidas</text>
+  <circle cx="780" cy="100" r="9" style="fill:var(--primary-soft)"/>
+  <text class="ttl" x="758" y="76" style="fill:var(--primary-soft)">77</text>
+  <text class="cap" x="716" y="136">v2 · RESTORE</text>
+  <path class="ln-hi" d="M450 62 Q615 24 778 62" stroke-dasharray="4 4"/>
+  <text class="cap" x="566" y="36">sin backup</text>
+</svg></div><p class="lead">Esta es la red que hace sostenible la regla del bloque 1: <strong>bronze no se corrige, se re-procesa.</strong></p></section>
 <section class="slide "><p class="eyebrow">Mantenimiento</p><h2>Dos comandos que conviene entender antes de correr</h2><pre><span class="kw">OPTIMIZE</span> neptuno_manuel.bronze.pedidos;                <span class="cm">-- junta archivos chicos</span>
 <span class="kw">OPTIMIZE</span> neptuno_manuel.bronze.pedidos <span class="kw">ZORDER</span> <span class="kw">BY</span> (IdCliente);
 
 <span class="kw">VACUUM</span> neptuno_manuel.bronze.pedidos <span class="kw">RETAIN</span> 168 <span class="kw">HOURS</span>;  <span class="cm">-- borra archivos viejos</span></pre><p class="note"><strong>Ojo con <code>VACUUM</code>:</strong> borra los archivos que ya no usa ninguna versión reciente. Después de correrlo, el viaje en el tiempo más allá del período retenido deja de funcionar.</p></section>
+<section class="slide "><p class="eyebrow">Lo que encontramos al cargar los datos</p>
+<h2>Las ventas de Neptuno están infladas, y el error es demasiado chico para que alguien lo note</h2>
+<div class="compare">
+  <div><span class="lbl">Sumando precio × cantidad</span><span class="val">1.354.458,59</span></div>
+  <div><span class="lbl">Restando el descuento</span><span class="val">1.265.793,04</span></div>
+</div>
+<p class="hero-num">6,55%</p>
+<p class="note">Cada línea de pedido tiene un <code>Descuento</code> que nadie restó. Un error del
+6% no dispara ninguna alarma: es demasiado chico para verse a simple vista y demasiado grande para
+un cierre contable. <strong>Por eso llega a producción.</strong> En la sesión 2 lo eliminamos de
+raíz, en un solo lugar.</p>
+</section>
 <section class="slide "><p class="eyebrow">Y todo esto, ¿para qué?</p><h2>Porque en tres sesiones le vamos a dar estos datos a una IA</h2><p class="lead">Ya tenemos dónde guardar, cómo gobernar y cómo confiar. Antes de cerrar, vale la pena ver qué pasa cuando una IA lee datos que <strong>no</strong> tienen nada de esto.</p><p class="note">Lo que sigue es una consulta real contra este mismo dataset, hecha con lenguaje natural sobre las tablas crudas, sin documentar.</p></section>
-<section class="slide dark"><p class="eyebrow">La misma pregunta, tres veces seguidas</p><h2>«¿Cuál es el margen de la categoría Bebidas?»</h2><div class="runs"><div class="run"><p class="tag">Corrida 1</p><p class="n neg">−41.714,07</p><p class="q">Inventó un «costo estimado» que no existe en ninguna tabla.</p></div><div class="run"><p class="tag">Corrida 2</p><p class="n neg">−20.826,47</p><p class="q">Restó el precio histórico menos el de catálogo. No son restables.</p></div><div class="run"><p class="tag">Corrida 3</p><p class="n">+267.868,18</p><p class="q">No restó nada: le puso «margen» a la venta neta.</p></div></div><div class="foot"><span>Mismos datos · mismo modelo · misma pregunta</span></div></section>
+<section class="slide dark"><p class="eyebrow">La misma pregunta, tres veces seguidas</p><h2>«¿Cuál es el margen de la categoría Bebidas?»</h2><div class="dg"><svg viewBox="0 0 900 260" role="img"
+  aria-label="Las tres respuestas ni siquiera coinciden en signo: dos negativas y una positiva">
+  <line class="ln" x1="60" y1="150" x2="860" y2="150" stroke-dasharray="3 4"/>
+  <text class="cap" x="16" y="155">cero</text>
+  <rect x="120" y="150" width="150" height="42" rx="4" style="fill:var(--magenta);opacity:.8"/>
+  <text class="ttl" x="120" y="216">-41.714,07</text>
+  <text class="cap" x="120" y="238">costo inventado</text>
+  <rect x="380" y="150" width="150" height="22" rx="4" style="fill:var(--magenta);opacity:.8"/>
+  <text class="ttl" x="380" y="216">-20.826,47</text>
+  <text class="cap" x="380" y="238">restó dos precios</text>
+  <rect x="640" y="52" width="150" height="98" rx="4" style="fill:var(--primary-soft)"/>
+  <text class="ttl" x="640" y="40">+267.868,18</text>
+  <text class="cap" x="640" y="176">renombró la venta</text>
+</svg></div>
+<p class="lead">No difieren en el decimal: <strong>ni siquiera coinciden en el signo</strong>.
+Dos dicen que Bebidas pierde dinero; una, que gana un cuarto de millón.</p><div class="foot"><span>Mismos datos · mismo modelo · misma pregunta</span></div></section>
 <section class="slide "><p class="eyebrow">Por qué pasó</p><h2>Neptuno no tiene tabla de costos: el margen no existe</h2><p class="lead">Cuando el esquema <strong>contiene</strong> la respuesta, el modelo llega siempre al mismo SQL. Cuando no la contiene, improvisa — y cada improvisación es distinta.</p><p class="lead" style="margin-top:26px;color:var(--primary-deep)">Si preguntás tres veces y te dan tres números, esa pregunta no tiene respuesta en tus datos.</p><p class="note">Contraprueba: «¿cuántos pedidos hubo en 1997?» da idéntico las tres veces. El modelo no es inestable; lo inestable es pedirle lo que no puede saber.</p></section>
 <section class="slide dark"><p class="eyebrow">Cierre del bloque 3</p><h2>Tres ideas para llevarse</h2><div class="recap"><div><span class="i">01</span><p>Delta es Parquet más un registro de transacciones: de ahí salen ACID y el historial.</p></div><div><span class="i">02</span><p>Puedes consultar y restaurar cualquier versión anterior de una tabla.</p></div><div><span class="i">03</span><p>Una IA sobre datos sin gobierno no falla siempre igual: <strong>falla distinto cada vez</strong>.</p></div></div></section>
-<section class="slide dark mesh sep"><p class="bignum">04</p><h2>Práctica</h2><p class="time">45 minutos · bloque 4 de 4</p><ol><li>Construís tu catálogo y cargás Neptuno</li><li>Escribes tus primeras consultas</li><li>Documentás una tabla</li><li>Provocás un desastre y lo revertís</li></ol></section>
+<section class="slide dark mesh sep"><p class="bignum">04</p><h2>Práctica</h2><p class="time">45 minutos · bloque 4 de 4</p><ol><li>Construís tu catálogo y cargas Neptuno</li><li>Escribes tus primeras consultas</li><li>Documentas una tabla</li><li>Provocás un desastre y lo revertís</li></ol></section>
 <section class="slide "><p class="eyebrow">El ejercicio</p><h2>Cuatro pasos, sobre tu propio catálogo</h2><div class="recap"><div><span class="i">01</span><p>Deja las <strong>8 tablas</strong> de Neptuno en tu esquema <code>bronze</code>, con la columna de fecha de ingesta.</p></div><div><span class="i">02</span><p>Escribe <strong>tres consultas</strong> que respondan preguntas de negocio reales.</p></div><div><span class="i">03</span><p>Documenta <strong>una tabla</strong> con <code>COMMENT ON TABLE</code>: lo que un colega necesitaría para no equivocarse con ella.</p></div><div><span class="i">04</span><p>Provoca un cambio y revertilo con <code>RESTORE</code>.</p></div></div><p class="note">Guarda ese comentario que escribas. En la sesión 3 vas a descubrir que es exactamente lo que le faltaba al Genie que acabás de ver fallar.</p></section>
 <section class="slide "><p class="eyebrow">Cápsula · el componente y sus equivalentes</p><h2>Aprendes el componente, no la marca</h2><table><tr><th>Componente</th><th>Databricks</th><th>GCP</th><th>Azure</th><th>AWS</th></tr><tr><td>Almacenamiento</td><td><strong>Delta</strong></td><td>GCS</td><td>ADLS Gen2</td><td>S3</td></tr><tr><td>Motor analítico</td><td><strong>SQL Warehouse</strong></td><td>BigQuery</td><td>Synapse</td><td>Redshift</td></tr><tr><td>Gobierno</td><td><strong>Unity Catalog</strong></td><td>Dataplex</td><td>Purview</td><td>Lake Formation</td></tr><tr><td>Formato de tabla</td><td><strong>Delta Lake</strong></td><td>Iceberg</td><td>Delta / Iceberg</td><td>Iceberg</td></tr></table><p class="note">Elegir cuál de cada proveedor entra en una solución real — por capacidad, integración y <strong>costo</strong> — es el trabajo del arquitecto de soluciones. Es el rol al que apunta este curso.</p></section>
 <section class="slide dark mesh"><p class="eyebrow">Cierre</p><h2>Lo que te llevas hoy, y lo que viene el lunes</h2><ul class="clean"><li>Un catálogo propio con las 8 tablas de Neptuno en bronze.</li><li>Tres consultas, una tabla documentada y un restore.</li><li>Y el hábito que va a valer los dos meses: <strong>apagar el compute</strong>.</li></ul><p class="lead" style="margin-top:32px">El lunes: hoy cargamos todo de una vez. En la vida real los datos llegan de a poco, todos los días. Vamos a construir un pipeline que <strong>se entera solo de lo que llegó nuevo</strong>.</p><div class="foot"><span>Repositorio del curso · github.com/manuelarguelles/databricks-ai-engineer-alumnos</span><span>Sesión 2 · lunes 31 de agosto</span></div></section>
