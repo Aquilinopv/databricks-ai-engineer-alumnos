@@ -178,6 +178,50 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
   border-left:2px solid var(--hairline);padding-left:14px}
 .dark .note{color:#93a2b6;border-color:rgba(255,255,255,.16)}
 
+
+/* — modo oscuro forzado (tecla T): para proyector con poca luz — */
+body.todo-oscuro .slide{background:var(--ink);color:#fff}
+body.todo-oscuro .slide h1,body.todo-oscuro .slide h2{color:#fff}
+body.todo-oscuro .slide .lead,body.todo-oscuro .slide .ses-goal{color:#c9d4e2}
+body.todo-oscuro .eyebrow{color:var(--primary-soft)}
+body.todo-oscuro .note{color:#93a2b6;border-color:rgba(255,255,255,.16)}
+body.todo-oscuro th{color:#8ea0b6;background:transparent}
+body.todo-oscuro td{color:#dbe3ec}
+body.todo-oscuro th,body.todo-oscuro td{border-color:rgba(255,255,255,.12)}
+body.todo-oscuro .slide:not(.dark) pre,body.todo-oscuro pre{background:#0b1b2d;border-color:rgba(255,255,255,.10);color:#dbe7f3}
+body.todo-oscuro .slide:not(.dark) pre .kw,body.todo-oscuro pre .kw{color:#a99bff} body.todo-oscuro .slide:not(.dark) pre .st,body.todo-oscuro pre .st{color:#7fd6b0}
+body.todo-oscuro .slide:not(.dark) pre .cm,body.todo-oscuro pre .cm{color:#6d8199}
+body.todo-oscuro code{background:rgba(255,255,255,.09);color:#b7abff}
+body.todo-oscuro .layer,body.todo-oscuro .node,body.todo-oscuro .pcard,
+body.todo-oscuro .plane.data{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13)}
+body.todo-oscuro .layer p,body.todo-oscuro .two p,body.todo-oscuro .two li,
+body.todo-oscuro ul.clean li,body.todo-oscuro .recap p{color:#c9d4e2}
+body.todo-oscuro .dg .lbl{fill:#c9d4e2} body.todo-oscuro .dg .cap{fill:#8ea0b6}
+body.todo-oscuro .dg .ttl{fill:#fff}
+body.todo-oscuro .dg .box{fill:rgba(255,255,255,.05);stroke:rgba(255,255,255,.14)}
+body.todo-oscuro .dg .box-hi{fill:rgba(83,58,253,.18);stroke:var(--primary-soft)}
+body.todo-oscuro .dg .ln{stroke:#7f8ea3} body.todo-oscuro .dg .ln-hi{stroke:var(--primary-soft)}
+body.todo-oscuro .compare .lbl,body.todo-oscuro .pcard .k,body.todo-oscuro .pcard .u{color:#8ea0b6}
+body.todo-oscuro .compare .val,body.todo-oscuro .pcard .v{color:#fff}
+
+/* — controles del presentador — */
+#ctl{position:fixed;right:16px;top:14px;z-index:120;display:flex;gap:6px;opacity:.28;
+     transition:opacity .25s}
+#ctl:hover{opacity:1}
+#ctl button{font-family:var(--font);font-size:13px;font-weight:400;line-height:1;
+  width:30px;height:30px;border-radius:7px;cursor:pointer;
+  border:1px solid var(--hairline);background:var(--canvas);color:var(--ink-mute)}
+#ctl button:hover{border-color:var(--primary);color:var(--primary)}
+#ctl button:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.dark #ctl button,body.todo-oscuro #ctl button{background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.18);color:#c9d4e2}
+
+/* — marcadores del presentador: ★ notebook · ⏳ medición en vivo — */
+.mk{position:absolute;left:clamp(48px,6vw,104px);top:clamp(22px,2.6vh,32px);
+    font-size:15px;opacity:.22;transition:opacity .2s;user-select:none}
+.mk:hover{opacity:.9}
+body.marcas .mk{opacity:.95}
+
 @media print{.slide{display:flex;position:relative;page-break-after:always;height:100vh}}
 </style>
 </head>
@@ -272,6 +316,12 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
 <section class="slide "><p class="eyebrow">El ejercicio</p><h2>Cuatro pasos, sobre tu propio catálogo</h2><div class="recap"><div><span class="i">01</span><p>Pipeline corriendo con los <strong>23 meses</strong>, cargados en tandas.</p></div><div><span class="i">02</span><p>Una <strong>expectativa propia</strong>, y una fila que la viole a propósito.</p></div><div><span class="i">03</span><p>Una <strong>tabla gold más</strong>, con su regla explicada en el comentario.</p></div><div><span class="i">04</span><p>El <strong>job agendado</strong> para que corra solo.</p></div></div></section>
 <section class="slide "><p class="eyebrow">Cápsula · el componente y sus equivalentes</p><h2>Todo esto existe en las tres nubes, con otros nombres</h2><table><tr><th>Componente</th><th>Databricks</th><th>GCP</th><th>Azure</th><th>AWS</th></tr><tr><td>Ingesta incremental</td><td><strong>Auto Loader</strong></td><td>Dataflow</td><td>Data Factory</td><td>Glue</td></tr><tr><td>Pipeline declarativo</td><td><strong>Lakeflow</strong></td><td>Dataform</td><td>Mapping Flows</td><td>Glue Studio</td></tr><tr><td>Orquestación</td><td><strong>Jobs</strong></td><td>Composer</td><td>Synapse Pipelines</td><td>Step Functions</td></tr><tr><td>Captura de cambios</td><td><strong>Change Data Feed</strong></td><td>Datastream</td><td>CDC de ADF</td><td>DMS</td></tr></table></section>
 <section class="slide dark mesh"><p class="eyebrow">Cierre</p><h2>Los datos ya son confiables. El miércoles entra el primer modelo</h2><ul class="clean"><li>Un pipeline incremental, con calidad declarada y agendado.</li><li>Tres tablas gold que eliminan tres errores reales.</li><li>Y el hábito de documentar también los límites de cada tabla.</li></ul><p class="lead" style="margin-top:30px">En la sesión 3 se le hace al Genie la misma pregunta del margen — pero apuntando a <strong>estas</strong> tablas.</p><div class="foot"><span>Recuerda apagar el compute</span><span>Sesión 3 · miércoles 2 de septiembre</span></div></section>
+<div id="ctl">
+  <button id="bTema" title="Tema oscuro para proyector (T)" aria-label="Alternar tema">◐</button>
+  <button id="bMenos" title="Reducir tamaño (−)" aria-label="Reducir tamaño de letra">A−</button>
+  <button id="bMas" title="Aumentar tamaño (+)" aria-label="Aumentar tamaño de letra">A+</button>
+  <button id="bMarcas" title="Mostrar marcadores ★ y ⏳ (M)" aria-label="Mostrar marcadores">★</button>
+</div>
 <div id="bar"></div><div id="num"></div>
 <div id="hint">← → navegar · F pantalla completa</div>
 
@@ -296,6 +346,31 @@ document.addEventListener('keydown',e=>{
 document.addEventListener('click',e=>{if(!e.target.closest('a'))show(i+1)});
 show(0);
 setTimeout(()=>document.getElementById('hint').classList.add('gone'),6000);
+
+(function(){
+  var B=document.body, R=document.documentElement;
+  var esc = parseFloat(localStorage.getItem('deckEscala')||'1');
+  function aplicaEscala(){ R.style.fontSize=(15*esc)+'px';
+    try{localStorage.setItem('deckEscala',esc)}catch(e){} }
+  function zoom(d){ esc=Math.min(1.6,Math.max(.7,+(esc+d).toFixed(2))); aplicaEscala(); }
+  function tema(){ B.classList.toggle('todo-oscuro');
+    try{localStorage.setItem('deckTema',B.classList.contains('todo-oscuro')?'oscuro':'auto')}catch(e){} }
+  function marcas(){ B.classList.toggle('marcas'); }
+  try{ if(localStorage.getItem('deckTema')==='oscuro') B.classList.add('todo-oscuro'); }catch(e){}
+  aplicaEscala();
+  document.getElementById('bTema').onclick=function(e){e.stopPropagation();tema()};
+  document.getElementById('bMas').onclick=function(e){e.stopPropagation();zoom(.1)};
+  document.getElementById('bMenos').onclick=function(e){e.stopPropagation();zoom(-.1)};
+  document.getElementById('bMarcas').onclick=function(e){e.stopPropagation();marcas()};
+  document.addEventListener('keydown',function(e){
+    var k=e.key.toLowerCase();
+    if(k==='t'){tema()}
+    else if(e.key==='+'||e.key==='='){zoom(.1)}
+    else if(e.key==='-'||e.key==='_'){zoom(-.1)}
+    else if(k==='0'){esc=1;aplicaEscala()}
+    else if(k==='m'){marcas()}
+  });
+})();
 </script>
 </body>
 </html>

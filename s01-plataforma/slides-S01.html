@@ -214,6 +214,50 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
 .pcard .u{font-size:12.5px;color:var(--ink-mute);margin-top:7px}
 .dark .pcard .u{color:#8ea0b6}
 
+
+/* — modo oscuro forzado (tecla T): para proyector con poca luz — */
+body.todo-oscuro .slide{background:var(--ink);color:#fff}
+body.todo-oscuro .slide h1,body.todo-oscuro .slide h2{color:#fff}
+body.todo-oscuro .slide .lead,body.todo-oscuro .slide .ses-goal{color:#c9d4e2}
+body.todo-oscuro .eyebrow{color:var(--primary-soft)}
+body.todo-oscuro .note{color:#93a2b6;border-color:rgba(255,255,255,.16)}
+body.todo-oscuro th{color:#8ea0b6;background:transparent}
+body.todo-oscuro td{color:#dbe3ec}
+body.todo-oscuro th,body.todo-oscuro td{border-color:rgba(255,255,255,.12)}
+body.todo-oscuro .slide:not(.dark) pre,body.todo-oscuro pre{background:#0b1b2d;border-color:rgba(255,255,255,.10);color:#dbe7f3}
+body.todo-oscuro .slide:not(.dark) pre .kw,body.todo-oscuro pre .kw{color:#a99bff} body.todo-oscuro .slide:not(.dark) pre .st,body.todo-oscuro pre .st{color:#7fd6b0}
+body.todo-oscuro .slide:not(.dark) pre .cm,body.todo-oscuro pre .cm{color:#6d8199}
+body.todo-oscuro code{background:rgba(255,255,255,.09);color:#b7abff}
+body.todo-oscuro .layer,body.todo-oscuro .node,body.todo-oscuro .pcard,
+body.todo-oscuro .plane.data{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13)}
+body.todo-oscuro .layer p,body.todo-oscuro .two p,body.todo-oscuro .two li,
+body.todo-oscuro ul.clean li,body.todo-oscuro .recap p{color:#c9d4e2}
+body.todo-oscuro .dg .lbl{fill:#c9d4e2} body.todo-oscuro .dg .cap{fill:#8ea0b6}
+body.todo-oscuro .dg .ttl{fill:#fff}
+body.todo-oscuro .dg .box{fill:rgba(255,255,255,.05);stroke:rgba(255,255,255,.14)}
+body.todo-oscuro .dg .box-hi{fill:rgba(83,58,253,.18);stroke:var(--primary-soft)}
+body.todo-oscuro .dg .ln{stroke:#7f8ea3} body.todo-oscuro .dg .ln-hi{stroke:var(--primary-soft)}
+body.todo-oscuro .compare .lbl,body.todo-oscuro .pcard .k,body.todo-oscuro .pcard .u{color:#8ea0b6}
+body.todo-oscuro .compare .val,body.todo-oscuro .pcard .v{color:#fff}
+
+/* — controles del presentador — */
+#ctl{position:fixed;right:16px;top:14px;z-index:120;display:flex;gap:6px;opacity:.28;
+     transition:opacity .25s}
+#ctl:hover{opacity:1}
+#ctl button{font-family:var(--font);font-size:13px;font-weight:400;line-height:1;
+  width:30px;height:30px;border-radius:7px;cursor:pointer;
+  border:1px solid var(--hairline);background:var(--canvas);color:var(--ink-mute)}
+#ctl button:hover{border-color:var(--primary);color:var(--primary)}
+#ctl button:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.dark #ctl button,body.todo-oscuro #ctl button{background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.18);color:#c9d4e2}
+
+/* — marcadores del presentador: ★ notebook · ⏳ medición en vivo — */
+.mk{position:absolute;left:clamp(48px,6vw,104px);top:clamp(22px,2.6vh,32px);
+    font-size:15px;opacity:.22;transition:opacity .2s;user-select:none}
+.mk:hover{opacity:.9}
+body.marcas .mk{opacity:.95}
+
 @media print{.slide{display:flex;position:relative;page-break-after:always;height:100vh}}
 </style>
 </head>
@@ -229,7 +273,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
 <section class="slide "><p class="eyebrow">Cómo se organiza la clase</p><h2>Cuatro bloques de 45 minutos</h2><div class="map"><div class="ph now"><p class="s">Bloque 1</p><p class="t">La plataforma</p><p class="d">Arquitectura, workspace, compute y el modelo lakehouse.</p></div><div class="ph"><p class="s">Bloque 2</p><p class="t">Unity Catalog</p><p class="d">Cómo se organiza y se gobierna todo lo que creas.</p></div><div class="ph"><p class="s">Bloque 3</p><p class="t">Delta Lake</p><p class="d">El formato que hace confiable al lakehouse.</p></div><div class="ph"><p class="s">Bloque 4</p><p class="t">Práctica</p><p class="d">Construís tu propio catálogo con datos reales.</p></div></div><p class="note">Al terminar vas a tener los datos de Neptuno cargados en un lakehouse gobernado tuyo — el cimiento sobre el que se apoyan las otras siete sesiones.</p></section>
 <section class="slide dark mesh sep"><p class="bignum">01</p><h2>La plataforma y el modelo lakehouse</h2><p class="time">45 minutos · bloque 1 de 4</p><ol><li>Qué es Databricks y cómo está construido por dentro</li><li>El workspace: dónde vas a trabajar</li><li>Los tres tipos de compute y cuándo usar cada uno</li><li>Del data warehouse al lakehouse</li><li>Arquitectura medallón</li></ol></section>
 <section class="slide "><p class="eyebrow">Qué es Databricks</p><h2>Una sola plataforma para datos, analítica e IA</h2><div class="two"><div><h3>Lo que reemplaza</h3><ul><li>Un data warehouse para reportes</li><li>Un data lake para archivos crudos</li><li>Un cluster aparte para machine learning</li><li>Otra herramienta para orquestar</li></ul></div><div><h3>Lo que aporta</h3><ul><li>Un solo lugar de almacenamiento</li><li>Un solo modelo de permisos</li><li>Un solo linaje, de punta a punta</li><li>SQL, Python, Scala y R sobre los mismos datos</li></ul></div></div><p class="note">La palabra que vas a escuchar todo el curso es <strong>lakehouse</strong>: la idea de que no hace falta elegir entre lago y almacén.</p></section>
-<section class="slide "><p class="eyebrow">Arquitectura</p><h2>Databricks se parte en dos: uno es suyo, el otro es tuyo</h2><div class="dg"><svg viewBox="0 0 900 300" role="img"
+<section class="slide "><p class="eyebrow">Arquitectura</p><h2>Databricks se parte en dos: uno es suyo, el otro es tuyo</h2><div class="dg"><svg viewBox="0 0 900 350" role="img"
   aria-label="El plano de control de Databricks envía instrucciones al plano de datos en tu nube; los datos nunca viajan de vuelta">
   <rect class="box-hi" x="20" y="46" width="360" height="200" rx="10"/>
   <text class="cap" x="40" y="76">Plano de control · de Databricks</text>
@@ -243,12 +287,13 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
   <text class="ttl" x="540" y="136">Tus datos</text>
   <text class="lbl" x="540" y="164">Tu red y tus permisos</text>
   <text class="lbl" x="540" y="192">Región: AWS us-west-2</text>
-  <path class="ln-hi" d="M380 120 L512 120"/>
-  <path class="ln-hi" d="M504 114 l10 6 -10 6 z" fill="currentColor" stroke="none"
-        style="fill:var(--primary)"/>
-  <text class="cap" x="404" y="106">instrucciones</text>
-  <path class="no" d="M512 190 L388 190"/>
-  <text class="cap" x="400" y="214" style="fill:var(--ruby)">los datos no vuelven</text>
+  <path class="ln-hi" d="M380 140 L512 140"/>
+  <path d="M505 134 l10 6 -10 6 z" style="fill:var(--primary)"/>
+  <text class="cap" x="404" y="126">instrucciones</text>
+  <path class="no" d="M700 290 L200 290"/>
+  <path class="no" d="M436 268 L464 312"/>
+  <path class="no" d="M464 268 L436 312"/>
+  <text class="cap" x="336" y="336" style="fill:var(--ruby)">los datos nunca vuelven al plano de control</text>
 </svg></div><p class="note">Por eso el workspace del curso vive en <strong>AWS, región us-west-2</strong>. Los datos no se van a un servidor de Databricks: se quedan donde tú los pusiste.</p></section>
 <section class="slide "><p class="eyebrow">El workspace</p><h2>Tu espacio de trabajo, y qué hay dentro</h2><div class="two"><div><h3>Dónde escribes</h3><ul><li><strong>Notebooks</strong> — código en celdas, con resultados</li><li><strong>Editor SQL</strong> — consultas sueltas y dashboards</li><li><strong>Carpetas de Git</strong> — el repo del curso, clonado adentro</li></ul></div><div><h3>Dónde miras</h3><ul><li><strong>Catalog Explorer</strong> — todo lo que existe y quién puede verlo</li><li><strong>Compute</strong> — qué está encendido y cuánto cuesta</li><li><strong>Workflows</strong> — qué corre solo y cuándo</li></ul></div></div></section>
 <section class="slide "><p class="eyebrow">Notebooks</p><h2>Una celda puede hablar un idioma distinto a la anterior</h2><pre>%sql
@@ -259,26 +304,26 @@ df = spark.table("neptuno.ventas.categorias")
 
 %md
 ### Esto es documentación, no código</pre><p class="note">El lenguaje por defecto se define al crear el notebook; los <code>%</code> lo cambian solo para esa celda. Vas a usar <code>%sql</code> y <code>%python</code> mezclados todo el curso.</p></section>
-<section class="slide "><p class="eyebrow">Compute</p><h2>Nada corre sin una máquina encendida — y ahí está el costo</h2><div class="dg"><svg viewBox="0 0 900 190" role="img"
+<section class="slide "><p class="eyebrow">Compute</p><h2>Nada corre sin una máquina encendida — y ahí está el costo</h2><div class="dg"><svg viewBox="0 0 900 200" role="img"
   aria-label="Al ejecutar una celda el código viaja a un cluster que cobra por tiempo encendido y devuelve el resultado">
-  <rect class="box" x="20" y="56" width="200" height="60" rx="8"/>
-  <text class="lbl" x="56" y="92">celda del notebook</text>
-  <rect class="box-hi" x="350" y="46" width="200" height="80" rx="8"/>
-  <text class="ttl" x="416" y="80">cluster</text>
-  <text class="cap" x="368" y="104">cobra por tiempo encendido</text>
-  <rect class="box" x="680" y="56" width="200" height="60" rx="8"/>
-  <text class="lbl" x="744" y="92">resultado</text>
-  <path class="ln" d="M222 86 L344 86"/><path d="M337 80 l9 6 -9 6 z" style="fill:var(--ink-mute)"/>
-  <path class="ln" d="M552 86 L674 86"/><path d="M667 80 l9 6 -9 6 z" style="fill:var(--ink-mute)"/>
-  <path class="no" d="M450 132 L450 162"/>
-  <text class="cap" x="332" y="182" style="fill:var(--ruby)">sigue cobrando aunque no ejecutes nada</text>
+  <rect class="box" x="20" y="40" width="200" height="60" rx="8"/>
+  <text class="lbl" x="56" y="76">celda del notebook</text>
+  <rect class="box-hi" x="350" y="30" width="200" height="80" rx="8"/>
+  <text class="ttl" x="416" y="66">cluster</text>
+  <text class="cap" x="378" y="90">el que cobra</text>
+  <rect class="box" x="680" y="40" width="200" height="60" rx="8"/>
+  <text class="lbl" x="744" y="76">resultado</text>
+  <path class="ln" d="M222 70 L344 70"/><path d="M337 64 l9 6 -9 6 z" style="fill:var(--ink-mute)"/>
+  <path class="ln" d="M552 70 L674 70"/><path d="M667 64 l9 6 -9 6 z" style="fill:var(--ink-mute)"/>
+  <path class="no" d="M450 116 L450 150"/>
+  <text class="cap" x="286" y="176" style="fill:var(--ruby)">sigue cobrando aunque no ejecutes nada</text>
 </svg></div>
 <p class="lead">Elegir mal el tipo de cluster es el error más caro que se comete en Databricks.
 Hay tres, y sirven para cosas distintas.</p></section>
 <section class="slide "><p class="eyebrow">Tipo 1 · SQL Warehouse</p><h2>Para consultar: SQL, dashboards y Genie</h2><div class="two"><div><h3>Cómo se crea</h3><ul><li>Compute → SQL Warehouses → Create</li><li>Tamaño (2X-Small alcanza para el curso)</li><li>Serverless: arranca en segundos</li><li>Auto-stop: 10 minutos</li></ul></div><div><h3>Cuándo NO</h3><ul><li>Si necesitas librerías de Python</li><li>Si vas a entrenar un modelo</li><li>Si el trabajo no es SQL</li></ul></div></div><p class="note">Es el que va a atender las consultas del Genie en la sesión 3 y las del agente en la sesión 5.</p></section>
 <section class="slide "><p class="eyebrow">Tipo 2 · All-purpose cluster</p><h2>Para desarrollar: notebooks interactivos</h2><div class="two"><div><h3>Cómo se crea</h3><ul><li>Compute → Create compute</li><li>Eliges versión de runtime</li><li>Puedes instalar librerías</li><li><strong>Terminate after…</strong> ← esto siempre</li></ul></div><div><h3>Cuándo NO</h3><ul><li>En producción: queda encendido y se paga igual</li><li>Para un job programado, hay algo mejor</li></ul></div></div><p class="note">Es el que vas a usar hoy para el notebook, y el que hay que acordarse de apagar al terminar.</p></section>
 <section class="slide "><p class="eyebrow">Tipo 3 · Job cluster</p><h2>Para producción: nace, trabaja y muere</h2><div class="two"><div><h3>Cómo se crea</h3><ul><li>No se crea a mano</li><li>Se define dentro del job</li><li>Arranca al empezar la corrida</li><li>Se apaga solo al terminar</li></ul></div><div><h3>Cuándo NO</h3><ul><li>Para desarrollar: esperarías el arranque en cada prueba</li></ul></div></div><p class="note">En la sesión 2 vas a agendar un pipeline, y va a correr sobre uno de éstos sin que tengas que encender nada.</p></section>
-<section class="slide dark"><p class="eyebrow">Los tres, uno al lado del otro</p>
+<section class="slide dark"><span class="mk" title="Se puede medir en vivo">⏳</span><p class="eyebrow">Los tres, uno al lado del otro</p>
 <h2>Elegir el compute es elegir cuánto pagas</h2>
 <div class="dg"><svg viewBox="0 0 900 250" role="img"
   aria-label="El compute de jobs cuesta 0,35 dólares por DBU, menos de la mitad que el interactivo, que cuesta 0,75">
@@ -302,7 +347,7 @@ de estilo: es el precio de lista de la región donde está este workspace.</p>
 <p class="note">Precios reales de <code>system.billing.list_prices</code> para AWS us-west-2,
 consultados el 26 de agosto de 2026. Los vas a poder verificar tú mismo en la sesión 8.</p>
 </section>
-<section class="slide "><p class="eyebrow">Un dato que casi nadie mide</p>
+<section class="slide "><span class="mk" title="Se puede medir en vivo">⏳</span><p class="eyebrow">Un dato que casi nadie mide</p>
 <h2>Este workspace consumió 18 dólares en doce días</h2>
 <table>
   <tr><th>Concepto</th><th>DBU</th><th>USD</th></tr>
@@ -380,17 +425,17 @@ el mismo almacenamiento y el mismo gobierno.</p><p class="lead" style="margin-to
 </svg></div>
 <p class="note">Un dato que se cobra en la sesión 3: <strong>los comentarios son globales al
 metastore</strong>. Documentar una tabla la documenta para todos los workspaces.</p></section>
-<section class="slide "><p class="eyebrow">Catálogo</p><h2>El primer nivel que sí creas tú</h2><pre><span class="kw">CREATE</span> <span class="kw">CATALOG</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel
+<section class="slide "><span class="mk" title="Abrir el notebook">★</span><p class="eyebrow">Catálogo</p><h2>El primer nivel que sí creas tú</h2><pre><span class="kw">CREATE</span> <span class="kw">CATALOG</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel
   <span class="kw">COMMENT</span> <span class="st">'Datos del curso Databricks AI Engineer'</span>;
 
 <span class="kw">USE</span> <span class="kw">CATALOG</span> neptuno_manuel;
 <span class="kw">SHOW</span> SCHEMAS;</pre><p class="note">Se usa para separar por proyecto, por entorno (desarrollo / producción) o por dominio de negocio. Hoy cada uno crea el suyo para no pisarse.</p></section>
-<section class="slide "><p class="eyebrow">Esquema</p><h2>Adentro del catálogo, la carpeta donde viven las tablas</h2><pre><span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.bronze;
+<section class="slide "><span class="mk" title="Abrir el notebook">★</span><p class="eyebrow">Esquema</p><h2>Adentro del catálogo, la carpeta donde viven las tablas</h2><pre><span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.bronze;
 <span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.silver;
 <span class="kw">CREATE</span> <span class="kw">SCHEMA</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.gold;</pre><p class="note">Fíjate que las tres capas del medallón se vuelven tres esquemas. No es obligatorio hacerlo así, pero es la convención más común y deja el linaje legible.</p></section>
 <section class="slide "><p class="eyebrow">Tablas</p><h2>Gestionadas o externas: quién es dueño de los archivos</h2><div class="two"><div><h3>Gestionada</h3><ul><li>Unity Catalog decide dónde guardar</li><li>Si borras la tabla, se borran los datos</li><li>Es el default, y lo que usamos hoy</li></ul></div><div><h3>Externa</h3><ul><li>Tú indicás la ubicación</li><li>Si borras la tabla, los archivos quedan</li><li>Para datos que comparte otro sistema</li></ul></div></div><pre><span class="kw">CREATE</span> <span class="kw">TABLE</span> neptuno_manuel.bronze.productos ...          <span class="cm">-- gestionada</span>
 <span class="kw">CREATE</span> <span class="kw">TABLE</span> ... <span class="kw">LOCATION</span> <span class="st">'s3://mi-bucket/productos'</span>     <span class="cm">-- externa</span></pre></section>
-<section class="slide "><p class="eyebrow">Volumes</p><h2>Lo mismo que una tabla, pero para archivos</h2><p class="lead">Un volumen es una carpeta gobernada: PDFs, CSVs, imágenes, modelos. Se le dan permisos igual que a una tabla, y aparece en el linaje.</p><pre><span class="kw">CREATE</span> <span class="kw">VOLUME</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.bronze.landing;
+<section class="slide "><span class="mk" title="Abrir el notebook">★</span><p class="eyebrow">Volumes</p><h2>Lo mismo que una tabla, pero para archivos</h2><p class="lead">Un volumen es una carpeta gobernada: PDFs, CSVs, imágenes, modelos. Se le dan permisos igual que a una tabla, y aparece en el linaje.</p><pre><span class="kw">CREATE</span> <span class="kw">VOLUME</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> neptuno_manuel.bronze.landing;
 
 <span class="cm">-- y se usa como una ruta normal</span>
 /Volumes/neptuno_manuel/bronze/landing/productos.csv</pre><p class="note">Acá caen hoy los CSV de Neptuno — y en la sesión 4, los documentos que va a leer el sistema de RAG.</p></section>
@@ -422,7 +467,7 @@ metastore</strong>. Documentar una tabla la documenta para todos los workspaces.
 del agente hasta el CSV del que salió.</p></section>
 <section class="slide dark"><p class="eyebrow">Cierre del bloque 2</p><h2>Tres ideas para llevarse</h2><div class="recap"><div><span class="i">01</span><p>Todo objeto se nombra <strong>catálogo.esquema.objeto</strong>.</p></div><div><span class="i">02</span><p>Los <strong>volúmenes</strong> traen los archivos al mismo régimen de gobierno que las tablas.</p></div><div><span class="i">03</span><p>Los permisos se heredan hacia abajo, y hacen falta en cada nivel del camino.</p></div></div></section>
 <section class="slide dark mesh sep"><p class="bignum">03</p><h2>Delta Lake</h2><p class="time">45 minutos · bloque 3 de 4</p><ol><li>Qué formato usa realmente el lakehouse</li><li>La anatomía de una tabla Delta</li><li>Transacciones ACID sobre almacenamiento barato</li><li>Cómo se crea y se puebla una tabla</li><li>Viaje en el tiempo y mantenimiento</li><li>Y para cerrar: por qué esto le importa a una IA</li></ol></section>
-<section class="slide "><p class="eyebrow">Tres formatos</p><h2>Por qué no alcanza con guardar un CSV</h2><table><tr><th></th><th>CSV</th><th>Parquet</th><th>Delta</th></tr><tr><td>Tipos de dato</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Compresión</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Lee solo las columnas que pides</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Transacciones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr><tr><td>Historial de versiones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr></table><div class="compare" style="margin-top:22px">
+<section class="slide "><span class="mk" title="Se puede medir en vivo">⏳</span><p class="eyebrow">Tres formatos</p><h2>Por qué no alcanza con guardar un CSV</h2><table><tr><th></th><th>CSV</th><th>Parquet</th><th>Delta</th></tr><tr><td>Tipos de dato</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Compresión</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Lee solo las columnas que pides</td><td>No</td><td>Sí</td><td>Sí</td></tr><tr><td>Transacciones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr><tr><td>Historial de versiones</td><td>No</td><td>No</td><td><strong>Sí</strong></td></tr></table><div class="compare" style="margin-top:22px">
   <div><span class="lbl">detalles_pedidos en CSV</span><span class="val">41,8 KB</span></div>
   <div><span class="lbl">la misma tabla en Delta</span><span class="val">12,5 KB</span></div>
   <div><span class="lbl">diferencia</span>
@@ -468,7 +513,7 @@ consulta baja de 3,37 s a 1,47 s por caché.</p></section>
   <text class="lbl" x="504" y="76">con Delta</text>
   <text class="cap" x="504" y="100">la tabla sigue en su última versión buena</text>
 </svg></div></section>
-<section class="slide "><p class="eyebrow">Crear una tabla</p><h2>Casi siempre, a partir de una consulta</h2><pre><span class="kw">CREATE</span> <span class="kw">TABLE</span> neptuno_manuel.bronze.productos
+<section class="slide "><span class="mk" title="Abrir el notebook">★</span><p class="eyebrow">Crear una tabla</p><h2>Casi siempre, a partir de una consulta</h2><pre><span class="kw">CREATE</span> <span class="kw">TABLE</span> neptuno_manuel.bronze.productos
 <span class="kw">AS</span> <span class="kw">SELECT</span> * <span class="kw">FROM</span> ...;
 
 <span class="cm">-- y para leer archivos de un volumen:</span>
@@ -476,14 +521,14 @@ consulta baja de 3,37 s a 1,47 s por caché.</p></section>
 <span class="kw">SELECT</span> * <span class="kw">FROM</span> read_files(
   <span class="st">'/Volumes/neptuno_manuel/bronze/landing/productos.csv'</span>,
   format =&gt; <span class="st">'csv'</span>, header =&gt; true );</pre><p class="note">En bronze conviene agregar de dónde vino cada fila y cuándo entró. Esas dos columnas son las que permiten responder «¿de dónde salió este número?».</p></section>
-<section class="slide "><p class="eyebrow">Ver el historial</p><h2>Cada operación quedó anotada, con quién y cuándo</h2><pre><span class="kw">DESCRIBE</span> <span class="kw">HISTORY</span> neptuno_manuel.bronze.productos;</pre><table style="margin-top:20px"><tr><th>version</th><th>operation</th><th>operationMetrics</th></tr><tr><td>2</td><td>RESTORE</td><td>—</td></tr><tr><td>1</td><td>DELETE</td><td>12 filas borradas</td></tr><tr><td>0</td><td>CREATE TABLE AS SELECT</td><td>77 filas</td></tr></table></section>
-<section class="slide "><p class="eyebrow">Viaje en el tiempo</p><h2>Consultar el pasado, o volver a él</h2><pre><span class="cm">-- leer como estaba antes</span>
+<section class="slide "><span class="mk" title="Abrir el notebook">★</span><p class="eyebrow">Ver el historial</p><h2>Cada operación quedó anotada, con quién y cuándo</h2><pre><span class="kw">DESCRIBE</span> <span class="kw">HISTORY</span> neptuno_manuel.bronze.productos;</pre><table style="margin-top:20px"><tr><th>version</th><th>operation</th><th>operationMetrics</th></tr><tr><td>2</td><td>RESTORE</td><td>—</td></tr><tr><td>1</td><td>DELETE</td><td>12 filas borradas</td></tr><tr><td>0</td><td>CREATE TABLE AS SELECT</td><td>77 filas</td></tr></table></section>
+<section class="slide "><span class="mk" title="Abrir el notebook">★</span><p class="eyebrow">Viaje en el tiempo</p><h2>Consultar el pasado, o volver a él</h2><pre><span class="cm">-- leer como estaba antes</span>
 <span class="kw">SELECT</span> * <span class="kw">FROM</span> neptuno_manuel.bronze.productos <span class="kw">VERSION</span> <span class="kw">AS</span> <span class="kw">OF</span> 0;
 <span class="kw">SELECT</span> * <span class="kw">FROM</span> neptuno_manuel.bronze.productos <span class="kw">TIMESTAMP</span> <span class="kw">AS</span> <span class="kw">OF</span> <span class="st">'2026-08-26'</span>;
 
 <span class="cm">-- o directamente volver</span>
 <span class="kw">RESTORE</span> <span class="kw">TABLE</span> neptuno_manuel.bronze.productos <span class="kw">TO</span> <span class="kw">VERSION</span> <span class="kw">AS</span> <span class="kw">OF</span> 0;</pre><p class="note">Sirve para recuperar un borrado, pero también para auditar: puedes reproducir exactamente el dato que vio un reporte la semana pasada.</p></section>
-<section class="slide dark"><p class="eyebrow">En vivo</p><h2>Borramos medio catálogo y lo traemos de vuelta, sin backup</h2><div class="dg"><svg viewBox="0 0 900 190" role="img"
+<section class="slide dark"><span class="mk" title="Se puede medir en vivo">⏳</span><p class="eyebrow">En vivo</p><h2>Borramos medio catálogo y lo traemos de vuelta, sin backup</h2><div class="dg"><svg viewBox="0 0 900 190" role="img"
   aria-label="La tabla pasa de 77 filas a 65 tras el borrado y vuelve a 77 tras restaurar">
   <line class="ln" x1="90" y1="100" x2="810" y2="100"/>
   <circle cx="120" cy="100" r="9" class="box"/>
@@ -502,7 +547,7 @@ consulta baja de 3,37 s a 1,47 s por caché.</p></section>
 <span class="kw">OPTIMIZE</span> neptuno_manuel.bronze.pedidos <span class="kw">ZORDER</span> <span class="kw">BY</span> (IdCliente);
 
 <span class="kw">VACUUM</span> neptuno_manuel.bronze.pedidos <span class="kw">RETAIN</span> 168 <span class="kw">HOURS</span>;  <span class="cm">-- borra archivos viejos</span></pre><p class="note"><strong>Ojo con <code>VACUUM</code>:</strong> borra los archivos que ya no usa ninguna versión reciente. Después de correrlo, el viaje en el tiempo más allá del período retenido deja de funcionar.</p></section>
-<section class="slide "><p class="eyebrow">Lo que encontramos al cargar los datos</p>
+<section class="slide "><span class="mk" title="Se puede medir en vivo">⏳</span><p class="eyebrow">Lo que encontramos al cargar los datos</p>
 <h2>Las ventas de Neptuno están infladas, y el error es demasiado chico para que alguien lo note</h2>
 <div class="compare">
   <div><span class="lbl">Sumando precio × cantidad</span><span class="val">1.354.458,59</span></div>
@@ -534,9 +579,15 @@ Dos dicen que Bebidas pierde dinero; una, que gana un cuarto de millón.</p><div
 <section class="slide "><p class="eyebrow">Por qué pasó</p><h2>Neptuno no tiene tabla de costos: el margen no existe</h2><p class="lead">Cuando el esquema <strong>contiene</strong> la respuesta, el modelo llega siempre al mismo SQL. Cuando no la contiene, improvisa — y cada improvisación es distinta.</p><p class="lead" style="margin-top:26px;color:var(--primary-deep)">Si preguntás tres veces y te dan tres números, esa pregunta no tiene respuesta en tus datos.</p><p class="note">Contraprueba: «¿cuántos pedidos hubo en 1997?» da idéntico las tres veces. El modelo no es inestable; lo inestable es pedirle lo que no puede saber.</p></section>
 <section class="slide dark"><p class="eyebrow">Cierre del bloque 3</p><h2>Tres ideas para llevarse</h2><div class="recap"><div><span class="i">01</span><p>Delta es Parquet más un registro de transacciones: de ahí salen ACID y el historial.</p></div><div><span class="i">02</span><p>Puedes consultar y restaurar cualquier versión anterior de una tabla.</p></div><div><span class="i">03</span><p>Una IA sobre datos sin gobierno no falla siempre igual: <strong>falla distinto cada vez</strong>.</p></div></div></section>
 <section class="slide dark mesh sep"><p class="bignum">04</p><h2>Práctica</h2><p class="time">45 minutos · bloque 4 de 4</p><ol><li>Construís tu catálogo y cargas Neptuno</li><li>Escribes tus primeras consultas</li><li>Documentas una tabla</li><li>Provocás un desastre y lo revertís</li></ol></section>
-<section class="slide "><p class="eyebrow">El ejercicio</p><h2>Cuatro pasos, sobre tu propio catálogo</h2><div class="recap"><div><span class="i">01</span><p>Deja las <strong>8 tablas</strong> de Neptuno en tu esquema <code>bronze</code>, con la columna de fecha de ingesta.</p></div><div><span class="i">02</span><p>Escribe <strong>tres consultas</strong> que respondan preguntas de negocio reales.</p></div><div><span class="i">03</span><p>Documenta <strong>una tabla</strong> con <code>COMMENT ON TABLE</code>: lo que un colega necesitaría para no equivocarse con ella.</p></div><div><span class="i">04</span><p>Provoca un cambio y revertilo con <code>RESTORE</code>.</p></div></div><p class="note">Guarda ese comentario que escribas. En la sesión 3 vas a descubrir que es exactamente lo que le faltaba al Genie que acabás de ver fallar.</p></section>
+<section class="slide "><span class="mk" title="Abrir el notebook">★</span><p class="eyebrow">El ejercicio</p><h2>Cuatro pasos, sobre tu propio catálogo</h2><div class="recap"><div><span class="i">01</span><p>Deja las <strong>8 tablas</strong> de Neptuno en tu esquema <code>bronze</code>, con la columna de fecha de ingesta.</p></div><div><span class="i">02</span><p>Escribe <strong>tres consultas</strong> que respondan preguntas de negocio reales.</p></div><div><span class="i">03</span><p>Documenta <strong>una tabla</strong> con <code>COMMENT ON TABLE</code>: lo que un colega necesitaría para no equivocarse con ella.</p></div><div><span class="i">04</span><p>Provoca un cambio y revertilo con <code>RESTORE</code>.</p></div></div><p class="note">Guarda ese comentario que escribas. En la sesión 3 vas a descubrir que es exactamente lo que le faltaba al Genie que acabás de ver fallar.</p></section>
 <section class="slide "><p class="eyebrow">Cápsula · el componente y sus equivalentes</p><h2>Aprendes el componente, no la marca</h2><table><tr><th>Componente</th><th>Databricks</th><th>GCP</th><th>Azure</th><th>AWS</th></tr><tr><td>Almacenamiento</td><td><strong>Delta</strong></td><td>GCS</td><td>ADLS Gen2</td><td>S3</td></tr><tr><td>Motor analítico</td><td><strong>SQL Warehouse</strong></td><td>BigQuery</td><td>Synapse</td><td>Redshift</td></tr><tr><td>Gobierno</td><td><strong>Unity Catalog</strong></td><td>Dataplex</td><td>Purview</td><td>Lake Formation</td></tr><tr><td>Formato de tabla</td><td><strong>Delta Lake</strong></td><td>Iceberg</td><td>Delta / Iceberg</td><td>Iceberg</td></tr></table><p class="note">Elegir cuál de cada proveedor entra en una solución real — por capacidad, integración y <strong>costo</strong> — es el trabajo del arquitecto de soluciones. Es el rol al que apunta este curso.</p></section>
 <section class="slide dark mesh"><p class="eyebrow">Cierre</p><h2>Lo que te llevas hoy, y lo que viene el lunes</h2><ul class="clean"><li>Un catálogo propio con las 8 tablas de Neptuno en bronze.</li><li>Tres consultas, una tabla documentada y un restore.</li><li>Y el hábito que va a valer los dos meses: <strong>apagar el compute</strong>.</li></ul><p class="lead" style="margin-top:32px">El lunes: hoy cargamos todo de una vez. En la vida real los datos llegan de a poco, todos los días. Vamos a construir un pipeline que <strong>se entera solo de lo que llegó nuevo</strong>.</p><div class="foot"><span>Repositorio del curso · github.com/manuelarguelles/databricks-ai-engineer-alumnos</span><span>Sesión 2 · lunes 31 de agosto</span></div></section>
+<div id="ctl">
+  <button id="bTema" title="Tema oscuro para proyector (T)" aria-label="Alternar tema">◐</button>
+  <button id="bMenos" title="Reducir tamaño (−)" aria-label="Reducir tamaño de letra">A−</button>
+  <button id="bMas" title="Aumentar tamaño (+)" aria-label="Aumentar tamaño de letra">A+</button>
+  <button id="bMarcas" title="Mostrar marcadores ★ y ⏳ (M)" aria-label="Mostrar marcadores">★</button>
+</div>
 <div id="bar"></div><div id="num"></div>
 <div id="hint">← → navegar · F pantalla completa</div>
 
@@ -561,6 +612,31 @@ document.addEventListener('keydown',e=>{
 document.addEventListener('click',e=>{if(!e.target.closest('a'))show(i+1)});
 show(0);
 setTimeout(()=>document.getElementById('hint').classList.add('gone'),6000);
+
+(function(){
+  var B=document.body, R=document.documentElement;
+  var esc = parseFloat(localStorage.getItem('deckEscala')||'1');
+  function aplicaEscala(){ R.style.fontSize=(15*esc)+'px';
+    try{localStorage.setItem('deckEscala',esc)}catch(e){} }
+  function zoom(d){ esc=Math.min(1.6,Math.max(.7,+(esc+d).toFixed(2))); aplicaEscala(); }
+  function tema(){ B.classList.toggle('todo-oscuro');
+    try{localStorage.setItem('deckTema',B.classList.contains('todo-oscuro')?'oscuro':'auto')}catch(e){} }
+  function marcas(){ B.classList.toggle('marcas'); }
+  try{ if(localStorage.getItem('deckTema')==='oscuro') B.classList.add('todo-oscuro'); }catch(e){}
+  aplicaEscala();
+  document.getElementById('bTema').onclick=function(e){e.stopPropagation();tema()};
+  document.getElementById('bMas').onclick=function(e){e.stopPropagation();zoom(.1)};
+  document.getElementById('bMenos').onclick=function(e){e.stopPropagation();zoom(-.1)};
+  document.getElementById('bMarcas').onclick=function(e){e.stopPropagation();marcas()};
+  document.addEventListener('keydown',function(e){
+    var k=e.key.toLowerCase();
+    if(k==='t'){tema()}
+    else if(e.key==='+'||e.key==='='){zoom(.1)}
+    else if(e.key==='-'||e.key==='_'){zoom(-.1)}
+    else if(k==='0'){esc=1;aplicaEscala()}
+    else if(k==='m'){marcas()}
+  });
+})();
 </script>
 </body>
 </html>
