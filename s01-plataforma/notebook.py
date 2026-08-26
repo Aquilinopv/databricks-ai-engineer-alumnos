@@ -17,12 +17,23 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("alumno", "", "Tu nombre (sin espacios ni tildes)")
-ALUMNO = dbutils.widgets.get("alumno").strip().lower()
+import re, unicodedata
+
+dbutils.widgets.text("alumno", "", "Tu nombre")
+crudo = dbutils.widgets.get("alumno").strip()
+assert crudo, "Escribe tu nombre en el widget de arriba antes de seguir."
+
+def sanear(nombre: str) -> str:
+    """Un catálogo de Unity Catalog no admite espacios ni tildes.
+    'Demo Testing' -> 'demo_testing' · 'José Pérez' -> 'jose_perez'"""
+    sin_tildes = unicodedata.normalize("NFKD", nombre).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-zA-Z0-9]+", "_", sin_tildes).strip("_").lower()
+
+ALUMNO = sanear(crudo)
 assert ALUMNO, "Pon tu nombre en el widget de arriba antes de seguir."
 
 CATALOGO = f"neptuno_{ALUMNO}"
-print(f"Tu catálogo: {CATALOGO}")
+print(f"Hola, {crudo}.\nTu catálogo: {CATALOGO}")
 
 # COMMAND ----------
 
@@ -45,9 +56,27 @@ display(spark.sql(f"SHOW SCHEMAS IN {CATALOGO}"))
 
 # COMMAND ----------
 
-# MAGIC %md ## 2 · Subir los CSV al Volume
-# MAGIC Subilos por **Catalog Explorer → tu catálogo → bronze → landing → Upload**,
-# MAGIC o cópialos desde el volume compartido del curso. Después verifica:
+# MAGIC %md ## 2 · Traer los CSV de Neptuno a tu Volume
+# MAGIC Los datos del curso viven en un volumen compartido, en modo lectura.
+# MAGIC Esta celda los copia al tuyo; si ya están, no hace nada.
+
+# COMMAND ----------
+
+COMPARTIDO = "/Volumes/neptuno/ventas/landing"
+ESPERADOS = ["categorias", "clientes", "detalles_pedidos", "empleados",
+             "pedidos", "productos", "proveedores", "transportistas"]
+
+ya_estan = {f.name for f in dbutils.fs.ls(LANDING)}
+copiados = 0
+for tabla in ESPERADOS:
+    if f"{tabla}.csv" not in ya_estan:
+        dbutils.fs.cp(f"{COMPARTIDO}/{tabla}.csv", f"{LANDING}/{tabla}.csv")
+        copiados += 1
+print(f"{copiados} archivos copiados · {len(ESPERADOS)-copiados} ya estaban")
+
+# COMMAND ----------
+
+# MAGIC %md ### Verificación: ¿están los ocho?
 
 # COMMAND ----------
 
@@ -56,8 +85,6 @@ print(f"{len(archivos)} archivos en el landing:")
 for a in sorted(archivos):
     print(" ·", a)
 
-ESPERADOS = ["categorias", "clientes", "detalles_pedidos", "empleados",
-             "pedidos", "productos", "proveedores", "transportistas"]
 faltan = [t for t in ESPERADOS if not any(t in a for a in archivos)]
 assert not faltan, f"Faltan estos CSV en el landing: {faltan}"
 print("\n✅ están los 8")
