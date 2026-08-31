@@ -9,16 +9,18 @@ adentro en vez de en la memoria de alguien.
 ## Temas
 - Transformaciones con PySpark y SQL
 - Ingesta incremental con Auto Loader; Change Data Feed
-- Pipelines declarativos y orquestación con Jobs
+- Pipelines declarativos y orquestación con Jobs *(conceptual; laboratorio opcional)*
 - Calidad de datos: por qué la IA es tan buena como los datos que la alimentan
 
 ## Tu entregable
 1. Pipeline **bronze → silver → gold** corriendo con los **23 meses** de datos, cargados en tandas
-2. **Una expectativa de calidad propia**, y una fila que la viole a propósito
+2. **Una regla de calidad propia**, validada con una consulta SQL
 3. **Una tabla gold más**, con su regla de negocio explicada en el `COMMENT`
-4. El job **agendado** para que corra solo
 
 Súbelo a `entregas/tu-nombre/`.
+
+Si quieres practicar expectations declarativas, Lakeflow Pipelines y Jobs, abre
+`notebook-append.py`. Ese laboratorio es opcional y no es requisito para la sesión 3.
 
 ## Lo que resolvemos hoy
 El error que encontraste al final de la sesión 1. Hoy se arregla **una vez, en un solo lugar**,

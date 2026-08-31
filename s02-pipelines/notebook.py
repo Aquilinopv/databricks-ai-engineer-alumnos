@@ -450,9 +450,11 @@ display(spark.table(f"{CATALOGO}.gold.ventas_mes_completo").orderBy(F.col("mes")
 
 # MAGIC %md ## 6 · Tu entregable
 # MAGIC 1. Pipeline incremental corriendo con **los 23 meses** cargados en tandas
-# MAGIC 2. **Una expectativa propia** + una fila que la viole a propósito
+# MAGIC 2. **Una regla de calidad propia**, validada con SQL como las reglas de la sección 3
 # MAGIC 3. **Una tabla gold más**, con su regla de negocio en el `COMMENT`
-# MAGIC 4. El job agendado para que corra solo
+# MAGIC
+# MAGIC > `CONSTRAINT ... EXPECT`, Lakeflow Pipelines y Jobs quedan como ampliación opcional en
+# MAGIC > `notebook-append.py`; no son requisito para continuar con la sesión 3.
 # MAGIC
 # MAGIC ---
 # MAGIC **La semana que viene:** ya tenemos datos confiables. Entra el primer LLM — y le volvemos
@@ -462,7 +464,7 @@ display(spark.table(f"{CATALOGO}.gold.ventas_mes_completo").orderBy(F.col("mes")
 
 # COMMAND ----------
 
-# TODO alumno — tu expectativa
+# TODO alumno — tu regla de calidad y la consulta que cuenta sus violaciones
 
 
 # COMMAND ----------
