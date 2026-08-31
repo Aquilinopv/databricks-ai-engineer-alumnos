@@ -201,8 +201,8 @@ print("✅ Corrió de nuevo y no entró nada. El pipeline es idempotente.")
 # COMMAND ----------
 
 # MAGIC %md ### Paso 3 — cae un mes más
-# MAGIC 👉 **Copia 3 archivos más** de `pedidos/` al landing (o pedíselo al instructor)
-# MAGIC y corre la celda de abajo.
+# MAGIC 👉 Sube **un archivo mensual adicional** a `landing/pedidos/` y corre la celda de abajo.
+# MAGIC El total debe aumentar solo por las filas de ese archivo; el mes anterior no se reprocesa.
 
 # COMMAND ----------
 
@@ -222,6 +222,26 @@ SELECT DATE_TRUNC('SECOND', _ingesta_ts) AS tanda, COUNT(*) AS filas
 FROM {CATALOGO}.bronze.pedidos_incremental
 GROUP BY 1 ORDER BY 1
 """).display()
+
+# COMMAND ----------
+
+# MAGIC %md ### Paso 4 — completar los 23 meses
+# MAGIC La prueba incremental ya terminó: vimos una primera carga, una reejecución con **0 filas**
+# MAGIC nuevas y la llegada de otro mes. Ahora sube a `landing/pedidos/` **todos los lotes mensuales
+# MAGIC que todavía falten** y ejecuta la siguiente celda.
+# MAGIC
+# MAGIC No estamos agregando pedidos posteriores a mayo de 2026. Estamos reconstruyendo, mes a mes,
+# MAGIC la llegada histórica de las mismas **830 filas** que S01 cargó de una sola vez.
+
+# COMMAND ----------
+
+total_final = ingerir_pedidos()
+print(f"Total después de cargar los 23 meses: {total_final:,} pedidos")
+assert total_final == 830, (
+    f"Se esperaban 830 pedidos y llegaron {total_final}. "
+    "Revisa qué lotes mensuales faltan en landing/pedidos/."
+)
+print("✅ Los 23 meses quedaron cargados sin duplicados.")
 
 # COMMAND ----------
 
@@ -305,6 +325,13 @@ FROM table_changes('{CATALOGO}.silver.detalles_pedidos', {v_antes + 1})
 # COMMAND ----------
 
 # MAGIC %md ### 5.1 Ventas — mata el error del descuento y la fecha equivocada
+# MAGIC En S01 vimos que sumar `PrecioUnidad * Cantidad` infla las ventas **6,55 %** porque olvida
+# MAGIC el descuento. También es fácil agrupar por `FechaEnvio`, aunque la venta ocurrió en
+# MAGIC `FechaPedido`.
+# MAGIC
+# MAGIC **Qué busca el código:** producir una fila por categoría y mes usando `ingreso_linea`, la
+# MAGIC métrica confiable que ya calculamos en Silver, y la fecha real de la venta. El consumidor
+# MAGIC recibe `ingreso_neto`, `unidades` y `pedidos` sin tener que reconstruir la regla.
 
 # COMMAND ----------
 
@@ -340,6 +367,13 @@ display(spark.table(f"{CATALOGO}.gold.ventas_por_categoria_mes").orderBy("mes").
 # COMMAND ----------
 
 # MAGIC %md ### 5.2 Inventario — mata la columna olvidada
+# MAGIC Mirar únicamente `UnidadesEnExistencia` genera alertas falsas: un producto puede tener poco
+# MAGIC stock físico, pero ya traer mercadería en `UnidadesEnPedido`. Ignorar esa segunda columna
+# MAGIC puede provocar una compra duplicada.
+# MAGIC
+# MAGIC **Qué busca el código:** calcular `disponible_total = existencia + unidades en pedido`,
+# MAGIC excluir productos suspendidos y dejar una bandera `requiere_reposicion` lista para consumir.
+# MAGIC Al final compara cuántas alertas produciría la regla ingenua frente a la regla correcta.
 
 # COMMAND ----------
 
@@ -375,6 +409,13 @@ FROM {CATALOGO}.gold.inventario_disponible
 # COMMAND ----------
 
 # MAGIC %md ### 5.3 Meses completos — mata la comparación injusta
+# MAGIC El dataset termina el 6 de mayo de 2026: mayo tiene solo **14 pedidos**, frente a **74** en
+# MAGIC abril. Compararlos directamente haría parecer que el negocio se desplomó, cuando en realidad
+# MAGIC estamos comparando un mes parcial contra uno completo.
+# MAGIC
+# MAGIC **Qué busca el código:** agrupar los pedidos por mes, encontrar el último mes disponible y
+# MAGIC marcarlo como `mes_completo = false`. Los análisis temporales pueden filtrar
+# MAGIC `mes_completo = true` y evitar conclusiones falsas por períodos inconclusos.
 
 # COMMAND ----------
 
