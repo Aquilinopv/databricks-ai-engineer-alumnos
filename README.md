@@ -66,3 +66,8 @@ Si nunca usaste Git, no te preocupes: la primera vez lo hacemos juntos en clase.
 | Producción | 8 | El copiloto desplegado, con interfaz y monitoreo |
 
 Al final tienes un artefacto real de portafolio — no un ejercicio de juguete.
+
+---
+
+🔄 **Smoke test de sincronización · 31-ago-2026:** si ves esta línea en tu fork, la actualización
+del repositorio docente llegó correctamente.
