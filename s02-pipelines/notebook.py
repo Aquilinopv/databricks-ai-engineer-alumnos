@@ -21,12 +21,10 @@
 
 # COMMAND ----------
 
-# Al importar el notebook, Databricks no ejecuta el código automáticamente.
-# Esta debe ser la primera celda que corras. Si el widget ya existe, conserva su valor.
-try:
-    dbutils.widgets.get("catalogo")
-except Exception:
-    dbutils.widgets.text("catalogo", "", "Tu catálogo de la S01")
+# Al importar o actualizar el notebook, Databricks no ejecuta el código automáticamente.
+# Esta debe ser la primera celda que corras. La llamada directa también vuelve a mostrar
+# el widget cuando Databricks conservó su estado interno, pero ocultó la barra tras un Pull.
+dbutils.widgets.text("catalogo", "", "Tu catálogo de la S01")
 
 print("✅ Widget creado. Escribe arriba el nombre completo de tu catálogo de la S01.")
 
