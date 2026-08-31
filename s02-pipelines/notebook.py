@@ -11,14 +11,48 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("alumno", "", "Tu nombre")
-ALUMNO = dbutils.widgets.get("alumno").strip().lower()
-assert ALUMNO, "Pon tu nombre en el widget."
+# MAGIC %md ## 0 · Conectar con tu catálogo de la sesión 1
+# MAGIC Escribe el nombre **completo y exacto** del catálogo que creaste en la S01.
+# MAGIC Ejemplo: `neptuno_manuel_arguelles`.
+# MAGIC
+# MAGIC 1. Ejecuta la siguiente celda para crear el widget.
+# MAGIC 2. Escribe el catálogo completo en **Tu catálogo de la S01**.
+# MAGIC 3. Continúa con la celda de validación.
 
-CATALOGO   = f"neptuno_{ALUMNO}"
+# COMMAND ----------
+
+# Al importar el notebook, Databricks no ejecuta el código automáticamente.
+# Esta debe ser la primera celda que corras. Si el widget ya existe, conserva su valor.
+try:
+    dbutils.widgets.get("catalogo")
+except Exception:
+    dbutils.widgets.text("catalogo", "", "Tu catálogo de la S01")
+
+print("✅ Widget creado. Escribe arriba el nombre completo de tu catálogo de la S01.")
+
+# COMMAND ----------
+
+import re
+
+CATALOGO = dbutils.widgets.get("catalogo").strip().lower()
+assert CATALOGO, "Escribe el nombre completo de tu catálogo, por ejemplo: neptuno_manuel_arguelles"
+assert CATALOGO.startswith("neptuno_"), (
+    "El catálogo debe comenzar por 'neptuno_'. "
+    "Escribe el mismo nombre completo que creaste en la S01."
+)
+assert re.fullmatch(r"[a-z][a-z0-9_]*", CATALOGO), (
+    "Usa únicamente letras minúsculas, números y guiones bajos; sin espacios ni tildes."
+)
+
+catalogos_disponibles = {fila.catalog.lower() for fila in spark.sql("SHOW CATALOGS").collect()}
+assert CATALOGO in catalogos_disponibles, (
+    f"No existe el catálogo '{CATALOGO}' en este workspace. "
+    "Revisa el nombre en Catalog Explorer y escríbelo exactamente igual."
+)
+
 LANDING    = f"/Volumes/{CATALOGO}/bronze/landing"
 CHECKPOINT = f"{LANDING}/_checkpoints"
-print(f"Catálogo: {CATALOGO}\nLanding : {LANDING}")
+print(f"✅ Catálogo encontrado: {CATALOGO}\nLanding: {LANDING}")
 
 # COMMAND ----------
 
@@ -352,4 +386,3 @@ display(spark.table(f"{CATALOGO}.gold.ventas_mes_completo").orderBy(F.col("mes")
 # COMMAND ----------
 
 # TODO alumno — tu tabla gold
-
