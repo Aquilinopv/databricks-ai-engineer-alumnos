@@ -64,16 +64,37 @@ print(f"✅ Catálogo encontrado: {CATALOGO}\nLanding: {LANDING}")
 
 from pyspark.sql import functions as F
 
-detalles = (spark.table(f"{CATALOGO}.bronze.detalles_pedidos")
-    .withColumn("PrecioUnidad", F.col("PrecioUnidad").cast("decimal(12,2)"))
-    .withColumn("Cantidad",     F.col("Cantidad").cast("int"))
-    .withColumn("Descuento",    F.col("Descuento").cast("double"))
-    # ── la regla de negocio, en un solo lugar del sistema ──
-    .withColumn("ingreso_linea",
-                F.round(F.col("PrecioUnidad") * F.col("Cantidad") * (1 - F.col("Descuento")), 2))
-    .drop("_archivo_origen"))
+detalles = (
+    spark.table(f"{CATALOGO}.bronze.detalles_pedidos")  # Lee la tabla Delta de bronze como DataFrame.
+    .withColumn(                                         # Reemplaza PrecioUnidad por una versión tipada.
+        "PrecioUnidad",                                 # Columna que se va a crear o reemplazar.
+        F.col("PrecioUnidad").cast("decimal(12,2)"),    # Convierte dinero a decimal exacto, nunca float.
+    )
+    .withColumn(                                         # Reemplaza Cantidad por una versión tipada.
+        "Cantidad",                                     # Columna que se va a crear o reemplazar.
+        F.col("Cantidad").cast("int"),                  # Convierte la cantidad a número entero.
+    )
+    .withColumn(                                         # Reemplaza Descuento por una versión tipada.
+        "Descuento",                                    # Columna que se va a crear o reemplazar.
+        F.col("Descuento").cast("double"),              # Convierte el porcentaje a número decimal.
+    )
+    .withColumn(                                         # Agrega la métrica de negocio a Silver.
+        "ingreso_linea",                                # Nombre único y reutilizable para la métrica.
+        F.round(                                         # Redondea el resultado monetario a dos decimales.
+            F.col("PrecioUnidad")                       # Precio unitario de la línea de pedido.
+            * F.col("Cantidad")                         # Multiplica por las unidades vendidas.
+            * (1 - F.col("Descuento")),                 # Aplica el descuento una sola vez, aquí en Silver.
+            2,                                           # Conserva dos decimales en el resultado.
+        ),
+    )
+    .drop("_archivo_origen")                             # Quita metadata de S01 que ya no necesita Silver.
+)
 
-detalles.write.mode("overwrite").saveAsTable(f"{CATALOGO}.silver.detalles_pedidos")
+(
+    detalles.write                                       # Abre el escritor batch del DataFrame transformado.
+    .mode("overwrite")                                  # Reemplaza la tabla para que la celda sea repetible.
+    .saveAsTable(f"{CATALOGO}.silver.detalles_pedidos") # Guarda una tabla Delta registrada en Unity Catalog.
+)
 
 spark.sql(f"""
 COMMENT ON TABLE {CATALOGO}.silver.detalles_pedidos IS
@@ -94,22 +115,39 @@ def ingerir_pedidos() -> int:
     """Procesa los archivos nuevos de pedidos/. Devuelve cuántas filas entraron."""
     destino = f"{CATALOGO}.bronze.pedidos_incremental"
 
-    (spark.readStream
-        .format("cloudFiles")
-        .option("cloudFiles.format", "csv")
-        .option("cloudFiles.schemaLocation", f"{CHECKPOINT}/pedidos_schema")
-        .option("cloudFiles.schemaEvolutionMode", "addNewColumns")
-        .option("header", True)
-        .load(f"{LANDING}/pedidos/")
-        .withColumn("_archivo_origen", F.col("_metadata.file_path"))
-        .withColumn("_ingesta_ts",     F.current_timestamp())
-     .writeStream
-        .option("checkpointLocation", f"{CHECKPOINT}/pedidos")
-        .trigger(availableNow=True)
-        .toTable(destino)
-     .awaitTermination())
+    (
+        spark.readStream                                  # Crea una lectura incremental con Structured Streaming.
+        .format("cloudFiles")                            # Activa Auto Loader para descubrir archivos nuevos.
+        .option("cloudFiles.format", "csv")             # Indica que cada archivo descubierto es un CSV.
+        .option(                                          # Define dónde Auto Loader guarda el esquema inferido.
+            "cloudFiles.schemaLocation",                 # Clave de configuración del almacenamiento de esquema.
+            f"{CHECKPOINT}/pedidos_schema",              # Ruta separada del checkpoint de progreso.
+        )
+        .option(                                          # Decide qué hacer si mañana aparece una columna nueva.
+            "cloudFiles.schemaEvolutionMode",            # Clave que controla la evolución del esquema.
+            "addNewColumns",                             # Agrega columnas nuevas y las conserva en el destino.
+        )
+        .option("header", True)                          # Usa la primera fila del CSV como nombres de columnas.
+        .load(f"{LANDING}/pedidos/")                     # Observa esta carpeta; no vuelve a leer lo ya procesado.
+        .withColumn(                                      # Agrega trazabilidad sobre el archivo de procedencia.
+            "_archivo_origen",                           # Nombre de la columna técnica que guardaremos.
+            F.col("_metadata.file_path"),                 # Ruta real del CSV entregada por Auto Loader.
+        )
+        .withColumn(                                      # Agrega trazabilidad temporal de la ingesta.
+            "_ingesta_ts",                               # Nombre de la columna técnica de auditoría.
+            F.current_timestamp(),                        # Momento en que esta corrida procesó la fila.
+        )
+        .writeStream                                      # Cambia del lector incremental al escritor incremental.
+        .option(                                          # Configura la memoria de progreso del stream.
+            "checkpointLocation",                        # Clave obligatoria para una ingesta idempotente.
+            f"{CHECKPOINT}/pedidos",                     # Recuerda exactamente qué archivos ya procesó.
+        )
+        .trigger(availableNow=True)                       # Procesa lo disponible ahora y luego se detiene.
+        .toTable(destino)                                 # Escribe incrementalmente en la tabla Delta destino.
+        .awaitTermination()                               # Espera a que esta corrida termine antes de continuar.
+    )
 
-    return spark.table(destino).count()
+    return spark.table(destino).count()                   # Cuenta el total acumulado para verificar el efecto.
 
 # COMMAND ----------
 
@@ -236,14 +274,19 @@ print(f"{'✅' if huerfanos == 0 else '❌'} líneas de detalle huérfanas: {hue
 
 # COMMAND ----------
 
+# Habilita el registro fila por fila de inserts, updates y deletes futuros.
 spark.sql(f"ALTER TABLE {CATALOGO}.silver.detalles_pedidos SET TBLPROPERTIES (delta.enableChangeDataFeed = true)")
+
+# Guarda la versión actual para leer únicamente los cambios que ocurran después.
 v_antes = spark.sql(f"DESCRIBE HISTORY {CATALOGO}.silver.detalles_pedidos").first()["version"]
 
+# Provoca un UPDATE controlado para generar un evento visible en Change Data Feed.
 spark.sql(f"""
 UPDATE {CATALOGO}.silver.detalles_pedidos
 SET Descuento = 0.25 WHERE IdPedido = (SELECT MIN(IdPedido) FROM {CATALOGO}.silver.detalles_pedidos)
 """)
 
+# table_changes devuelve las filas modificadas y la metadata del tipo de cambio.
 spark.sql(f"""
 SELECT IdPedido, IdProducto, Descuento, ingreso_linea, _change_type
 FROM table_changes('{CATALOGO}.silver.detalles_pedidos', {v_antes + 1})
