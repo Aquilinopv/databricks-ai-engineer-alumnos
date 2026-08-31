@@ -14,12 +14,27 @@
 
 # MAGIC %md ## 0 · Tu identidad en el curso
 # MAGIC Cada alumno trabaja en su propio catálogo para no pisarse.
+# MAGIC
+# MAGIC 1. Ejecuta la siguiente celda para crear el widget.
+# MAGIC 2. Escribe tu nombre en **Tu nombre**, en la parte superior del notebook.
+# MAGIC 3. Continúa con la celda siguiente.
+
+# COMMAND ----------
+
+# Crear el widget desde el propio notebook. Al importar un notebook, Databricks
+# no ejecuta su código automáticamente: esta debe ser la primera celda que corras.
+# Si el widget ya existe, conservamos el valor que el alumno escribió.
+try:
+    dbutils.widgets.get("alumno")
+except Exception:
+    dbutils.widgets.text("alumno", "", "Tu nombre")
+
+print("✅ Widget creado. Escribe tu nombre arriba y ejecuta la siguiente celda.")
 
 # COMMAND ----------
 
 import re, unicodedata
 
-dbutils.widgets.text("alumno", "", "Tu nombre")
 crudo = dbutils.widgets.get("alumno").strip()
 assert crudo, "Escribe tu nombre en el widget de arriba antes de seguir."
 
@@ -56,23 +71,29 @@ display(spark.sql(f"SHOW SCHEMAS IN {CATALOGO}"))
 
 # COMMAND ----------
 
-# MAGIC %md ## 2 · Traer los CSV de Neptuno a tu Volume
-# MAGIC Los datos del curso viven en un volumen compartido, en modo lectura.
-# MAGIC Esta celda los copia al tuyo; si ya están, no hace nada.
+# MAGIC %md ## 2 · Subir manualmente los CSV de Neptuno
+# MAGIC El Volume ya existe, pero empieza **vacío**. Los archivos no vienen dentro del notebook
+# MAGIC ni se copian desde otro Volume.
+# MAGIC
+# MAGIC 1. En la barra lateral, abre **Catalog**.
+# MAGIC 2. Entra a tu catálogo `neptuno_<tu_nombre>` → esquema `bronze` → Volume `landing`.
+# MAGIC 3. Pulsa **Upload to this volume**.
+# MAGIC 4. Sube los 8 archivos CSV del curso.
+# MAGIC 5. Regresa al notebook y ejecuta la celda de verificación.
+# MAGIC
+# MAGIC La ruta de destino tiene esta forma:
+# MAGIC `/Volumes/neptuno_<tu_nombre>/bronze/landing/`
 
 # COMMAND ----------
 
-COMPARTIDO = "/Volumes/neptuno/ventas/landing"
 ESPERADOS = ["categorias", "clientes", "detalles_pedidos", "empleados",
              "pedidos", "productos", "proveedores", "transportistas"]
 
-ya_estan = {f.name for f in dbutils.fs.ls(LANDING)}
-copiados = 0
+print("Volume listo para la carga manual:")
+print(LANDING)
+print("\nArchivos que debes subir:")
 for tabla in ESPERADOS:
-    if f"{tabla}.csv" not in ya_estan:
-        dbutils.fs.cp(f"{COMPARTIDO}/{tabla}.csv", f"{LANDING}/{tabla}.csv")
-        copiados += 1
-print(f"{copiados} archivos copiados · {len(ESPERADOS)-copiados} ya estaban")
+    print(f" · {tabla}.csv")
 
 # COMMAND ----------
 
@@ -80,13 +101,16 @@ print(f"{copiados} archivos copiados · {len(ESPERADOS)-copiados} ya estaban")
 
 # COMMAND ----------
 
-archivos = [f.name for f in dbutils.fs.ls(LANDING)]
+archivos = {f.name for f in dbutils.fs.ls(LANDING)}
 print(f"{len(archivos)} archivos en el landing:")
 for a in sorted(archivos):
     print(" ·", a)
 
-faltan = [t for t in ESPERADOS if not any(t in a for a in archivos)]
-assert not faltan, f"Faltan estos CSV en el landing: {faltan}"
+faltan = [f"{tabla}.csv" for tabla in ESPERADOS if f"{tabla}.csv" not in archivos]
+assert not faltan, (
+    "Faltan archivos en el Volume. Súbelos manualmente desde Catalog Explorer "
+    f"a {LANDING}: {faltan}"
+)
 print("\n✅ están los 8")
 
 # COMMAND ----------
