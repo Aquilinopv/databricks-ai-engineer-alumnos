@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S01 · Apéndice — mantenimiento, Volumes y GitHub</title>
+<style>
+:root{--p:#533afd;--ps:#8d80ff;--ink:#0d253d;--ink2:#273951;--mute:#64748d;--bg:#fff;--soft:#f6f9fc;--line:#e3e8ee;--dark:#0d253d;--ok:#0a7d55;--warn:#ea2261;--font:"sohne-var","SF Pro Display",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}body{background:#1c1e54;font-family:var(--font);color:var(--ink);overflow:hidden}
+.slide{position:fixed;inset:0;display:none;flex-direction:column;justify-content:center;padding:clamp(38px,5.2vh,70px) clamp(48px,6vw,104px) clamp(74px,9vh,104px);background:var(--bg);overflow:hidden}.slide.on{display:flex}.slide.dark{background:var(--dark);color:#fff}.mesh:before{content:"";position:absolute;inset:-30% -10% 40%;background:radial-gradient(60% 80% at 25% 40%,rgba(83,58,253,.32),transparent 60%),radial-gradient(50% 70% at 72% 20%,rgba(249,107,238,.18),transparent 62%);filter:blur(6px)}.slide>*{position:relative;z-index:1}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:20px}.dark .eyebrow{color:var(--ps)}h1{font-size:clamp(40px,5.5vw,66px);font-weight:300;line-height:1.03;letter-spacing:-1.5px;max-width:18ch}h2{font-size:clamp(29px,3.8vw,46px);font-weight:300;line-height:1.08;letter-spacing:-.9px;max-width:23ch}h3{font-size:16px;font-weight:500;color:var(--p);margin-bottom:10px}.dark h3{color:var(--ps)}.lead{font-size:clamp(17px,1.7vw,22px);font-weight:300;line-height:1.45;color:var(--ink2);max-width:62ch;margin-top:24px}.dark .lead{color:#cad5e2}.accent{color:var(--p)}.dark .accent{color:var(--ps)}
+.foot{position:absolute;left:clamp(48px,6vw,104px);right:clamp(48px,6vw,104px);bottom:clamp(32px,4.2vh,44px);display:flex;justify-content:space-between;font-size:12.5px;color:var(--mute)}.dark .foot{color:#8292a7}.note{font-size:13.5px;color:var(--mute);line-height:1.45;margin-top:20px;max-width:70ch;border-left:2px solid var(--line);padding-left:14px}.dark .note{color:#93a2b6;border-color:rgba(255,255,255,.18)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}.card{border-top:2px solid var(--line);padding:18px 4px 0}.card.hot{border-top-color:var(--p)}.card .n{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}.card .t{font-size:20px;font-weight:350;margin-top:9px}.card p{font-size:14px;line-height:1.45;color:var(--ink2);margin-top:8px}.dark .card{border-color:rgba(255,255,255,.18)}.dark .card.hot{border-color:var(--ps)}.dark .card p{color:#cad5e2}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:38px;margin-top:30px;align-items:start}.two p,.two li{font-size:15px;font-weight:300;line-height:1.48;color:var(--ink2)}.dark .two p,.dark .two li{color:#cad5e2}.two ul{list-style:none;display:flex;flex-direction:column;gap:11px}.two li{padding-left:18px;position:relative}.two li:before{content:"";position:absolute;left:0;top:.68em;width:8px;height:1px;background:var(--p)}
+.flow{display:flex;align-items:center;gap:12px;margin-top:38px;flex-wrap:wrap}.node{padding:14px 18px;border:1px solid var(--line);background:var(--soft);border-radius:9px;font-size:15px;font-weight:350}.node.hi{border-color:var(--p);background:#f0eeff;color:#4434d4}.arrow{color:var(--mute)}.dark .node{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.05)}.dark .node.hi{border-color:var(--ps);background:rgba(83,58,253,.18);color:#fff}
+pre{background:#0b1b2d;border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:17px 20px;margin-top:20px;overflow:auto;font:clamp(12px,1.18vw,15px)/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;color:#dbe7f3}.slide:not(.dark) pre{background:var(--soft);border-color:var(--line);color:var(--ink2)}.kw{color:#a99bff}.slide:not(.dark) .kw{color:#4434d4}.st{color:#7fd6b0}.slide:not(.dark) .st{color:var(--ok)}.cm{color:#75889d;font-style:italic}.path{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--p)}
+.steps{display:flex;flex-direction:column;gap:14px;margin-top:28px}.step{display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start}.step .i{width:30px;height:30px;border:1px solid var(--p);border-radius:50%;display:grid;place-items:center;color:var(--p);font-size:13px}.step p{font-size:clamp(15px,1.45vw,18px);line-height:1.4;color:var(--ink2);font-weight:300}.dark .step p{color:#cad5e2}.dark .step .i{border-color:var(--ps);color:var(--ps)}
+.big{font-size:clamp(52px,8vw,98px);font-weight:300;line-height:.95;letter-spacing:-3px;color:var(--p);margin-top:22px}.check{color:var(--ok)}.warning{color:var(--warn)}
+.src{font-size:10.5px;color:var(--mute);margin-top:14px}.src a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+#bar{position:fixed;left:0;bottom:0;height:2px;background:var(--p);z-index:99}#num{position:fixed;right:22px;bottom:16px;font-size:12px;color:var(--mute);z-index:99}#hint{position:fixed;left:50%;transform:translateX(-50%);bottom:13px;font-size:11.5px;color:var(--mute);z-index:99;opacity:.6;transition:opacity .4s}#hint.gone{opacity:0}
+
+/* Tema alternativo fuego — botón ◐ o tecla T */
+body.tema-fuego{--p:#ff3b21;--ps:#ff6a52;--ink:#f2eeec;--ink2:#c9c0bc;--mute:#8b807b;--bg:#131010;--soft:#1d1817;--line:#332b29;--dark:#0a0808;--ok:#5fe39b;--warn:#ff7847;background:#0a0808}
+body.tema-fuego .mesh:before{background:radial-gradient(60% 80% at 25% 40%,rgba(255,59,33,.30),transparent 60%),radial-gradient(50% 70% at 72% 20%,rgba(255,120,71,.22),transparent 62%)}
+body.tema-fuego .dark .lead,body.tema-fuego .dark .card p,body.tema-fuego .dark .two p,body.tema-fuego .dark .two li,body.tema-fuego .dark .step p{color:#c9c0bc}
+body.tema-fuego .dark .foot,body.tema-fuego .dark .note{color:#8b807b}
+body.tema-fuego pre,body.tema-fuego .slide:not(.dark) pre{background:#000;border-color:#332b29;color:#e8e0dd}
+body.tema-fuego .slide:not(.dark) pre .kw,body.tema-fuego pre .kw{color:#ff9b87}
+body.tema-fuego .slide:not(.dark) pre .st,body.tema-fuego pre .st{color:#5fe39b}
+body.tema-fuego .slide:not(.dark) pre .cm,body.tema-fuego pre .cm{color:#8b807b}
+
+/* Controles del presentador */
+#ctl{position:fixed;right:16px;top:14px;z-index:120;display:flex;gap:6px;opacity:.28;transition:opacity .25s}
+#ctl:hover{opacity:1}
+#ctl button{font-family:var(--font);font-size:13px;font-weight:400;line-height:1;width:30px;height:30px;border-radius:7px;cursor:pointer;border:1px solid var(--line);background:var(--bg);color:var(--mute)}
+#ctl button:hover{border-color:var(--p);color:var(--p)}
+#ctl button:focus-visible{outline:2px solid var(--p);outline-offset:2px}
+body.tema-fuego #ctl button{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:#c9c0bc}
+
+@media(max-width:760px){.three,.two{grid-template-columns:1fr}.three{gap:11px}.card{padding-top:10px}.slide{justify-content:flex-start;padding-top:54px;overflow:auto}}@media print{.slide{display:flex;position:relative;height:100vh;page-break-after:always}}
+</style>
+</head>
+<body>
+<section class="slide dark mesh on"><p class="eyebrow">Sesión 1 · apéndice operativo</p><h1>Tres piezas que conviene ver con las manos</h1><p class="lead">Mantenimiento de tablas, archivos en Volumes y código versionado en GitHub.</p><div class="foot"><span>Databricks AI Engineer</span><span>Caso Neptuno</span></div></section>
+
+<section class="slide"><p class="eyebrow">El mapa mental</p><h2>Tres objetos, tres responsabilidades</h2><div class="three"><div class="card hot"><p class="n">Tablas</p><p class="t">Datos consultables</p><p>Delta organiza filas, transacciones, historial y rendimiento.</p></div><div class="card hot"><p class="n">Volumes</p><p class="t">Archivos gobernados</p><p>CSV de entrada, JSON, PDFs, imágenes y otros archivos.</p></div><div class="card hot"><p class="n">Git folders</p><p class="t">Código versionado</p><p>Notebooks y archivos sincronizados con un repositorio Git.</p></div></div><p class="lead"><strong>Clonar el código no carga los datos.</strong> Cada objeto llega por un camino diferente.</p></section>
+
+<section class="slide dark mesh"><p class="eyebrow">Pregunta 1 · managed tables</p><h2>“Managed” no significa “sin mantenimiento”</h2><div class="two"><div><h3>Managed responde</h3><ul><li>¿Quién administra la ubicación física?</li><li>¿Quién elimina los archivos al hacer <code>DROP TABLE</code>?</li><li>¿Quién gobierna permisos y metadatos?</li></ul></div><div><h3>Mantenimiento responde</h3><ul><li>¿Hay demasiados archivos pequeños?</li><li>¿Quedan archivos antiguos sin uso?</li><li>¿El optimizador tiene estadísticas recientes?</li></ul></div></div><p class="lead">Una tabla managed <strong>sí puede necesitar</strong> <span class="accent">OPTIMIZE, VACUUM y ANALYZE</span>.</p></section>
+
+<section class="slide"><p class="eyebrow">Cada comando hace un trabajo</p><h2>Compactar no es borrar, y borrar no es ordenar</h2><div class="three"><div class="card hot"><p class="n">OPTIMIZE</p><p class="t">Compacta</p><p>Reescribe archivos para mejorar tamaño y distribución.</p></div><div class="card hot"><p class="n">VACUUM</p><p class="t">Limpia</p><p>Elimina archivos que versiones recientes ya no referencian.</p></div><div class="card hot"><p class="n">ANALYZE</p><p class="t">Mide</p><p>Recopila estadísticas para que el optimizador planifique mejor.</p></div></div><p class="note"><strong>VACUUM puede limitar el time travel:</strong> una versión histórica deja de ser recuperable si sus archivos fueron eliminados.</p></section>
+
+<section class="slide"><p class="eyebrow">La práctica actual</p><h2>Predictive Optimization automatiza el mantenimiento</h2><div class="flow"><span class="node">Unity Catalog</span><span class="arrow">→</span><span class="node hi">Managed table</span><span class="arrow">→</span><span class="node">OPTIMIZE</span><span class="node">VACUUM</span><span class="node">ANALYZE</span></div><p class="lead">Si está habilitado, Databricks decide cuándo ejecutar cada operación usando serverless compute. No dupliques ese trabajo con jobs programados.</p><p class="note">Predictive Optimization solo cubre tablas managed de Unity Catalog; no mantiene tablas externas.</p><p class="src">Fuente: <a href="https://docs.databricks.com/aws/en/optimizations/predictive-optimization">Databricks · Predictive Optimization</a></p></section>
+
+<section class="slide dark"><p class="eyebrow">ZORDER y el camino moderno</p><h2>Para tablas nuevas, Databricks recomienda Liquid Clustering</h2><div class="two"><div><h3>Enfoque tradicional</h3><pre><span class="kw">OPTIMIZE</span> neptuno_manuel.bronze.pedidos
+<span class="kw">ZORDER BY</span> (IdCliente);</pre><p class="note">ZORDER sigue disponible en tablas Delta sin liquid clustering.</p></div><div><h3>Enfoque recomendado</h3><pre><span class="kw">ALTER TABLE</span> neptuno_manuel.bronze.pedidos
+<span class="kw">CLUSTER BY</span> (IdCliente);
+
+<span class="kw">OPTIMIZE</span> neptuno_manuel.bronze.pedidos;</pre><p class="note">Liquid Clustering y ZORDER no se combinan.</p></div></div><p class="src">Fuente: <a href="https://docs.databricks.com/aws/en/delta/clustering">Databricks · Liquid Clustering</a></p></section>
+
+<section class="slide"><p class="eyebrow">Pregunta 2 · Volumes</p><h2>Un Volume pertenece a un esquema</h2><div class="flow"><span class="node">Metastore</span><span class="arrow">→</span><span class="node hi">Catálogo</span><span class="arrow">→</span><span class="node hi">Esquema</span><span class="arrow">→</span><span class="node">Volume</span><span class="arrow">→</span><span class="node">carpetas y archivos</span></div><pre><span class="cm">-- nombre del objeto</span>
+neptuno_manuel.bronze.landing
+
+<span class="cm">-- ruta para trabajar con sus archivos</span>
+/Volumes/neptuno_manuel/bronze/landing/productos.csv</pre><p class="lead">No hay un único Volume general: cada esquema puede contener varios Volumes.</p></section>
+
+<section class="slide dark"><p class="eyebrow">Lo que ocurrió en la S01</p><h2>Los CSV sí estaban precargados</h2><div class="flow"><span class="node">Volume del profesor<br><span class="path">neptuno/ventas/landing</span></span><span class="arrow">dbutils.fs.cp(…)</span><span class="node hi">Volume del alumno<br><span class="path">neptuno_manuel/bronze/landing</span></span></div><pre>COMPARTIDO = <span class="st">"/Volumes/neptuno/ventas/landing"</span>
+LANDING = <span class="st">"/Volumes/neptuno_manuel/bronze/landing"</span>
+
+dbutils.fs.cp(
+  <span class="st">f"{COMPARTIDO}/productos.csv"</span>,
+  <span class="st">f"{LANDING}/productos.csv"</span>
+)</pre><p class="lead">El notebook <strong>no descargó</strong> los archivos desde GitHub: los copió desde un Volume compartido.</p></section>
+
+<section class="slide"><p class="eyebrow">Demo manual · crear y subir</p><h2>Así llega un archivo real al Volume</h2><div class="steps"><div class="step"><span class="i">1</span><p><strong>Catalog</strong> → catálogo del alumno → esquema <code>bronze</code>.</p></div><div class="step"><span class="i">2</span><p>Crear el Volume <code>landing</code> o abrir el existente.</p></div><div class="step"><span class="i">3</span><p><strong>Upload to this volume</strong> → arrastrar <code>productos.csv</code>.</p></div><div class="step"><span class="i">4</span><p>Verificar que exista en <code>/Volumes/&lt;catálogo&gt;/bronze/landing/</code>.</p></div></div><pre><span class="kw">CREATE VOLUME IF NOT EXISTS</span> neptuno_manuel.bronze.landing;</pre><p class="src">Fuente: <a href="https://docs.databricks.com/aws/en/volumes/volume-files">Databricks · Work with files in volumes</a></p></section>
+
+<section class="slide"><p class="eyebrow">Demo manual · verificar y leer</p><h2>Primero vemos el archivo; después lo interpretamos</h2><pre><span class="cm"># 1 · verificar qué llegó</span>
+display(dbutils.fs.ls(
+  <span class="st">"/Volumes/neptuno_manuel/bronze/landing"</span>
+))
+
+<span class="cm"># 2 · leer el CSV</span>
+df = (spark.read
+  .option(<span class="st">"header"</span>, True)
+  .option(<span class="st">"inferSchema"</span>, True)
+  .csv(<span class="st">"/Volumes/neptuno_manuel/bronze/landing/productos.csv"</span>))
+
+display(df)</pre><p class="lead">El Volume guarda bytes. Spark decide cómo convertir esos bytes en columnas.</p></section>
+
+<section class="slide dark mesh"><p class="eyebrow">Pregunta 3 · GitHub</p><h2>Hay dos caminos: importar uno o clonar todo</h2><div class="two"><div><h3>Un notebook puntual</h3><p>Útil para una demo rápida. Se importa desde un archivo local o desde la URL <strong>Raw</strong> de GitHub.</p><p class="big">1</p></div><div><h3>El repositorio completo</h3><p>Útil para el curso. Un Git folder permite pull, ramas, commits y sincronización.</p><p class="big">repo</p></div></div></section>
+
+<section class="slide"><p class="eyebrow">Camino A · un notebook</p><h2>Importa la URL Raw, no la página de GitHub</h2><div class="steps"><div class="step"><span class="i">1</span><p>En GitHub, abrir el notebook y pulsar <strong>Raw</strong>.</p></div><div class="step"><span class="i">2</span><p>Copiar la URL <code>raw.githubusercontent.com/…</code>.</p></div><div class="step"><span class="i">3</span><p>En Databricks: <strong>Workspace → carpeta → ⋮ → Import → URL</strong>.</p></div><div class="step"><span class="i">4</span><p>Abrir el notebook, conectar compute y ejecutar.</p></div></div><p class="note">También puedes descargar el archivo e importarlo como <code>.py</code>, <code>.sql</code>, <code>.ipynb</code>, <code>.html</code> o <code>.dbc</code>.</p><p class="src">Fuente: <a href="https://docs.databricks.com/aws/en/notebooks/notebook-export-import">Databricks · Import and export notebooks</a></p></section>
+
+<section class="slide"><p class="eyebrow">Camino B · repositorio público</p><h2>Para leer un repo público no necesitas credenciales</h2><div class="steps"><div class="step"><span class="i">1</span><p>En GitHub, copiar la URL HTTPS del repositorio.</p></div><div class="step"><span class="i">2</span><p>En Databricks: <strong>New → Git folder</strong>.</p></div><div class="step"><span class="i">3</span><p>Pegar la URL, elegir la rama <code>main</code> y crear.</p></div><div class="step"><span class="i">4</span><p>Abrir el notebook dentro del Git folder y conectar compute.</p></div></div><pre>https://github.com/manuelarguelles/databricks-ai-engineer-alumnos.git</pre><p class="note">Esto trae código y archivos versionados en Git. No crea tablas ni copia automáticamente datos a Volumes.</p></section>
+
+<section class="slide dark"><p class="eyebrow">Antes de conectar GitHub</p><h2>“Only select repositories” solo muestra repos que puedes administrar</h2><div class="two"><div><h3>¿Por qué está vacío?</h3><p>El repositorio del curso pertenece a <code>manuelarguelles</code>. Un alumno puede leerlo porque es público, pero no puede instalar una GitHub App sobre un repositorio ajeno.</p></div><div><h3>¿Necesito hacer fork?</h3><ul><li><strong>No</strong>, si solo vas a clonar, ejecutar y hacer <code>Pull</code>.</li><li><strong>Sí</strong>, si quieres hacer commits y <code>Push</code> desde Databricks.</li></ul></div></div><p class="lead">Para seguir el curso: clona el repo público y <strong>omite OAuth</strong>.</p><p class="src">Fuentes: <a href="https://docs.databricks.com/aws/en/repos/repos-setup">Databricks · Git credentials</a> · <a href="https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party">GitHub · Installing a GitHub App</a></p></section>
+
+<section class="slide"><p class="eyebrow">Si quieres escribir · fork + OAuth</p><h2>Primero crea una copia que pertenezca a tu cuenta</h2><div class="steps"><div class="step"><span class="i">1</span><p>En GitHub, abre el repositorio del curso y pulsa <strong>Fork → Create fork</strong>.</p></div><div class="step"><span class="i">2</span><p>En Databricks: perfil → <strong>Settings → Linked accounts → Add Git credential</strong>.</p></div><div class="step"><span class="i">3</span><p>Elige <strong>GitHub → Link Git account</strong> y autoriza la aplicación.</p></div><div class="step"><span class="i">4</span><p>Selecciona <strong>Only select repositories</strong> y elige tu fork.</p></div><div class="step"><span class="i">5</span><p>Crea el Git folder usando la URL de <strong>tu fork</strong>; desde ahí podrás hacer commit y push.</p></div></div><p class="note">Si acabas de crear el fork y no aparece, vuelve a abrir la instalación de la Databricks GitHub App y revisa la cuenta seleccionada.</p><p class="src">Fuente: <a href="https://docs.databricks.com/aws/en/repos/get-access-tokens-from-git-provider">Databricks · Connect your Git provider</a></p></section>
+
+<section class="slide"><p class="eyebrow">La prueba completa</p><h2>GitHub trae el código; el Volume recibe los archivos</h2><div class="flow"><span class="node hi">GitHub</span><span class="arrow">clone</span><span class="node">Git folder</span><span class="arrow">ejecuta</span><span class="node hi">Notebook</span><span class="arrow">lee</span><span class="node">Volume</span><span class="arrow">escribe</span><span class="node hi">Tabla Delta</span></div><p class="lead">Si el repositorio clonó bien pero falta el CSV, el notebook existe y el dato no. Son dos dependencias diferentes.</p></section>
+
+<section class="slide dark mesh"><p class="eyebrow">Cierre</p><h2>La frase que ordena las tres preguntas</h2><div class="three"><div class="card hot"><p class="n">Tablas</p><p class="t">Se mantienen</p><p>Automáticamente con Predictive Optimization o manualmente cuando corresponda.</p></div><div class="card hot"><p class="n">Volumes</p><p class="t">Se cargan</p><p>Cada Volume pertenece a un esquema y contiene archivos reales.</p></div><div class="card hot"><p class="n">Git folders</p><p class="t">Se sincronizan</p><p>Conectan el workspace con el código del repositorio.</p></div></div><p class="lead">Código, archivos y tablas: tres capas distintas de un mismo flujo reproducible.</p><div class="foot"><span>Databricks AI Engineer</span><span>S01 · Apéndice</span></div></section>
+
+<div id="ctl">
+  <button id="bTema" title="Cambiar tema (T)" aria-label="Alternar tema">◐</button>
+  <button id="bMenos" title="Reducir tamaño (−)" aria-label="Reducir tamaño de letra">A−</button>
+  <button id="bMas" title="Aumentar tamaño (+)" aria-label="Aumentar tamaño de letra">A+</button>
+</div>
+<div id="bar"></div><div id="num"></div><div id="hint">← → navegar · F pantalla completa</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle('on',k===i));bar.style.width=((i+1)/slides.length*100)+'%';num.textContent=(i+1)+' / '+slides.length;const c=slides[i].classList.contains('dark')?'#8292a7':'#64748d';num.style.color=c;hint.style.color=c}
+document.addEventListener('keydown',e=>{hint.classList.add('gone');if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(i+1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(i-1)}else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);else if(e.key.toLowerCase()==='f')document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()});document.addEventListener('click',e=>{if(!e.target.closest('a'))show(i+1)});show(0);setTimeout(()=>hint.classList.add('gone'),6000);
+
+(function(){
+  var B=document.body;
+  var escala=parseFloat(localStorage.getItem('deckEscala')||'1');
+  function aplicarEscala(){
+    B.style.zoom=escala;
+    try{localStorage.setItem('deckEscala',escala)}catch(e){}
+  }
+  function zoom(delta){escala=Math.min(1.6,Math.max(.7,+(escala+delta).toFixed(2)));aplicarEscala()}
+  function tema(){
+    B.classList.toggle('tema-fuego');
+    try{localStorage.setItem('deckTema',B.classList.contains('tema-fuego')?'fuego':'indigo')}catch(e){}
+  }
+  try{if(localStorage.getItem('deckTema')==='fuego')B.classList.add('tema-fuego')}catch(e){}
+  aplicarEscala();
+  document.getElementById('bTema').onclick=function(e){e.stopPropagation();tema()};
+  document.getElementById('bMas').onclick=function(e){e.stopPropagation();zoom(.1)};
+  document.getElementById('bMenos').onclick=function(e){e.stopPropagation();zoom(-.1)};
+  document.addEventListener('keydown',function(e){
+    var k=e.key.toLowerCase();
+    if(k==='t')tema();
+    else if(e.key==='+'||e.key==='=')zoom(.1);
+    else if(e.key==='-'||e.key==='_')zoom(-.1);
+    else if(k==='0'){escala=1;aplicarEscala()}
+  });
+})();
+</script>
+</body>
+</html>
