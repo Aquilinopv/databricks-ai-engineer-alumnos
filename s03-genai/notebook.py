@@ -14,11 +14,17 @@
 
 # COMMAND ----------
 
+# Al importar o actualizar el notebook, Databricks no ejecuta el código automáticamente.
+# Esta debe ser la primera celda que corras. Escribe arriba el nombre completo del catálogo
+# de S01 y S02, por ejemplo: neptuno_tunombre.
+dbutils.widgets.text("catalogo", "", "Tu catálogo de S01–S02")
+print("✅ Widget creado. Escribe arriba el nombre completo de tu catálogo y vuelve a ejecutar esta celda.")
+
+# COMMAND ----------
+
 # `re` es la librería estándar de Python para expresiones regulares; aquí valida el formato del catálogo.
 import re
 # Los widgets permiten cambiar catálogo y endpoint desde la interfaz, sin editar el código.
-# Parámetros reutilizables del laboratorio.
-dbutils.widgets.text("catalogo", "", "Tu catálogo de S01–S02")
 dbutils.widgets.text("modelo", "databricks-gpt-5-6-luna", "Endpoint de Foundation Model")
 
 CATALOGO = dbutils.widgets.get("catalogo").strip().lower()
