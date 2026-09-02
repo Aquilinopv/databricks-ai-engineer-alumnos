@@ -13,6 +13,8 @@ Entender los LLMs y hacer tus primeras llamadas productivas sobre los datos que 
 
 ## Material
 
+[![Abrir parámetros DeepSeek en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/manuelarguelles/databricks-ai-engineer-alumnos/blob/main/s03-genai/S03-parametros-deepseek-colab.ipynb)
+
 - `notebook.py`: laboratorio principal de S03.
 - `slides-S03.html`: slides de la sesión.
 - `S03-parametros-deepseek-colab.ipynb`: laboratorio opcional para comparar parámetros desde Google Colab. Configura `DEEPSEEK_API_KEY` en Colab Secrets; nunca pegues la key en una celda.
