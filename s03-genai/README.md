@@ -17,6 +17,7 @@ Entender los LLMs y hacer tus primeras llamadas productivas sobre los datos que 
 
 - `notebook.py`: laboratorio principal de S03.
 - `slides-S03.html`: slides de la sesión.
+- `S03-append.html`: apéndice arquitectónico sobre el framework de 9 capas y Foundry vs. Databricks.
 - `S03-parametros-deepseek-colab.ipynb`: laboratorio opcional para comparar parámetros desde Google Colab. Configura `DEEPSEEK_API_KEY` en Colab Secrets; nunca pegues la key en una celda.
 - `notebook-append.py`: laboratorio opcional para ejecutar la comparación desde Databricks. Requiere un Secret Scope `deepseek` y conectividad hacia `api.deepseek.com`; si el workspace bloquea esa salida, usa Colab.
 
