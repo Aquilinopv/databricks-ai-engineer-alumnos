@@ -14,7 +14,10 @@
 
 # COMMAND ----------
 
+# `re` es la librería estándar de Python para expresiones regulares; aquí valida el formato del catálogo.
 import re
+# Los widgets permiten cambiar catálogo y endpoint desde la interfaz, sin editar el código.
+# Parámetros reutilizables del laboratorio.
 dbutils.widgets.text("catalogo", "", "Tu catálogo de S01–S02")
 dbutils.widgets.text("modelo", "databricks-gpt-5-6-luna", "Endpoint de Foundation Model")
 
@@ -71,6 +74,8 @@ respuesta_limitada = spark.sql(f"""
 SELECT ai_query(
   '{MODELO}',
   'Responde únicamente OK.',
+  -- `modelParameters` envía opciones específicas al endpoint.
+  -- `named_struct` crea el objeto de parámetros que espera `ai_query`.
   modelParameters => named_struct('max_tokens', 20),
   failOnError => false
 ) AS respuesta
@@ -117,7 +122,7 @@ FROM {tabla_ventas}
 GROUP BY categoria
 ORDER BY venta_neta DESC
 LIMIT 5
-""").toPandas().to_dict("records")
+""").toPandas().to_dict("records")  # Pasamos el agregado a Python para incrustarlo en el prompt.
 print(hechos)
 assert hechos, "La tabla Gold no devolvió hechos."
 
@@ -141,6 +146,7 @@ assert tabla_ventas in respuesta_grounded, "La respuesta no incluyó la fuente s
 
 # COMMAND ----------
 
+# UTC evita mezclar zonas horarias al comparar experimentos.
 from datetime import datetime, timezone
 
 filas = [
@@ -150,7 +156,7 @@ filas = [
 ]
 df_eval = (spark.createDataFrame(filas, "variante string, pregunta string, respuesta string")
                  .withColumn("registrado_ts", __import__("pyspark").sql.functions.lit(datetime.now(timezone.utc))))
-df_eval.write.mode("overwrite").option("overwriteSchema", "true").saveAsTable(
+df_eval.write.mode("overwrite").option("overwriteSchema", "true").saveAsTable(  # Persistimos el experimento en Delta.
     f"{CATALOGO}.ai_lab.experimentos_prompt"
 )
 
