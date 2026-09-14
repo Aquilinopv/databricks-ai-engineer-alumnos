@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "execution_location": "LOCAL_PC",
+  "endpoint": "https://learn.microsoft.com/api/mcp",
+  "executed_at": "2026-09-14T13:59:11.123622+00:00",
+  "mcp_version": "1.30.0",
+  "tools": [
+    "microsoft_docs_search",
+    "microsoft_code_sample_search",
+    "microsoft_docs_fetch"
+  ],
+  "query": "Azure Databricks Unity Catalog functions",
+  "note": "Corrida docente real resumida. Ejecuta el script para generar tu propio reporte completo."
+}

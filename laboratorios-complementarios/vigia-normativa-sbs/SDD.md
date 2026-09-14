@@ -1,6 +1,6 @@
 # SDD · Vigía de vigencia normativa SBS
 
-**Curso:** Databricks AI Engineer · **Sesión:** S05 · **Contexto:** Perú  
+**Curso:** Databricks AI Engineer · **Sesión:** Laboratorio complementario · **Contexto:** Perú  
 **Estado:** iteración dinámica ejecutable · **Fecha:** 2026-09-08
 
 ## Iteración 2 — procesamiento dinámico y agentes configurables

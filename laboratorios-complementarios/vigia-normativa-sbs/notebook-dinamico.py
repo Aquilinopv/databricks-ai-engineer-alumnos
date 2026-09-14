@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC # S05 · Procesador dinámico de vigencia SBS
+# MAGIC # Laboratorio complementario · Procesador dinámico de vigencia SBS
 # MAGIC
 # MAGIC Este notebook no contiene el corpus. Lee snapshots pendientes desde Delta, procesa cada
 # MAGIC `doc_id`, calcula diferencias contra la versión anterior, indexa solo los cambios nuevos y

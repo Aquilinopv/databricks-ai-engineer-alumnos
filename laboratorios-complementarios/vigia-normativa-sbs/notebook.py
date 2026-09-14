@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC # S05 · Vigía de vigencia normativa SBS
+# MAGIC # Laboratorio complementario · Vigía de vigencia normativa SBS
 # MAGIC
 # MAGIC Construimos un agente de solo lectura que busca normas, lista versiones, compara artículos
 # MAGIC y corrobora evidencia. Los textos del laboratorio son **fixtures didácticos** basados en
@@ -8,15 +8,27 @@
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ## 0 · Escribe tu catálogo antes de comenzar
+# MAGIC 1. Ejecuta **solo la siguiente celda** para mostrar los campos arriba del notebook.
+# MAGIC 2. Escribe el nombre de tu catálogo de S01–S02 en **Tu catálogo de S01–S02**.
+# MAGIC 3. Continúa con la celda **Validar configuración**. No uses «Run all» hasta completar el campo.
+
+# COMMAND ----------
+
+# DBTITLE 1,Mostrar el campo para tu catálogo
+dbutils.widgets.text("catalogo", "", "Tu catálogo de S01–S02")
+dbutils.widgets.text("embedding_endpoint", "databricks-qwen3-embedding-0-6b", "Endpoint de embeddings")
+dbutils.widgets.text("top_k", "4", "Candidatos")
+print("Escribe tu catálogo en el campo de arriba; después ejecuta Validar configuración.")
+
+# COMMAND ----------
+
+# DBTITLE 1,Validar configuración
 import json
 import re
 from datetime import datetime, timezone
 from pyspark.sql import functions as F
-
-dbutils.widgets.text("catalogo", "", "Tu catálogo de S01–S02")
-dbutils.widgets.text("embedding_endpoint", "databricks-qwen3-embedding-0-6b", "Endpoint de embeddings")
-dbutils.widgets.text("top_k", "4", "Candidatos")
-print("✅ Widget creado. Escribe arriba el nombre completo de tu catálogo y vuelve a ejecutar esta celda.")
 
 CATALOGO = dbutils.widgets.get("catalogo").strip().lower()
 EMBEDDING_ENDPOINT = dbutils.widgets.get("embedding_endpoint").strip()

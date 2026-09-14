@@ -1,4 +1,4 @@
-# S05 · Vigía de vigencia normativa SBS
+# Laboratorio complementario · Vigía de vigencia normativa SBS
 
 Entregable full stack de Databricks para el contexto regulatorio peruano.
 
@@ -7,7 +7,7 @@ Entregable full stack de Databricks para el contexto regulatorio peruano.
 - `SDD.md`: diseño técnico, arquitectura, modelo de datos, contratos y criterios de aceptación.
 - `notebook.py`: corpus didáctico versionado, diff por artículo, embeddings, recuperación,
   herramientas read-only, router/agente, trazas y abstención.
-- `slides/S05-vigencia-deck.html`: material visual de la sesión.
+- `slides/LAB-SBS-deck.html`: material visual de la sesión.
 - `bootstrap-laboratorio.py`: seed explícito de fixtures; no forma parte del job productivo.
 - `notebook-dinamico.py`: procesador metadata-driven que descubre snapshots pendientes desde Delta.
 - `workflow-config.json`: Lakeflow Job con SQL de descubrimiento y `For each` dinámico.
@@ -36,3 +36,7 @@ Ejecuta una vez `bootstrap-laboratorio.py` para preparar la clase y después eje
 `notebook-dinamico.py`. En producción, Auto Loader alimenta `documentos_pendientes`; el mismo
 procesador se ejecuta solo para nuevos `doc_id` y un Lakeflow `For each` puede paralelizar cada
 snapshot. Repetir el job sin nuevas filas termina con `NO_PENDING_WORK`.
+
+## Separación del curso · 14-sep-2026
+
+Este laboratorio complementario conserva el caso SBS. No reemplaza S05 ni es prerrequisito de S06–S08. La S05 oficial vuelve al Copiloto de Datos Neptuno en `s05-agentes/`. Los nombres S05 en runs históricos se conservan como evidencia, no como asignación curricular.

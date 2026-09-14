@@ -1,0 +1,37 @@
+{
+  "scope": "sanitized-instructor-demonstration",
+  "date": "2026-09-14",
+  "information_extraction": {
+    "status": "SUCCEEDED",
+    "engine": "ai_extract",
+    "version": "2.1",
+    "input": "Productos refrigerados o congelados solo se aceptan dentro de 24 horas si existe evidencia de ruptura de cadena de frío.",
+    "observed_output": {
+      "plazo_horas": 24,
+      "condicion": "si existe evidencia de ruptura de cadena de frío",
+      "error_message": null
+    }
+  },
+  "ui_observed": {
+    "create_agent_options": [
+      "Information Extraction",
+      "Supervisor Agent",
+      "Knowledge Assistant",
+      "Code your own agent",
+      "Genie Agent"
+    ],
+    "supervisor_form_resources": [
+      "Genie Space",
+      "Knowledge Assistant",
+      "UC Function",
+      "UC Connection",
+      "UC MCP Service"
+    ],
+    "default_tool": "system.ai.python_exec"
+  },
+  "limits": [
+    "No Supervisor ni Knowledge Assistant creados o ejecutados en esta demo.",
+    "No optimización ALHF ejecutada.",
+    "Retirar python_exec es una instrucción de diseño, no una modificación realizada."
+  ]
+}

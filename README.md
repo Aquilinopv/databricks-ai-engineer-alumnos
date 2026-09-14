@@ -71,3 +71,7 @@ Al final tienes un artefacto real de portafolio — no un ejercicio de juguete.
 
 🔄 **Smoke test de sincronización · 31-ago-2026:** si ves esta línea en tu fork, la actualización
 del repositorio docente llegó correctamente.
+
+## S05 · actualización 14-sep-2026
+
+La sesión principal continúa con **Neptuno** en `s05-agentes/`. El caso SBS se conserva como **laboratorio complementario** en `laboratorios-complementarios/vigia-normativa-sbs/`, fuera de la progresión S05–S08. S05 preparada: Neptuno, 65 slides y 180 minutos. Notebook validado en Databricks, 7/7 casos; material de práctica en `s05-agentes/`.

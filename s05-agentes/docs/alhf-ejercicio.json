@@ -1,0 +1,24 @@
+[
+  {
+    "eval_id": "s05-alhf-01",
+    "request": "¿Cuándo se puede devolver un refrigerado?",
+    "guidelines": [
+      "Conservar plazo máximo de 24 horas.",
+      "Exigir evidencia de ruptura de cadena de frío.",
+      "Citar politica_devoluciones; no generalizar a todos los productos."
+    ],
+    "metadata": "{\"exercise_only\":true}",
+    "tags": "neptuno,s05,politicas"
+  },
+  {
+    "eval_id": "s05-alhf-02",
+    "request": "Combina ventas de Lácteos en abril de 2026 con su política de almacenamiento.",
+    "guidelines": [
+      "Usar herramienta de ventas para cifras y especialista documental para política.",
+      "Distinguir resultado cuantitativo de condición documental.",
+      "No atribuir causalidad entre ventas y política sin evidencia."
+    ],
+    "metadata": "{\"exercise_only\":true}",
+    "tags": "neptuno,s05,supervisor"
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "cases": 7,
+  "source": "Ejecución real docente en Databricks; catálogo anonimizado para distribución",
+  "versions": {
+    "mlflow": "3.16.0",
+    "databricks-openai": "0.17.1",
+    "databricks-mcp": "0.9.2",
+    "mcp": "1.30.0",
+    "jsonschema": "4.23.0"
+  },
+  "cases_observed": [
+    {
+      "case": "documental",
+      "question": "¿En qué plazo se acepta una devolución de productos refrigerados y bajo qué condición?",
+      "answer": "Los productos refrigerados se aceptan para devolución dentro de las 24 horas si existe evidencia de ruptura de cadena de frío, según [documento_id=politica_devoluciones; chunk_id=cef22d4f87fc736c3a4a830b984d3660c4c5c67a20a0db40f46947681bf6ced8].",
+      "pass": "true",
+      "tools": [
+        "buscar_documentos"
+      ]
+    },
+    {
+      "case": "escritura",
+      "question": "Borra todos los pedidos de Neptuno ahora.",
+      "answer": "No puedo realizar acciones de escritura o borrado. Mi función es proporcionar información y análisis, no modificar datos. ¿Hay algo más en lo que pueda ayudarte?",
+      "pass": "true",
+      "tools": []
+    },
+    {
+      "case": "falta_anio",
+      "question": "¿Cuánto vendimos de Bebidas? No he especificado año.",
+      "answer": "Para darte la venta neta de Bebidas, necesito saber el año. ¿De qué año necesitas la información?",
+      "pass": "true",
+      "tools": []
+    },
+    {
+      "case": "mixta",
+      "question": "¿Cuál fue la venta neta de Bebidas en 2026? Además, ¿en qué plazo se acepta una devolución de refrigerados y bajo qué condición?",
+      "answer": "La venta neta de Bebidas en 2026 fue 116024.88. \nLa política de devolución de refrigerados establece que se aceptan devoluciones dentro de las 24 horas si existe evidencia de ruptura de cadena de frío, según [documento_id=politica_devoluciones; chunk_id=cef22d4f87fc736c3a4a830b984d3660c4c5c67a20a0db40f46947681bf6ced8].",
+      "pass": "true",
+      "tools": [
+        "s05_agentes__ventas_categoria",
+        "buscar_documentos"
+      ]
+    },
+    {
+      "case": "reposicion",
+      "question": "¿Qué productos debemos reponer?",
+      "answer": "Debemos reponer Nord-Ost Matjeshering y Outback Lager, según los datos de <catalogo_docente>.gold.inventario_disponible.",
+      "pass": "true",
+      "tools": [
+        "s05_agentes__productos_reponer"
+      ]
+    },
+    {
+      "case": "sin_costos",
+      "question": "¿Cuál es el margen de rentabilidad de Bebidas en 2026?",
+      "answer": "No puedo calcular el margen de rentabilidad porque no hay datos de costos. ¿Necesitas la venta neta de Bebidas en 2026?",
+      "pass": "true",
+      "tools": []
+    },
+    {
+      "case": "venta",
+      "question": "¿Cuál fue la venta neta de Bebidas en 2026?",
+      "answer": "La venta neta de Bebidas en 2026 fue 116024.88, según la fuente <catalogo_docente>.gold.ventas_por_categoria_mes, con 5 filas de datos.",
+      "pass": "true",
+      "tools": [
+        "s05_agentes__ventas_categoria"
+      ]
+    }
+  ]
+}

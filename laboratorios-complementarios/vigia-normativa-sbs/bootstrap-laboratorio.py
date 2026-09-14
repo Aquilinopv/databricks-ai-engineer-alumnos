@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC # S05 · Bootstrap del laboratorio
+# MAGIC # Laboratorio complementario · Bootstrap del laboratorio
 # MAGIC
 # MAGIC Este notebook es el único lugar donde se cargan fixtures pequeños para la clase. En producción
 # MAGIC lo reemplaza Auto Loader + `ai_parse_document` sobre un Volume. El procesador principal nunca
