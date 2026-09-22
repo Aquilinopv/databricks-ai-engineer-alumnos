@@ -58,3 +58,15 @@ Los scripts docentes comparan tablas numéricas completas con el oracle y pueden
 La selección de Review App también depende de cada corrida: prioriza errores o desacuerdos, después una aclaración y completa hasta tres trazas. Si todos pasan, puede seleccionar G07, G01 y G02. El reporte docente puede haber seleccionado G01, G06 y G08. Ambos son muestreos explícitos para revisión pendiente, no tres valoraciones humanas ya realizadas.
 
 Corrida integral validada: `408870128707351` (`SUCCESS`, 21/09/2026), con los tres oracles recalculados, 8/8 inferencias sin errores, 8/8 juicios válidos, correctness **7/8**, relevance **8/8** y cifra presente **6/6**. La discrepancia queda preservada para revisión; no se regeneraron respuestas para buscar un aprobado. Evidencia: `reports/evaluation-408870128707351.json` y `reports/notebook-validation.json`. Las dos corridas previas quedaron conservadas como depuración del contrato JSON del juez, no como resultados de calidad válidos.
+
+## Lectura guiada del notebook
+
+La edición explicada tiene 16 celdas: cada una de las ocho celdas de código está precedida por una celda Markdown con propósito, salida esperada e interpretación. Los bloques son: CP0.1 widgets, CP0.2 conexiones, CP1 referencias, CP2 respuestas reales, CP3 diagnósticos, CP4 juez, CP5 revisión humana y CP6 exportación. Lee el bloque y ejecuta solamente su código antes de seguir.
+
+El ejemplo histórico del alumno dio 7/8 en correctness: G07 pidió el periodo, como exigía la referencia, pero el juez lo penalizó por no dar una cifra. Conserva ese veredicto y registra el desacuerdo en la revisión humana. Las cifras de una nueva ejecución pueden cambiar.
+
+## Validación de la edición explicada
+
+El notebook de 16 celdas (ocho de explicación y ocho de código) se ejecutó completo en Databricks el 21/09/2026: run `529554821780019`, **SUCCESS**. Las 16 celdas exportadas coinciden con el archivo entregado; el código ejecutable permanece idéntico a la versión anterior. Resultado de esta corrida: ocho intentos sin errores, ocho juicios válidos, correctness **8/8**, relevance **8/8**, presencia numérica **6/6**, mediana **13,361 s** y p95 **18,523 s** (n=8).
+
+Es una corrida nueva: no sustituye el 7/8 histórico ni prueba que agregar explicaciones mejore al agente. La revisión humana sigue pendiente y Supervisor no se ejecutó. [Abrir la ejecución validada](https://dbc-0410b264-20c7.cloud.databricks.com/?o=7474657121564806#job/127497796877152/run/529554821780019).

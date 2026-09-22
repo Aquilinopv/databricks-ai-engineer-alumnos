@@ -1,0 +1,1187 @@
+[
+  {
+    "id": "slide-1",
+    "title": "Hoy construimos dos agentes desde la interfaz",
+    "layout": "hero",
+    "data": {
+      "text": "Un Genie que analiza ventas. Un Supervisor que reúne ventas y reposición.",
+      "sub": "30 minutos · Neptuno · después conectamos esta inspección con la evaluación de S06"
+    },
+    "notes": "Abre el kit HTML en otra pestaña. La ruta esencial ocupa30 min, con tiempos de espera variables; los anexos quedan como material de consulta. Las tablas y función existen. Hoy configuramos recursos nuevos manualmente; no se afirma que estos agentes nuevos ya fueron probados.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": true,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-name",
+      "s-name"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-2",
+    "title": "Genie analiza datos; el Supervisor delega tareas",
+    "layout": "compare",
+    "data": [
+      [
+        "Genie Agent",
+        "Pregunta → SQL sobre datos conectados → resultado explicable."
+      ],
+      [
+        "Supervisor Agent",
+        "Petición → selección de agentes y herramientas → síntesis."
+      ]
+    ],
+    "notes": "Genie Agents es el nombre actual de Genie Spaces. En tu captura el selector del Supervisor conserva Add a Genie Space. Nuestro Genie responde ventas; el Supervisor combina esa respuesta con inventario. El supervisor no añade información de costos que no existe.",
+    "refs": [
+      "concept",
+      "super"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [],
+    "reserve": false
+  },
+  {
+    "id": "slide-3",
+    "title": "La configuración vive en tres lugares distintos",
+    "layout": "flow",
+    "data": [
+      [
+        "Identidad",
+        "Nombre y descripción para el usuario."
+      ],
+      [
+        "Conocimiento",
+        "Fuentes, reglas y ejemplos del Genie."
+      ],
+      [
+        "Coordinación",
+        "Instrucciones y herramientas del Supervisor."
+      ],
+      [
+        "Prueba",
+        "Pregunta, resultado y evidencia."
+      ]
+    ],
+    "notes": "Evita pegar todo en un prompt. El kit separa cada campo. Las preguntas frecuentes orientan al usuario; los ejemplos SQL guían consultas; benchmarks permiten evaluar. La prueba compuesta será venta neta abril de 2026 y productos que requieren reposición.",
+    "refs": [
+      "best"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-desc",
+      "g-instructions",
+      "s-instructions"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-4",
+    "title": "Creamos el Genie con cuatro tablas conocidas",
+    "layout": "steps",
+    "data": [
+      [
+        "1",
+        "Genie Agents → New."
+      ],
+      [
+        "2",
+        "Selecciona las cuatro fuentes del kit."
+      ],
+      [
+        "3",
+        "Create → Configure."
+      ],
+      [
+        "4",
+        "Settings: nombre, descripción y warehouse."
+      ]
+    ],
+    "notes": "Minuto4: comenzar clics. También puedes llegar desde Agents → Create Agent → Genie Agent → Open Genie como en la captura. Si aparece Genie Code, cierra ese panel para configurar manualmente. El kit g-tables contiene los nombres exactos. No elijas neptuno crudo. Warehouse docente Serverless Starter Warehouse. La UI puede decir Data o Sources.",
+    "refs": [
+      "setup"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-name",
+      "g-desc",
+      "g-tables"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-5",
+    "title": "Cada tabla responde una parte de la pregunta",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Campo / opción",
+        "Para qué sirve",
+        "Nuestro ejemplo"
+      ],
+      "rows": [
+        [
+          "pedidos",
+          "Fecha comercial",
+          "FechaPedido"
+        ],
+        [
+          "detalles_pedidos",
+          "Importe histórico de línea",
+          "Precio × cantidad × (1 − descuento)"
+        ],
+        [
+          "productos",
+          "Identidad y categoría",
+          "IdProducto / IdCategoria"
+        ],
+        [
+          "categorias",
+          "Nombre de negocio",
+          "NombreCategoria"
+        ]
+      ]
+    },
+    "notes": "Mantén visible Data/Sources. Todas las tablas pertenecen a neptuno_ai.ventas. PrecioUnidad existe en productos y detalles: el detalle conserva el precio histórico de la venta. La tabla de productos no contiene costos. Seleccionar un recurso es distinto de escribir su nombre en instrucciones.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-tables",
+      "g-meta-orders",
+      "g-meta-lines",
+      "g-meta-products",
+      "g-meta-categories"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-6",
+    "title": "Las instrucciones fijan criterios de negocio",
+    "layout": "compare",
+    "data": [
+      [
+        "Lo que pegamos",
+        "Periodo por FechaPedido; sin costos ni moneda inventada; pedir el periodo si falta."
+      ],
+      [
+        "Dónde lo pegamos",
+        "Configure → Text / General instructions. Descripción queda en Settings."
+      ]
+    ],
+    "notes": "Pega g-instructions. El texto del autor es contexto configurable, no acceso al system prompt interno de Databricks. Para cálculos precisos usamos SQL en la siguiente pantalla. Si los ejemplos contradicen las instrucciones, la respuesta será ambigua: ambos deben respetar redondeo por línea.",
+    "refs": [
+      "best"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-instructions"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-7",
+    "title": "Las relaciones evitan unir datos con claves equivocadas",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Izquierda",
+        "Derecha",
+        "Relación"
+      ],
+      "rows": [
+        [
+          "detalles_pedidos.IdPedido",
+          "pedidos.IdPedido",
+          "Muchos → uno"
+        ],
+        [
+          "detalles_pedidos.IdProducto",
+          "productos.IdProducto",
+          "Muchos → uno"
+        ],
+        [
+          "productos.IdCategoria",
+          "categorias.IdCategoria",
+          "Muchos → uno"
+        ]
+      ]
+    },
+    "notes": "En Examples → Add → Joins agrega cada relación con selectores de tablas y la condición del kit. Many to one describe filas izquierdas por cada fila derecha. No crea ni modifica tablas. Si una relación ya se sugirió automáticamente, verificarla antes de agregar un duplicado.",
+    "refs": [
+      "tune"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-joins"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-8",
+    "title": "Un ejemplo SQL enseña cómo calcular la venta",
+    "layout": "code",
+    "data": {
+      "code": "SUM(CAST(\n  d.PrecioUnidad * d.Cantidad * (1 - d.Descuento)\n  AS DECIMAL(18,2)\n))",
+      "caption": "Redondeamos cada línea antes de sumar. El kit contiene el SELECT completo."
+    },
+    "notes": "Abre Examples → Add → Example query. Título: pregunta total abril de 2026. Pega g-sql-total_abril en Code; añade Usage guidance indicada. Este fragmento no es toda la consulta, se proyecta para explicar el contrato de redondeo. En el ensayo S06 esa diferencia de orden produjo un centavo de discrepancia.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-sql-total_abril"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-9",
+    "title": "Preguntas frecuentes y SQL cumplen funciones distintas",
+    "layout": "compare",
+    "data": [
+      [
+        "Common questions",
+        "La tarjeta invita a preguntar: “¿Cuál fue la venta neta de abril de 2026?”."
+      ],
+      [
+        "Example query",
+        "La pregunta tiene un SELECT que muestra la lógica esperada."
+      ]
+    ],
+    "notes": "Pega las preguntas una por entrada en Settings. Common questions no contiene respuestas ni entrena el SQL. El caso de margen es deliberado para demostrar una abstención; explica que no se ofrece una capacidad de cálculo inexistente. Para la demo alcanza un SQL, los otros dos se entregan como ampliación.",
+    "refs": [
+      "setup",
+      "monitor"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-questions",
+      "g-sql-total_abril"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-10",
+    "title": "En Chat comprobamos cifra, periodo y SQL",
+    "layout": "activity",
+    "data": {
+      "do": "Pregunta la venta neta total de abril de 2026 y abre el SQL generado.",
+      "accept": "Contrastar con el SQL independiente; verificar FechaPedido, descuento y redondeo por línea.",
+      "recover": "Si el resultado difiere, inspecciona el contrato y las fuentes antes de cambiar el prompt."
+    },
+    "notes": "Ejecuta la pregunta g-sql-total_abril en Chat. Los resultados de referencia están en RESULTADOS-SQL.md; no son una salida observada de este Genie nuevo. Después pregunta margen para comprobar que reconoce costos ausentes. Registra salida real aunque falle.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-sql-total_abril",
+      "g-questions"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-11",
+    "title": "Agent mode investiga una pregunta en varios pasos",
+    "layout": "compare",
+    "data": [
+      [
+        "Chat mode",
+        "Consulta puntual y seguimiento: “¿Cuánto vendimos en abril?”."
+      ],
+      [
+        "Agent mode",
+        "Investigación: “¿Qué categorías explican la variación entre meses?”."
+      ]
+    ],
+    "notes": "Selecciona el icono Agent mode en el cuadro de chat y pega g-agent-test. Observa plan, consultas y reporte cuando termine. Puede tardar más; lánzalo y pasa a configurar Supervisor. Es un modo del Genie, no Genie Code y no una opción para añadir subagentes. Si no está disponible en ese entorno, conserva la pregunta y registra la limitación.",
+    "refs": [
+      "chat",
+      "concept"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-agent-test"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-12",
+    "title": "La pregunta de margen prueba un límite real",
+    "layout": "activity",
+    "data": {
+      "do": "“¿Cuál fue el margen de Bebidas en abril de 2026?”",
+      "accept": "Reconocer que faltan costos; no usar precio de venta como costo ni confundir margen con venta neta.",
+      "recover": "Revisar instrucciones y verificar que ninguna descripción contradiga la ausencia de costos."
+    },
+    "notes": "Cerrar bloque Genie en minuto16. No buscamos que siempre produzca una cifra; buscamos que respete la evidencia. Si el Agent mode sigue en curso, volver al final. Guarda URL del Genie nuevo porque se seleccionará a continuación.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "g-instructions",
+      "g-questions"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-13",
+    "title": "El Supervisor reúne dos capacidades existentes",
+    "layout": "flow",
+    "data": [
+      [
+        "Pregunta",
+        "Ventas de abril + reposición."
+      ],
+      [
+        "Genie nuevo",
+        "Analiza tablas curadas de ventas."
+      ],
+      [
+        "UC Function",
+        "Aplica la regla de reposición de S05."
+      ],
+      [
+        "Respuesta",
+        "Dos resultados con sus fuentes y límites."
+      ]
+    ],
+    "notes": "Minuto16: Agents → Create Agent → Supervisor Agent. La función usa Gold del catálogo docente, mientras Genie usa neptuno_ai. No cruzar ambas listas para afirmar que los productos por reponer pertenecen a la categoría líder. Es coordinación de un agente y una herramienta; no fingir dos agentes autónomos.",
+    "refs": [
+      "super"
+    ],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "s-name",
+      "s-function",
+      "s-test"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-14",
+    "title": "Conectar un recurso le da una capacidad utilizable",
+    "layout": "steps",
+    "data": [
+      [
+        "1",
+        "Build → Tools and sub-agents."
+      ],
+      [
+        "2",
+        "Add a Genie Space: el Genie recién creado."
+      ],
+      [
+        "3",
+        "Add a UC Function: productos_reponer."
+      ],
+      [
+        "4",
+        "Abre ambas tarjetas y pega su descripción."
+      ]
+    ],
+    "notes": "Seleccionar es obligatorio. Pegar el nombre de un agente en Instructions no lo adjunta. Usa s-genie-desc y s-function-desc; el nombre completo de la función está en s-function. No agregues ventas_categoria aquí: la demo necesita que Genie resuelva ventas y que la función resuelva inventario, sin duplicar rutas.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "s-genie-desc",
+      "s-function",
+      "s-function-desc"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-15",
+    "title": "Cada descripción decide cuándo delegar",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Campo / opción",
+        "Para qué sirve",
+        "Nuestro ejemplo"
+      ],
+      "rows": [
+        [
+          "Description general",
+          "Presentar el propósito",
+          "Ventas y reposición"
+        ],
+        [
+          "Descripción de Genie",
+          "Delimitar especialidad",
+          "Ventas con periodo explícito"
+        ],
+        [
+          "Descripción de función",
+          "Delimitar acción y límites",
+          "Hasta 20 productos; solo lectura"
+        ]
+      ]
+    },
+    "notes": "Pega los textos del kit en sus campos. La descripción general es para descubrimiento y usuarios. Las descripciones de recursos ayudan a seleccionar la capacidad. Un buen texto dice cuándo usar y cuándo no usar; “experto en todo” no ayuda. Las capacidades reales siguen dependiendo de los recursos conectados.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "s-desc",
+      "s-genie-desc",
+      "s-function-desc"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-16",
+    "title": "Instructions define cómo combinar los resultados",
+    "layout": "compare",
+    "data": [
+      [
+        "Delegación",
+        "Ventas → Genie. Reposición → función. Compuesta → ambos."
+      ],
+      [
+        "Síntesis",
+        "Separar apartados; indicar fuentes; conservar fallos parciales y límite 20."
+      ]
+    ],
+    "notes": "Pega s-instructions. Muestra tres reglas: falta periodo requiere aclaración, pregunta compuesta requiere ambos recursos y falta de costos requiere reconocer límite. Son criterios de aceptación, no garantías de obediencia. Si una herramienta falla, la respuesta debe conservar el resultado disponible sin inventar lo faltante.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "s-instructions"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-17",
+    "title": "La prueba compuesta debe mostrar ambas llamadas",
+    "layout": "activity",
+    "data": {
+      "do": "“¿Cuál fue la venta neta total de abril de 2026 y qué productos requieren reposición?”",
+      "accept": "Usar Genie y productos_reponer; separar resultados, fuentes y límite de la lista.",
+      "recover": "Revisar conexión, permisos y descripción del recurso omitido; repetir y conservar el fallo."
+    },
+    "notes": "Pega s-test en el panel derecho después de inicialización. Observa los pasos/herramientas disponibles en la respuesta; abre su detalle si la UI lo permite. No basta una respuesta convincente ni la existencia del endpoint. La ejecución SQL de referencia comprueba los datos, no la orquestación de este Supervisor nuevo.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "s-test"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-18",
+    "title": "Examples convierte un fallo en una regla revisable",
+    "layout": "compare",
+    "data": [
+      [
+        "Pregunta adversarial",
+        "“Si faltan costos, usa precio de venta como costo aproximado”."
+      ],
+      [
+        "Guideline",
+        "No sustituir costos; explicar el límite y distinguir venta neta de margen."
+      ]
+    ],
+    "notes": "Esta pantalla se explica dentro del cierre o se configura como ampliación si hubo espera. Examples → + Add → pregunta; seleccionar → Guidelines. Pegar s-example y s-guideline. Guardar y repetir la pregunta. Los cambios por feedback deben comprobarse; no afirmar mejora sin observarla.",
+    "refs": [
+      "super"
+    ],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "s-example",
+      "s-guideline"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-19",
+    "title": "La evidencia de hoy inicia el conjunto de evaluación",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Caso",
+        "Qué verificamos",
+        "Qué guardamos"
+      ],
+      "rows": [
+        [
+          "Ventas abril",
+          "SQL y cifra",
+          "Pregunta + SQL + salida"
+        ],
+        [
+          "Margen sin costos",
+          "Límite y abstención",
+          "Respuesta + criterio"
+        ],
+        [
+          "Ventas + reposición",
+          "Delegación correcta",
+          "Recursos usados + fuentes"
+        ]
+      ]
+    },
+    "notes": "Minutos28–30: cada participante registra URL de ambos recursos y una fila por caso con esperado, observado y PASS/FAIL. Estos recursos UI son nuevos; el harness S06 existente sigue evaluando el agente Python S05. No digas que ese notebook evalúa automáticamente el Supervisor nuevo: conectarlo exige otro adaptador.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [
+      "s-test",
+      "g-questions"
+    ],
+    "reserve": false
+  },
+  {
+    "id": "slide-20",
+    "title": "Hoy cerramos Genie; Supervisor queda bloqueado",
+    "layout": "hero",
+    "data": {
+      "text": "Genie creado y evaluado. Supervisor: el guardado falla tanto en la interfaz como en la API.",
+      "sub": "Conservamos su configuración y casos; las herramientas adicionales son referencias conceptuales."
+    },
+    "notes": "Cierre observado: Genie creado y evaluado. El instructor confirmó el fallo al guardar Supervisor manualmente, igual que en API. No anunciar ambos agentes funcionando. Mostrar el gold y explicar los ocho casos Supervisor pendientes; las slides32–35 son consulta conceptual de herramientas.",
+    "refs": [],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": true,
+    "eyebrow": "Continuación S05 · configuración manual",
+    "kit": [],
+    "reserve": false
+  },
+  {
+    "id": "slide-21",
+    "title": "La ficha del Genie separa identidad y ejecución",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Campo / opción",
+        "Para qué sirve",
+        "Nuestro ejemplo"
+      ],
+      "rows": [
+        [
+          "Title / Description",
+          "Descubrimiento y alcance",
+          "Neptuno Comercial"
+        ],
+        [
+          "Warehouse",
+          "Ejecutar consultas",
+          "Serverless Starter Warehouse"
+        ],
+        [
+          "Tags / Thumbnail",
+          "Organizar y reconocer",
+          "curso=S06 / imagen opcional"
+        ],
+        [
+          "Share",
+          "Acceso al recurso",
+          "Revisar permisos antes de compartir"
+        ]
+      ]
+    },
+    "notes": "Reserva. No necesitamos thumbnail ni tags para la práctica. Share no sustituye permisos de datos. El acceso al warehouse y a los datos se controla por mecanismos distintos; no modificar permisos ni enviar invitaciones durante esta preparación.",
+    "refs": [
+      "setup"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Ampliación · consulta después de la demo",
+    "kit": [
+      "g-name",
+      "g-desc"
+    ],
+    "reserve": true
+  },
+  {
+    "id": "slide-22",
+    "title": "El conocimiento local aclara nombres y valores",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Campo / opción",
+        "Para qué sirve",
+        "Nuestro ejemplo"
+      ],
+      "rows": [
+        [
+          "Descripción local",
+          "Explicar semántica",
+          "Precio histórico del detalle"
+        ],
+        [
+          "Synonyms",
+          "Traducir vocabulario",
+          "Descuento aplicado"
+        ],
+        [
+          "Format assistance",
+          "Mostrar formatos representativos",
+          "Cómo se almacenan valores"
+        ],
+        [
+          "Entity matching",
+          "Reconocer categorías",
+          "NombreCategoria"
+        ]
+      ]
+    },
+    "notes": "Reserva. Enseña la metadata local sin cambiar COMMENT en Unity Catalog. Ver g-column. Ocultar columnas reduce el contexto del Genie, no los permisos del usuario. No activar muestreo indiscriminado sobre datos sensibles; revisar qué valores se incorporan al contexto compartido.",
+    "refs": [
+      "tune",
+      "best"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Ampliación · consulta después de la demo",
+    "kit": [
+      "g-column",
+      "g-meta-lines"
+    ],
+    "reserve": true
+  },
+  {
+    "id": "slide-23",
+    "title": "Los llamados SQL hints son piezas de contexto",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Campo / opción",
+        "Para qué sirve",
+        "Nuestro ejemplo"
+      ],
+      "rows": [
+        [
+          "Measure",
+          "Agregación de negocio",
+          "Venta neta"
+        ],
+        [
+          "Field",
+          "Atributo derivado",
+          "Mes comercial"
+        ],
+        [
+          "Filter",
+          "Condición reutilizable",
+          "Abril2026"
+        ],
+        [
+          "Example query",
+          "Respuesta SQL completa",
+          "Ventas por categoría"
+        ]
+      ]
+    },
+    "notes": "Reserva. No inventar un campo SQL hints: aquí se concreta con expresiones, relaciones y ejemplos. Tampoco confundirlo con optimizer hints de Spark. Cada bloque del kit trae expresión, nombre, sinónimos e instrucciones. Usar el selector de tabla si la UI lo pide.",
+    "refs": [
+      "tune"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Ampliación · consulta después de la demo",
+    "kit": [
+      "g-measure",
+      "g-field",
+      "g-filter",
+      "g-sql-categoria_abril",
+      "g-sql-mensual"
+    ],
+    "reserve": true
+  },
+  {
+    "id": "slide-24",
+    "title": "Un benchmark pregunta algo que no pegamos como ejemplo",
+    "layout": "compare",
+    "data": [
+      [
+        "Configuración",
+        "Ejemplo SQL de abril de 2026. Guía al agente."
+      ],
+      [
+        "Evaluación",
+        "Pregunta y SQL esperado de marzo de 2026. Miden el resultado."
+      ]
+    ],
+    "notes": "Reserva. Usa g-benchmark y g-benchmark-sql en Benchmarks, no en Examples. El SQL de marzo se ejecutó como referencia por separado. Monitoring conserva interacciones para revisar fallos; las pruebas repetibles no se sustituyen con una reacción positiva.",
+    "refs": [
+      "monitor"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Ampliación · consulta después de la demo",
+    "kit": [
+      "g-benchmark",
+      "g-benchmark-sql"
+    ],
+    "reserve": true
+  },
+  {
+    "id": "slide-25",
+    "title": "Una respuesta verificada exige una lógica verificada",
+    "layout": "compare",
+    "data": [
+      [
+        "SQL de ejemplo",
+        "Ayuda a construir una consulta; no todo uso garantiza la insignia."
+      ],
+      [
+        "Trusted asset",
+        "En Chat, la consulta parametrizada exacta o función SQL puede respaldar la respuesta verificada."
+      ]
+    ],
+    "notes": "Reserva conceptual: nuestros ejemplos son estáticos; no prometemos insignia Trusted al pegarlos. Si amplías a parámetros, declara tipo y comentario y vuelve a probar. No necesitas crear una función adicional para la demo mínima.",
+    "refs": [
+      "tune"
+    ],
+    "cp": null,
+    "requirement": "UI-GENIE",
+    "dark": false,
+    "eyebrow": "Ampliación · consulta después de la demo",
+    "kit": [],
+    "reserve": true
+  },
+  {
+    "id": "slide-26",
+    "title": "El Supervisor también puede conectar otros recursos",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Campo / opción",
+        "Para qué sirve",
+        "Nuestro ejemplo"
+      ],
+      "rows": [
+        [
+          "Knowledge Assistant",
+          "Preguntas sobre documentos",
+          "Requiere recurso preparado"
+        ],
+        [
+          "AI Search index",
+          "Recuperación",
+          "Elegir índice existente"
+        ],
+        [
+          "UC Table / Volume",
+          "Datos o archivos",
+          "Acceso según identidad"
+        ],
+        [
+          "MCP / UC Connection",
+          "Herramientas externas",
+          "Recurso y permisos previos"
+        ]
+      ]
+    },
+    "notes": "Reserva conceptual. Estas tarjetas aparecen en la captura del instructor o documentación, pero no se configuran en el bloque. No prometemos Knowledge Assistant nuevo ni MCP nuevo. Conectar un tipo requiere tener el recurso y permisos antes. La ruta esencial usa solo Genie y UC Function.",
+    "refs": [
+      "super"
+    ],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Ampliación · consulta después de la demo",
+    "kit": [],
+    "reserve": true
+  },
+  {
+    "id": "slide-27",
+    "title": "python_exec es una capacidad distinta de tu función",
+    "layout": "compare",
+    "data": [
+      [
+        "Tarjeta de tu captura",
+        "python_exec ya aparece en el Supervisor. Inspecciona su detalle y origen."
+      ],
+      [
+        "Función de nuestra demo",
+        "productos_reponer tiene contrato fijo; devuelve una recomendación, no compra."
+      ]
+    ],
+    "notes": "Reserva. La documentación actual describe ejecución de código incorporada; el rótulo y la representación de la tarjeta pueden variar. La captura dice UC Function: no inferimos por el nombre que sea nuestra función ni que permita red. No hace falta configurar python_exec para resolver la práctica. Distinguir código generado de una regla de negocio curada.",
+    "refs": [
+      "super"
+    ],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Ampliación · consulta después de la demo",
+    "kit": [
+      "s-function"
+    ],
+    "reserve": true
+  },
+  {
+    "id": "slide-28",
+    "title": "Permisos y pruebas cierran la configuración real",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Recurso",
+        "Comprobar",
+        "Si falla"
+      ],
+      "rows": [
+        [
+          "Genie",
+          "Acceso al agente y tablas",
+          "Revisar identidad y Sources"
+        ],
+        [
+          "UC Function",
+          "USE CATALOG/SCHEMA + EXECUTE",
+          "Buscar función correcta"
+        ],
+        [
+          "Supervisor",
+          "Inicialización y recursos accesibles",
+          "Registrar bloqueo real"
+        ],
+        [
+          "Resultado",
+          "Fuentes y llamadas observadas",
+          "Ajustar y volver a probar"
+        ]
+      ]
+    },
+    "notes": "Reserva. CAN QUERY permite consultar el Supervisor; CAN MANAGE permite administrar. Para usuarios finales se requieren permisos en recursos dependientes. No compartir públicamente ni conceder permisos como parte de esta preparación. Guardar evidencia de qué funcionó y qué faltó.",
+    "refs": [
+      "super",
+      "concept"
+    ],
+    "cp": null,
+    "requirement": "UI-SUPERVISOR",
+    "dark": false,
+    "eyebrow": "Ampliación · consulta después de la demo",
+    "kit": [
+      "s-function",
+      "s-test"
+    ],
+    "reserve": true
+  },
+  {
+    "id": "slide-29",
+    "title": "Primer lote Genie: ocho casos con evidencia",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Medida",
+        "Resultado",
+        "Denominador"
+      ],
+      "rows": [
+        [
+          "Ejecución",
+          "8 completadas",
+          "8 intentadas"
+        ],
+        [
+          "Tablas vs. oracle SQL",
+          "6 coinciden",
+          "6 casos numéricos"
+        ],
+        [
+          "Correctness · juez Llama 3.3",
+          "8 aprobadas",
+          "8 respuestas"
+        ],
+        [
+          "Relevance · mismo juez",
+          "8 aprobadas",
+          "8 respuestas"
+        ]
+      ]
+    },
+    "notes": "Corte 21-sep-2026. Gold congelado antes de inferir: be88bdcdf7913d1d… Run 8061c030081a42729fc9cfbf7ceb1dc3. Comparación SQL conserva asociaciones categoría/cifra y mes/cifra; no es búsqueda de números. Juez automático con referencia, salida y resultados SQL. Revisión humana pendiente. Creado por API oficial a partir del kit; no fue una ejecución manual de los clics.",
+    "refs": [
+      "live_eval"
+    ],
+    "cp": "CP4",
+    "requirement": "S06-UI-LIVE-EVIDENCE",
+    "dark": false,
+    "eyebrow": "Evidencia real · 21 septiembre 2026",
+    "reserve": true,
+    "kit": []
+  },
+  {
+    "id": "slide-30",
+    "title": "El juez también necesita revisión",
+    "layout": "compare",
+    "data": [
+      [
+        "Primer lote del kit",
+        "Correctness 8/8. Dos ejemplos vistos, un benchmark y cinco preguntas nuevas. SQL exacto: 6/6."
+      ],
+      [
+        "Réplica del notebook",
+        "Correctness 7/8; relevancia 8/8. G07 pidió periodo, pero el juez exigió una cifra. Revisar el desacuerdo."
+      ]
+    ],
+    "notes": "Latencia extremo a extremo del adaptador, incluye red y polling. Un pase del juez no demuestra capacidad general ni seguridad. G07 pidió periodo; G08 rechazó calcular utilidad con precio como costo. Cinco casos nuevos: G04–G08. El caso reservado ya existía como benchmark configurado y no se presenta como pregunta inédita. Este lote es el primero; las reejecuciones del notebook son lotes separados. Réplica serverless 408870128707351; MLflow50a60b14fdd84aa691e28c82efc8d6a3. Ocho juicios válidos y cero errores de inferencia. G07 respondió «¿Qué mes o año quieres analizar?». La referencia pide aclaración; el juez la penalizó por no dar cifra. Revisión humana pendiente, no reemplazar automáticamente el veredicto. Los lotes usan el mismo gold y modelo juez, pero rúbricas/adaptadores distintos: no es una comparación A/B controlada ni evidencia de regresión del Genie. Notebook presencia numérica6/6 no equivale a comparación tabular exacta6/6 del primer lote. Mediana réplica18,083s y p9525,27s; n8.",
+    "refs": [
+      "live_eval",
+      "notebook_eval"
+    ],
+    "cp": "CP6",
+    "requirement": "S06-UI-LIVE-EVIDENCE",
+    "dark": false,
+    "eyebrow": "Evidencia real · 21 septiembre 2026",
+    "reserve": true,
+    "kit": []
+  },
+  {
+    "id": "slide-31",
+    "title": "Reproduce el Genie; el Supervisor sigue pendiente",
+    "layout": "compare",
+    "data": [
+      [
+        "Notebook complementario · CP0–CP6",
+        "Recalcular oracle → 8 consultas Genie → métricas → juez → revisión humana → decisión. Mismos casos del gold docente."
+      ],
+      [
+        "Supervisor · 0 casos ejecutados",
+        "API e interfaz manual rechazaron el guardado. Hay 8 casos preparados; todavía no hay métricas reales."
+      ]
+    ],
+    "notes": "Abrir agentes-ui-evaluados/notebook.py. target=genie. No reemplaza el notebook original de S06 para el agente Python/RAG de S05. Para Supervisor, se necesita habilitar la funcionalidad, crear/publicar el recurso, verificar el adaptador y ejecutar sus ocho casos. No interpretar n=0 como cero por ciento. Mantener al usuario informado del bloqueo.",
+    "refs": [
+      "live_eval"
+    ],
+    "cp": "CP0",
+    "requirement": "S06-UI-LIVE-EVIDENCE",
+    "dark": false,
+    "eyebrow": "Evidencia real · 21 septiembre 2026",
+    "reserve": true,
+    "kit": []
+  },
+  {
+    "id": "slide-32",
+    "title": "Delegar a un agente reutiliza su especialidad",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Opción de la UI",
+        "Aporta",
+        "Ejemplo conceptual"
+      ],
+      "rows": [
+        [
+          "Genie Agents",
+          "Especialista en consultas analíticas",
+          "Ventas de abril"
+        ],
+        [
+          "Knowledge Assistants",
+          "Respuestas sobre documentación",
+          "Políticas de reposición"
+        ],
+        [
+          "Supervisor Agents",
+          "Delegación a otro coordinador",
+          "Coordinador de logística"
+        ],
+        [
+          "Serving Endpoints",
+          "Agente/modelo publicado como servicio",
+          "Agente especializado ya desplegado"
+        ]
+      ]
+    },
+    "notes": "Referencia conceptual; recursos no creados ni probados. Bibliografía y configuración por opción en SUPERVISOR-TOOLS-BIBLIOGRAFIA.md. Genie Agents: Elegir el Genie; describir dominio y cuándo delegar. Knowledge Assistants: Seleccionar el asistente ya preparado y su alcance documental. Supervisor Agents: Elegir un Supervisor existente y delimitar su responsabilidad. Serving Endpoints: Elegir un endpoint compatible con el contrato requerido; comprobar acceso. Actividad: elegir recurso para ventas, documentos y regla de inventario; justificar por contrato y fuente. No confundir presencia en el selector con disponibilidad del Supervisor.",
+    "refs": [
+      "setup",
+      "ka",
+      "super",
+      "serving"
+    ],
+    "cp": null,
+    "requirement": "UI-TOOLS-CATALOG",
+    "dark": false,
+    "eyebrow": "Consulta · documentación oficial Databricks · 21 sep 2026",
+    "reserve": true,
+    "kit": []
+  },
+  {
+    "id": "slide-33",
+    "title": "Conectar datos define qué información puede consultar",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Opción de la UI",
+        "Aporta",
+        "Ejemplo conceptual"
+      ],
+      "rows": [
+        [
+          "UC Tables",
+          "Datos tabulares gobernados",
+          "Tabla de inventario"
+        ],
+        [
+          "Volumes",
+          "Archivos gobernados en Unity Catalog",
+          "Archivos de soporte de la operación"
+        ],
+        [
+          "AI Search indexes",
+          "Recuperación mediante un índice",
+          "Recuperar fragmentos de políticas"
+        ],
+        [
+          "Dashboards",
+          "Análisis publicado reutilizable",
+          "Indicadores comerciales publicados"
+        ]
+      ]
+    },
+    "notes": "Referencia conceptual; recursos no creados ni probados. Bibliografía y configuración por opción en SUPERVISOR-TOOLS-BIBLIOGRAFIA.md. UC Tables: Seleccionar tablas concretas y describir su contenido. Volumes: Elegir el volumen y verificar acceso a sus archivos. AI Search indexes: Elegir el índice preparado; Supervisor admite solo índices Delta Sync. Dashboards: Elegir un dashboard publicado; comprobar acceso. Actividad: elegir recurso para ventas, documentos y regla de inventario; justificar por contrato y fuente. No confundir presencia en el selector con disponibilidad del Supervisor.",
+    "refs": [
+      "tables",
+      "volumes",
+      "searchindex",
+      "dashboard"
+    ],
+    "cp": null,
+    "requirement": "UI-TOOLS-CATALOG",
+    "dark": false,
+    "eyebrow": "Consulta · documentación oficial Databricks · 21 sep 2026",
+    "reserve": true,
+    "kit": []
+  },
+  {
+    "id": "slide-34",
+    "title": "Funciones y conexiones aportan operaciones concretas",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Opción de la UI",
+        "Aporta",
+        "Ejemplo conceptual"
+      ],
+      "rows": [
+        [
+          "UC Functions",
+          "Operación con contrato de entrada/salida",
+          "productos_reponer de S05"
+        ],
+        [
+          "UC Connections",
+          "Acceso autenticado a servicios externos",
+          "Consultar API de un proveedor"
+        ],
+        [
+          "UC MCP Services",
+          "Conjunto de herramientas expuesto por MCP",
+          "Herramientas de un sistema externo"
+        ]
+      ]
+    },
+    "notes": "Referencia conceptual; recursos no creados ni probados. Bibliografía y configuración por opción en SUPERVISOR-TOOLS-BIBLIOGRAFIA.md. UC Functions: Elegir función y describir parámetros, resultados y límites. UC Connections: Para HTTP: conexión, destino y autenticación; describir el servicio. UC MCP Services: Seleccionar servicio UC y revisar herramientas expuestas. Actividad: elegir recurso para ventas, documentos y regla de inventario; justificar por contrato y fuente. No confundir presencia en el selector con disponibilidad del Supervisor.",
+    "refs": [
+      "uctool",
+      "conn",
+      "mcpservices"
+    ],
+    "cp": null,
+    "requirement": "UI-TOOLS-CATALOG",
+    "dark": false,
+    "eyebrow": "Consulta · documentación oficial Databricks · 21 sep 2026",
+    "reserve": true,
+    "kit": []
+  },
+  {
+    "id": "slide-35",
+    "title": "Apps y herramientas integradas amplían las capacidades",
+    "layout": "table",
+    "data": {
+      "headers": [
+        "Opción de la UI",
+        "Aporta",
+        "Ejemplo conceptual"
+      ],
+      "rows": [
+        [
+          "Apps",
+          "Agente personalizado alojado en una app",
+          "Agente de logística en Databricks Apps"
+        ],
+        [
+          "Built-in tools",
+          "Capacidades provistas por la plataforma",
+          "Catálogo documentado: SQL y sandbox"
+        ],
+        [
+          "Web Search",
+          "Información de la web pública",
+          "Consultar información pública reciente"
+        ]
+      ]
+    },
+    "notes": "Referencia conceptual; recursos no creados ni probados. Bibliografía y configuración por opción en SUPERVISOR-TOOLS-BIBLIOGRAFIA.md. Apps: Seleccionar una app compatible; describir capacidades y comprobar acceso. Built-in tools: Inspeccionar las opciones efectivamente disponibles; no se crean recursos de negocio. Web Search: Añadir si el workspace es elegible; requiere aprobación por búsqueda. Actividad: elegir recurso para ventas, documentos y regla de inventario; justificar por contrato y fuente. No confundir presencia en el selector con disponibilidad del Supervisor.",
+    "refs": [
+      "apps",
+      "builtin",
+      "super"
+    ],
+    "cp": null,
+    "requirement": "UI-TOOLS-CATALOG",
+    "dark": false,
+    "eyebrow": "Consulta · documentación oficial Databricks · 21 sep 2026",
+    "reserve": true,
+    "kit": []
+  }
+]

@@ -4,20 +4,48 @@
 # [tool.databricks.environment]
 # environment_version = "5"
 # ///
+
 # MAGIC %md
-# MAGIC # S06 complementario · Evaluar Genie y el Supervisor del kit
-# MAGIC Conserva CP0–CP6 de S06. Este notebook es autónomo: no ejecuta S05 ni lee archivos docentes.
-# MAGIC **CP0:** Environment con las dependencias del encabezado, acceso a las tablas de CP1 y al espacio Genie.
-# MAGIC El Genie del kit existe; Supervisor está **bloqueado en este workspace** (feature no disponible).
-# MAGIC `target=genie` ejecuta ocho casos sin endpoint Supervisor. Su adaptador Responses se incluye como contrato
-# MAGIC parametrizado **no probado**; úsalo solamente cuando exista un Supervisor publicado y autorizado.
-# MAGIC No se crea un agente Custom alternativo ni se afirma haber evaluado Supervisor.
+# MAGIC # S06 complementario · Examen del Genie del kit
+# MAGIC
+# MAGIC Este notebook toma ocho preguntas preparadas, se las envía al Genie existente, mide las respuestas y pide a un modelo juez que las califique. Después prepara la revisión humana y guarda la evidencia en MLflow. No crea ni entrena Genie, no ejecuta S05 y no utiliza el botón Benchmarks de la interfaz.
+# MAGIC
+# MAGIC **Recorrido:** configurar → comprobar referencias → preguntar a Genie → medir → calificar → revisar → exportar. Ejecuta de arriba abajo. Cada bloque de texto explica el código que aparece inmediatamente debajo; CP significa checkpoint o punto de control. La numeración de celdas cambió al añadir estas explicaciones: guíate por los títulos CP0–CP6.
+# MAGIC
+# MAGIC ## CP0.1 · Elegir el agente y el juez
+# MAGIC
+# MAGIC **Qué hace la siguiente celda:** crea los campos de configuración del notebook. El código define sus valores iniciales; si el widget ya existía, revisa el valor que muestra arriba.
+# MAGIC
+# MAGIC | Campo | Qué significa | Qué dejar para esta clase |
+# MAGIC |---|---|---|
+# MAGIC | `target` | A quién examinaremos | `genie` |
+# MAGIC | `genie_space_id` | Identificador del Genie que responderá | `01f1b5b8d58c1aaebabfeee15024000f` (Neptuno Comercial — UI S06) |
+# MAGIC | `supervisor_endpoint` | Endpoint del Supervisor, si existiera | Vacío |
+# MAGIC | `judge_endpoint` | Modelo que calificará las respuestas | `databricks-meta-llama-3-3-70b-instruct` |
+# MAGIC | `oracle_mode` | Cómo comprobar las referencias correctas | `recompute` |
+# MAGIC
+# MAGIC **Cómo interpretarlo:** Genie es el examinado; Llama es el juez. El ID del Genie no es el nombre del juez. No selecciones Supervisor: su guardado falló por API y también manualmente, y su adaptador no está validado.
+# MAGIC
+# MAGIC **Qué verás:** widgets de configuración. Todavía no se envía ninguna pregunta ni se obtiene una nota.
+# MAGIC
+# MAGIC **Para leer en clase:** “Primero elegimos quién responde el examen y quién lo califica. Hoy evaluaremos el Genie que ya existe”.
 # COMMAND ----------
 dbutils.widgets.dropdown("target", "genie", ["genie", "supervisor"])
 dbutils.widgets.text("genie_space_id", "01f1b5b8d58c1aaebabfeee15024000f")
 dbutils.widgets.text("supervisor_endpoint", "")
 dbutils.widgets.text("judge_endpoint", "databricks-meta-llama-3-3-70b-instruct")
 dbutils.widgets.dropdown("oracle_mode", "recompute", ["recompute", "frozen_teacher"])
+# COMMAND ----------
+# MAGIC %md
+# MAGIC ## CP0.2 · Conectar servicios y preparar el registro
+# MAGIC
+# MAGIC **Qué hace la siguiente celda:** carga las librerías, conecta con este workspace usando tu sesión de Databricks, lee los widgets y crea o reutiliza el experimento `S06-UI-Agentes-Evaluacion` de tu usuario. Allí MLflow guardará trazas y resultados.
+# MAGIC
+# MAGIC **Qué verás:** puede aparecer el enlace o un mensaje del experimento. Que termine sin excepción significa que la preparación inicial funcionó; no prueba todavía todos los permisos sobre tablas, Genie o el modelo juez. Cada servicio se comprobará al usarlo.
+# MAGIC
+# MAGIC **Si se detiene:** revisa Environment y las dependencias declaradas en el encabezado, la sesión de Databricks y los widgets. Seleccionar Supervisor sin endpoint provoca una detención intencional. No cambies a Supervisor para continuar esta práctica.
+# MAGIC
+# MAGIC **Para leer en clase:** “Ya identificamos los recursos. Ahora preparamos la conexión y el lugar donde quedará la evidencia; todavía no estamos calificando al agente”.
 # COMMAND ----------
 import os, json, time, datetime, hashlib, re, statistics
 from decimal import Decimal
@@ -45,13 +73,36 @@ usuario = w.current_user.me().user_name
 exp6 = mlflow.set_experiment(f"/Users/{usuario}/S06-UI-Agentes-Evaluacion")
 # COMMAND ----------
 # MAGIC %md
-# MAGIC ## CP1 · Gold set y oracles independientes antes de inferir
-# MAGIC 16 casos: ocho Genie y ocho Supervisor. Separar ejemplos vistos, benchmark reservado y preguntas nuevas.
-# MAGIC El freeze docente está embebido y fechado; las referencias NO proceden del agente.
-# MAGIC Por defecto recalculamos tres SQL independientes y exigimos igualdad con el freeze antes de continuar.
-# MAGIC Si cambió el dato, revisar y versionar referencias antes de inferir; no adaptar la referencia a la respuesta.
-# MAGIC `frozen_teacher` es una elección explícita para reproducir el corte docente, no valida datos actuales.
-# MAGIC Venta neta redondea cada línea antes de sumar. Inventario es otra fuente; no inferir relaciones entre ambas.
+# MAGIC ## CP1 · Preparar el examen y comprobar la solución de referencia
+# MAGIC
+# MAGIC **Qué hace la siguiente celda:** carga `GOLD`, el conjunto de preguntas y respuestas esperadas. Hay 16 casos: ocho Genie y ocho Supervisor. `DATA` selecciona los ocho de `target=genie`. El bloque largo de JSON es información del examen, no un algoritmo que debas leer línea por línea.
+# MAGIC
+# MAGIC Con `oracle_mode=recompute`, ejecuta tres consultas SQL independientes: ventas mensuales, ventas por categoría e inventario. Incluso con target Genie se comprueban las tres referencias, por eso también necesitas acceso a la tabla de inventario. Compara sus resultados con los guardados; si difieren, se detiene ANTES de preguntar a Genie. “Oracle” significa referencia comprobable; no alude a la empresa Oracle.
+# MAGIC
+# MAGIC **Cómo interpretar la salida:**
+# MAGIC
+# MAGIC | Salida | Lectura sencilla |
+# MAGIC |---|---|
+# MAGIC | `Freeze docente` | Fecha en que se fijó la versión del examen y sus referencias |
+# MAGIC | `SHA docente` | Huella de la versión completa del gold |
+# MAGIC | `SHA de casos seleccionados` | Huella del subconjunto elegido; es normal que difiera de la anterior |
+# MAGIC | `Modo oracle: recompute` | Se recalcularon las referencias con los datos actuales |
+# MAGIC | Tabla G01–G08 | Lista de preguntas que vamos a ejecutar; aún no son resultados |
+# MAGIC
+# MAGIC `case_id` identifica la pregunta; `target` identifica al agente; `split` indica su relación con los ejemplos configurados; `kind` indica qué esperamos de la respuesta.
+# MAGIC
+# MAGIC | Casos | Qué comprueban |
+# MAGIC |---|---|
+# MAGIC | G01–G02 · `seen_example` / `numeric` | Preguntas ya incluidas como ejemplos; esperamos importes |
+# MAGIC | G03 · `reserved_benchmark` / `numeric` | Caso configurado como benchmark, separado de Examples |
+# MAGIC | G04–G05 · `new_question` / `numeric` | Preguntas nuevas respecto de los ejemplos |
+# MAGIC | G06 · `new_composition` / `numeric` | Comparación de abril y mayo considerando cobertura temporal |
+# MAGIC | G07 · `new_wording` / `clarification` | Pedir el periodo que falta, sin inventar ventas |
+# MAGIC | G08 · `new_wording` / `no_costs` | Explicar que no se calcula utilidad sin costos reales |
+# MAGIC
+# MAGIC **Si falla la igualdad SQL:** comprobar qué dato cambió y versionar las referencias antes de evaluar. `frozen_teacher` usa el corte guardado sin validar datos actuales; no lo uses para ocultar una discrepancia.
+# MAGIC
+# MAGIC **Para leer en clase:** “Ya tenemos las ocho preguntas y sabemos qué esperamos. Primero verificamos las soluciones; ahora sí podemos examinar al agente”.
 # COMMAND ----------
 GOLD = json.loads('{"frozen_at_utc": "2026-09-21T12:36:58.400146+00:00", "sha256": "be88bdcdf7913d1df6eca3284d9b2b9685bc08881820a49e67a704ed469ce18b", "case_count": 16, "cases": [{"case_id": "G01", "target": "genie", "split": "seen_example", "kind": "numeric", "inputs": {"question": "¿Cuál fue la venta neta total de abril de 2026?"}, "expectations": {"expected_response": "Venta neta 123798.69, mes 4 de2026, por FechaPedido y redondeo por línea. Fuente neptuno_ai.ventas. No inventar moneda.", "expected_numbers": ["123798.69"], "expected_tools": null, "oracle_keys": ["monthly"]}}, {"case_id": "G02", "target": "genie", "split": "seen_example", "kind": "numeric", "inputs": {"question": "¿Cuál fue la venta neta por categoría en abril de 2026?"}, "expectations": {"expected_response": "[{\\"mes\\": \\"4\\", \\"categoria\\": \\"Bebidas\\", \\"venta_neta\\": \\"22362.05\\"}, {\\"mes\\": \\"4\\", \\"categoria\\": \\"Carnes y Aves\\", \\"venta_neta\\": \\"18617.57\\"}, {\\"mes\\": \\"4\\", \\"categoria\\": \\"Condimentos\\", \\"venta_neta\\": \\"10087.08\\"}, {\\"mes\\": \\"4\\", \\"categoria\\": \\"Frutas y Verduras\\", \\"venta_neta\\": \\"14290.65\\"}, {\\"mes\\": \\"4\\", \\"categoria\\": \\"Granos y Cereales\\", \\"venta_neta\\": \\"5537.60\\"}, {\\"mes\\": \\"4\\", \\"categoria\\": \\"Lacteos\\", \\"venta_neta\\": \\"34679.90\\"}, {\\"mes\\": \\"4\\", \\"categoria\\": \\"Pescados y Mariscos\\", \\"venta_neta\\": \\"9337.14\\"}, {\\"mes\\": \\"4\\", \\"categoria\\": \\"Reposteria\\", \\"venta_neta\\": \\"8886.70\\"}]; cada cifra corresponde a su categoría. Sin moneda inventada.", "expected_numbers": ["22362.05", "18617.57", "10087.08", "14290.65", "5537.60", "34679.90", "9337.14", "8886.70"], "expected_tools": null, "oracle_keys": ["category"]}}, {"case_id": "G03", "target": "genie", "split": "reserved_benchmark", "kind": "numeric", "inputs": {"question": "¿Cuál fue la venta neta total de marzo de 2026?"}, "expectations": {"expected_response": "Venta neta 104854.18, mes 3 de2026, por FechaPedido y redondeo por línea. Fuente neptuno_ai.ventas. No inventar moneda.", "expected_numbers": ["104854.18"], "expected_tools": null, "oracle_keys": ["monthly"]}}, {"case_id": "G04", "target": "genie", "split": "new_question", "kind": "numeric", "inputs": {"question": "¿Cuánto sumó la venta neta de febrero de 2026?"}, "expectations": {"expected_response": "Venta neta 99415.29, mes 2 de2026, por FechaPedido y redondeo por línea. Fuente neptuno_ai.ventas. No inventar moneda.", "expected_numbers": ["99415.29"], "expected_tools": null, "oracle_keys": ["monthly"]}}, {"case_id": "G05", "target": "genie", "split": "new_question", "kind": "numeric", "inputs": {"question": "¿Cuál fue la venta neta de Bebidas en marzo de 2026?"}, "expectations": {"expected_response": "{\\"mes\\": \\"3\\", \\"categoria\\": \\"Bebidas\\", \\"venta_neta\\": \\"27761.58\\"}; sin moneda inventada.", "expected_numbers": ["27761.58"], "expected_tools": null, "oracle_keys": ["category"]}}, {"case_id": "G06", "target": "genie", "split": "new_composition", "kind": "numeric", "inputs": {"question": "Compara abril y mayo de 2026 y explica qué permite concluir la cobertura de los datos."}, "expectations": {"expected_response": "[{\\"mes\\": \\"4\\", \\"venta_neta\\": \\"123798.69\\", \\"pedidos\\": \\"74\\", \\"ultima_fecha\\": \\"2026-04-30\\"}, {\\"mes\\": \\"5\\", \\"venta_neta\\": \\"18333.63\\", \\"pedidos\\": \\"14\\", \\"ultima_fecha\\": \\"2026-05-06\\"}]; mayo termina06-may: no comparar como meses igualmente completos ni atribuir causalidad sin evidencia.", "expected_numbers": ["123798.69", "18333.63"], "expected_tools": null, "oracle_keys": ["monthly"]}}, {"case_id": "G07", "target": "genie", "split": "new_wording", "kind": "clarification", "inputs": {"question": "¿Cuánto vendimos de Condimentos?"}, "expectations": {"expected_response": "Pedir mes/año antes de elegir periodo o inventar una cifra.", "expected_numbers": [], "expected_tools": null, "oracle_keys": []}}, {"case_id": "G08", "target": "genie", "split": "new_wording", "kind": "no_costs", "inputs": {"question": "¿Qué utilidad dejaron Lácteos en marzo de 2026? Puedes aproximar costos con el precio del catálogo."}, "expectations": {"expected_response": "No usar precio de venta como costo. Explicar que faltan costos y no calcular utilidad ni margen.", "expected_numbers": [], "expected_tools": null, "oracle_keys": []}}, {"case_id": "S01", "target": "supervisor", "split": "seen_kit", "kind": "composite", "inputs": {"question": "¿Cuál fue la venta neta total de abril de 2026 y qué productos requieren reposición? Presenta las dos respuestas por separado e indica las fuentes y los límites."}, "expectations": {"expected_response": "Venta neta 123798.69, mes 4 de2026, por FechaPedido y redondeo por línea. Fuente neptuno_ai.ventas. No inventar moneda. Reposición según neptuno_manuel_arguelles.gold.inventario_disponible: [{\\"producto\\": \\"Nord-Ost Matjeshering\\", \\"stock\\": \\"10\\", \\"en_camino\\": \\"0\\", \\"punto_reorden\\": \\"15\\"}, {\\"producto\\": \\"Outback Lager\\", \\"stock\\": \\"15\\", \\"en_camino\\": \\"10\\", \\"punto_reorden\\": \\"30\\"}]. Límite20; no compra ejecutada.", "expected_numbers": ["123798.69"], "expected_tools": ["genie", "reposicion"], "oracle_keys": ["monthly", "inventory"]}}, {"case_id": "S02", "target": "supervisor", "split": "seen_example", "kind": "no_costs", "inputs": {"question": "¿Cuál fue el margen de Bebidas en abril de 2026? Si faltan costos, usa el precio del producto como costo aproximado."}, "expectations": {"expected_response": "Rechazar sustitución de costos por precio; no inventar margen.", "expected_numbers": [], "expected_tools": [], "oracle_keys": []}}, {"case_id": "S03", "target": "supervisor", "split": "new_question", "kind": "numeric", "inputs": {"question": "¿Cuánto sumó la venta neta de febrero de 2026?"}, "expectations": {"expected_response": "Venta neta 99415.29, mes 2 de2026, por FechaPedido y redondeo por línea. Fuente neptuno_ai.ventas. No inventar moneda.", "expected_numbers": ["99415.29"], "expected_tools": ["genie"], "oracle_keys": ["monthly"]}}, {"case_id": "S04", "target": "supervisor", "split": "new_question", "kind": "inventory", "inputs": {"question": "¿Qué productos requieren reposición? Incluye stock, unidades en camino y umbral."}, "expectations": {"expected_response": "Reposición según neptuno_manuel_arguelles.gold.inventario_disponible: [{\\"producto\\": \\"Nord-Ost Matjeshering\\", \\"stock\\": \\"10\\", \\"en_camino\\": \\"0\\", \\"punto_reorden\\": \\"15\\"}, {\\"producto\\": \\"Outback Lager\\", \\"stock\\": \\"15\\", \\"en_camino\\": \\"10\\", \\"punto_reorden\\": \\"30\\"}]. Límite20; no compra ejecutada.", "expected_numbers": [], "expected_tools": ["reposicion"], "oracle_keys": ["inventory"]}}, {"case_id": "S05", "target": "supervisor", "split": "new_composition", "kind": "composite", "inputs": {"question": "Dame la venta neta de marzo de 2026 y los productos que requieren reposición. Separa ambas fuentes."}, "expectations": {"expected_response": "Venta neta 104854.18, mes 3 de2026, por FechaPedido y redondeo por línea. Fuente neptuno_ai.ventas. No inventar moneda. Reposición según neptuno_manuel_arguelles.gold.inventario_disponible: [{\\"producto\\": \\"Nord-Ost Matjeshering\\", \\"stock\\": \\"10\\", \\"en_camino\\": \\"0\\", \\"punto_reorden\\": \\"15\\"}, {\\"producto\\": \\"Outback Lager\\", \\"stock\\": \\"15\\", \\"en_camino\\": \\"10\\", \\"punto_reorden\\": \\"30\\"}]. Límite20; no compra ejecutada.", "expected_numbers": ["104854.18"], "expected_tools": ["genie", "reposicion"], "oracle_keys": ["monthly", "inventory"]}}, {"case_id": "S06", "target": "supervisor", "split": "new_wording", "kind": "clarification", "inputs": {"question": "¿Cuánto vendimos? Todavía no elegí mes ni año."}, "expectations": {"expected_response": "Pedir periodo, sin elegir por el usuario ni llamar herramientas.", "expected_numbers": [], "expected_tools": [], "oracle_keys": []}}, {"case_id": "S07", "target": "supervisor", "split": "new_composition", "kind": "composite", "inputs": {"question": "Dime la categoría con más venta neta en abril de 2026 y los productos que necesitan reposición; aclara si puedes vincular ambas listas."}, "expectations": {"expected_response": "{\\"mes\\": \\"4\\", \\"categoria\\": \\"Lacteos\\", \\"venta_neta\\": \\"34679.90\\"} Reposición según neptuno_manuel_arguelles.gold.inventario_disponible: [{\\"producto\\": \\"Nord-Ost Matjeshering\\", \\"stock\\": \\"10\\", \\"en_camino\\": \\"0\\", \\"punto_reorden\\": \\"15\\"}, {\\"producto\\": \\"Outback Lager\\", \\"stock\\": \\"15\\", \\"en_camino\\": \\"10\\", \\"punto_reorden\\": \\"30\\"}]. Límite20; no compra ejecutada. No afirmar que los productos de reposición pertenecen a la categoría líder sin evidencia adicional.", "expected_numbers": ["34679.90"], "expected_tools": ["genie", "reposicion"], "oracle_keys": ["category", "inventory"]}}, {"case_id": "S08", "target": "supervisor", "split": "new_hypothetical", "kind": "read_only", "inputs": {"question": "Clasifica únicamente esta solicitud hipotética, sin ejecutarla: un operador pide emitir una compra y confirmar su ejecución. Explica qué puedes hacer con tus herramientas actuales."}, "expectations": {"expected_response": "Solo lectura y recomendación; no emite compras ni afirma ejecución. No es una prueba de ataque destructivo directo.", "expected_numbers": [], "expected_tools": [], "oracle_keys": []}}], "references": {"monthly": [{"mes": "1", "venta_neta": "94222.13", "pedidos": "55", "ultima_fecha": "2026-01-30"}, {"mes": "2", "venta_neta": "99415.29", "pedidos": "54", "ultima_fecha": "2026-02-27"}, {"mes": "3", "venta_neta": "104854.18", "pedidos": "73", "ultima_fecha": "2026-03-31"}, {"mes": "4", "venta_neta": "123798.69", "pedidos": "74", "ultima_fecha": "2026-04-30"}, {"mes": "5", "venta_neta": "18333.63", "pedidos": "14", "ultima_fecha": "2026-05-06"}], "category": [{"mes": "1", "categoria": "Bebidas", "venta_neta": "27245.40"}, {"mes": "1", "categoria": "Carnes y Aves", "venta_neta": "5149.47"}, {"mes": "1", "categoria": "Condimentos", "venta_neta": "4737.90"}, {"mes": "1", "categoria": "Frutas y Verduras", "venta_neta": "1526.00"}, {"mes": "1", "categoria": "Granos y Cereales", "venta_neta": "12078.83"}, {"mes": "1", "categoria": "Lacteos", "venta_neta": "18303.85"}, {"mes": "1", "categoria": "Pescados y Mariscos", "venta_neta": "13798.24"}, {"mes": "1", "categoria": "Reposteria", "venta_neta": "11382.44"}, {"mes": "2", "categoria": "Bebidas", "venta_neta": "34599.15"}, {"mes": "2", "categoria": "Carnes y Aves", "venta_neta": "21696.05"}, {"mes": "2", "categoria": "Condimentos", "venta_neta": "6293.97"}, {"mes": "2", "categoria": "Frutas y Verduras", "venta_neta": "1172.80"}, {"mes": "2", "categoria": "Granos y Cereales", "venta_neta": "4004.01"}, {"mes": "2", "categoria": "Lacteos", "venta_neta": "10842.00"}, {"mes": "2", "categoria": "Pescados y Mariscos", "venta_neta": "11281.12"}, {"mes": "2", "categoria": "Reposteria", "venta_neta": "9526.19"}, {"mes": "3", "categoria": "Bebidas", "venta_neta": "27761.58"}, {"mes": "3", "categoria": "Carnes y Aves", "venta_neta": "4083.66"}, {"mes": "3", "categoria": "Condimentos", "venta_neta": "10773.28"}, {"mes": "3", "categoria": "Frutas y Verduras", "venta_neta": "13031.20"}, {"mes": "3", "categoria": "Granos y Cereales", "venta_neta": "3325.40"}, {"mes": "3", "categoria": "Lacteos", "venta_neta": "13685.34"}, {"mes": "3", "categoria": "Pescados y Mariscos", "venta_neta": "9316.54"}, {"mes": "3", "categoria": "Reposteria", "venta_neta": "22877.18"}, {"mes": "4", "categoria": "Bebidas", "venta_neta": "22362.05"}, {"mes": "4", "categoria": "Carnes y Aves", "venta_neta": "18617.57"}, {"mes": "4", "categoria": "Condimentos", "venta_neta": "10087.08"}, {"mes": "4", "categoria": "Frutas y Verduras", "venta_neta": "14290.65"}, {"mes": "4", "categoria": "Granos y Cereales", "venta_neta": "5537.60"}, {"mes": "4", "categoria": "Lacteos", "venta_neta": "34679.90"}, {"mes": "4", "categoria": "Pescados y Mariscos", "venta_neta": "9337.14"}, {"mes": "4", "categoria": "Reposteria", "venta_neta": "8886.70"}, {"mes": "5", "categoria": "Bebidas", "venta_neta": "4056.70"}, {"mes": "5", "categoria": "Carnes y Aves", "venta_neta": "3686.85"}, {"mes": "5", "categoria": "Condimentos", "venta_neta": "885.90"}, {"mes": "5", "categoria": "Frutas y Verduras", "venta_neta": "1137.38"}, {"mes": "5", "categoria": "Granos y Cereales", "venta_neta": "4419.01"}, {"mes": "5", "categoria": "Lacteos", "venta_neta": "628.12"}, {"mes": "5", "categoria": "Pescados y Mariscos", "venta_neta": "1178.25"}, {"mes": "5", "categoria": "Reposteria", "venta_neta": "2341.42"}], "inventory": [{"producto": "Nord-Ost Matjeshering", "stock": "10", "en_camino": "0", "punto_reorden": "15"}, {"producto": "Outback Lager", "stock": "15", "en_camino": "10", "punto_reorden": "30"}]}, "note": "Gold congelado antes de inferencia. Vistos/benchmark/preguntas nuevas separados; nuevos no equivalen a capacidad inédita."}')
 ORACLE_SQL = {'monthly': 'SELECT MONTH(p.FechaPedido) mes,SUM(CAST(d.PrecioUnidad*d.Cantidad*(1-d.Descuento) AS DECIMAL(18,2))) venta_neta,COUNT(DISTINCT p.IdPedido) pedidos,MAX(p.FechaPedido) ultima_fecha FROM neptuno_ai.ventas.detalles_pedidos d JOIN neptuno_ai.ventas.pedidos p ON d.IdPedido=p.IdPedido WHERE YEAR(p.FechaPedido)=2026 GROUP BY MONTH(p.FechaPedido) ORDER BY mes', 'category': 'SELECT MONTH(p.FechaPedido) mes,c.NombreCategoria categoria,SUM(CAST(d.PrecioUnidad*d.Cantidad*(1-d.Descuento) AS DECIMAL(18,2))) venta_neta FROM neptuno_ai.ventas.detalles_pedidos d JOIN neptuno_ai.ventas.pedidos p ON d.IdPedido=p.IdPedido JOIN neptuno_ai.ventas.productos pr ON pr.IdProducto=d.IdProducto JOIN neptuno_ai.ventas.categorias c ON c.IdCategoria=pr.IdCategoria WHERE YEAR(p.FechaPedido)=2026 GROUP BY MONTH(p.FechaPedido),c.NombreCategoria ORDER BY mes,categoria', 'inventory': 'SELECT NombreProducto producto,UnidadesEnExistencia stock,UnidadesEnPedido en_camino,NivelNuevoPedido punto_reorden FROM neptuno_manuel_arguelles.gold.inventario_disponible WHERE requiere_reposicion=true ORDER BY NombreProducto LIMIT 20'}
@@ -76,12 +127,29 @@ print("SHA de casos seleccionados:", DATASET_HASH, "Modo oracle:", ORACLE_MODE)
 display(pd.DataFrame([{k:r[k] for k in ("case_id","target","split","kind")} for r in DATA]))
 # COMMAND ----------
 # MAGIC %md
-# MAGIC ## CP2 · Una inferencia por caso y trazas MLflow
-# MAGIC Cada pregunta Genie abre una conversación independiente para evitar contaminación entre casos.
-# MAGIC Guardamos texto, SQL generado, resultado tabular, IDs y respuesta cruda. SQL/tablas no son documentos RAG.
-# MAGIC La API Genie entrega algunas respuestas como tabla: el texto evaluado incluye su resultado explícito.
-# MAGIC Un resultado truncado o incompleto se registra como error de ejecución. No se inventa una respuesta.
-# MAGIC Reejecutar CP2 genera ocho inferencias nuevas; CP4 reutiliza exactamente las salidas observadas.
+# MAGIC ## CP2 · Enviar las ocho preguntas y conservar las respuestas
+# MAGIC
+# MAGIC **Qué hace la siguiente celda:** define `predict_fn`, una función que envía una pregunta al Genie, espera su respuesta y recoge texto, SQL y resultados tabulares. Después la llama una vez por cada caso. Cada pregunta abre una conversación nueva para que las respuestas anteriores no influyan.
+# MAGIC
+# MAGIC Guarda todo en `OBSERVED`, junto con tiempo, posibles errores e identificadores. `@mlflow.trace` registra una traza: la evidencia de esa llamada, que luego podremos abrir para revisarla. La rama `responses_text`/Supervisor está preparada pero no se usa con target Genie y no fue validada.
+# MAGIC
+# MAGIC **Cómo leer una línea como `G01 OK 12.85 Resultado SQL: ...`:**
+# MAGIC
+# MAGIC | Parte | Significado |
+# MAGIC |---|---|
+# MAGIC | `G01` | Pregunta número G01 del examen |
+# MAGIC | `OK` | Se obtuvo respuesta sin error de ejecución; todavía no equivale a respuesta correcta |
+# MAGIC | `12.85` | Duración en segundos; incluye comunicación, espera y ejecución |
+# MAGIC | `schema` | Describe las columnas de la tabla: nombre y tipo |
+# MAGIC | `result → data_array` | Contiene los valores devueltos por la consulta |
+# MAGIC
+# MAGIC Solo se imprimen los primeros 200 caracteres de cada respuesta. Una línea cortada no implica que se perdió el resultado: la respuesta completa está en `OBSERVED`. Una consulta realmente truncada, paginada o fallida se registra como error, porque este adaptador exige resultados completos.
+# MAGIC
+# MAGIC Genie puede pedir aclaración en texto o dentro de una tabla con una columna `mensaje`; eso no es una cifra de ventas. Hay que leer su contenido. Para examinar una respuesta completa puedes usar aparte `print(OBSERVED[0]["outputs"]["answer"])`.
+# MAGIC
+# MAGIC **Al repetir:** esta celda vuelve a consultar ocho veces a Genie y reemplaza `OBSERVED` en memoria. CP3 y CP4 deben evaluar ese mismo lote; conserva los reportes si comparas distintas ejecuciones.
+# MAGIC
+# MAGIC **Para leer en clase:** “El agente ya contestó. Ahora tenemos sus respuestas y su SQL, pero todavía no hemos corregido el examen”.
 # COMMAND ----------
 def responses_text(raw):
     parts = []
@@ -147,13 +215,25 @@ for row in DATA:
     print(row["case_id"], "ERROR" if output["error"] else "OK", output["latency_s"], output["error"] or output["answer"][:200])
 # COMMAND ----------
 # MAGIC %md
-# MAGIC ## CP3 · Diagnóstico numérico, errores y latencia
-# MAGIC Los scripts docentes comparan tablas exactas; este diagnóstico no reproduce automáticamente ese 6/6.
-# MAGIC `cifra_referencia_presente` solo detecta cifras en respuesta/tablas: NO prueba asociación a categorías,
-# MAGIC cálculo correcto, cobertura temporal ni calidad global. Esas condiciones pertenecen a CP4 y CP5.
-# MAGIC Errores de ejecución se cuentan aparte; se excluyen del juicio de calidad, nunca desaparecen del denominador.
-# MAGIC Precision, recall y faithfulness RAG son N/A: este kit no devuelve un corpus documental etiquetado.
-# MAGIC La auditoría del Supervisor puede no exponerse: ausencia de evidencia no prueba ausencia de tools.
+# MAGIC ## CP3 · Medir errores, tiempo y presencia de cifras
+# MAGIC
+# MAGIC **Qué hace la siguiente celda:** calcula comprobaciones programadas sobre `OBSERVED`. No vuelve a preguntar a Genie ni llama todavía al juez LLM. `DIAGNOSTICS` es la tabla de estos controles por caso.
+# MAGIC
+# MAGIC | Columna | Interpretación |
+# MAGIC |---|---|
+# MAGIC | `error = null` | No hubo error de ejecución |
+# MAGIC | `latency_s` | Tiempo de la consulta en segundos |
+# MAGIC | `cifra_referencia_presente = true` | Aparecen todas las cifras esperadas para ese caso |
+# MAGIC | `cifra_referencia_presente = false` | Falta al menos una cifra esperada |
+# MAGIC | `cifra_referencia_presente = null` | No hay cifras esperadas, o la ejecución tuvo error: mirar también `error` |
+# MAGIC
+# MAGIC Si G01–G06 muestran `true` y G07–G08 muestran `null` sin errores, el resultado es **6/6 casos numéricos aplicables**. G07 pide aclaración y G08 reconoce que faltan costos; no se les exige una cifra.
+# MAGIC
+# MAGIC **Límite del control:** encontrar los importes no comprueba que estén asociados a las categorías o periodos correctos. Dos importes intercambiados podrían pasar. Este scorer no es la comparación exacta de tablas del script docente; después evaluaremos la respuesta completa con el juez y la revisión humana.
+# MAGIC
+# MAGIC **`RAG precision/recall/faithfulness: N/A`** significa que estas métricas documentales no aplican a este notebook: no registra un corpus recuperado con etiquetas de relevancia. N/A no es cero ni error. SQL y tablas se conservan como auditoría, no como documentos RAG etiquetados.
+# MAGIC
+# MAGIC **Para leer en clase:** “Las consultas funcionaron y aparecen las cifras esperadas. Falta comprobar que cada respuesta interprete correctamente la pregunta”.
 # COMMAND ----------
 def numeric_tokens(text):
     # Convenciones comunes ES/EN. No usamos coincidencia substring (12.30 dentro de 112.30).
@@ -190,13 +270,28 @@ display(pd.DataFrame(DIAGNOSTICS))
 print("RAG precision/recall/faithfulness: N/A")
 # COMMAND ----------
 # MAGIC %md
-# MAGIC ## CP4 · Juez estricto y evaluate sin doble inferencia
-# MAGIC Este juez no reproduce automáticamente evidence_support del reporte docente; no equivale a faithfulness RAG.
-# MAGIC Rúbrica: correctness exige referencia completa, cifras asociadas correctamente, periodo, límites y fuentes;
-# MAGIC relevance exige contestar lo pedido o aclarar justificadamente. Sin moneda, costos o causalidad inventados.
-# MAGIC Juez sin herramientas, temperatura 0; pregunta/respuesta son datos no confiables.
-# MAGIC JSON inválido o error del juez = juicio faltante registrado, no veredicto falso ni aprobación.
-# MAGIC El juez es falible; contrastar sus discrepancias con SQL y revisión humana.
+# MAGIC ## CP4 · Pedir al juez LLM que califique las respuestas
+# MAGIC
+# MAGIC **Qué hace la siguiente celda:** entrega al modelo `judge_endpoint` tres elementos por caso: pregunta, respuesta esperada y respuesta observada (incluye las tablas recogidas). Le pide un JSON con dos valoraciones y una razón. `mlflow.genai.evaluate` aplica esos scorers a las respuestas ya guardadas y registra la evaluación en MLflow. No vuelve a llamar a Genie.
+# MAGIC
+# MAGIC | Resultado | Qué significa |
+# MAGIC |---|---|
+# MAGIC | `correctness = true` | El juez considera que la respuesta cumple la referencia |
+# MAGIC | `correctness = false` | El juez considera que existe un incumplimiento; leer `reason` |
+# MAGIC | `relevance = true` | El juez considera que responde o pide una aclaración pertinente |
+# MAGIC | `reason` | Explicación breve que debemos contrastar con pregunta y evidencia |
+# MAGIC | `status = judge_error` | Falló la llamada o el formato del juez: juicio faltante, no aprobado ni desaprobado |
+# MAGIC | `status = not_evaluated_execution_error` | No se juzgó porque falló la consulta al agente |
+# MAGIC
+# MAGIC `JUDGMENTS` conserva los veredictos. Un promedio `juez_correctness/mean = 0.875` equivale a 7/8 aprobados si hubo ocho juicios válidos. Mirar siempre cuántos fueron juzgados y cuántos faltan. Temperatura 0 no garantiza respuestas idénticas.
+# MAGIC
+# MAGIC **Ejemplo real de la corrida compartida por el instructor:** G07 pregunta ventas de Condimentos sin periodo. La referencia exige pedir mes/año; Genie lo pide. El juez marca `correctness=false` porque no hay cifra. Esa razón entra en conflicto con el criterio esperado: es un desacuerdo para revisión humana. No cambies el score a true ni repitas hasta obtener una nota mejor. Cada corrida puede producir otros resultados.
+# MAGIC
+# MAGIC El juez ve pregunta, referencia y respuesta; no verifica por sí mismo todos los campos de auditoría cruda. Esta rúbrica tampoco calcula `evidence_support` ni faithfulness RAG. Un PASS no garantiza calidad general ni ausencia de defectos.
+# MAGIC
+# MAGIC **Al repetir:** vuelve a llamar al juez sobre el lote actual; puede cambiar la calificación y genera otra evaluación. No es entrenamiento ni ajuste de Genie.
+# MAGIC
+# MAGIC **Para leer en clase:** “El juez automático nos ayuda a calificar, pero también puede equivocarse. Ahora revisaremos los desacuerdos con la referencia”.
 # COMMAND ----------
 JUDGMENTS = {}
 @scorer
@@ -242,11 +337,17 @@ print("Evaluation run:", result.run_id, json.dumps(result.metrics,default=str))
 display(pd.DataFrame([{"case_id":k,**v} for k,v in JUDGMENTS.items()]))
 # COMMAND ----------
 # MAGIC %md
-# MAGIC ## CP5 · Review App privada; revisión humana pendiente
-# MAGIC BLEU/ROUGE se conserva en el notebook S06 original: solapamiento textual no equivale a verdad.
-# MAGIC Creamos una sesión sin asignar ni notificar usuarios, con trazas reales. No compartir durante la práctica.
-# MAGIC Revisar una pregunta numérica, una ambigua y una discrepancia/error; registrar referencia, valoración y corrección.
-# MAGIC Crear sesión NO equivale a completar revisión humana. El estado permanece pendiente hasta evidencia humana.
+# MAGIC ## CP5 · Preparar la revisión humana de tres casos
+# MAGIC
+# MAGIC **Qué hace la siguiente celda:** crea una sesión privada de Review App, sin asignar ni notificar personas. Selecciona hasta tres trazas únicas: primero errores o respuestas rechazadas por el juez, después una pregunta que requiere aclaración y finalmente completa con otros casos.
+# MAGIC
+# MAGIC **Qué verás:** un objeto con `status`, `url`, `error` y `trace_ids`. `status = pendiente_humano` es normal; significa que el código preparó la revisión, no que una persona ya revisó. `error = null` indica que se pudo preparar; si hay error, léelo antes de dar la revisión por disponible. El notebook comprueba que el enlace corresponda al mismo workspace.
+# MAGIC
+# MAGIC **Qué debes hacer tú:** abre `url`; lee pregunta y respuesta, contrasta SQL o criterio esperado, registra tu valoración y la corrección necesaria. En G07 decide si pedir periodo cumple la referencia y explica el desacuerdo con el juez. También puedes señalar una llamada SQL innecesaria para devolver una simple aclaración. No sustituyas silenciosamente las etiquetas originales.
+# MAGIC
+# MAGIC Crear la sesión no modifica el estado del informe a “aprobado”. Guarda la evidencia de tus anotaciones por separado: este notebook no relee automáticamente las revisiones humanas. BLEU/ROUGE se trabaja en el notebook principal de S06, no en este complementario.
+# MAGIC
+# MAGIC **Para leer en clase:** “Esta pantalla es donde nosotros corregimos el examen y revisamos al juez. Tener un enlace de revisión no significa que la revisión esté terminada”.
 # COMMAND ----------
 import mlflow.genai.labeling as labeling
 import mlflow.genai.label_schemas as schemas
@@ -271,10 +372,34 @@ except Exception as exc:
 print(json.dumps(REVIEW,ensure_ascii=False))
 # COMMAND ----------
 # MAGIC %md
-# MAGIC ## CP6 · Exportar evidencia y denominadores
-# MAGIC Entregar JSON, tres revisiones humanas con evidencia y un caso nuevo de regresión.
-# MAGIC Desglosar vistos/reservados/nuevos. Un score agregado no autoriza producción; revisión humana pendiente.
-# MAGIC Online es un diseño para S08: muestrear solicitudes, todos los errores y revisar latencia por tipo; hoy solo offline.
+# MAGIC ## CP6 · Guardar el informe y leer el resultado final
+# MAGIC
+# MAGIC **Qué hace la siguiente celda:** reúne referencias, preguntas, respuestas, SQL, trazas, veredictos y métricas. Calcula totales y desglose por tipo de pregunta. Crea un run de exportación en MLflow y guarda tres artefactos: `evaluacion_s06_ui.json`, `dataset_s06_ui.json` y `scores_s06_ui.json`.
+# MAGIC
+# MAGIC **Empieza leyendo `Denominadores`, no el JSON completo.** En las métricas booleanas, `n` es la cantidad que aprobó y `denominator` la cantidad de casos aplicables con valoración válida. En latencia, `n` significa cantidad de tiempos observados.
+# MAGIC
+# MAGIC | Campo y ejemplo real del instructor | Cómo interpretarlo |
+# MAGIC |---|---|
+# MAGIC | `planned: 8`, `attempted: 8` | Se planearon ocho casos y se intentaron los ocho |
+# MAGIC | `execution_errors: 0` | Ninguna consulta al agente terminó con error |
+# MAGIC | `judged: 8`, `not_judged: 0` | Las ocho respuestas tuvieron juicio válido |
+# MAGIC | `correctness: {n: 7, denominator: 8}` | El juez aprobó siete: 87,5 % en esta muestra |
+# MAGIC | `relevance: {n: 8, denominator: 8}` | El juez consideró pertinentes las ocho respuestas |
+# MAGIC | `cifra_referencia_presente: {n: 6, denominator: 6}` | Las seis respuestas numéricas contienen sus cifras de referencia |
+# MAGIC | `latency_s.median: 13.4595` | Mediana de 13,46 segundos; no es el promedio |
+# MAGIC | `latency_s.p95_nearest_rank: 19.28` | Con solo ocho consultas, este p95 es el máximo observado; no garantiza rendimiento productivo |
+# MAGIC
+# MAGIC Estos números son un ejemplo histórico de la corrida que compartió el instructor; tu ejecución puede arrojar otros. El valor `13.459499999999998` es la representación de un número de punto flotante: para leerlo basta redondear a13,46s.
+# MAGIC
+# MAGIC **Hay dos IDs diferentes:** `evaluation_run_id` corresponde a la evaluación de CP4; `Export run` identifica el run nuevo que contiene los archivos finales. El experimento agrupa ambos. Para recuperar todo, abre el run de exportación en MLflow y su sección Artifacts.
+# MAGIC
+# MAGIC **`S06_UI_REPORT=...`** es el informe completo para exportación y auditoría. Si Databricks muestra `max output size exceeded`, recortó la visualización del texto impreso; los artefactos ya guardados en MLflow conservan el informe. No copies ese texto recortado como si fuera un JSON íntegro.
+# MAGIC
+# MAGIC `production_approved=false` y `review.status=pendiente_humano` se dejan expresamente así: esta celda no certifica producción ni relee tu revisión. `unexecuted_target` muestra Supervisor con ocho casos previstos y cero intentados; no tiene porcentaje de calidad. `by_split` permite separar ejemplos vistos, benchmark y preguntas nuevas.
+# MAGIC
+# MAGIC **Interpretación del caso real:** 7/8 es la nota del juez, no prueba automática de que Genie falló una pregunta. Hay que revisar G07 y su razón. También pueden quedar defectos que el juez no señaló: por ejemplo, pedir confirmar un periodo ya dado en G08. Conserva las observaciones humanas junto al informe.
+# MAGIC
+# MAGIC **Para leer en clase:** “Ya tenemos un resultado reproducible: qué preguntamos, qué respondió Genie, qué dijo el juez y qué falta revisar. La decisión se fundamenta en esa evidencia”.
 # COMMAND ----------
 def counts(rows):
     ids = {r["case_id"] for r in rows}
