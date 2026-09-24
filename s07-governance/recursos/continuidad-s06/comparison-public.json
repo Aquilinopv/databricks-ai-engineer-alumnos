@@ -1,0 +1,325 @@
+{
+  "versions": [
+    {
+      "version": "V0",
+      "planned": 20,
+      "attempted": 20,
+      "execution_errors": 0,
+      "judged": 20,
+      "correct": 17,
+      "relevant": 20,
+      "median_s": 26.6425,
+      "p95_s": 83.852
+    },
+    {
+      "version": "V1",
+      "planned": 20,
+      "attempted": 20,
+      "execution_errors": 0,
+      "judged": 20,
+      "correct": 19,
+      "relevant": 20,
+      "median_s": 20.2085,
+      "p95_s": 27.386
+    },
+    {
+      "version": "V2",
+      "planned": 20,
+      "attempted": 20,
+      "execution_errors": 0,
+      "judged": 20,
+      "correct": 20,
+      "relevant": 20,
+      "median_s": 20.4375,
+      "p95_s": 34.787
+    }
+  ],
+  "comparable_keys": [
+    "dataset_sha256",
+    "rubric_sha256",
+    "judge"
+  ],
+  "comparability": {
+    "dataset_sha256": "de2ab2baae93d8a42ba1d2e14f556e5923542ada41771d85e9ea52a945906ad1",
+    "rubric_sha256": "ef8f4fffc7d8c47aea97168f0c90727edba5f05f01c82a749e978abb44da03ba",
+    "judge": "databricks-meta-llama-3-3-70b-instruct"
+  },
+  "deltas": [
+    {
+      "from": "V0",
+      "to": "V1",
+      "corrected": [
+        "I08",
+        "I10"
+      ],
+      "regressed": []
+    },
+    {
+      "from": "V1",
+      "to": "V2",
+      "corrected": [
+        "I17"
+      ],
+      "regressed": []
+    }
+  ],
+  "cases": {
+    "V0": [
+      {
+        "case_id": "I01",
+        "correctness": true
+      },
+      {
+        "case_id": "I02",
+        "correctness": true
+      },
+      {
+        "case_id": "I03",
+        "correctness": true
+      },
+      {
+        "case_id": "I04",
+        "correctness": true
+      },
+      {
+        "case_id": "I05",
+        "correctness": true
+      },
+      {
+        "case_id": "I06",
+        "correctness": true
+      },
+      {
+        "case_id": "I07",
+        "correctness": true
+      },
+      {
+        "case_id": "I08",
+        "correctness": false
+      },
+      {
+        "case_id": "I09",
+        "correctness": true
+      },
+      {
+        "case_id": "I10",
+        "correctness": false
+      },
+      {
+        "case_id": "I11",
+        "correctness": true
+      },
+      {
+        "case_id": "I12",
+        "correctness": true
+      },
+      {
+        "case_id": "I13",
+        "correctness": true
+      },
+      {
+        "case_id": "I14",
+        "correctness": true
+      },
+      {
+        "case_id": "I15",
+        "correctness": true
+      },
+      {
+        "case_id": "I16",
+        "correctness": true
+      },
+      {
+        "case_id": "I17",
+        "correctness": false
+      },
+      {
+        "case_id": "I18",
+        "correctness": true
+      },
+      {
+        "case_id": "I19",
+        "correctness": true
+      },
+      {
+        "case_id": "I20",
+        "correctness": true
+      }
+    ],
+    "V1": [
+      {
+        "case_id": "I01",
+        "correctness": true
+      },
+      {
+        "case_id": "I02",
+        "correctness": true
+      },
+      {
+        "case_id": "I03",
+        "correctness": true
+      },
+      {
+        "case_id": "I04",
+        "correctness": true
+      },
+      {
+        "case_id": "I05",
+        "correctness": true
+      },
+      {
+        "case_id": "I06",
+        "correctness": true
+      },
+      {
+        "case_id": "I07",
+        "correctness": true
+      },
+      {
+        "case_id": "I08",
+        "correctness": true
+      },
+      {
+        "case_id": "I09",
+        "correctness": true
+      },
+      {
+        "case_id": "I10",
+        "correctness": true
+      },
+      {
+        "case_id": "I11",
+        "correctness": true
+      },
+      {
+        "case_id": "I12",
+        "correctness": true
+      },
+      {
+        "case_id": "I13",
+        "correctness": true
+      },
+      {
+        "case_id": "I14",
+        "correctness": true
+      },
+      {
+        "case_id": "I15",
+        "correctness": true
+      },
+      {
+        "case_id": "I16",
+        "correctness": true
+      },
+      {
+        "case_id": "I17",
+        "correctness": false
+      },
+      {
+        "case_id": "I18",
+        "correctness": true
+      },
+      {
+        "case_id": "I19",
+        "correctness": true
+      },
+      {
+        "case_id": "I20",
+        "correctness": true
+      }
+    ],
+    "V2": [
+      {
+        "case_id": "I01",
+        "correctness": true
+      },
+      {
+        "case_id": "I02",
+        "correctness": true
+      },
+      {
+        "case_id": "I03",
+        "correctness": true
+      },
+      {
+        "case_id": "I04",
+        "correctness": true
+      },
+      {
+        "case_id": "I05",
+        "correctness": true
+      },
+      {
+        "case_id": "I06",
+        "correctness": true
+      },
+      {
+        "case_id": "I07",
+        "correctness": true
+      },
+      {
+        "case_id": "I08",
+        "correctness": true
+      },
+      {
+        "case_id": "I09",
+        "correctness": true
+      },
+      {
+        "case_id": "I10",
+        "correctness": true
+      },
+      {
+        "case_id": "I11",
+        "correctness": true
+      },
+      {
+        "case_id": "I12",
+        "correctness": true
+      },
+      {
+        "case_id": "I13",
+        "correctness": true
+      },
+      {
+        "case_id": "I14",
+        "correctness": true
+      },
+      {
+        "case_id": "I15",
+        "correctness": true
+      },
+      {
+        "case_id": "I16",
+        "correctness": true
+      },
+      {
+        "case_id": "I17",
+        "correctness": true
+      },
+      {
+        "case_id": "I18",
+        "correctness": true
+      },
+      {
+        "case_id": "I19",
+        "correctness": true
+      },
+      {
+        "case_id": "I20",
+        "correctness": true
+      }
+    ]
+  },
+  "human_review": "pending",
+  "source_file_sha256": {
+    "V0": "b0a26a19be8a53ed625999ebf15c25f75b75499a2984372699c382cfe8967b46",
+    "V1": "1e7e7cd4c95f655f091fda77978e2c4e70d249a93cf188b8237c5e9e998cab20",
+    "V2": "52c4a29d8f70175564d5d6f81ee322898ede50bc242d6d41e85a27d4dd2c91b4"
+  },
+  "limitations": [
+    "Known benchmark; not held-out generalization",
+    "Overlapping compute windows; latency is descriptive",
+    "V0/V1 runner hash was not captured at start; see runner-provenance.json"
+  ]
+}

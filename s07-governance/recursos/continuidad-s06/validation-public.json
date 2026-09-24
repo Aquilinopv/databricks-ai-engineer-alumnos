@@ -1,0 +1,87 @@
+{
+  "checked_at_utc": "2026-09-23T21:56:34.257744+00:00",
+  "scope": "Lectura del notebook ampliado con paso_live=lectura; evaluación live registrada aparte",
+  "results": [
+    {
+      "run_id": 462069170226250,
+      "state": "SUCCESS",
+      "public_mode": false,
+      "notebook_sha256": "7846c2a808ea99932a2ab5761b74402ab1a6941aeb43881c421539d28dc68638",
+      "helper_sha256": "847913d2e3af6734123917471389f643a3bc6e2a05b698d8a3eb5a29dc22e477",
+      "new_inference_calls": 0,
+      "execute_widget": "lectura",
+      "versions_loaded": [
+        "V0",
+        "V1",
+        "V2"
+      ],
+      "counts": {
+        "V0": 20,
+        "V1": 20,
+        "V2": 20
+      },
+      "live_series_rows": 3
+    },
+    {
+      "run_id": 1023860081948142,
+      "state": "SUCCESS",
+      "public_mode": true,
+      "notebook_sha256": "7846c2a808ea99932a2ab5761b74402ab1a6941aeb43881c421539d28dc68638",
+      "helper_sha256": "847913d2e3af6734123917471389f643a3bc6e2a05b698d8a3eb5a29dc22e477",
+      "new_inference_calls": 0,
+      "execute_widget": "lectura",
+      "versions_loaded": [],
+      "counts": {},
+      "live_series_rows": 0
+    }
+  ],
+  "local_tests": {
+    "run": 18,
+    "failed": 0,
+    "scope": "8 evaluator +10 workflow tests; simulated Genie and cell parsing"
+  },
+  "human_review": "pending",
+  "live_cycle": {
+    "series_id": "ensayo-validacion-20260923",
+    "job_run_id": 769583134160379,
+    "baseline_capture_job_run_id": 794576171285151,
+    "versions": [
+      {
+        "version": "V0",
+        "attempted": 20,
+        "judged": 20,
+        "correct": 18,
+        "execution_errors": 0,
+        "median_s": 19.6035,
+        "p95_s": 32.224
+      },
+      {
+        "version": "V1",
+        "attempted": 20,
+        "judged": 20,
+        "correct": 17,
+        "execution_errors": 0,
+        "median_s": 19.688000000000002,
+        "p95_s": 26.322
+      },
+      {
+        "version": "V2",
+        "attempted": 20,
+        "judged": 20,
+        "correct": 18,
+        "execution_errors": 0,
+        "median_s": 19.764000000000003,
+        "p95_s": 34.253
+      }
+    ],
+    "rollback": "V2→V0→V2 verified",
+    "new_genie_cases": 60,
+    "human_review": "pending",
+    "notes": [
+      "New series, independent of historical 17/19/20; no guaranteed improvement",
+      "V0 kept intact through API-format fixes; V1 recovered after exact-text normalization check",
+      "No endpoint deployment; rollback changes the demo pointer/link",
+      "V3+ provided, no remote V3 benchmark claimed"
+    ]
+  }
+}
